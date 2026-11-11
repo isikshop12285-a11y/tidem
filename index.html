@@ -713,7 +713,7 @@
       <button type="button" class="lock-key" data-k="7">7</button><button type="button" class="lock-key" data-k="8">8</button><button type="button" class="lock-key" data-k="9">9</button>
       <button type="button" class="lock-key fn" data-k="clear" aria-label="Temizle">C</button><button type="button" class="lock-key" data-k="0">0</button><button type="button" class="lock-key fn" data-k="back" aria-label="Sil">⌫</button>
     </div>
-    <div class="app-ver" id="appVer">Sürüm 16 · 11.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 20 · 11.11.2026</div>
   </div>
 </div>
 <script>
@@ -1324,7 +1324,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 16 · 11.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 20 · 11.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -2043,43 +2043,6 @@
 
   .queue-card{max-height:92vh;overflow-y:auto}
 
-  /* ===== Sipariş kartı (yeni sade tasarım) ===== */
-  .hist-item.ord-card{display:block;padding:14px 14px 0;border-radius:16px;overflow:hidden}
-  .ord-card .oc-top{display:flex;align-items:center;gap:11px}
-  .ord-card .cust-av{width:42px;height:42px;border-radius:50%;font-size:.88rem;box-shadow:none}
-  .ord-card .oc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
-  .ord-card .oc-name{font-size:.98rem !important;line-height:1.2 !important}
-  .ord-card .oc-sub{display:flex;flex-wrap:wrap;font-size:.74rem;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.01em}
-  .ord-card .oc-sub span+span:before{content:"·";margin:0 6px;opacity:.6}
-  .ord-card .oc-amt{flex:none;align-self:flex-start;font-family:var(--font-display);font-size:1.15rem !important;font-weight:800 !important;color:#14213F !important;white-space:nowrap}
-  .ord-card .oc-amt small{font-size:.7em;margin-left:2px;color:var(--ink-soft)}
-  .ord-card .oc-status{display:flex;flex-wrap:wrap;gap:2px 14px;margin:11px 0 0}
-  .oc-st{display:inline-flex;align-items:center;gap:6px;min-height:0 !important;line-height:1.3;padding:3px 0 !important;width:auto !important;border:0;background:none;font:inherit;font-size:.76rem;font-weight:700;cursor:pointer;color:var(--ink-soft)}
-  .oc-st:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
-  .oc-st.no{color:#C8202F}
-  .oc-st.ok{color:#15803D}
-  .oc-st.acc{color:#B7791F}
-  .oc-st.wait{color:#B7791F}
-  .oc-st.wait:before{background:none;border:1.5px solid currentColor;width:7px;height:7px}
-  .ord-card .oc-acts{display:flex !important;align-items:stretch;gap:0 !important;margin:12px -14px 0 !important;border-top:1px solid rgba(20,33,63,.08);flex-wrap:nowrap !important}
-  .oc-btn{flex:1;display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:52px;padding:7px 2px !important;border:0 !important;border-radius:0 !important;background:none !important;box-shadow:none !important;color:#2F4475 !important;font:inherit;font-size:.66rem !important;font-weight:700 !important;cursor:pointer}
-  .oc-btn+.oc-btn{border-left:1px solid rgba(20,33,63,.08) !important}
-  .oc-btn svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-  .oc-btn .wa-ico{fill:currentColor;stroke:none;width:21px;height:21px;vertical-align:0}
-  .oc-btn.hist-wa{color:#1FA855 !important}
-  .oc-btn.hist-edit{color:#C8202F !important}
-  .oc-btn b{display:flex;align-items:center;justify-content:center;height:21px;padding:0 4px;border-radius:4px;background:#2F4475;color:#fff;font-size:.6rem;font-weight:900;letter-spacing:.03em}
-  @media screen{ html .ord-card .oc-btn.hist-pdf, html .ord-card .oc-btn.hist-wa, html .ord-card .oc-btn.hist-view, html .ord-card .oc-btn.hist-edit{background:none !important} html .ord-card .oc-btn.hist-pdf{color:#2F4475 !important} html[data-theme="dark"] .ord-card .oc-btn.hist-pdf{color:#C7D2EA !important} }
-  .oc-btn:active{background:rgba(20,33,63,.05) !important}
-  .oc-del{flex:none;width:46px;border:0;border-left:1px solid rgba(20,33,63,.08);background:none;color:#94A3B8;font-size:1rem;cursor:pointer;border-radius:0 !important;padding:0 !important}
-  .oc-del.confirming{background:#C8202F !important;color:#fff;font-size:.72rem;width:56px}
-  html[data-theme="dark"] .ord-card .oc-amt{color:#E6EBF4 !important}
-  html[data-theme="dark"] .ord-card .oc-acts, html[data-theme="dark"] .oc-btn+.oc-btn, html[data-theme="dark"] .oc-del{border-color:rgba(255,255,255,.09) !important}
-  html[data-theme="dark"] .oc-btn{color:#C7D2EA !important}
-  html[data-theme="dark"] .oc-btn.hist-edit{color:#FCA5A5 !important}
-  html[data-theme="dark"] .oc-btn.hist-wa{color:#4ADE80 !important}
-  html[data-theme="dark"] .oc-btn b{background:#465C92}
-  html[data-theme="dark"] .oc-st.no{color:#FCA5A5} html[data-theme="dark"] .oc-st.ok{color:#86EFAC} html[data-theme="dark"] .oc-st.acc,html[data-theme="dark"] .oc-st.wait{color:#FCD34D}
 
 
   /* ===================== Animasyonlar ===================== */
@@ -2122,19 +2085,156 @@
   html:not(.no-anim) .year-head{transition:transform .14s ease}
   html:not(.no-anim) .year-head:active{transform:scale(.985)}
 
-  /* Müşteri adı: hap tasarım */
-  .ord-card .oc-main{gap:7px}
-  .ord-card .hist-name.oc-name{display:inline-flex !important;align-items:center;gap:9px;align-self:flex-start;max-width:100%;padding:6px 6px 6px 14px !important;border-radius:18px !important;background:linear-gradient(135deg,#1B2B57 0%,#14213F 100%) !important;color:#fff !important;box-shadow:0 4px 12px rgba(20,33,63,.22),inset 0 1px 0 rgba(255,255,255,.08);-webkit-line-clamp:unset !important;overflow:visible !important;position:relative}
+
+  /* ===================== Sipariş geçmişi: yeni tasarım ===================== */
+  /* gün başlığı: takvim yaprağı */
+  .date-toggle.oh-day{display:flex !important;align-items:center;gap:12px;margin:12px 0 8px !important;padding:10px 12px 10px 10px !important;border:0 !important;border-radius:16px !important;background:#fff !important;box-shadow:0 1px 2px rgba(20,33,63,.05),0 6px 18px rgba(20,33,63,.07) !important}
+  .oh-day .dh-cal{flex:none;display:flex;flex-direction:column;width:46px;border-radius:11px;overflow:hidden;text-align:center;box-shadow:0 2px 6px rgba(20,33,63,.15)}
+  .oh-day .dh-cal i{display:block;padding:2px 0 1px;background:#C8202F;color:#fff;font-style:normal;font-size:.62rem;font-weight:900;letter-spacing:.1em}
+  .oh-day .dh-cal b{display:block;padding:3px 0 4px;background:#14213F;color:#fff;font-family:var(--font-display);font-size:1.25rem;font-weight:800;line-height:1.1}
+  .oh-day .dh-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+  .oh-day .dh-txt b{display:flex;align-items:center;gap:7px;font-family:var(--font-display);font-size:1rem;font-weight:800;color:#14213F}
+  .oh-day .dh-txt small{font-size:.74rem;font-weight:600;color:var(--ink-soft)}
+  .oh-day .dh-tag{font-style:normal;font-size:.6rem;font-weight:900;letter-spacing:.08em;padding:2px 7px;border-radius:999px;background:#E2E8F0;color:#475569}
+  .oh-day .dh-tag.now{background:#C8202F;color:#fff}
+  .oh-day .dh-sum{flex:none;font-family:var(--font-display);font-size:1.02rem;font-weight:800;color:#14213F;white-space:nowrap}
+  .oh-day .dh-sum small{font-size:.7em;margin-left:2px;color:var(--ink-soft)}
+  .oh-day .date-chev{flex:none;width:28px;height:28px;border-radius:50%;background:#F1F4F9;font-size:0 !important;position:relative;transition:transform .25s ease,background .2s}
+  .oh-day .date-chev::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;border-right:2.2px solid #14213F;border-bottom:2.2px solid #14213F;transform:translate(-50%,-70%) rotate(45deg)}
+  .oh-day[aria-expanded="true"] .date-chev{transform:rotate(180deg);background:#14213F}
+  .oh-day[aria-expanded="true"] .date-chev::after{border-color:#fff}
+  .oh-day .day-select{margin-left:0}
+  .select-mode .oh-day .dh-sum{display:none}
+  .oh-day .dh-txt small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .oh-day .dh-txt b{white-space:nowrap}
+
+  /* sipariş kartı */
+  .hist-item.ord-card{display:block;position:relative;padding:14px 14px 12px 18px !important;border-radius:18px !important;overflow:hidden;background:#fff}
+  .hist-item.ord-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#C8202F}
+  .hist-item.ord-card.st-ok::before{background:#16A34A}
+  .ord-card .oc-top{display:flex;align-items:flex-start;gap:10px}
+  .ord-card .oc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+  .ord-card .hist-name.oc-name{display:inline-flex !important;align-items:center;gap:9px;align-self:flex-start;max-width:100%;padding:6px 6px 6px 14px !important;border-radius:18px !important;background:linear-gradient(135deg,#1B2B57 0%,#14213F 100%) !important;color:#fff !important;box-shadow:0 4px 12px rgba(20,33,63,.22),inset 0 1px 0 rgba(255,255,255,.08);-webkit-line-clamp:unset !important;overflow:visible !important}
   .ocn-t{min-width:0;font-family:var(--font-display);font-weight:800;font-size:.9rem;line-height:1.25;letter-spacing:.03em;text-transform:uppercase;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:left}
   .ocn-go{flex:none;display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#C8202F;box-shadow:0 2px 6px rgba(200,32,47,.45)}
   .ocn-go svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-  .ord-card .oc-sub{padding-left:4px}
-  .ord-card .oc-status{margin-top:8px !important}
-  html[data-theme="dark"] .ord-card .hist-name.oc-name{background:linear-gradient(135deg,#3A5294 0%,#2A3E73 100%) !important;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+  .ord-card .oc-sub{display:flex;flex-wrap:wrap;gap:4px 12px;padding-left:2px;font-size:.74rem;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.01em}
+  .ord-card .oc-sub span{display:inline-flex;align-items:center;gap:4px}
+  .ord-card .oc-sub svg{width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+  .ord-card .oc-sub .oc-note{text-transform:none;color:#B7791F}
+  .ord-card .oc-amt{flex:none;display:flex;align-items:baseline;gap:2px;padding:7px 11px;border-radius:12px;background:#F1F4F9;color:#14213F !important;font-family:var(--font-display);white-space:nowrap}
+  .ord-card .oc-amt b{font-size:1.1rem;font-weight:800}
+  .ord-card .oc-amt small{font-size:.72rem;font-weight:800;color:#64748B}
+  .ord-card .oc-status{display:flex;flex-wrap:wrap;gap:4px 14px;margin:11px 0 0 2px}
+  .oc-st{display:inline-flex;align-items:center;gap:5px;min-height:0 !important;width:auto !important;padding:2px 0 !important;border:0;background:none;font:inherit;font-size:.76rem;font-weight:800;line-height:1.3;cursor:pointer;color:#64748B}
+  .oc-st svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .oc-st.no{color:#C8202F} .oc-st.ok{color:#15803D} .oc-st.acc{color:#B7791F} .oc-st.wait{color:#B7791F;opacity:.85}
+  .oc-st.wait span{text-decoration:underline dotted;text-underline-offset:3px}
+  .ord-card .oc-acts{display:flex !important;flex-wrap:nowrap !important;gap:7px !important;margin:12px 0 0 !important;padding:0 !important;border:0 !important}
+  .oc-btn{flex:1;display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;padding:7px 2px !important;border:0 !important;border-radius:13px !important;box-shadow:none !important;font:inherit;font-size:.66rem !important;font-weight:800 !important;cursor:pointer}
+  .oc-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .oc-btn .wa-ico{fill:currentColor;stroke:none;width:21px;height:21px;vertical-align:0}
+  @media screen{
+  html .ord-card .oc-btn.t-view{background:#EEF2F8 !important;color:#2F4475 !important}
+  html .ord-card .oc-btn.t-edit{background:#FDECEE !important;color:#C8202F !important}
+  html .ord-card .oc-btn.t-wa{background:#1FA855 !important;color:#fff !important;box-shadow:0 4px 10px rgba(31,168,85,.3) !important}
+  html .ord-card .oc-btn.t-pdf{background:#EEF2F8 !important;color:#2F4475 !important}
+  }
+  .oc-del{flex:none;align-self:center;width:34px;height:34px;border:0;border-radius:50% !important;background:#F1F4F9;color:#94A3B8;font-size:.9rem;cursor:pointer;padding:0 !important}
+  .oc-del.confirming{width:52px;border-radius:12px !important;background:#C8202F !important;color:#fff;font-size:.72rem;font-weight:800}
   html:not(.no-anim) .ord-card .hist-name.oc-name{transition:transform .14s ease,box-shadow .2s ease}
-  html:not(.no-anim) .ord-card .hist-name.oc-name:active{transform:scale(.96);box-shadow:0 2px 6px rgba(20,33,63,.2)}
+  html:not(.no-anim) .ord-card .hist-name.oc-name:active{transform:scale(.96)}
   html:not(.no-anim) .ocn-go{transition:transform .2s ease}
   html:not(.no-anim) .ord-card .hist-name.oc-name:active .ocn-go{transform:translateX(3px)}
+  html:not(.no-anim) .oh-day:active{transform:scale(.985)}
+
+  /* koyu mod */
+  html[data-theme="dark"] .date-toggle.oh-day{background:#24345E !important;box-shadow:0 6px 18px rgba(0,0,0,.25) !important}
+  html[data-theme="dark"] .oh-day .dh-txt b, html[data-theme="dark"] .oh-day .dh-sum{color:#F1F5F9}
+  html[data-theme="dark"] .oh-day .dh-txt small, html[data-theme="dark"] .oh-day .dh-sum small{color:#AAB6CF}
+  html[data-theme="dark"] .oh-day .dh-cal b{background:#0E1A3A}
+  html[data-theme="dark"] .oh-day .dh-tag{background:#3A4C7E;color:#E2E8F0}
+  html[data-theme="dark"] .oh-day .dh-tag.now{background:#C8202F;color:#fff}
+  html[data-theme="dark"] .oh-day .date-chev{background:#33467A}
+  html[data-theme="dark"] .oh-day .date-chev::after{border-color:#E2E8F0}
+  html[data-theme="dark"] .oh-day[aria-expanded="true"] .date-chev{background:#C8202F}
+  html[data-theme="dark"] .hist-item.ord-card{background:#24345E !important}
+  html[data-theme="dark"] .ord-card .hist-name.oc-name{background:linear-gradient(135deg,#3A5294 0%,#2A3E73 100%) !important;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+  html[data-theme="dark"] .ord-card .oc-sub{color:#AAB6CF}
+  html[data-theme="dark"] .ord-card .oc-amt{background:#33467A;color:#F1F5F9 !important}
+  html[data-theme="dark"] .ord-card .oc-amt small{color:#AAB6CF}
+  html[data-theme="dark"] .oc-st.no{color:#FCA5A5} html[data-theme="dark"] .oc-st.ok{color:#86EFAC} html[data-theme="dark"] .oc-st.acc,html[data-theme="dark"] .oc-st.wait{color:#FCD34D}
+  @media screen{
+  html[data-theme="dark"] .ord-card .oc-btn.t-view, html[data-theme="dark"] .ord-card .oc-btn.t-pdf{background:#33467A !important;color:#DCE4F5 !important}
+  html[data-theme="dark"] .ord-card .oc-btn.t-edit{background:rgba(239,68,68,.18) !important;color:#FCA5A5 !important}
+  }
+  html[data-theme="dark"] .oc-del{background:#33467A;color:#AAB6CF}
+
+  /* ===== Sipariş kartı: lacivert başlık bandı + büyük harf ===== */
+  .hist-item.ord-card{padding:0 0 12px !important}
+  .hist-item.ord-card::before{z-index:2}
+  .ord-card .oc-head{display:flex;align-items:center;gap:10px;padding:12px 14px 12px 18px;background:linear-gradient(120deg,#14213F 0%,#1F3263 70%,#2A2350 100%);position:relative}
+  .ord-card .oc-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,#C8202F 0 28%,transparent 28%)}
+  .ord-card .oc-head .sel-box{padding:0}
+  .ord-card .oc-head .sel-box input{accent-color:#fff}
+  .ord-card .hist-name.oc-name{flex:1;min-width:0;display:flex !important;flex-direction:column;align-items:flex-start;gap:2px;padding:0 !important;border-radius:0 !important;background:none !important;box-shadow:none !important;color:#fff !important;text-align:left}
+  .ord-card .ocn-k{font-size:.6rem;font-weight:800;letter-spacing:.14em;color:#F87171}
+  .ord-card .ocn-t{font-family:var(--font-display);font-weight:800;font-size:1.02rem;line-height:1.22;letter-spacing:.03em;text-transform:uppercase;color:#fff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .ord-card .oc-head .oc-amt{flex:none;display:flex;align-items:baseline;gap:3px;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);color:#fff !important}
+  .ord-card .oc-head .oc-amt b{font-size:1.12rem;font-weight:800}
+  .ord-card .oc-head .oc-amt small{color:rgba(255,255,255,.7) !important;font-size:.72rem}
+  .ord-card > .oc-sub{display:flex;margin:11px 14px 0 18px !important}
+  .ord-card .oc-status{margin:9px 14px 0 18px !important}
+  .ord-card .oc-acts{margin:12px 14px 0 18px !important}
+  .ord-card :is(.oc-sub,.oc-st,.oc-btn,.oc-sub .oc-note){text-transform:uppercase !important;letter-spacing:.02em}
+  .ord-card .oc-st{font-size:.72rem}
+  .ord-card .oc-btn{font-size:.62rem !important}
+  html:not(.no-anim) .ord-card .hist-name.oc-name:active{transform:none;opacity:.75}
+  html[data-theme="dark"] .ord-card .oc-head{background:linear-gradient(120deg,#0E1A3A 0%,#1A2B58 70%,#2A2350 100%)}
+  html[data-theme="dark"] .ord-card .hist-name.oc-name{background:none !important;box-shadow:none}
+  .oh-day .dh-txt b, .oh-day .dh-txt small{text-transform:uppercase;letter-spacing:.03em}
+  .oh-day .dh-txt small{font-size:.7rem}
+
+  /* durum simgeleri: renkli yuvarlak rozet içinde */
+  .ord-card .oc-st{gap:7px}
+  .ord-card .oc-st .st-ic{flex:none;display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:currentColor}
+  .ord-card .oc-st .st-ic svg{width:15px;height:15px;stroke:#fff;stroke-width:2.1}
+  .ord-card .oc-st.wait .st-ic{background:none;box-shadow:inset 0 0 0 1.8px currentColor}
+  .ord-card .oc-st.wait .st-ic svg{stroke:currentColor}
+  .ord-card .oc-status{gap:7px 16px}
+  html[data-theme="dark"] .ord-card .oc-st .st-ic svg{stroke:#14213F}
+  html[data-theme="dark"] .ord-card .oc-st.wait .st-ic svg{stroke:currentColor}
+
+  /* ===== Durum: süreç çizgisi (Teslimat → Ödeme → Sistem) ===== */
+  .ord-card .oc-track{position:relative;display:grid !important;grid-template-columns:repeat(2,1fr);gap:0 !important;margin:13px 14px 0 18px !important;padding:12px 4px 10px;border-radius:16px;background:#F5F7FB;border:1px solid #E6EBF3}
+  .ord-card .oc-track.three{grid-template-columns:repeat(3,1fr)}
+  .tr-step{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 2px;border:0;background:none;font:inherit;cursor:pointer;color:#14213F;min-height:0 !important;width:auto !important}
+  .tr-step + .tr-step::before{content:"";position:absolute;top:21px;right:calc(50% + 26px);width:calc(100% - 52px);height:4px;border-radius:2px;background:repeating-linear-gradient(90deg,#CBD5E1 0 6px,transparent 6px 10px)}
+  .tr-step.ln-ok::before{background:linear-gradient(90deg,#16A34A,#16A34A) !important}
+  .tr-node{position:relative;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:14px;transform:rotate(0deg)}
+  .tr-node > svg{width:24px;height:24px;fill:currentColor}
+  .tr-step.done .tr-node{background:linear-gradient(145deg,#22C55E,#15803D);color:#fff;box-shadow:0 6px 14px rgba(22,163,74,.35)}
+  .tr-step.acc .tr-node{background:linear-gradient(145deg,#F59E0B,#B45309);color:#fff;box-shadow:0 6px 14px rgba(217,119,6,.35)}
+  .tr-step.todo .tr-node{background:#fff;border:2px dashed currentColor}
+  .tr-step.todo.red{color:#C8202F}
+  .tr-step.todo.amber{color:#B45309}
+  .tr-step.todo .tr-node > svg{opacity:.85}
+  .tr-tick{position:absolute;right:-6px;top:-6px;display:flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2)}
+  .tr-tick svg{width:12px;height:12px;fill:none;stroke:#15803D;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+  .tr-cap{margin-top:4px;font-size:.58rem;font-weight:800;letter-spacing:.14em;color:#94A3B8}
+  .tr-val{font-size:.78rem;font-weight:900;letter-spacing:.03em}
+  .tr-step.done .tr-val{color:#15803D} .tr-step.acc .tr-val{color:#B45309} .tr-step.todo.red .tr-val{color:#C8202F} .tr-step.todo.amber .tr-val{color:#B45309}
+  .tr-step.todo .tr-node{animation:trPulse 2.2s ease-in-out infinite}
+  @keyframes trPulse{0%,100%{box-shadow:0 0 0 0 rgba(200,32,47,0)}50%{box-shadow:0 0 0 5px rgba(200,32,47,.12)}}
+  html.no-anim .tr-step.todo .tr-node{animation:none}
+  html:not(.no-anim) .tr-step{transition:transform .14s ease}
+  html:not(.no-anim) .tr-step:active{transform:scale(.92)}
+  html[data-theme="dark"] .ord-card .oc-track{background:#1C2A4F;border-color:#33467A}
+  html[data-theme="dark"] .tr-step.todo .tr-node{background:#24345E}
+  html[data-theme="dark"] .tr-step.todo.red{color:#FCA5A5} html[data-theme="dark"] .tr-step.todo.amber{color:#FCD34D}
+  html[data-theme="dark"] .tr-step.done .tr-val{color:#86EFAC} html[data-theme="dark"] .tr-step.acc .tr-val{color:#FCD34D}
+  html[data-theme="dark"] .tr-cap{color:#8A99BA}
+  html[data-theme="dark"] .tr-step + .tr-step::before{background:repeating-linear-gradient(90deg,#4A5E92 0 6px,transparent 6px 10px)}
 </style>
 <script>
 (function(){
@@ -4756,7 +4856,11 @@
         heading.setAttribute('role', 'button');
         heading.tabIndex = 0;
         heading.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        heading.innerHTML = `<h2>${dateDisplay(o.date)} <small>${st.count} sipariş · ${fmt(st.total)}</small></h2><button type="button" class="day-select" data-date="${o.date}">GÜNÜ SEÇ</button><span class="date-chev">${isOpen ? '▾' : '▸'}</span>`;
+        heading.classList.add('oh-day');
+        { const d = new Date(o.date + 'T00:00:00'), td = todayStr(), yd = new Date(Date.now() - 864e5); const ydS = `${yd.getFullYear()}-${String(yd.getMonth() + 1).padStart(2, '0')}-${String(yd.getDate()).padStart(2, '0')}`;
+          const GUN = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'], AY = ['OCA','ŞUB','MAR','NİS','MAY','HAZ','TEM','AĞU','EYL','EKİ','KAS','ARA'];
+          const tag = o.date === td ? '<em class="dh-tag now">BUGÜN</em>' : (o.date === ydS ? '<em class="dh-tag">DÜN</em>' : '');
+          heading.innerHTML = `<span class="dh-cal"><i>${AY[d.getMonth()] || ''}</i><b>${d.getDate() || '?'}</b></span><span class="dh-txt"><b>${GUN[d.getDay()] || dateDisplay(o.date)}${tag}</b><small>${dateDisplay(o.date)} · ${st.count} sipariş</small></span><span class="dh-sum">${fmt(st.total)}<small>₺</small></span><button type="button" class="day-select" data-date="${o.date}">GÜNÜ SEÇ</button><span class="date-chev">${isOpen ? '▾' : '▸'}</span>`; }
         dayGroup = document.createElement('div');
         dayGroup.hidden = !isOpen;
         const groupRef = dayGroup, dateRef = o.date;
@@ -4781,29 +4885,53 @@
         lastDate = o.date;
       }
       const item = document.createElement('div');
-      item.className = 'hist-item ord-card' + (selectedIds.has(o.id) ? ' selected' : '');
+      item.className = 'hist-item ord-card ' + (o.delivered ? 'st-ok' : 'st-no') + (selectedIds.has(o.id) ? ' selected' : '');
       const ocInfo = getCustInfo(o.customer), ocKoli = (o.products || []).reduce((t, p) => t + num(p.adet), 0);
-      const ocSub = [ocInfo.group || ocInfo.address || '', `${o.products.length} ürün · ${fmt(ocKoli)} koli`, o.delivered && o.deliveryDate && o.deliveryDate !== o.date ? 'Teslim ' + dateDisplay(o.deliveryDate) : '', o.note || ''].filter(Boolean);
+      const IC = {
+        pin:'<svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+        box:'<svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5v-9Z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg>',
+        note:'<svg viewBox="0 0 24 24"><path d="M5 4h14v12l-4 4H5V4Z"/><path d="M15 20v-4h4M8 9h8M8 13h5"/></svg>',
+        truck:'<svg viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>',
+        wallet:'<svg viewBox="0 0 24 24"><path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Zm0 0 13-3v3"/><circle cx="16.5" cy="13.5" r="1.3"/></svg>',
+        sys:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="m8.5 10 2.3 2.3L15.5 7.6"/></svg>',
+        sysNo:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><circle cx="12" cy="10" r="3.2"/><path d="M12 8.6V10l1 .8"/></svg>',
+        ledger:'<svg viewBox="0 0 24 24"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6V3Z"/><path d="M6 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2"/><path d="M10 8h5M10 12h5M10 16h3"/></svg>',
+        cash:'<svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg>',
+        card:'<svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/></svg>',
+        bank:'<svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5H3Z"/><path d="M5 10v7M9.5 10v7M14.5 10v7M19 10v7M3 20h18"/></svg>'
+      };
+      const TRI = {
+        truck:'<svg viewBox="0 0 24 24"><path d="M1.5 6.5A1.5 1.5 0 0 1 3 5h10a1.5 1.5 0 0 1 1.5 1.5V8h3.4a1.5 1.5 0 0 1 1.2.6l2.6 3.5c.2.3.3.6.3.9v2.5a1.5 1.5 0 0 1-1.5 1.5h-.7a3 3 0 0 0-5.6 0H9.8a3 3 0 0 0-5.6 0H3A1.5 1.5 0 0 1 1.5 15.5v-9Zm13 3v3.3h5.2l-2.3-3.3h-2.9Z"/><circle cx="7" cy="17.6" r="2.1"/><circle cx="17.1" cy="17.6" r="2.1"/></svg>',
+        ledger:'<svg viewBox="0 0 24 24"><path d="M6.5 2H18a2 2 0 0 1 2 2v14.5a.5.5 0 0 1-.5.5H7a1.5 1.5 0 0 0 0 3h12.5a.5.5 0 0 1 0 1H7a2.5 2.5 0 0 1-2.5-2.5V4A2 2 0 0 1 6.5 2Zm3 4.5a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5h-6Zm0 3.5a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5h-6Zm0 3.5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5H9.5Z"/></svg>',
+        cash:'<svg viewBox="0 0 24 24"><path d="M2 7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7Zm10 8.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4ZM5 8.5a.5.5 0 0 0-.5.5v6a.5.5 0 0 0 1 0V9a.5.5 0 0 0-.5-.5Zm14 0a.5.5 0 0 0-.5.5v6a.5.5 0 0 0 1 0V9a.5.5 0 0 0-.5-.5Z"/></svg>',
+        card:'<svg viewBox="0 0 24 24"><path d="M2 7.5A2.5 2.5 0 0 1 4.5 5h15A2.5 2.5 0 0 1 22 7.5V9H2V7.5ZM2 11h20v5.5a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 16.5V11Zm3.5 4a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5h-4Z"/></svg>',
+        bank:'<svg viewBox="0 0 24 24"><path d="M11.5 2.2a1 1 0 0 1 1 0l8.6 5A.6.6 0 0 1 20.8 8.4H3.2a.6.6 0 0 1-.3-1.2l8.6-5ZM4.5 10h3v7h-3v-7Zm6 0h3v7h-3v-7Zm6 0h3v7h-3v-7ZM3 18.5h18a1 1 0 0 1 1 1V21a.5.5 0 0 1-.5.5h-19A.5.5 0 0 1 2 21v-1.5a1 1 0 0 1 1-1Z"/></svg>',
+        screen:'<svg viewBox="0 0 24 24"><path d="M3 3.5h18A1.5 1.5 0 0 1 22.5 5v10.5A1.5 1.5 0 0 1 21 17H3a1.5 1.5 0 0 1-1.5-1.5V5A1.5 1.5 0 0 1 3 3.5ZM10 17h4l.6 3H16a.75.75 0 0 1 0 1.5H8A.75.75 0 0 1 8 20h1.4l.6-3Z"/></svg>',
+        tick:'<i class="tr-tick"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>'
+      };
+      const ocSub = [];
+      if (ocInfo.group || ocInfo.address) ocSub.push(`<span>${IC.pin}${escHtml(ocInfo.group || ocInfo.address)}</span>`);
+      ocSub.push(`<span>${IC.box}${o.products.length} ürün · ${fmt(ocKoli)} koli</span>`);
+      if (o.delivered && o.deliveryDate && o.deliveryDate !== o.date) ocSub.push(`<span>${IC.truck}Teslim ${dateDisplay(o.deliveryDate)}</span>`);
+      if (o.note) ocSub.push(`<span class="oc-note">${IC.note}${escHtml(o.note)}</span>`);
       const payLbl = o.paymentType === 'card' ? 'Kredi kartı' : (o.paymentType === 'eft' ? 'IBAN / EFT' : (o.paymentType === 'account' ? 'Cari hesap' : 'Nakit'));
       item.innerHTML = `
-        <div class="oc-top">
+        <div class="oc-head">
           <label class="sel-box"><input type="checkbox" class="sel-cb" data-id="${o.id}"${selectedIds.has(o.id) ? ' checked' : ''} aria-label="Seç"></label>
-          <div class="oc-main">
-            <button type="button" class="hist-name oc-name" data-open-cari="${escAttr(o.customer)}" title="Cari hesabını aç"><span class="ocn-t">${escHtml(o.customer)}</span><i class="ocn-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></i></button>
-            <span class="oc-sub">${ocSub.map(x => `<span>${escHtml(x)}</span>`).join('')}</span>
-          </div>
-          <span class="oc-amt hist-total">${fmt(o.total)}<small>₺</small></span>
+          <button type="button" class="hist-name oc-name" data-open-cari="${escAttr(o.customer)}" title="Cari hesabını aç"><span class="ocn-k">MÜŞTERİ · CARİ ›</span><span class="ocn-t">${escHtml(o.customer)}</span></button>
+          <span class="oc-amt hist-total"><b>${fmt(o.total)}</b><small>₺</small></span>
         </div>
-        <div class="oc-status">
-          <button type="button" class="oc-st ${o.delivered ? 'ok' : 'no'}" data-action="toggle-delivered" data-id="${o.id}">${o.delivered ? 'Teslim edildi' : 'Teslim edilmedi'}</button>
-          <button type="button" class="oc-st ${o.paymentType === 'account' ? 'acc' : 'ok'}" data-action="toggle-payment" data-id="${o.id}">${payLbl}</button>
-          ${o.paymentType === 'account' ? `<button type="button" class="oc-st ${o.systemAdded ? 'ok' : 'wait'}" data-action="toggle-system" data-id="${o.id}">${o.systemAdded ? 'Sisteme işlendi' : 'Sisteme işlenmedi'}</button>` : ''}
+        <span class="oc-sub">${ocSub.join('')}</span>
+        <div class="oc-status oc-track${o.paymentType === 'account' ? ' three' : ''}">
+          <button type="button" class="tr-step ${o.delivered ? 'done' : 'todo red'}" data-action="toggle-delivered" data-id="${o.id}"><span class="tr-node">${TRI.truck}${o.delivered ? TRI.tick : ''}</span><span class="tr-cap">TESLİMAT</span><b class="tr-val">${o.delivered ? 'EDİLDİ' : 'EDİLMEDİ'}</b></button>
+          <button type="button" class="tr-step ${o.paymentType === 'account' ? 'acc' : 'done'} ${o.delivered ? 'ln-ok' : ''}" data-action="toggle-payment" data-id="${o.id}"><span class="tr-node">${o.paymentType === 'account' ? TRI.ledger : (o.paymentType === 'card' ? TRI.card : (o.paymentType === 'eft' ? TRI.bank : TRI.cash))}</span><span class="tr-cap">ÖDEME</span><b class="tr-val">${o.paymentType === 'card' ? 'KART' : (o.paymentType === 'eft' ? 'EFT' : (o.paymentType === 'account' ? 'CARİ' : 'NAKİT'))}</b></button>
+          ${o.paymentType === 'account' ? `<button type="button" class="tr-step ${o.systemAdded ? 'done' : 'todo amber'} ${o.delivered ? 'ln-ok' : ''}" data-action="toggle-system" data-id="${o.id}"><span class="tr-node">${TRI.screen}${o.systemAdded ? TRI.tick : ''}</span><span class="tr-cap">SİSTEM</span><b class="tr-val">${o.systemAdded ? 'İŞLENDİ' : 'İŞLENMEDİ'}</b></button>` : ''}
         </div>
         <div class="oc-acts hist-actions">
-          <button type="button" class="hist-view oc-btn" data-id="${o.id}" aria-label="Görüntüle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>Gör</span></button>
-          <button type="button" class="hist-edit oc-btn" data-id="${o.id}" aria-label="Düzenle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/></svg><span>Düzenle</span></button>
-          <button type="button" class="hist-wa oc-btn" data-id="${o.id}" aria-label="WhatsApp'tan gönder"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span>WhatsApp</span></button>
-          <button type="button" class="hist-pdf oc-btn" data-id="${o.id}" aria-label="PDF olarak gönder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><span>PDF</span></button>
+          <button type="button" class="hist-view oc-btn t-view" data-id="${o.id}" aria-label="Görüntüle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>Gör</span></button>
+          <button type="button" class="hist-edit oc-btn t-edit" data-id="${o.id}" aria-label="Düzenle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/></svg><span>Düzenle</span></button>
+          <button type="button" class="hist-wa oc-btn t-wa" data-id="${o.id}" aria-label="WhatsApp'tan gönder"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span>WhatsApp</span></button>
+          <button type="button" class="hist-pdf oc-btn t-pdf" data-id="${o.id}" aria-label="PDF olarak gönder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><span>PDF</span></button>
           <button type="button" class="hist-del oc-del" data-id="${o.id}" title="Sil" aria-label="Sil">✕</button>
         </div>
       `;
