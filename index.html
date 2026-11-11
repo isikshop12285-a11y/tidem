@@ -713,6 +713,7 @@
       <button type="button" class="lock-key" data-k="7">7</button><button type="button" class="lock-key" data-k="8">8</button><button type="button" class="lock-key" data-k="9">9</button>
       <button type="button" class="lock-key fn" data-k="clear" aria-label="Temizle">C</button><button type="button" class="lock-key" data-k="0">0</button><button type="button" class="lock-key fn" data-k="back" aria-label="Sil">⌫</button>
     </div>
+    <div class="app-ver" id="appVer">Sürüm 7 · 11.11.2026</div>
   </div>
 </div>
 <script>
@@ -1271,6 +1272,7 @@
 
   <!-- AYARLAR TAB -->
   <div class="panel" id="panel-ayarlar">
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 7 · 11.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
     <section class="definition-card" id="installCard" hidden>
       <h3>Uygulama olarak yükle</h3>
       <p id="installText">Ana ekrana Tidem simgesiyle eklenir; tarayıcı çubuğu olmadan, internet yokken de açılır.</p>
@@ -2025,6 +2027,9 @@
   html:not([data-theme="dark"]) .segmented button.active-account, html:not([data-theme="dark"]) .seg-grid button.active-account{background:#2F4475 !important} }
 
   @media screen{ html:not([data-theme="dark"]) .pk-panel>summary{background:linear-gradient(135deg,#22335A,#2F4475) !important;color:#fff !important} }
+
+  .app-ver{margin-top:18px;font-size:11px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.55)}
+  .ver-badge{display:inline-block;margin-right:6px;padding:3px 10px;border-radius:999px;background:#C8202F;color:#fff;font-size:.8rem}
 </style>
 <script>
 (function(){
