@@ -1,0 +1,45 @@
+TİDEM GIDA · UYGULAMA KURULUMU
+==============================
+
+Bu klasör, uygulamanın internete konacak halidir. İçindekileri DEĞİŞTİRMEYİN,
+klasörü olduğu gibi yükleyin.
+
+1) ÖNCE YEDEK ALIN (çok önemli)
+   Şu an kullandığınız dosyayı telefonda açın:
+   Ayarlar → "Yedeği indir". İnen .json dosyasını saklayın.
+   Yeni uygulama BOŞ açılır; kayıtlarınızı bu yedekle taşıyacaksınız.
+
+2) KLASÖRÜ ÜCRETSİZ BİR SİTEYE YÜKLEYİN (bilgisayardan kolay)
+   a) https://app.netlify.com/drop adresini açın.
+   b) Ücretsiz hesap açın (e-posta veya Google ile).
+   c) Bu "tidem" klasörünü (zip'i açtıktan sonra) sayfadaki kutuya
+      sürükleyip bırakın.
+   d) Birkaç saniyede https://....netlify.app gibi bir adres verir.
+      İsterseniz "Site settings → Change site name" ile adı
+      tidem-gida gibi bir şey yapabilirsiniz.
+
+3) TELEFONA YÜKLEYİN (Android · Chrome)
+   a) O adresi telefonda Chrome ile açın.
+   b) Sağ üstteki ⋮ menüden "Uygulamayı yükle" ya da
+      "Ana ekrana ekle"ye basın.
+      (Ayarlar sekmesinde "📲 Uygulamayı yükle" düğmesi de çıkabilir.)
+   c) Ana ekranda Tidem simgesi oluşur. Artık oradan açın.
+
+   iPhone'da: Safari ile açın → alttaki Paylaş düğmesi →
+   "Ana Ekrana Ekle".
+
+4) KAYITLARI TAŞIYIN
+   Uygulamayı açın → şifrenizi girin → Ayarlar →
+   "Yedeği yükle" → 1. adımda indirdiğiniz .json dosyasını seçin.
+   Her şey yerine gelince eski dosyayı kullanmayı bırakabilirsiniz.
+
+BİLMENİZ GEREKENLER
+- Kayıtlarınız siteye gitmez; yalnızca telefonunuzun hafızasında durur.
+  Adresi bilen biri uygulamanın boş halini görebilir, sizin verilerinizi
+  göremez. Giriş şifresi her açılışta yine sorulur.
+- İnternet yokken de açılır ve çalışır.
+- Uygulamayı güncellemek için: yeni index.html'i aynı Netlify sitesine
+  yeniden sürükleyip bırakın. Telefon internete bağlıyken uygulamayı
+  açınca yeni sürüm gelir; kayıtlarınız silinmez.
+- Telefonun tarayıcı verilerini (Chrome → Site verileri) silerseniz
+  kayıtlar da silinir. Düzenli yedek almaya devam edin.
