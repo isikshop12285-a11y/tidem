@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tidem Gıda</title>
-<meta name="application-name" content="Tidem Gıda">
-<meta name="apple-mobile-web-app-title" content="Tidem">
+<title>TİDEM GIDA</title>
+<meta name="application-name" content="TİDEM GIDA">
+<meta name="apple-mobile-web-app-title" content="TİDEM GIDA">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
@@ -713,7 +713,7 @@
       <button type="button" class="lock-key" data-k="7">7</button><button type="button" class="lock-key" data-k="8">8</button><button type="button" class="lock-key" data-k="9">9</button>
       <button type="button" class="lock-key fn" data-k="clear" aria-label="Temizle">C</button><button type="button" class="lock-key" data-k="0">0</button><button type="button" class="lock-key fn" data-k="back" aria-label="Sil">⌫</button>
     </div>
-    <div class="app-ver" id="appVer">Sürüm 20 · 11.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 21 · 11.11.2026</div>
   </div>
 </div>
 <script>
@@ -1324,7 +1324,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 20 · 11.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 21 · 11.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -2235,6 +2235,54 @@
   html[data-theme="dark"] .tr-step.done .tr-val{color:#86EFAC} html[data-theme="dark"] .tr-step.acc .tr-val{color:#FCD34D}
   html[data-theme="dark"] .tr-cap{color:#8A99BA}
   html[data-theme="dark"] .tr-step + .tr-step::before{background:repeating-linear-gradient(90deg,#4A5E92 0 6px,transparent 6px 10px)}
+
+  /* ===================== Sipariş satırı (ürün kartı) yeni tasarım ===================== */
+  #rows{counter-reset:satir}
+  #rows .row-card{counter-increment:satir;position:relative;padding:12px 12px 12px 14px !important;border:0 !important;border-radius:18px !important;background:#fff !important;box-shadow:0 1px 2px rgba(20,33,63,.05),0 8px 22px rgba(20,33,63,.08) !important;overflow:hidden}
+  #rows .row-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(#14213F,#2F4475)}
+  #rows .row-card:has(.row-name:placeholder-shown){background:repeating-linear-gradient(135deg,#FAFBFD 0 10px,#F4F6FA 10px 20px) !important;box-shadow:inset 0 0 0 1.5px #D5DCE6 !important}
+  #rows .row-card:has(.row-name:placeholder-shown)::after{background:#CBD5E1}
+  #rows .row-top{display:flex;align-items:center;gap:10px;margin:0 0 12px !important}
+  #rows .row-top::before{content:counter(satir);flex:none;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:10px;background:#14213F;color:#fff;font-family:var(--font-display);font-weight:800;font-size:.85rem}
+  #rows .row-card:has(.row-name:placeholder-shown) .row-top::before{background:#CBD5E1}
+  #rows .row-name{flex:1;min-width:0;padding:6px 2px !important;border:0 !important;border-bottom:2px solid #E2E8F0 !important;border-radius:0 !important;background:transparent !important;font-family:var(--font-display) !important;font-weight:800 !important;font-size:1rem !important;letter-spacing:.02em;text-transform:uppercase;color:#14213F !important}
+  #rows .row-name::placeholder{color:#94A3B8;font-weight:700;text-transform:none;letter-spacing:0}
+  #rows .row-name:focus{outline:none;border-bottom-color:#C8202F !important}
+  #rows .row-del{flex:none;width:32px !important;height:32px !important;border-radius:10px !important;background:#FDECEE !important;color:#C8202F !important;font-size:.9rem !important;font-weight:900}
+  #rows .row-grid{display:grid !important;grid-template-columns:1.35fr 1fr 1.05fr !important;gap:0 20px !important;align-items:end}
+  #rows .row-grid .sub{position:relative;gap:5px !important}
+  #rows .row-grid .sub label{font-size:.6rem !important;font-weight:800 !important;letter-spacing:.12em;text-transform:uppercase;color:#94A3B8 !important}
+  #rows .row-grid .sub:nth-child(1)::after,#rows .row-grid .sub:nth-child(2)::after{position:absolute;right:-15px;bottom:11px;width:10px;text-align:center;font-weight:900;font-size:1rem;color:#94A3B8}
+  #rows .row-grid .sub:nth-child(1)::after{content:"×"}
+  #rows .row-grid .sub:nth-child(2)::after{content:"="}
+  #rows .row-grid input{height:44px;padding:0 10px !important;border:1.5px solid #E2E8F0 !important;border-radius:12px !important;background:#F8FAFC !important;font-size:1rem !important;font-weight:800 !important;color:#14213F !important;text-align:center !important}
+  #rows .row-grid input:focus{border-color:#C8202F !important;background:#fff !important;box-shadow:0 0 0 3px rgba(200,32,47,.1) !important}
+  #rows .row-grid .tutar-box{display:flex;align-items:center;justify-content:center;gap:3px;height:44px;padding:0 8px !important;border:0 !important;border-radius:12px !important;background:linear-gradient(135deg,#1B2B57,#14213F) !important;color:#fff !important;font-family:var(--font-display);font-size:1.05rem !important;font-weight:800 !important;box-shadow:0 4px 10px rgba(20,33,63,.2)}
+  #rows .row-grid .tutar-box::after{content:"₺";font-size:.72em;opacity:.7}
+  #rows .row-card:has(.row-name:placeholder-shown) .tutar-box{background:#E2E8F0 !important;color:#94A3B8 !important;box-shadow:none}
+  /* koli artı/eksi */
+  #rows .koli-step{display:flex;align-items:stretch;height:44px;border:1.5px solid #E2E8F0;border-radius:12px;background:#F8FAFC;overflow:hidden}
+  #rows .koli-step:focus-within{border-color:#C8202F;box-shadow:0 0 0 3px rgba(200,32,47,.1)}
+  #rows .koli-step input{flex:1;min-width:0;height:auto !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;padding:0 2px !important;-moz-appearance:textfield}
+  #rows .koli-step input::-webkit-outer-spin-button,#rows .koli-step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  #rows .koli-step button{flex:none;width:32px;border:0;background:#EEF2F8;color:#14213F;font-size:1.15rem;font-weight:900;cursor:pointer;padding:0}
+  #rows .koli-step button.plus{background:#14213F;color:#fff}
+  html:not(.no-anim) #rows .koli-step button:active{filter:brightness(.85)}
+  html:not(.no-anim) #rows .row-card{animation:tdUp .3s cubic-bezier(.2,.8,.2,1) both}
+  html:not(.no-anim) #rows .tutar-box.td-bump{display:flex}
+  /* koyu mod */
+  html[data-theme="dark"] #rows .row-card{background:#24345E !important;box-shadow:0 8px 22px rgba(0,0,0,.25) !important}
+  html[data-theme="dark"] #rows .row-card:has(.row-name:placeholder-shown){background:repeating-linear-gradient(135deg,#22315A 0 10px,#1F2D54 10px 20px) !important;box-shadow:inset 0 0 0 1.5px #3A4C7E !important}
+  html[data-theme="dark"] #rows .row-card::after{background:linear-gradient(#C8202F,#8E1520)}
+  html[data-theme="dark"] #rows .row-top::before{background:#0E1A3A}
+  html[data-theme="dark"] #rows .row-name{color:#F1F5F9 !important;border-bottom-color:#3A4C7E !important}
+  html[data-theme="dark"] #rows .row-grid input, html[data-theme="dark"] #rows .koli-step{background:#1C2A4F !important;border-color:#3A4C7E !important;color:#F1F5F9 !important}
+  html[data-theme="dark"] #rows .koli-step input{color:#F1F5F9 !important}
+  html[data-theme="dark"] #rows .koli-step button{background:#33467A;color:#E2E8F0}
+  html[data-theme="dark"] #rows .koli-step button.plus{background:#C8202F;color:#fff}
+  html[data-theme="dark"] #rows .row-grid .tutar-box{background:linear-gradient(135deg,#3A5294,#2A3E73) !important}
+  html[data-theme="dark"] #rows .row-card:has(.row-name:placeholder-shown) .tutar-box{background:#2A3B66 !important;color:#7F8DB0 !important}
+  html[data-theme="dark"] #rows .row-del{background:rgba(239,68,68,.18) !important;color:#FCA5A5 !important}
 </style>
 <script>
 (function(){
@@ -6572,6 +6620,26 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
   // gönderme kuyruğu WhatsApp logoları sırayla belirsin
   const qc = document.getElementById('queueChunks');
   if (qc) new MutationObserver(() => [...qc.children].forEach((b, i) => b.style.setProperty('--i', i))).observe(qc, { childList:true });
+})();
+</script>
+<script>
+/* Sipariş satırı: koli için − / + düğmeleri, tutar değişince zıplama */
+(function(){
+  const rows = document.getElementById('rows'); if (!rows) return;
+  function enhance(card){
+    if (card.__step) return; card.__step = true;
+    const inp = card.querySelector('.row-adet'); if (!inp) return;
+    const wrap = document.createElement('div'); wrap.className = 'koli-step';
+    const minus = document.createElement('button'); minus.type = 'button'; minus.className = 'minus'; minus.textContent = '−'; minus.setAttribute('aria-label', 'Koli azalt');
+    const plus = document.createElement('button'); plus.type = 'button'; plus.className = 'plus'; plus.textContent = '+'; plus.setAttribute('aria-label', 'Koli artır');
+    inp.parentNode.insertBefore(wrap, inp); wrap.append(minus, inp, plus);
+    const bump = d => { const v = Math.max(0, (parseFloat(inp.value) || 0) + d); inp.value = v ? String(v) : ''; inp.dispatchEvent(new Event('input', { bubbles:true })); inp.dispatchEvent(new Event('change', { bubbles:true })); try{ saveDraft(); }catch(e){} };
+    minus.addEventListener('click', () => bump(-1)); plus.addEventListener('click', () => bump(1));
+    const tb = card.querySelector('.tutar-box');
+    if (tb) new MutationObserver(() => { tb.classList.remove('td-bump'); void tb.offsetWidth; tb.classList.add('td-bump'); }).observe(tb, { childList:true, characterData:true, subtree:true });
+  }
+  rows.querySelectorAll('.row-card').forEach(enhance);
+  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1 && n.classList.contains('row-card')) enhance(n); }))).observe(rows, { childList:true });
 })();
 </script>
 </body>

@@ -1,7 +1,7 @@
 /* Tidem Gıda · çevrimdışı çalışma
    Uygulama dosyası internet varken her açılışta güncellenir, internet yokken kayıtlı kopyadan açılır.
    Verileriniz bu dosyada değil, telefonun kendi hafızasında (localStorage) durur. */
-const CACHE = 'tidem-v1';
+const CACHE = 'tidem-v2';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-192.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => {
