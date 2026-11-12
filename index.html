@@ -689,7 +689,7 @@
       <button type="button" class="lock-key" data-k="7">7</button><button type="button" class="lock-key" data-k="8">8</button><button type="button" class="lock-key" data-k="9">9</button>
       <button type="button" class="lock-key fn" data-k="clear" aria-label="Temizle">C</button><button type="button" class="lock-key" data-k="0">0</button><button type="button" class="lock-key fn" data-k="back" aria-label="Sil">⌫</button>
     </div>
-    <div class="app-ver" id="appVer">Sürüm 36 · 12.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 37 · 12.11.2026</div>
   </div>
 </div>
 <script>
@@ -1342,7 +1342,8 @@
   <div class="backup-actions">
     <button type="button" id="backupDownload">⬇ Yedeği indir</button>
     <button type="button" id="backupRestore">⬆ Yedeği yükle (yedekteki hâliyle)</button>
-    <input type="file" id="backupFile" accept=".json,application/json" hidden>
+    <input type="file" id="backupFile" accept=".json,.txt,application/json,text/plain" hidden>
+    <button type="button" id="backupWa" class="bk-wa"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Yedeği WhatsApp'tan gönder</button>
   </div>
   <div class="backup-last" id="backupLast"></div>
   <div class="backup-auto">
@@ -1354,7 +1355,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 36 · 12.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 37 · 12.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 <style>
@@ -2571,6 +2572,9 @@
   @keyframes bkIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
   html[data-theme="dark"] .backup-auto{background:linear-gradient(180deg,rgba(22,163,74,.12),transparent) !important}
   html[data-theme="dark"] .bk-bar{background:#0B1530;border:1px solid #33467A}
+
+  .backup-actions .bk-wa{flex:1 1 100% !important;display:flex;align-items:center;justify-content:center;gap:8px;background:#1FA855 !important;border-color:#1FA855 !important;color:#fff !important;font-weight:900 !important}
+  .backup-actions .bk-wa .wa-ico{width:20px;height:20px}
 </style>
 <script>
 (function(){
@@ -2723,7 +2727,6 @@
       if (writing){ again = true; return Promise.resolve(); }
       writing = true; again = false;
       return perm(fileHandle, false).then(function(p){
-        if (p !== 'granted'){ needPerm = true; refreshStatus(); return; }
         var text = payloadText();
         if (!text){ lastErr = 'Yedek doğrulanamadı, dosyaya yazılmadı.'; refreshStatus(); return; }
         return fileHandle.createWritable().then(function(w){ return w.write(text).then(function(){ return w.close(); }); })
@@ -2735,7 +2738,12 @@
             try{ showLast(); }catch(e){}
             refreshStatus();
           });
-      }).catch(function(e){ lastErr = 'Dosyaya yazılamadı: ' + (e && e.message || e); refreshStatus(); })
+      }).catch(function(e){
+        var n = e && e.name;
+        if (n === 'NotAllowedError' || n === 'SecurityError' || n === 'InvalidStateError'){ needPerm = true; lastErr = ''; }
+        else lastErr = 'Dosyaya yazılamadı: ' + (e && e.message || e);
+        refreshStatus();
+      })
         .then(function(){ writing = false; if (again || (dirty && !needPerm && !lastErr)) scheduleWrite(); });
     }
     function scheduleWrite(){ clearTimeout(writeTimer); writeTimer = setTimeout(writeFile, 1200); }
@@ -2748,8 +2756,10 @@
         dirty = true; return writeFile();
       }).catch(function(e){ if (e && e.name !== 'AbortError'){ lastErr = 'Dosya seçilemedi: ' + e.message; refreshStatus(); } });
     }
+    var askedThisOpen = false;
     function askPerm(){
       if (!fileHandle) return;
+      askedThisOpen = true;
       perm(fileHandle, true).then(function(p){ if (p === 'granted'){ needPerm = false; dirty = true; writeFile(); } else refreshStatus(); }).catch(function(){ refreshStatus(); });
     }
     if (supported){
@@ -2758,10 +2768,19 @@
       idb('readonly', function(st){ return st.get('handle'); }).then(function(h){
         if (!h) return refreshStatus();
         fileHandle = h; dirty = true;
-        perm(h, false).then(function(p){ if (p !== 'granted'){ needPerm = true; refreshStatus(); } else writeFile(); });
+        writeFile();
       }).catch(function(){ refreshStatus(); });
     }
-    document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden' && fileHandle && dirty && !needPerm) writeFile(); });
+    document.addEventListener('visibilitychange', function(){
+      if (document.visibilityState === 'hidden'){ if (fileHandle && dirty && !needPerm) writeFile(); }
+      else askedThisOpen = false;   // uygulamaya geri dönüş = yeni açılış
+    });
+    // İzin gerekiyorsa: bu açılıştaki İLK dokunuşta bir kez sorulur (çubuk yok)
+    document.addEventListener('pointerdown', function(e){
+      if (!fileHandle || !needPerm || askedThisOpen) return;
+      if (e.target && e.target.closest && e.target.closest('#bkBar')) return;
+      askPerm();
+    }, true);
 
     // --- Dosya seçme desteklenmiyorsa: günde en fazla bir kez indir (ekrana dokunulduğunda) ---
     function maybeDownload(){
@@ -2798,7 +2817,7 @@
       pickBtn.textContent = fileHandle ? '📁 Başka dosya seç' : '📁 Yedek dosyasını seç (bir kez)';
       if (fileHandle){
         var l = lsGet(AUTO_LAST), when = l ? display(l.slice(0, 10)) + ' ' + clock(new Date(l)) : '—';
-        if (needPerm){ stat('Yedek dosyası: ' + fileHandle.name + ' — kaydetmeye devam etmek için "İzin ver"e dokunun.', true); showBar('perm'); return; }
+        if (needPerm){ stat('Yedek dosyası: ' + fileHandle.name + ' — bu açılışta izin verilmedi; değişiklikler uygulamada duruyor, uygulamayı bir sonraki açışınızda dosyaya yazılacak.', true); showBar(null); return; }
         if (lastErr){ stat(lastErr + ' Dosyayı yeniden seçin.', true); showBar('err'); return; }
         stat((dirty ? '⏳ Kaydediliyor… ' : '✓ Her değişiklik kaydediliyor. ') + 'Dosya: ' + fileHandle.name + ' · son kayıt: ' + when);
         showBar(null); return;
@@ -2809,6 +2828,27 @@
       stat(autoEl.checked ? (l2 ? 'Son otomatik yedek: ' + display(l2.slice(0, 10)) + ' ' + clock(new Date(l2)) : 'Açık. Değişiklik olan günlerde yedek bir kez indirilir.') : 'Bu tarayıcı dosyaya yazmayı desteklemiyor. Yedeği elle indirin.', !autoEl.checked);
     }
     refreshStatus();
+
+    // --- Yedeği WhatsApp'tan gönder (paylaşım menüsü) ---
+    var waBtn = document.getElementById('backupWa');
+    if (waBtn) waBtn.addEventListener('click', function(){
+      var text = payloadText();
+      if (!text){ say('Yedek doğrulanamadı, gönderilmedi.', true); return; }
+      var base = 'tidem-yedek-' + stamp();
+      var f = new File([text], base + '.json', { type:'application/json' });
+      var ok = function(x){ try{ return !!(navigator.canShare && navigator.canShare({ files:[x] })); }catch(e){ return false; } };
+      if (!ok(f)) f = new File([text], base + '.txt', { type:'text/plain' });   // bazı telefonlar .json paylaşmıyor
+      if (ok(f)){
+        navigator.share({ files:[f], title:'Tidem Gıda yedeği' }).then(function(){
+          lsSet(LAST_KEY, todayISO()); try{ showLast(); }catch(e){}
+          say('Yedek gönderildi. Geri yüklerken "Yedeği yükle" ile bu dosyayı seçmeniz yeterli.');
+        }).catch(function(e){ if (!e || e.name !== 'AbortError') say('Paylaşım açılamadı, bir kez daha deneyin.', true); });
+        return;
+      }
+      saveFile(text, base + '.json');
+      window.open('https://wa.me/', '_blank');
+      say('Bu cihaz doğrudan paylaşmayı desteklemiyor: yedek indirildi, WhatsApp\'ta ataçtan "Belge" ile gönderin.');
+    });
   })();
 
   // ---------- Geri yükleme ----------
