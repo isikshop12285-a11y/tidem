@@ -2182,6 +2182,13 @@
   html.app-enter #historyList .oh-day,html.app-enter .brand-row .brand-logo,html.app-enter .ov-promise,html.app-enter .panel.active > *{animation:none !important}
   html.app-enter .brand-row{animation:appIn .3s cubic-bezier(.2,.8,.2,1) both !important}
   html.app-enter .panel.active{animation:appIn .3s .05s cubic-bezier(.2,.8,.2,1) both}
+
+  /* kimlik kartı: fotoğraf sağda */
+  .li-body .li-photo{order:2}
+  .li-body .li-who{order:1}
+
+  .bk-bar.up-bar{background:#15803D}
+  .bk-bar.up-bar button#upGo{background:#fff;color:#15803D}
 </style>
 </head>
 <body>
@@ -2228,7 +2235,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Personel telefonu kurulumu ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 44 · 13.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 46 · 13.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2548,7 +2555,7 @@
       <h2>Ürünler</h2>
       <button type="button" class="add-btn add-pro" id="addRowBtn"><i class="ap-plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></i><span>ÜRÜN EKLE</span></button>
     </div>
-    <details class="pk-panel" id="groupPicker" open>
+    <details class="pk-panel" id="groupPicker">
       <summary><span><b>Gruptan hızlı ekle</b><small>Grubu seç, + ile koliyi artır</small></span><i>▾</i></summary>
       <div class="pk-body">
         <input id="pickSearch" type="search" class="pk-search" placeholder="Ürün veya grup ara…" autocomplete="off">
@@ -3065,7 +3072,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 44 · 13.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 46 · 13.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -5641,6 +5648,7 @@
     recallHint.classList.remove('show');
     balanceHint.classList.remove('show');
     setOrderEditMode(null);
+    const gp = document.getElementById('groupPicker'); if (gp) gp.open = false;
   }
   document.getElementById('orderEditCancel').addEventListener('click', () => { resetOrderForm(); flash('Düzenleme iptal edildi.'); });
 
@@ -5712,7 +5720,12 @@
     checkRecall();
     const duplicateMessage = duplicateNotes.length ? ` Mevcut kayıt kullanıldı: ${[...new Set(duplicateNotes)].join(', ')}.` : '';
     if (editIdx >= 0){ resetOrderForm(); flash('Sipariş güncellendi.' + duplicateMessage); }
-    else { if (wasEditing) setOrderEditMode(null); flash('Sipariş kaydedildi.' + duplicateMessage); }
+    else {
+      const keepDate = orderDate.value, keepDelivery = deliveryDate.value;
+      resetOrderForm();
+      orderDate.value = keepDate || todayStr(); deliveryDate.value = keepDelivery;
+      flash('✓ Sipariş kaydedildi, yeni sipariş için form temizlendi.' + duplicateMessage);
+    }
   });
 
   // ======================================================================
@@ -5756,6 +5769,16 @@
   // ===== Uygulama (PWA): çevrimdışı çalışma + yükleme düğmesi =====
   if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
     window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+    // Yeni sürüm arka planda indirildiyse: altta "Yeni sürüm hazır" çubuğu
+    navigator.serviceWorker.addEventListener('message', ev => {
+      if (!ev.data || ev.data.type !== 'tidem-yeni-surum') return;
+      const box = document.querySelector('.bars-bottom'); if (!box || document.getElementById('upBar')) return;
+      const bar = document.createElement('div'); bar.id = 'upBar'; bar.className = 'bk-bar up-bar'; bar.setAttribute('role', 'status');
+      bar.innerHTML = '<span class="bk-ic">🆕</span><b>Yeni sürüm hazır</b><button type="button" id="upGo">YENİLE</button><button type="button" class="bk-x" id="upX" aria-label="Sonra">✕</button>';
+      box.insertBefore(bar, box.firstChild);
+      bar.querySelector('#upGo').addEventListener('click', () => location.reload());
+      bar.querySelector('#upX').addEventListener('click', () => bar.remove());
+    });
   }
   (function(){
     const card = $id('installCard'), btn = $id('installBtn'), txt = $id('installText'); if (!card) return;
