@@ -2054,6 +2054,7 @@
   html[data-theme="dark"] #productChips .pk-chip.on{background:#F1F5F9;border-color:#F1F5F9 !important;color:#14213F}
   html[data-theme="dark"] #panel-urunler .definition-search button.clear{background:#24345E;color:#DCE4F5}
   html[data-theme="dark"] #manageProductList .definition-row.is-highlighted{background:#4A3F1A !important}
+  .tf-p{margin:0;font-size:.86rem;font-weight:600;line-height:1.5;color:var(--ink-soft,#55657F)}
 </style>
 </head>
 <body>
@@ -2098,9 +2099,9 @@
       <button type="button" class="lock-key" data-k="7">7</button><button type="button" class="lock-key" data-k="8">8</button><button type="button" class="lock-key" data-k="9">9</button>
       <button type="button" class="lock-key fn" data-k="clear" aria-label="Temizle">C</button><button type="button" class="lock-key" data-k="0">0</button><button type="button" class="lock-key fn" data-k="back" aria-label="Sil">⌫</button>
     </div>
-    <button type="button" class="lock-setup" id="lockSetup" hidden>Personel telefonu kurulumu ›</button>
+    <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 58 · 13.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 59 · 13.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2938,7 +2939,7 @@
   <p class="gs-p0">Birden fazla kişi kullanıyorsa: personel akşam gününü gönderir, yönetici kontrol edip onaylar, sabah herkese güncel hâli dağıtır. Kimin yönetici kimin personel olduğunu <b>giriş şifresi</b> belirler.</p>
   <div class="gs-card-body"></div>
   <div class="gs-status" id="gsStatus"></div>
-  <input type="file" id="gsFile" accept=".json,.txt,.pdf,application/json,text/plain,application/pdf" hidden>
+  <input type="file" id="gsFile" hidden>
 </section>
 <section class="backup-card definition-card" id="backupCard" aria-label="Yedekleme">
   <h3>Yedekleme</h3>
@@ -2947,7 +2948,7 @@
   <div class="backup-actions">
     <button type="button" id="backupDownload">⬇ Yedeği indir</button>
     <button type="button" id="backupRestore">⬆ Yedeği yükle (yedekteki hâliyle)</button>
-    <input type="file" id="backupFile" accept=".json,.txt,.pdf,application/json,text/plain,application/pdf" hidden>
+    <input type="file" id="backupFile" hidden>
     <button type="button" id="backupWa" class="bk-wa"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Yedeği WhatsApp'tan gönder</button>
   </div>
   <div class="backup-last" id="backupLast"></div>
@@ -2960,7 +2961,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 58 · 13.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 59 · 13.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -3474,7 +3475,31 @@
       var cur = parseRaw(localStorage.getItem(e.k)), m = entries(e.k, cur).m;
       return m[e.id] == null ? null : m[e.id];
     }
+    // Yeni (boş) telefona tam yedekten kurulum
+    function setupFromBackup(p){
+      var problems = p.checks ? verify(p) : []; if (problems.length) return say2('Yedek doğrulanamadı: ' + problems.join('; '), true);
+      var snap = {}; localKeys().forEach(function(k){ snap[k] = localStorage.getItem(k); });
+      try{
+        window.__tidemNoJournal = true;
+        Object.keys(p.data).forEach(function(k){ if (k.indexOf(PREFIX) === 0 && k !== DEAD_KEY) localStorage.setItem(k, JSON.stringify(p.data[k])); });
+        window.__tidemNoJournal = false;
+      }catch(e){
+        try{ localKeys().forEach(function(k){ localStorage.removeItem(k); }); Object.keys(snap).forEach(function(k){ localStorage.setItem(k, snap[k]); }); }catch(_){}
+        window.__tidemNoJournal = false;
+        return say2('Kurulum yapılamadı: ' + e.message, true);
+      }
+      var n = (p.data.siparis_orders || []).length;
+      try{ sessionStorage.setItem(FLASH_KEY, '✓ Yedekten kuruldu: ' + n + ' sipariş ve tüm kayıtlar bu telefona aktarıldı.'); }catch(e){}
+      say2('✓ Yedek yüklendi (' + n + ' sipariş). Şimdi şifrenizle girin…');
+      setTimeout(function(){ location.reload(); }, 1200);
+    }
+    function isFresh(){ return !lg('siparis_orders', []).length && !staff().length; }
     function takeUpdate(p){
+      if (p && p.app === 'teklif-fisi' && p.data && !p.dagitim){
+        if (isFresh()) return setupFromBackup(p);
+        return say2('Bu bir yedek dosyası. Yüklemek için Ayarlar → "Yedeği yükle" bölümünü kullanın.', true);
+      }
+      if (p && p.app === 'tidem-gunsonu') return say2('Bu bir gün sonu dosyası; yönetici telefonunda Ayarlar → "Gün sonu dosyasını aç" ile açılır.', true);
       if (!p || p.app !== 'teklif-fisi' || !p.data || !p.dagitim) return say2('Bu dosya yöneticiden gelen "güncel durum" dosyası değil.', true);
       var problems = verify(p); if (problems.length) return say2('Dosya doğrulanamadı: ' + problems.join('; '), true);
       var pending = journalList(), done = p.dagitim.islenen || [];
@@ -3584,7 +3609,7 @@
     }
 
     // ---------- Ayarlar kartı ----------
-    function say2(m, bad){ var el = document.getElementById('gsStatus'); if (!el) return; el.textContent = m; el.className = 'gs-status' + (bad ? ' bad' : ''); }
+    function say2(m, bad){ var el = document.getElementById('gsStatus'); if (el){ el.textContent = m; el.className = 'gs-status' + (bad ? ' bad' : ''); } var ls2 = document.getElementById('lockScreen'), lm = document.getElementById('lockMsg'); if (ls2 && lm && !ls2.hidden && document.documentElement.classList.contains('locked')){ lm.textContent = m; lm.style.color = bad ? '#FCA5A5' : '#86EFAC'; } }
     function refreshCard(){
       var card = document.getElementById('gsCard'); if (!card) return;
       var d = dev(), body = card.querySelector('.gs-card-body'), st = staff(), last = lg(DIST_KEY, null);
@@ -3717,8 +3742,7 @@
     // Kilit ekranı: hiç kaydı ve kullanıcısı olmayan yeni telefonda "merkezden gelen dosyayı aç"
     (function(){
       var b = document.getElementById('lockSetup'); if (!b) return;
-      var fresh = !lg('siparis_orders', []).length && !staff().length;
-      b.hidden = !fresh;
+      b.hidden = !isFresh();
     })();
     // akşam hatırlatma çubuğu (personel, 17:00 sonrası, gönderilmemiş iş varsa)
     function updateBar(){
@@ -3731,6 +3755,10 @@
     }
     refreshCard();
     document.addEventListener('tidem:login', function(){ refreshCard(); });
+    window.__tidemGsFile = function(p){
+      if (p && p.app === 'tidem-gunsonu'){ if (!isMerkez()) return say2('Gün sonu dosyaları yönetici telefonunda açılır.', true); return openReview(p); }
+      return takeUpdate(p);
+    };
     setInterval(updateBar, 5 * 60 * 1000);
     try{ var fm = sessionStorage.getItem(FLASH_KEY); if (fm){ sessionStorage.removeItem(FLASH_KEY); say2(fm); } }catch(e){}
     window.__tidemGS = { journal:journalList, dev:dev, describe:describe };
@@ -3846,6 +3874,7 @@
     reader.readAsText(file);
   });
 
+  window.__tidemRestoreFile = function(file){ restoreMode = 'replace'; var dt = new DataTransfer(); dt.items.add(file); fileEl.files = dt.files; fileEl.dispatchEvent(new Event('change')); };
   showLast(); showInfo();
   try{ var rep = sessionStorage.getItem(REPORT_KEY); if (rep){ say(rep); sessionStorage.removeItem(REPORT_KEY); } }catch(e){}
 })();
@@ -8619,6 +8648,50 @@ window.__tidemCrop = function(file){
     img.src = url;
   });
 };
+</script>
+<script>
+// WhatsApp vb. uygulamadan "Paylaş → TİDEM GIDA" ile gelen dosyayı al (yedek, gün sonu, güncel durum)
+(function(){
+  if (!('caches' in window)) return;
+  var KEYF = './paylasilan-dosya';
+  function grab(){
+    return caches.open('tidem-paylasim').then(function(c){
+      return c.match(KEYF).then(function(r){
+        if (!r) return null;
+        var name = decodeURIComponent(r.headers.get('x-name') || 'dosya');
+        return r.blob().then(function(b){ c.delete(KEYF); return new File([b], name, { type: b.type || '' }); });
+      });
+    }).catch(function(){ return null; });
+  }
+  function go(tab){ var b = document.querySelector('.tab-btn[data-tab="' + tab + '"]'); if (b) b.click(); }
+  function ask(title, text, okLabel, ok){
+    var o = document.createElement('div'); o.className = 'tf-dlg';
+    o.innerHTML = '<div class="tf-box"><h3></h3><p class="tf-p"></p><div class="tf-act"><button type="button" class="tf-no">Vazgeç</button><button type="button" class="tf-ok"></button></div></div>';
+    o.querySelector('h3').textContent = title; o.querySelector('.tf-p').textContent = text; o.querySelector('.tf-ok').textContent = okLabel;
+    o.addEventListener('click', function(e){ if (e.target.closest('.tf-ok')){ o.remove(); ok(); } else if (e.target === o || e.target.closest('.tf-no')) o.remove(); });
+    document.body.appendChild(o);
+  }
+  function handle(file){
+    file.text().then(function(t){
+      var p; try{ p = JSON.parse((window.__tidemUnwrap || String)(t)); }catch(e){ p = null; }
+      var role = (window.__tidemPin && window.__tidemPin.session && window.__tidemPin.session().role) || 'merkez';
+      if (!p || typeof p !== 'object') return ask('Dosya okunamadı', 'Paylaşılan dosya bir Tidem Gıda dosyası değil ya da yarım inmiş. WhatsApp\'ta dosyanın tamamen indiğinden emin olup tekrar paylaşın.', 'Tamam', function(){});
+      if (p.app === 'tidem-gunsonu' || (p.app === 'teklif-fisi' && p.dagitim)){ go('ayarlar'); return window.__tidemGsFile && window.__tidemGsFile(p); }
+      if (p.app === 'teklif-fisi' && p.data){
+        if (role === 'personel') return ask('Yedek dosyası', 'Yedekler yönetici telefonunda yüklenir.', 'Tamam', function(){});
+        var d = p.data, n = (d.siparis_orders || []).length, c = (d.siparis_customers || []).length;
+        return ask('Yedek dosyası alındı', n + ' sipariş, ' + c + ' müşteri içeriyor. Bu telefondaki kayıtlar yedekteki hâle dönecek.', 'Yedeği yükle', function(){ go('ayarlar'); window.__tidemRestoreFile && window.__tidemRestoreFile(file); });
+      }
+      ask('Dosya tanınmadı', 'Bu dosya Tidem Gıda yedeği, gün sonu ya da güncel durum dosyası değil.', 'Tamam', function(){});
+    });
+  }
+  function run(){
+    try{ if (/[?&]paylasim=/.test(location.search)) history.replaceState(null, '', location.pathname); }catch(e){}
+    grab().then(function(f){ if (f) handle(f); });
+  }
+  var unlocked = false; try{ unlocked = sessionStorage.getItem('tidem_giris_ok') === '1'; }catch(e){}
+  if (unlocked) setTimeout(run, 300); else document.addEventListener('tidem:login', function(){ setTimeout(run, 400); }, { once: true });
+})();
 </script>
 </body>
 </html>

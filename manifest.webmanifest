@@ -8,7 +8,7 @@
   "id": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#1F2B4E",
+  "background_color": "#1A2A55",
   "theme_color": "#14213F",
   "icons": [
     {
@@ -35,5 +35,25 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "share_target": {
+    "action": "./paylas",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "file",
+          "accept": [
+            "application/pdf",
+            ".pdf",
+            "application/json",
+            ".json",
+            "text/plain",
+            ".txt"
+          ]
+        }
+      ]
+    }
+  }
 }
