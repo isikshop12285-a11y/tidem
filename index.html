@@ -2170,10 +2170,22 @@
 </style>
 <style>img:not([src]),img[src=""]{visibility:hidden}
   /* ===== Akıcılık: açılış ve giriş hafifletildi ===== */
-  .lock-aura i{animation:none !important}
+  /* arka plan ışıkları: bulanıklık filtresi yerine yumuşak geçişli renk (telefonu yormaz), açılıştan sonra yavaşça süzülür */
+  .lock-aura i{filter:none !important;opacity:1 !important;animation-delay:.5s !important}
+  .lock-aura i:nth-child(1){background:radial-gradient(circle,rgba(200,32,47,.42),rgba(200,32,47,0) 68%) !important}
+  .lock-aura i:nth-child(2){background:radial-gradient(circle,rgba(96,125,190,.34),rgba(96,125,190,0) 68%) !important}
+  .lock-aura i:nth-child(3){background:radial-gradient(circle,rgba(255,255,255,.08),rgba(255,255,255,0) 68%) !important}
   #lockPad .lock-key{animation:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;background:rgba(255,255,255,.1) !important}
   .lock-id{backdrop-filter:none !important;-webkit-backdrop-filter:none !important;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.06)) !important}
-  .lock-shine,.lock-ring{display:none !important}
+  .lock-ring{display:none !important}
+  /* yansımalar: logonun üzerinden ve kartın üzerinden geçen ışık */
+  #lockScreen .lock-shine{display:block !important;animation:shine 5.5s ease-in-out .7s infinite !important}
+  .lock-id::after{content:'';position:absolute;top:-20%;bottom:-20%;left:0;width:45%;pointer-events:none;z-index:0;
+    background:linear-gradient(105deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 100%);
+    transform:translateX(-130%) skewX(-12deg);will-change:transform;animation:idGlare 5.5s ease-in-out 1s infinite}
+  @keyframes idGlare{0%{transform:translateX(-130%) skewX(-12deg)}22%,100%{transform:translateX(330%) skewX(-12deg)}}
+  html.no-anim .lock-id::after{animation-delay:.3s}
+  @media (prefers-reduced-motion:reduce){.lock-id::after,#lockScreen .lock-shine{animation:none !important;display:none !important}}
   .lock-logo-wrap,.lock-sub,.lock-dots{animation:none !important}
   html:not(.no-anim) .lock-id{animation:idIn .32s cubic-bezier(.2,.8,.2,1) both}
   #lockScreen.open{filter:none !important;transition:opacity .22s ease,transform .22s ease,visibility .22s !important;transform:scale(1.02) !important}
@@ -2189,6 +2201,21 @@
 
   .bk-bar.up-bar{background:#15803D}
   .bk-bar.up-bar button#upGo{background:#fff;color:#15803D}
+
+  /* fotoğraf ayarlama */
+  .crop-ov{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,10,25,.72)}
+  .crop-box{width:100%;max-width:340px;padding:18px;border-radius:22px;background:#fff;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+  .crop-t{display:block;font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:#14213F}
+  .crop-s{display:block;margin-top:4px;font-size:.72rem;font-weight:600;color:#64748B}
+  .crop-frame{position:relative;width:240px;height:320px;margin:14px auto 0;overflow:hidden;border-radius:14px;background:#0B1530;touch-action:none;cursor:grab;box-shadow:0 0 0 3px #14213F}
+  .crop-frame img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;-webkit-user-drag:none;pointer-events:none}
+  .crop-zoom{display:flex;align-items:center;gap:10px;margin:14px 6px 0;font-weight:900;color:#2F4475}
+  .crop-zoom input{flex:1;accent-color:#14213F}
+  .crop-acts{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;margin-top:14px}
+  .crop-acts button{min-height:46px;border:1.5px solid #CBD5E1;border-radius:14px;background:#fff;color:#475569;font:inherit;font-size:.86rem;font-weight:900;cursor:pointer}
+  .crop-acts .crop-ok{border:0;background:#16A34A;color:#fff}
+  html[data-theme="dark"] .crop-box{background:#1C2A4F}
+  html[data-theme="dark"] .crop-t{color:#F1F5F9}
 </style>
 </head>
 <body>
@@ -2235,7 +2262,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Personel telefonu kurulumu ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 46 · 13.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 48 · 13.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3050,7 +3077,7 @@
   <p class="gs-p0">Birden fazla kişi kullanıyorsa: personel akşam gününü gönderir, yönetici kontrol edip onaylar, sabah herkese güncel hâli dağıtır. Kimin yönetici kimin personel olduğunu <b>giriş şifresi</b> belirler.</p>
   <div class="gs-card-body"></div>
   <div class="gs-status" id="gsStatus"></div>
-  <input type="file" id="gsFile" accept=".json,.txt,application/json,text/plain" hidden>
+  <input type="file" id="gsFile" accept=".json,.txt,.pdf,application/json,text/plain,application/pdf" hidden>
 </section>
 <section class="backup-card definition-card" id="backupCard" aria-label="Yedekleme">
   <h3>Yedekleme</h3>
@@ -3059,7 +3086,7 @@
   <div class="backup-actions">
     <button type="button" id="backupDownload">⬇ Yedeği indir</button>
     <button type="button" id="backupRestore">⬆ Yedeği yükle (yedekteki hâliyle)</button>
-    <input type="file" id="backupFile" accept=".json,.txt,application/json,text/plain" hidden>
+    <input type="file" id="backupFile" accept=".json,.txt,.pdf,application/json,text/plain,application/pdf" hidden>
     <button type="button" id="backupWa" class="bk-wa"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Yedeği WhatsApp'tan gönder</button>
   </div>
   <div class="backup-last" id="backupLast"></div>
@@ -3072,7 +3099,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 46 · 13.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 48 · 13.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -3175,6 +3202,44 @@
     showLast(); showInfo();
     say('Yedek indirildi ve doğrulandı (' + summary(data) + '). Dosyayı güvenli bir yerde saklayın.');
   });
+
+  // ---------- Yedeği PDF içinde paylaş: WhatsApp PDF'i her zaman "belge" olarak kabul eder ----------
+  // Dosya PDF olarak açılınca bilgi sayfası görünür; yedeğin kendisi PDF'in içinde saklıdır ve "Yedeği yükle" ile geri okunur.
+  var PDF_A = 'TIDEM-YEDEK-B64:', PDF_B = ':TIDEM-YEDEK-SON';
+  function asciiTr(t){ return String(t).replace(/[çÇğĞıİöÖşŞüÜ]/g, function(c){ return { 'ç':'c','Ç':'C','ğ':'g','Ğ':'G','ı':'i','İ':'I','ö':'o','Ö':'O','ş':'s','Ş':'S','ü':'u','Ü':'U' }[c]; }).replace(/[^\x20-\x7E]/g, '').replace(/[\\()]/g, function(c){ return '\\' + c; }); }
+  function utf8b64(str){ var b = new TextEncoder().encode(str), out = '', CH = 0x8000; for (var i = 0; i < b.length; i += CH) out += String.fromCharCode.apply(null, b.subarray(i, i + CH)); return btoa(out); }
+  function makeBackupPdf(json, title, lines){
+    var b64 = utf8b64(json), wrapped = b64.replace(/(.{76})/g, '$1\n');
+    var y = 760, txt = 'BT /F1 20 Tf 56 ' + y + ' Td (' + asciiTr(title) + ') Tj ET\n';
+    (lines || []).forEach(function(l){ y -= 26; txt += 'BT /F1 12 Tf 56 ' + y + ' Td (' + asciiTr(l) + ') Tj ET\n'; });
+    var data = PDF_A + '\n' + wrapped + '\n' + PDF_B;
+    var objs = [
+      '<< /Type /Catalog /Pages 2 0 R >>',
+      '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>',
+      '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+      '<< /Length ' + txt.length + ' >>\nstream\n' + txt + 'endstream',
+      '<< /Length ' + data.length + ' >>\nstream\n' + data + '\nendstream'
+    ];
+    var out = '%PDF-1.4\n', offs = [];
+    objs.forEach(function(o, i){ offs.push(out.length); out += (i + 1) + ' 0 obj\n' + o + '\nendobj\n'; });
+    var xref = out.length;
+    out += 'xref\n0 ' + (objs.length + 1) + '\n0000000000 65535 f \n' + offs.map(function(o){ return ('0000000000' + o).slice(-10) + ' 00000 n \n'; }).join('');
+    out += 'trailer\n<< /Size ' + (objs.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF\n';
+    return out;
+  }
+  // PDF içinden (ya da düz metinden) yedek JSON'unu çıkar
+  function unwrapBackup(text){
+    var t = String(text || ''), a = t.indexOf(PDF_A);
+    if (a < 0) return t;
+    var b = t.indexOf(PDF_B, a); if (b < 0) throw new Error('PDF yarım');
+    var bin = atob(t.slice(a + PDF_A.length, b).replace(/\s+/g, '')), u = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    return new TextDecoder('utf-8').decode(u);
+  }
+  window.__tidemUnwrap = unwrapBackup;
+  function nowTxt(){ var d = new Date(); return display(todayISO()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+  function pdfFile(json, base, title, lines){ return new File([makeBackupPdf(json, title, lines)], base + '.pdf', { type:'application/pdf' }); }
 
   // ---------- Otomatik yedek: TEK DOSYA ----------
   // Bir kez dosya seçilir (Android Chrome 132+ / bilgisayar Chrome-Edge). Her değişiklikte AYNI dosyanın üzerine yazılır:
@@ -3335,9 +3400,8 @@
       var text = payloadText();
       if (!text){ say('Yedek doğrulanamadı, gönderilmedi.', true); return; }
       var base = 'tidem-yedek-' + stamp();
-      var f = new File([text], base + '.json', { type:'application/json' });
+      var f = pdfFile(text, base, 'TIDEM GIDA - YEDEK DOSYASI', ['Tarih: ' + nowTxt(), 'Bu dosya uygulamanin yedegidir. Geri yuklemek icin:', 'Tidem uygulamasi > Ayarlar > Yedegi yukle > bu dosyayi secin.', 'Dosyayi silmeyin, degistirmeyin.']);
       var ok = function(x){ try{ return !!(navigator.canShare && navigator.canShare({ files:[x] })); }catch(e){ return false; } };
-      if (!ok(f)) f = new File([text], base + '.txt', { type:'text/plain' });   // bazı telefonlar .json paylaşmıyor
       if (ok(f)){
         navigator.share({ files:[f], title:'Tidem Gıda yedeği' }).then(function(){
           lsSet(LAST_KEY, todayISO()); try{ showLast(); }catch(e){}
@@ -3498,16 +3562,15 @@
       return out.join(' · ') || 'değişiklik yok';
     }
     function shareText(text, base, title, msgOk){
-      var f = new File([text], base + '.json', { type:'application/json' });
+      var f = pdfFile(text, base, asciiTr(title).toUpperCase(), ['Tarih: ' + nowTxt(), 'Bu dosyayi Tidem uygulamasinda acin:', base.indexOf('gunsonu') === 0 ? 'Ayarlar > Gun sonu mutabakat > Gun sonu dosyasi ac' : 'Ayarlar > Gun sonu mutabakat > Yoneticiden guncelle', 'Dosyayi silmeyin, degistirmeyin.']);
       var ok = function(x){ try{ return !!(navigator.canShare && navigator.canShare({ files:[x] })); }catch(e){ return false; } };
-      if (!ok(f)) f = new File([text], base + '.txt', { type:'text/plain' });
       if (ok(f)) return navigator.share({ files:[f], title:title }).then(function(){ return 'ok'; }).catch(function(e){ return e && e.name === 'AbortError' ? 'cancel' : 'fail'; });
       saveFile(text, base + '.json'); window.open('https://wa.me/', '_blank'); return Promise.resolve('download');
     }
     function readFile(input){
       return new Promise(function(res, rej){
         var f = input.files && input.files[0]; input.value = ''; if (!f) return rej(null);
-        var r = new FileReader(); r.onload = function(){ try{ res(JSON.parse(r.result)); }catch(e){ rej('Dosya okunamadı (bozuk ya da yarım).'); } }; r.onerror = function(){ rej('Dosya okunamadı.'); }; r.readAsText(f);
+        var r = new FileReader(); r.onload = function(){ try{ res(JSON.parse(unwrapBackup(r.result))); }catch(e){ rej('Dosya okunamadı (bozuk ya da yarım).'); } }; r.onerror = function(){ rej('Dosya okunamadı.'); }; r.readAsText(f);
       });
     }
 
@@ -3691,18 +3754,7 @@
     function tile(u, cls){ var ph = u && u.photo; return '<span class="ph-tile ' + (cls || '') + (ph ? ' has' : '') + '">' + (ph ? '<img src="' + ph + '" alt="">' : '<b>' + esc(initials(u && u.role === 'merkez' ? 'Yönetici' : (u && u.name))) + '</b>') + '</span>'; }
     function pickPhoto(cb){
       var inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*';
-      inp.onchange = function(){
-        var f = inp.files && inp.files[0]; if (!f) return;
-        var url = URL.createObjectURL(f), img = new Image();
-        img.onload = function(){
-          var W = 240, H = 320, c = document.createElement('canvas'); c.width = W; c.height = H;
-          var r = Math.max(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * r, h = img.naturalHeight * r;
-          var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.drawImage(img, (W - w) / 2, (H - h) / 2.6, w, h);
-          URL.revokeObjectURL(url); cb(c.toDataURL('image/jpeg', 0.82));
-        };
-        img.onerror = function(){ URL.revokeObjectURL(url); cb(null, 'Fotoğraf açılamadı.'); };
-        img.src = url;
-      };
+      inp.onchange = function(){ var f = inp.files && inp.files[0]; if (!f) return; window.__tidemCrop(f).then(function(d){ if (d) cb(d); else cb(null, 'Fotoğraf seçilmedi.'); }); };
       inp.click();
     }
     function setPhoto(id, data){
@@ -3882,7 +3934,7 @@
     reader.onerror = function(){ say('Dosya okunamadı.', true); };
     reader.onload = function(){
       var parsed;
-      try{ parsed = JSON.parse(reader.result); }catch(e){ return say('Bu dosya geçerli bir yedek dosyası değil (bozuk veya yarım kalmış olabilir).', true); }
+      try{ parsed = JSON.parse(unwrapBackup(reader.result)); }catch(e){ return say('Bu dosya geçerli bir yedek dosyası değil (bozuk veya yarım kalmış olabilir).', true); }
       if (!parsed || typeof parsed !== 'object' || (parsed.app && parsed.app !== 'teklif-fisi')) return say('Bu dosya Teklif Fişi yedeği değil.', true);
       if (parsed.version > VERSION) return say('Bu yedek daha yeni bir sürümle alınmış; önce uygulamayı güncelleyin.', true);
       var data = parsed.data;
@@ -4328,10 +4380,8 @@
     }
     if (t.id === 'ptPhoto'){
       const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*';
-      inp.onchange = () => { const f = inp.files && inp.files[0]; if (!f) return; const url = URL.createObjectURL(f), img = new Image();
-        img.onload = () => { const W = 240, H = 320, cv = document.createElement('canvas'); cv.width = W; cv.height = H; const r = Math.max(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * r, h = img.naturalHeight * r; const g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.drawImage(img, (W - w) / 2, (H - h) / 2.6, w, h); URL.revokeObjectURL(url);
-          const d = ptData(), p = d.people.find(x => x.id === ptCurrent); if (!p) return; p.photo = cv.toDataURL('image/jpeg', 0.82); ptSave(d); renderPtDetail(); };
-        img.src = url; };
+      inp.onchange = () => { const f = inp.files && inp.files[0]; if (!f) return;
+        window.__tidemCrop(f).then(data => { if (!data) return; const d = ptData(), p = d.people.find(x => x.id === ptCurrent); if (!p) return; p.photo = data; ptSave(d); renderPtDetail(); }); };
       inp.click();
     }
   });
@@ -8665,6 +8715,53 @@ document.querySelectorAll('.add-pro').forEach(b => b.addEventListener('click', (
   document.addEventListener('tidem:login', function(){ setTimeout(build, 50); });
   build();
 })();
+</script>
+<script>
+/* ===== Fotoğraf ayarlama: seçilen fotoğrafı parmakla kaydır, iki parmakla ya da çubukla yakınlaştır ===== */
+window.__tidemCrop = function(file){
+  return new Promise(function(done){
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onerror = function(){ URL.revokeObjectURL(url); done(null); };
+    img.onload = function(){
+      var W = img.naturalWidth, H = img.naturalHeight, FW = 240, FH = 320;
+      var ov = document.createElement('div'); ov.className = 'crop-ov';
+      ov.innerHTML = '<div class="crop-box"><b class="crop-t">Fotoğrafı ayarlayın</b><small class="crop-s">Parmağınızla kaydırın · iki parmakla ya da çubukla yakınlaştırın</small>' +
+        '<div class="crop-frame"><img alt=""></div>' +
+        '<div class="crop-zoom"><span>−</span><input type="range" min="1" max="4" step="0.01" value="1" aria-label="Yakınlaştır"><span>+</span></div>' +
+        '<div class="crop-acts"><button type="button" class="crop-no">Vazgeç</button><button type="button" class="crop-ok">✓ Kaydet</button></div></div>';
+      document.body.appendChild(ov);
+      var fr = ov.querySelector('.crop-frame'), el = ov.querySelector('img'), rng = ov.querySelector('input');
+      el.src = url;
+      var base = Math.max(FW / W, FH / H), z = 1, x = (FW - W * base) / 2, y = (FH - H * base) / 2.6;
+      function clamp(){ var sc = base * z; x = Math.min(0, Math.max(FW - W * sc, x)); y = Math.min(0, Math.max(FH - H * sc, y)); }
+      function draw(){ clamp(); el.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + (base * z) + ')'; rng.value = z; }
+      function zoomAt(nz, cx, cy){ nz = Math.min(4, Math.max(1, nz)); var sc0 = base * z, sc1 = base * nz; x = cx - (cx - x) * sc1 / sc0; y = cy - (cy - y) * sc1 / sc0; z = nz; draw(); }
+      draw();
+      var pts = {}, last = null;
+      function rel(e){ var r = fr.getBoundingClientRect(); return { x:(e.clientX - r.left) * FW / r.width, y:(e.clientY - r.top) * FH / r.height }; }
+      fr.addEventListener('pointerdown', function(e){ fr.setPointerCapture(e.pointerId); pts[e.pointerId] = rel(e); last = null; });
+      fr.addEventListener('pointermove', function(e){
+        if (!pts[e.pointerId]) return; var p = rel(e), ids = Object.keys(pts);
+        if (ids.length === 1){ x += p.x - pts[e.pointerId].x; y += p.y - pts[e.pointerId].y; pts[e.pointerId] = p; draw(); return; }
+        pts[e.pointerId] = p; var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y), m = { x:(a.x + b.x) / 2, y:(a.y + b.y) / 2 };
+        if (last){ x += m.x - last.m.x; y += m.y - last.m.y; zoomAt(z * d / last.d, m.x, m.y); }
+        last = { d:d, m:m };
+      });
+      ['pointerup','pointercancel'].forEach(function(t){ fr.addEventListener(t, function(e){ delete pts[e.pointerId]; last = null; }); });
+      fr.addEventListener('wheel', function(e){ e.preventDefault(); var p = rel(e); zoomAt(z * (e.deltaY < 0 ? 1.08 : 0.92), p.x, p.y); }, { passive:false });
+      rng.addEventListener('input', function(){ zoomAt(Number(rng.value), FW / 2, FH / 2); });
+      function close(v){ ov.remove(); URL.revokeObjectURL(url); done(v); }
+      ov.querySelector('.crop-no').addEventListener('click', function(){ close(null); });
+      ov.querySelector('.crop-ok').addEventListener('click', function(){
+        var k = 300 / FW, c = document.createElement('canvas'); c.width = 300; c.height = 400;
+        var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 300, 400);
+        g.drawImage(img, x * k, y * k, W * base * z * k, H * base * z * k);
+        close(c.toDataURL('image/jpeg', 0.84));
+      });
+    };
+    img.src = url;
+  });
+};
 </script>
 </body>
 </html>
