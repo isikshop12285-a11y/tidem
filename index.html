@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <script>try{if(sessionStorage.getItem('tidem_giris_ok')!=='1')document.documentElement.classList.add('locked');}catch(e){document.documentElement.classList.add('locked');}</script>
-<style>:root.locked,:root.locked body{background:#1A2A55 !important}:root.locked body>:not(#lockScreen){visibility:hidden}</style>
+<style>:root.locked,:root.locked body{background:#1A2A55 !important}:root.locked body>:not(#lockScreen):not(.tf-dlg){visibility:hidden}</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TİDEM GIDA</title>
@@ -415,7 +415,7 @@
   .mv-minus{color:var(--green)}
 <style>
 :root{--ga0:#2E8B57;--ga1:#C9A227;--ga2:#2F6FB5;--ga3:#C2415A;--ga4:#6A4FC2;--ga5:#D9772B;--ga6:#1E9C8F}
-.tf-dlg{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(15,23,42,.6)}
+.tf-dlg{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(15,23,42,.6)}
 .tf-box{width:min(380px,100%);padding:18px;border-radius:14px;background:var(--white);box-shadow:0 14px 40px rgba(0,0,0,.3)}
 .tf-box h3{margin:0 0 10px;font-family:var(--font-display);font-size:1rem}.tf-box input{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;font:inherit;font-size:1rem}
 .tf-act{display:flex;gap:8px;margin-top:12px}.tf-act button{flex:1;padding:11px;border-radius:8px;border:1.5px solid var(--ink);background:transparent;font:inherit;font-weight:700;cursor:pointer}.tf-act .tf-ok{background:var(--red);border-color:var(--red);color:#fff}
@@ -700,21 +700,8 @@
   .cari-acc > :not(summary){margin-left:16px;margin-right:16px}.cari-acc > :last-child{margin-bottom:14px}
   #cariDetailView > .actions{margin:12px 0 4px}
   /* Hatırlatma */
-  .remind-card{border-color:#E7B4B9 !important;background:#FFF7F7 !important}
-  .remind-card em{font-style:normal;color:var(--red)}
   .tab-btn{position:relative}
   .tab-dot{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;margin-left:5px;padding:0 5px;border-radius:9px;background:var(--red);color:#fff;font-size:.66rem;font-weight:800;vertical-align:middle}
-  .rm-item{padding:12px;border:1.5px solid var(--line);margin-bottom:8px}
-  .rm-top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.rm-top b{font-size:.95rem}
-  .rm-nophone{color:var(--gold);font-weight:700;font-size:.72rem}
-  .rm-tags{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-  .rm-tag{font-size:.72rem;font-weight:800;padding:4px 8px;border-radius:999px}
-  .rm-tag.pay{background:#FDE8EA;color:#9B1C28}.rm-tag.ord{background:#E8EEF7;color:#1E293B}
-  .rm-msg summary{font-size:.76rem;font-weight:700;color:var(--ink-soft);cursor:pointer;margin:2px 0 6px}
-  .rm-msg textarea{width:100%;font:inherit;font-size:.82rem;line-height:1.45;padding:10px;border:1.5px solid var(--line);border-radius:8px;background:var(--paper)}
-  .rm-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-  .rm-actions button{flex:1 1 auto;border:0;border-radius:8px;padding:9px 10px;font:inherit;font-size:.78rem;font-weight:800;cursor:pointer;background:var(--paper-2);color:var(--ink)}
-  .rm-actions .rm-wa{background:#1FA855;color:#fff}
   /* Gider: nakitten düş */
   .gider-cash{display:flex;gap:10px;align-items:flex-start;margin:4px 0 10px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--white);cursor:pointer}
   .gider-cash input{width:22px;height:22px;margin-top:1px;accent-color:var(--red);flex:none}
@@ -786,7 +773,7 @@
   .ms-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 6px}
   .ms-chip{font-size:.74rem;font-weight:700;padding:4px 9px;border-radius:999px;background:#EDF1F7;border:1px solid #CBD5E1}.ms-chip b{margin-left:3px}
   #panel-ayarlar > .definition-card{margin-bottom:14px}
-  #panel-cari .remind-card, #panel-cari #cariDayCard{margin-bottom:12px}
+  #panel-cari #cariDayCard{margin-bottom:12px}
   /* Ürün birleştirme */
   .ms-var{display:block;font-size:.7rem;font-weight:600;color:#9a6b00}
   .ms-merge-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}
@@ -867,7 +854,7 @@
   .tab-btn{border-radius:12px !important;font-weight:700}
   .tab-btn.active{background:#14213F !important;color:#fff !important;box-shadow:0 4px 10px rgba(20,33,63,.25) !important}
   /* Kartlar */
-  .definition-card,.hist-item,.summary-strip,.breakdown,.rm-item,.arac-stats div,.arac-stop,.ms-row,.backup-card,.report-kpi,.cari-row,.definition-row{
+  .definition-card,.hist-item,.summary-strip,.breakdown,.arac-stats div,.arac-stop,.ms-row,.backup-card,.report-kpi,.cari-row,.definition-row{
     background:#fff !important;border-color:#E2E8F0 !important;border-radius:16px !important;box-shadow:var(--shadow-card)}
   .definition-row,.cari-row{border-radius:12px !important;box-shadow:none}
   .hist-item{border-width:1px !important}
@@ -915,7 +902,7 @@
   html[data-theme="dark"]{--paper:#2C3E68;--paper-2:#3B5082;--ink:#E6EBF4;--ink-soft:#A3B1C6;--line:#4A5F96;--gold:#FBBF24;color-scheme:dark}
   html[data-theme="dark"], html[data-theme="dark"] body{background:#30436F !important}
   html[data-theme="dark"] body{color:#E6EBF4}
-  html[data-theme="dark"] :is(.definition-card,.hist-item,.summary-strip,.breakdown,.rm-item,.arac-stats div,.arac-stop,.ms-row,.backup-card,.report-kpi,.cari-row,.definition-row,.brand-row,.tabbar,.list-head.archive-date-heading.date-toggle,.pk-panel,.arac-group,.gider-cash,.arac-basis,.theme-pick label,.ms-prod,.ms-merge-top button){
+  html[data-theme="dark"] :is(.definition-card,.hist-item,.summary-strip,.breakdown,.arac-stats div,.arac-stop,.ms-row,.backup-card,.report-kpi,.cari-row,.definition-row,.brand-row,.tabbar,.list-head.archive-date-heading.date-toggle,.pk-panel,.arac-group,.gider-cash,.arac-basis,.theme-pick label,.ms-prod,.ms-merge-top button){
     background:#354A78 !important;border-color:rgba(255,255,255,.08) !important;color:#E6EBF4;box-shadow:0 1px 2px rgba(0,0,0,.25),0 8px 22px rgba(0,0,0,.22) !important}
   html[data-theme="dark"] .brand-logo{background:#fff;padding:6px 12px;border-radius:12px;box-sizing:content-box;height:48px !important}
   html[data-theme="dark"] .mega-bar{border-color:#566CA4 !important}
@@ -927,7 +914,6 @@
   html[data-theme="dark"] h1,html[data-theme="dark"] h2,html[data-theme="dark"] h3,html[data-theme="dark"] h4,html[data-theme="dark"] b,html[data-theme="dark"] strong{color:inherit}
   html[data-theme="dark"] .btn-secondary{background:#465C92 !important;border-color:#566CA4 !important;color:#E6EBF4 !important}
   html[data-theme="dark"] .month-body{border-left-color:#4F649C !important}
-  html[data-theme="dark"] .remind-card{background:rgba(200,32,47,.12) !important;border-color:rgba(239,68,68,.35) !important}
   html[data-theme="dark"] .ms-prod summary{background:#465C92 !important}
   html[data-theme="dark"] .ms-prod summary span{color:#CBD5E1}
   html[data-theme="dark"] .ms-tbl tr:nth-child(even) td{background:rgba(255,255,255,.03)}
@@ -943,7 +929,6 @@
   html[data-theme="dark"] .arac-basis label:has(input:checked){background:#4A619A;border-color:#93A4C8}
   html[data-theme="dark"] .segmented button.active-account,html[data-theme="dark"] .seg-grid button.active-account{background:#fff !important;color:#14213F !important}
   html[data-theme="dark"] .hist-total{color:#E6EBF4}
-  html[data-theme="dark"] .rm-actions button:not(.rm-wa){background:#465C92;color:#E6EBF4}
   html[data-theme="dark"] .gider-cash-tag:not(.on){background:#465C92;color:#94A3B8}
   html[data-theme="dark"] .pk-panel>summary{background:linear-gradient(135deg,#4A619A,#2B3D69) !important}
   html[data-theme="dark"] .tp-sw{border-color:rgba(255,255,255,.2)}
@@ -954,7 +939,7 @@
   /* koyu mod düzeltmeleri: --white yazı rengi olarak beyaz kalsın, kart zeminleri koyu olsun */
   @media screen{
   html[data-theme="dark"]{--white:#FFFFFF}
-  html[data-theme="dark"] .arac-basis,html[data-theme="dark"] .arac-group,html[data-theme="dark"] .arac-stats div,html[data-theme="dark"] .arac-stop,html[data-theme="dark"] .breakdown,html[data-theme="dark"] .cab-row,html[data-theme="dark"] .customer-input-wrap input,html[data-theme="dark"] .customer-suggestions,html[data-theme="dark"] .day-select,html[data-theme="dark"] .definition-card,html[data-theme="dark"] .definition-row select,html[data-theme="dark"] .dup-hint button:hover,html[data-theme="dark"] .edit-banner button,html[data-theme="dark"] .field input,html[data-theme="dark"] .field select,html[data-theme="dark"] .field textarea,html[data-theme="dark"] .gider-cash,html[data-theme="dark"] .hist-edit,html[data-theme="dark"] .hist-item,html[data-theme="dark"] .hist-view,html[data-theme="dark"] .ms-merge-top button,html[data-theme="dark"] .ms-prod,html[data-theme="dark"] .ms-range,html[data-theme="dark"] .ms-row,html[data-theme="dark"] .ms-top,html[data-theme="dark"] .pk-panel,html[data-theme="dark"] .product-summary-group,html[data-theme="dark"] .queue-card,html[data-theme="dark"] .queue-row button,html[data-theme="dark"] .rm-item,html[data-theme="dark"] .row-card,html[data-theme="dark"] .seg-grid button,html[data-theme="dark"] .segmented button,html[data-theme="dark"] .sel-mode-btn,html[data-theme="dark"] .tf-box{background:#40568A !important}
+  html[data-theme="dark"] .arac-basis,html[data-theme="dark"] .arac-group,html[data-theme="dark"] .arac-stats div,html[data-theme="dark"] .arac-stop,html[data-theme="dark"] .breakdown,html[data-theme="dark"] .cab-row,html[data-theme="dark"] .customer-input-wrap input,html[data-theme="dark"] .customer-suggestions,html[data-theme="dark"] .day-select,html[data-theme="dark"] .definition-card,html[data-theme="dark"] .definition-row select,html[data-theme="dark"] .dup-hint button:hover,html[data-theme="dark"] .edit-banner button,html[data-theme="dark"] .field input,html[data-theme="dark"] .field select,html[data-theme="dark"] .field textarea,html[data-theme="dark"] .gider-cash,html[data-theme="dark"] .hist-edit,html[data-theme="dark"] .hist-item,html[data-theme="dark"] .hist-view,html[data-theme="dark"] .ms-merge-top button,html[data-theme="dark"] .ms-prod,html[data-theme="dark"] .ms-range,html[data-theme="dark"] .ms-row,html[data-theme="dark"] .ms-top,html[data-theme="dark"] .pk-panel,html[data-theme="dark"] .product-summary-group,html[data-theme="dark"] .queue-card,html[data-theme="dark"] .queue-row button,html[data-theme="dark"] .row-card,html[data-theme="dark"] .seg-grid button,html[data-theme="dark"] .segmented button,html[data-theme="dark"] .sel-mode-btn,html[data-theme="dark"] .tf-box{background:#40568A !important}
   html[data-theme="dark"] .brand-row .brand-logo{box-sizing:content-box}
   html[data-theme="dark"] .btn-primary,html[data-theme="dark"] .btn-primary *{color:#fff !important}
   html[data-theme="dark"] .theme-pick label:has(input:checked){border-color:#EF4444 !important;box-shadow:0 0 0 3px rgba(239,68,68,.25) !important}
@@ -1019,11 +1004,10 @@
   html:not([data-theme="dark"]) .mega-bar{position:relative;z-index:1;background:#F3F5F9 !important;border:1px solid rgba(20,33,63,.12) !important}
   html:not([data-theme="dark"]) .mega-bar svg{color:#C8202F !important}
   /* kartlar: yumuşak gölge, ince lacivert kenar */
-  html:not([data-theme="dark"]) :is(.definition-card,.hist-item,.summary-strip,.breakdown,.rm-item,.arac-stats div,.arac-stop,.backup-card,.report-kpi,.tabbar,.pk-panel,.arac-group){border-color:rgba(20,33,63,.08) !important;box-shadow:0 1px 2px rgba(20,33,63,.04),0 10px 26px rgba(20,33,63,.07) !important}
+  html:not([data-theme="dark"]) :is(.definition-card,.hist-item,.summary-strip,.breakdown,.arac-stats div,.arac-stop,.backup-card,.report-kpi,.tabbar,.pk-panel,.arac-group){border-color:rgba(20,33,63,.08) !important;box-shadow:0 1px 2px rgba(20,33,63,.04),0 10px 26px rgba(20,33,63,.07) !important}
   html:not([data-theme="dark"]) .tab-btn.active{background:linear-gradient(135deg,#22335A,#2F4475) !important;box-shadow:0 6px 14px rgba(20,33,63,.25) !important}
   html:not([data-theme="dark"]) .month-head{background:linear-gradient(90deg,#22335A,#34487A 70%,#5A3A5E) !important}
   html:not([data-theme="dark"]) .list-head.archive-date-heading.date-toggle{box-shadow:0 1px 2px rgba(20,33,63,.04),0 4px 12px rgba(20,33,63,.05)}
-  html:not([data-theme="dark"]) .remind-card{background:linear-gradient(135deg,#FFF6F6,#FFFFFF) !important}
   }
   /* Sipariş geçmişi: müşteri unvanı */
   .hist-item .hist-top{align-items:flex-start;gap:10px}
@@ -1132,9 +1116,9 @@
   html:not(.no-anim) .queue-chunk.wa.done{animation:tdDone .45s ease both}
   html:not(.no-anim) .td-bump{display:inline-block;animation:tdBump .35s ease}
   html:not(.no-anim) .td-msg{animation:tdMsg .25s ease both}
-  html:not(.no-anim) :is(.btn,.oc-btn,.tab-btn,.queue-chunk,.day-select,.hist-name,.month-head,.date-toggle,.cari-row,.ms-row,.rm-item,.add-btn,.recall-btn,#queueSendBtn,#queueAllBtn,#selSendBtn){transition:transform .14s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease,opacity .2s}
+  html:not(.no-anim) :is(.btn,.oc-btn,.tab-btn,.queue-chunk,.day-select,.hist-name,.month-head,.date-toggle,.cari-row,.ms-row,.add-btn,.recall-btn,#queueSendBtn,#queueAllBtn,#selSendBtn){transition:transform .14s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease,opacity .2s}
   html:not(.no-anim) :is(.btn,.oc-btn,.tab-btn,.queue-chunk,.day-select,.add-btn,.recall-btn,#queueSendBtn,#queueAllBtn,#selSendBtn):active{transform:scale(.95)}
-  html:not(.no-anim) :is(.month-head,.date-toggle,.cari-row,.ms-row,.rm-item):active{transform:scale(.985)}
+  html:not(.no-anim) :is(.month-head,.date-toggle,.cari-row,.ms-row):active{transform:scale(.985)}
   html:not(.no-anim) .ord-card{transition:box-shadow .2s ease,transform .2s ease}
   html:not(.no-anim) .ord-card.selected{transform:scale(.985)}
   html:not(.no-anim) .date-chev{display:inline-block;transition:transform .25s ease}
@@ -1770,7 +1754,7 @@
   html[data-theme="dark"] .me-badge.m{background:#F1F5F9;color:#14213F}
   /* ===== Yan menü ===== */
   .tabbar{display:none !important}
-  html.role-personel .tab-btn[data-tab="personel"]{display:none !important}
+  html.role-personel .tab-btn[data-tab="personel"],html.role-personel .tab-btn[data-tab="istatistik"]{display:none !important}
   .nav-fab{position:fixed;z-index:940;top:calc(env(safe-area-inset-top,0px) + 14px);left:14px;display:inline-flex;align-items:center;justify-content:center;gap:0;width:46px;height:46px;padding:0;border:0;border-radius:999px;
     background:#14213F;color:#fff;font:inherit;font-size:.86rem;font-weight:800;letter-spacing:.01em;box-shadow:0 8px 20px rgba(20,33,63,.32);cursor:pointer;-webkit-tap-highlight-color:transparent}
   .nav-fab b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -2055,6 +2039,150 @@
   html[data-theme="dark"] #panel-urunler .definition-search button.clear{background:#24345E;color:#DCE4F5}
   html[data-theme="dark"] #manageProductList .definition-row.is-highlighted{background:#4A3F1A !important}
   .tf-p{margin:0;font-size:.86rem;font-weight:600;line-height:1.5;color:var(--ink-soft,#55657F)}
+  .bk-msg{flex:1 1 100% !important;background:#1A2A55 !important;border-color:#1A2A55 !important;color:#fff !important;font-weight:900 !important}
+  .bk-msg2{flex:1 1 100% !important;background:#fff !important;border-color:#1A2A55 !important;color:#1A2A55 !important;font-weight:900 !important}
+  html[data-theme="dark"] .bk-msg2{background:#24345E !important;border-color:#5E73AA !important;color:#F1F5F9 !important}
+  .tf-ta{display:block;width:100%;min-height:96px;padding:10px 12px;border:1.5px solid #D5DCE7;border-radius:10px;font:inherit;font-size:.85rem;resize:vertical}
+  .tf-dlg{z-index:100000 !important}
+  .tf-col{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+  .tf-col button{width:100%;min-height:46px;padding:0 12px;border:1.5px solid #14213F;border-radius:12px;background:transparent;color:#14213F;font:inherit;font-size:.9rem;font-weight:800;cursor:pointer}
+  .tf-col .tf-ok{background:#C8202F;border-color:#C8202F;color:#fff}
+  .tf-col .tf-no{border-color:transparent;color:#64748B}
+  html[data-theme="dark"] .tf-col button{border-color:#DCE4F5;color:#F1F5F9}
+  html[data-theme="dark"] .tf-col .tf-no{border-color:transparent;color:#A9B6CF}
+  /* ===== Müşteri takibi ===== */
+  .tk-head{padding:4px 2px 12px}
+  .tk-kick{display:block;font-size:10.5px;font-weight:900;letter-spacing:.18em;color:#C8202F}
+  .tk-head h2{margin:2px 0 0;font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:.01em;line-height:1.1;color:#14213F}
+  .tk-head p{margin:4px 0 0;font-size:.76rem;font-weight:600;line-height:1.45;color:#6B7A93}
+  .tk-sum{display:flex;align-items:stretch;padding:12px 4px;border-radius:16px;background:linear-gradient(135deg,#14213F,#1A2A55 60%,#2B3F78);box-shadow:0 8px 20px rgba(20,33,63,.16)}
+  .tk-sum div{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;text-align:center}
+  .tk-sum div + div{border-left:1px solid rgba(255,255,255,.14)}
+  .tk-sum b{font-family:var(--font-display);font-size:1.3rem;font-weight:800;line-height:1.1;color:#fff}
+  .tk-sum .mny b{font-size:1.05rem;color:#FCA5A5;white-space:nowrap}
+  .tk-sum span{font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .tk-filt{display:flex;gap:6px;margin:12px 0 10px}
+  .tk-filt button{flex:none;display:inline-flex;align-items:center;gap:6px;width:auto !important;min-height:34px !important;padding:0 13px !important;border:1px solid #E1E7F0;border-radius:10px;background:#fff;color:#2F4475;font:inherit;font-size:.78rem;font-weight:800;cursor:pointer}
+  .tk-filt button em{font-style:normal;opacity:.55}
+  .tk-filt button.on{background:#1A2A55;border-color:#1A2A55;color:#fff}
+  .tk-list{display:flex;flex-direction:column;gap:10px}
+  .tk-row{position:relative;padding:13px 14px 12px 18px;border:1px solid #E4E9F1;border-radius:16px;background:#fff;box-shadow:0 1px 2px rgba(20,33,63,.04);overflow:hidden}
+  .tk-row:before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#F59E0B}
+  .tk-row.hi:before{background:#DC2626}
+  .tk-row.called{opacity:.62}
+  .tk-row.called:before{background:#16A34A}
+  .tk-top{display:flex;align-items:baseline;gap:10px}
+  .tk-nm{flex:1;min-width:0;font-family:var(--font-display);font-size:1.02rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#14213F;overflow-wrap:anywhere}
+  .tk-bal{flex:none;padding:3px 9px;border-radius:999px;background:#FDECEE;color:#B91C1C;font-size:.76rem;font-weight:900}
+  .tk-met{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+  .tk-met .m{padding:8px 10px;border-radius:11px;background:#F3F6FB}
+  .tk-met .m span{display:block;font-size:9px;font-weight:900;letter-spacing:.12em;color:#6B7A93}
+  .tk-met .m b{display:block;margin-top:2px;font-family:var(--font-display);font-size:1.12rem;font-weight:800;line-height:1.15;color:#14213F}
+  .tk-met .m small{display:block;margin-top:1px;font-size:.68rem;font-weight:700;color:#8A97AD}
+  .tk-met .m.mid{background:#FFF7E6}.tk-met .m.mid b{color:#B45309}
+  .tk-met .m.hi{background:#FDECEE}.tk-met .m.hi b{color:#B91C1C}
+  .tk-met .m.ok b{color:#15803D}
+  .tk-met .m.na b{color:#64748B;font-size:.98rem}
+  .tk-act{display:grid;grid-template-columns:1.25fr 1fr auto;gap:8px;margin-top:10px}
+  .tk-act a,.tk-act button{display:flex;align-items:center;justify-content:center;gap:7px;width:auto !important;min-height:42px !important;padding:0 12px !important;border:0;border-radius:12px;font:inherit;font-size:.82rem;font-weight:900;letter-spacing:.03em;text-decoration:none;cursor:pointer}
+  .tk-act svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+  .tk-call{background:#16A34A;color:#fff !important;box-shadow:0 6px 14px rgba(22,163,74,.25)}
+  .tk-call.add{background:#FFF7E6;color:#B45309 !important;box-shadow:none;border:1.5px dashed #F2C27A !important}
+  .tk-wa{background:#1A2A55;color:#fff}
+  .tk-open{background:#EEF2F8;color:#2F4475}
+  .tk-done{margin-top:8px;font-size:.74rem;font-weight:900;color:#15803D}
+  .tk-msg summary{margin-top:8px;font-size:.72rem;font-weight:700;color:#8A97AD;cursor:pointer}
+  .tk-msg textarea{width:100%;margin-top:6px;padding:10px;border:1.5px solid #E1E7F0;border-radius:10px;font:inherit;font-size:.8rem;line-height:1.45;background:#fff;color:#14213F}
+  .tk-empty{padding:30px 16px;border:1px dashed #D5DCE7;border-radius:16px;text-align:center;font-size:.86rem;font-weight:700;color:#6B7A93}
+  .tk-empty b{display:block;margin-bottom:4px;font-size:1.6rem;color:#16A34A}
+  .tk-foot{margin:12px 4px 0;font-size:.72rem;font-weight:600;line-height:1.5;color:#94A3B8}
+  .tk-link{display:flex;align-items:center;gap:12px;width:100% !important;min-height:58px !important;margin:0 0 12px;padding:10px 14px !important;border:1px solid #F3C4C9;border-radius:16px;background:linear-gradient(135deg,#FFF6F6,#fff);color:#14213F;font:inherit;text-align:left;cursor:pointer}
+  .tk-li-ic{font-size:1.3rem}
+  .tk-link > span:nth-child(2){flex:1;min-width:0}
+  .tk-link b{display:block;font-size:.92rem;font-weight:900}
+  .tk-link b em{font-style:normal;color:#C8202F}
+  .tk-link small{display:block;margin-top:1px;font-size:.72rem;font-weight:600;color:#6B7A93}
+  .tk-link i{font-style:normal;font-size:1.4rem;color:#C8202F}
+  html[data-theme="dark"] .tk-head h2,html[data-theme="dark"] .tk-nm,html[data-theme="dark"] .tk-met .m b{color:#F1F5F9}
+  html[data-theme="dark"] .tk-head p{color:#A9B6CF}
+  html[data-theme="dark"] .tk-filt button{background:#24345E;border-color:#33467A;color:#DCE4F5}
+  html[data-theme="dark"] .tk-filt button.on{background:#F1F5F9;border-color:#F1F5F9;color:#14213F}
+  html[data-theme="dark"] .tk-row{background:#1C2A4F;border-color:#2E4070}
+  html[data-theme="dark"] .tk-met .m{background:#24345E}
+  html[data-theme="dark"] .tk-met .m span,html[data-theme="dark"] .tk-met .m small{color:#A9B6CF}
+  html[data-theme="dark"] .tk-met .m.mid{background:#3B2F14}html[data-theme="dark"] .tk-met .m.mid b{color:#FCD34D}
+  html[data-theme="dark"] .tk-met .m.hi{background:#43161D}html[data-theme="dark"] .tk-met .m.hi b{color:#FCA5A5}
+  html[data-theme="dark"] .tk-met .m.ok b{color:#86EFAC}
+  html[data-theme="dark"] .tk-bal{background:#43161D;color:#FCA5A5}
+  html[data-theme="dark"] .tk-open{background:#2B3D6B;color:#DCE4F5}
+  html[data-theme="dark"] .tk-wa{background:#F1F5F9;color:#14213F}
+  html[data-theme="dark"] .tk-call.add{background:#3B2F14;color:#FCD34D !important;border-color:#6B5320 !important}
+  html[data-theme="dark"] .tk-done{color:#86EFAC}
+  html[data-theme="dark"] .tk-msg textarea{background:#24345E;border-color:#3A4C7E;color:#F1F5F9}
+  html[data-theme="dark"] .tk-empty{border-color:#33467A;color:#A9B6CF}
+  html[data-theme="dark"] .tk-link{background:linear-gradient(135deg,rgba(200,32,47,.14),rgba(200,32,47,.04));border-color:rgba(239,68,68,.35);color:#F1F5F9}
+  html[data-theme="dark"] .tk-link small{color:#A9B6CF}
+  /* ===== İstatistik ===== */
+  .st-head{padding:4px 2px 10px}
+  .st-kick{display:block;font-size:10.5px;font-weight:900;letter-spacing:.18em;color:#C8202F}
+  .st-head h2{margin:2px 0 0;font-family:var(--font-display);font-size:1.5rem;font-weight:800;line-height:1.1;color:#14213F}
+  .st-per{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;margin-bottom:12px;border-radius:12px;background:#E9EEF6}
+  .st-per button{width:auto !important;min-height:34px !important;padding:0 4px !important;border:0;border-radius:9px;background:transparent;color:#55657F;font:inherit;font-size:.76rem;font-weight:800;cursor:pointer}
+  .st-per button.on{background:#fff;color:#14213F;box-shadow:0 2px 6px rgba(20,33,63,.12)}
+  .st-kpi{display:grid;grid-template-columns:1fr 1fr;gap:1px;overflow:hidden;margin-bottom:12px;border-radius:16px;background:rgba(255,255,255,.12);box-shadow:0 8px 20px rgba(20,33,63,.16)}
+  .st-kpi div{padding:12px 14px;background:linear-gradient(135deg,#14213F,#1A2A55 70%,#24376E)}
+  .st-kpi span{display:block;font-size:9.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .st-kpi b{display:block;margin-top:2px;font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:#fff;white-space:nowrap}
+  .st-kpi div:first-child b{color:#86EFAC}
+  .st-card{margin-bottom:12px;padding:14px 14px 12px;border:1px solid #E4E9F1;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,33,63,.04)}
+  .st-ct{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+  .st-ct b{font-family:var(--font-display);font-size:1rem;font-weight:800;color:#14213F}
+  .st-ct small{font-size:.7rem;font-weight:700;color:#8A97AD;text-align:right}
+  .st-tog{display:flex;gap:2px;padding:3px;border-radius:9px;background:#EEF2F8}
+  .st-tog button{width:auto !important;min-height:28px !important;padding:0 10px !important;border:0;border-radius:7px;background:none;color:#55657F;font:inherit;font-size:.72rem;font-weight:800;cursor:pointer}
+  .st-tog button.on{background:#1A2A55;color:#fff}
+  .st-month{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;height:150px;align-items:end}
+  .st-month .col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px}
+  .st-month em{font-style:normal;font-size:.62rem;font-weight:800;color:#6B7A93;white-space:nowrap}
+  .st-month i{display:block;width:100%;max-width:34px;border-radius:8px 8px 3px 3px;background:linear-gradient(#5E73AA,#2F4475)}
+  .st-month .col.now i{background:linear-gradient(#E8505E,#C8202F)}
+  .st-month span{font-size:.7rem;font-weight:800;color:#55657F}
+  .st-bars{display:flex;flex-direction:column;gap:10px}
+  .st-bar{display:flex;align-items:flex-start;gap:10px;width:100% !important;min-height:0 !important;padding:0 !important;border:0;background:none;color:inherit;font:inherit;text-align:left}
+  .st-bar.cust{cursor:pointer}
+  .st-bar .rk{flex:none;width:22px;padding-top:1px;font-family:var(--font-display);font-size:.86rem;font-weight:800;color:#A5B1C4;text-align:center}
+  .st-bar:nth-child(-n+3) .rk{color:#C8202F}
+  .st-bar .bd{flex:1;min-width:0}
+  .st-bar .tx{display:flex;align-items:baseline;gap:8px}
+  .st-bar .tx b{flex:1;min-width:0;font-size:.84rem;font-weight:800;text-transform:uppercase;color:#14213F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .st-bar .tx em{flex:none;font-style:normal;font-size:.78rem;font-weight:900;color:#2F4475}
+  .st-bar .tr{height:8px;margin-top:5px;border-radius:6px;background:#EEF2F8;overflow:hidden}
+  .st-bar .tr i{display:block;height:100%;border-radius:6px;background:var(--gc,#1A2A55)}
+  .st-bar.cust .tr i{background:linear-gradient(90deg,#2F4475,#5E73AA)}
+  .st-bar.cust:nth-child(-n+3) .tr i{background:linear-gradient(90deg,#C8202F,#E8505E)}
+  .st-bar small{display:block;margin-top:4px;font-size:.68rem;font-weight:700;color:#8A97AD}
+  .st-stack{display:flex;height:16px;overflow:hidden;border-radius:8px;background:#EEF2F8}
+  .st-stack i{display:block;height:100%;background:var(--gc)}
+  .st-stack i + i{border-left:2px solid #fff}
+  .st-leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px}
+  .st-leg span{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:800;text-transform:uppercase;color:#2F4475}
+  .st-leg span i{width:9px;height:9px;border-radius:3px;background:var(--gc)}
+  .st-leg b{color:#14213F}
+  .st-empty{margin:4px 0;font-size:.82rem;font-weight:700;color:#8A97AD}
+  .st-foot{margin:4px 4px 0;font-size:.7rem;font-weight:600;color:#94A3B8}
+  html[data-theme="dark"] .st-head h2,html[data-theme="dark"] .st-ct b,html[data-theme="dark"] .st-bar .tx b,html[data-theme="dark"] .st-leg b{color:#F1F5F9}
+  html[data-theme="dark"] .st-per{background:#24345E}
+  html[data-theme="dark"] .st-per button{color:#A9B6CF}
+  html[data-theme="dark"] .st-per button.on{background:#F1F5F9;color:#14213F}
+  html[data-theme="dark"] .st-card{background:#1C2A4F;border-color:#2E4070}
+  html[data-theme="dark"] .st-tog{background:#24345E}
+  html[data-theme="dark"] .st-tog button{color:#A9B6CF}
+  html[data-theme="dark"] .st-tog button.on{background:#F1F5F9;color:#14213F}
+  html[data-theme="dark"] .st-bar .tr,html[data-theme="dark"] .st-stack{background:#24345E}
+  html[data-theme="dark"] .st-stack i + i{border-color:#1C2A4F}
+  html[data-theme="dark"] .st-bar .tx em,html[data-theme="dark"] .st-leg span{color:#DCE4F5}
+  html[data-theme="dark"] .st-month em,html[data-theme="dark"] .st-month span,html[data-theme="dark"] .st-ct small,html[data-theme="dark"] .st-bar small{color:#A9B6CF}
+  html[data-theme="dark"] .st-month i{background:linear-gradient(#8EA2D8,#5E73AA)}
 </style>
 </head>
 <body>
@@ -2101,7 +2229,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 59 · 13.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 61 · 14.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2378,8 +2506,10 @@
     <button class="tab-btn" data-tab="gider">Gider</button>
     <button class="tab-btn" data-tab="personel">Personel</button>
     <button class="tab-btn" data-tab="cari">Cari Hesap</button>
+    <button class="tab-btn" data-tab="takip">Müşteri Takibi</button>
     <button class="tab-btn" data-tab="dolap">Dolap</button>
     <button class="tab-btn" data-tab="rapor">Rapor</button>
+    <button class="tab-btn" data-tab="istatistik">İstatistik</button>
     <button class="tab-btn" data-tab="arsiv">Arşiv</button>
     <button class="tab-btn" data-tab="arac">Araç</button>
     <button class="tab-btn" data-tab="ayarlar">Ayarlar</button>
@@ -2601,6 +2731,27 @@
   </div>
 
   <!-- CARİ HESAP / MÜŞTERİ TAB -->
+  <!-- İSTATİSTİK TAB -->
+  <div class="panel" id="panel-istatistik">
+    <div class="st-head"><span class="st-kick">RAPOR</span><h2>İstatistik</h2></div>
+    <div class="st-per" id="stPer"></div>
+    <div class="st-kpi" id="stKpi"></div>
+    <section class="st-card"><div class="st-ct"><b>Aylık satış</b><small>Son 6 ay · sipariş tutarı</small></div><div class="st-month" id="stMonth"></div></section>
+    <section class="st-card"><div class="st-ct"><b>En çok satan ürünler</b><span class="st-tog" id="stProdTog"></span></div><div class="st-bars" id="stProd"></div></section>
+    <section class="st-card"><div class="st-ct"><b>Gruplara göre satış</b><small>Koli payı</small></div><div id="stGrp"></div></section>
+    <section class="st-card"><div class="st-ct"><b>En çok alışveriş yapan müşteriler</b><small>Tutara göre · dokunun: hesabı açılır</small></div><div class="st-bars" id="stCust"></div></section>
+    <p class="st-foot">Hesaplar teslim edilen ve bekleyen tüm siparişlerden yapılır; iadeler düşülmez.</p>
+  </div>
+
+  <!-- MÜŞTERİ TAKİBİ TAB -->
+  <div class="panel" id="panel-takip">
+    <div class="tk-head"><span class="tk-kick">HATIRLATMA</span><h2>Müşteri Takibi</h2><p id="tkRule"></p></div>
+    <div class="tk-sum" id="tkSum"></div>
+    <div class="tk-filt" id="tkFilt"></div>
+    <div class="tk-list" id="remindList"></div>
+    <p class="tk-foot">Gün sınırlarını Ayarlar → Hatırlatma bölümünden değiştirebilirsiniz. Aradığınız ya da mesaj attığınız müşteri “Bugün arandı” olarak listenin sonuna iner.</p>
+  </div>
+
   <div class="panel" id="panel-cari">
     <div id="cariListView">
       <div class="summary-strip">
@@ -2610,7 +2761,7 @@
         <div><div class="s-label">Toplam Gider</div><div class="s-value" id="sumExpense" style="color:var(--gold);">0</div></div>
       </div>
       <details class="definition-card cari-fold promise-card" id="promiseCard"><summary><span><b>🤝 Ödeme sözleri · <em id="promiseCount">yok</em></b><small id="promiseRule">Ödeme için söz veren müşteriler · gecikenler en üstte</small></span><i>▾</i></summary><div id="promiseList" class="pr-list"></div></details>
-      <details class="definition-card cari-fold remind-card" id="remindCard"><summary><span><b>⏰ Hatırlatılacak müşteriler · <em id="remindCount">…</em></b><small id="remindRule"></small></span><i>▾</i></summary><div id="remindList"></div></details>
+      <button type="button" class="tk-link" id="tkLink"><span class="tk-li-ic">⏰</span><span><b>Müşteri takibi · <em id="remindCount">…</em></b><small id="remindRule"></small></span><i>›</i></button>
       <details class="definition-card cari-fold" id="cariDayCard">
         <summary><span><b>Gün gün cari girişleri</b><small>O gün cari hesaba eklenen siparişler ve eski borçlar</small></span><i>▾</i></summary>
         <div class="field"><label for="cariDayDate">Tarih</label><input type="date" id="cariDayDate"></div>
@@ -2950,6 +3101,8 @@
     <button type="button" id="backupRestore">⬆ Yedeği yükle (yedekteki hâliyle)</button>
     <input type="file" id="backupFile" hidden>
     <button type="button" id="backupWa" class="bk-wa"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Yedeği WhatsApp'tan gönder</button>
+    <button type="button" id="aktarSend" class="bk-msg">💬 Yeni telefona aktar (mesajla)</button>
+    <button type="button" id="aktarLoad" class="bk-msg2">📋 Kopyalanan yedeği yükle</button>
   </div>
   <div class="backup-last" id="backupLast"></div>
   <div class="backup-auto">
@@ -2961,7 +3114,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 59 · 13.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 61 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -3275,6 +3428,38 @@
       window.open('https://wa.me/', '_blank');
       say('Bu cihaz doğrudan paylaşmayı desteklemiyor: yedek indirildi, WhatsApp\'ta ataçtan "Belge" ile gönderin.');
     });
+    // ---- Yeni telefona MESAJLA aktarma: dosya yok; yedek sıkıştırılıp WhatsApp mesajı olarak gider ----
+    function gzB64(text){
+      return new Response(new Blob([text]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer().then(function(buf){
+        var u = new Uint8Array(buf), s = '', i; for (i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s);
+      });
+    }
+    window.__tidemAktarDecode = function(str){
+      var m = String(str || '').match(/TIDEM-AKTAR:([A-Za-z0-9+\/=\s]+?):SON/);
+      if (!m) return Promise.reject('Kopyalanan yazıda yedek bulunamadı. WhatsApp\'ta yedek mesajına basılı tutup "Kopyala" deyin, sonra tekrar deneyin.');
+      try{
+        var bin = atob(m[1].replace(/\s+/g, '')), u = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+        return new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('gzip'))).text().then(function(t){ return JSON.parse(t); })
+          .catch(function(){ return Promise.reject('Yedek mesajı eksik kopyalanmış. Mesajın tamamını kopyalayıp tekrar deneyin.'); });
+      }catch(e){ return Promise.reject('Yedek mesajı eksik kopyalanmış. Mesajın tamamını kopyalayıp tekrar deneyin.'); }
+    };
+    var akBtn = document.getElementById('aktarSend');
+    if (akBtn) akBtn.addEventListener('click', function(){
+      var text = payloadText();
+      if (!text){ say('Yedek doğrulanamadı, gönderilmedi.', true); return; }
+      if (!window.CompressionStream){ say('Bu telefon mesajla aktarmayı desteklemiyor; "Yedeği WhatsApp\'tan gönder"i kullanın.', true); return; }
+      gzB64(text).then(function(b){
+        var msg = 'TİDEM GIDA YEDEĞİ (' + nowTxt() + ')\nYeni telefonda: bu mesaja basılı tutup "Kopyala" deyin, sonra TİDEM uygulamasında "Kopyalanan yedeği yükle"ye dokunun.\n\nTIDEM-AKTAR:' + b + ':SON';
+        if (msg.length > 60000){ say('Yedek tek mesaja sığmayacak kadar büyük; "Yedeği WhatsApp\'tan gönder"i kullanın.', true); return; }
+        if (navigator.share){
+          navigator.share({ text: msg }).then(function(){ say('Yedek mesajı gönderildi. Yeni telefonda mesajı kopyalayıp "Kopyalanan yedeği yükle"ye dokunun.'); })
+            .catch(function(e){ if (!e || e.name !== 'AbortError') say('Paylaşım açılamadı, bir kez daha deneyin.', true); });
+        } else if (navigator.clipboard){
+          navigator.clipboard.writeText(msg).then(function(){ say('Yedek mesajı kopyalandı. WhatsApp\'ta sohbete yapıştırıp gönderin.'); });
+        }
+      }).catch(function(){ say('Yedek mesajı hazırlanamadı.', true); });
+    });
   })();
 
   // ================= GÜN SONU MUTABAKAT =================
@@ -3493,6 +3678,20 @@
       say2('✓ Yedek yüklendi (' + n + ' sipariş). Şimdi şifrenizle girin…');
       setTimeout(function(){ location.reload(); }, 1200);
     }
+    function setupChoice(){
+      var o = document.createElement('div'); o.className = 'tf-dlg';
+      o.innerHTML = '<div class="tf-box"><h3>Yeni telefon kurulumu</h3><p class="tf-p">Eski telefondan "Yeni telefona aktar (mesajla)" ile gelen mesajı WhatsApp\'ta kopyaladıysanız <b>Yapıştır</b>\'a dokunun.</p><div class="tf-col"><button type="button" class="tf-ok" data-c="paste">📋 Kopyaladığım mesajı yapıştır</button><button type="button" data-c="file">📁 Dosya seç</button><button type="button" class="tf-no" data-c="no">Vazgeç</button></div></div>';
+      document.body.appendChild(o);
+      o.addEventListener('click', function(e){
+        var c = e.target.closest('[data-c]'); if (!c && e.target !== o) return; o.remove();
+        if (!c || c.dataset.c === 'no') return;
+        if (c.dataset.c === 'file') return chooseFile(takeUpdate);
+        var go = function(t){ window.__tidemAktarDecode(t).then(function(p){ if (p && p.app === 'teklif-fisi' && p.data) setupFromBackup(p); else say2('Bu mesaj bir yedek değil.', true); }, function(m){ say2(m, true); }); };
+        var manual = function(){ tfAskLong('Kopyaladığınız yedek mesajını buraya yapıştırın').then(function(t){ if (t) go(t); }); };
+        if (navigator.clipboard && navigator.clipboard.readText) navigator.clipboard.readText().then(function(t){ if (/TIDEM-AKTAR:/.test(t || '')) go(t); else manual(); }, manual);
+        else manual();
+      });
+    }
     function isFresh(){ return !lg('siparis_orders', []).length && !staff().length; }
     function takeUpdate(p){
       if (p && p.app === 'teklif-fisi' && p.data && !p.dagitim){
@@ -3674,7 +3873,7 @@
     document.addEventListener('click', function(e){
       var t = e.target.closest('#gsSend, #gsTake, #gsOpen, #gsState, #gsApply, #gsCancel, #gsAll, [data-gsbar], #gsLogout, #whoOut, #guAdd, [data-gu], #lockSetup'); if (!t) return;
       if (t.id === 'gsLogout' || t.id === 'whoOut'){ if (window.__tidemPin) window.__tidemPin.lockNow(); return; }
-      if (t.id === 'lockSetup'){ chooseFile(takeUpdate); return; }
+      if (t.id === 'lockSetup'){ setupChoice(); return; }
       if (t.id === 'guAdd'){
         if (!isMerkez()) return;
         var nm = (document.getElementById('guName').value || '').trim(), pn = document.getElementById('guPin').value.trim();
@@ -3874,6 +4073,15 @@
     reader.readAsText(file);
   });
 
+  (function(){ var b = document.getElementById('aktarLoad'); if (!b) return; var armed = false, tm = null, label = b.textContent;
+    function fromText(t){ window.__tidemAktarDecode(t).then(function(p){ window.__tidemRestoreFile(new File([JSON.stringify(p)], 'yedek.json', { type:'application/json' })); }, function(m){ say(m, true); }); }
+    b.addEventListener('click', function(){
+      if (!armed){ armed = true; b.textContent = 'Kayıtlar yedekteki hâle dönecek! Emin misin? Tekrar dokun'; tm = setTimeout(function(){ armed = false; b.textContent = label; }, 4000); return; }
+      clearTimeout(tm); armed = false; b.textContent = label;
+      var manual = function(){ tfAskLong('Kopyaladığınız yedek mesajını buraya yapıştırın').then(function(t){ if (t) fromText(t); }); };
+      if (navigator.clipboard && navigator.clipboard.readText) navigator.clipboard.readText().then(function(t){ if (/TIDEM-AKTAR:/.test(t || '')) fromText(t); else manual(); }, manual);
+      else manual();
+    }); })();
   window.__tidemRestoreFile = function(file){ restoreMode = 'replace'; var dt = new DataTransfer(); dt.items.add(file); fileEl.files = dt.files; fileEl.dispatchEvent(new Event('change')); };
   showLast(); showInfo();
   try{ var rep = sessionStorage.getItem(REPORT_KEY); if (rep){ say(rep); sessionStorage.removeItem(REPORT_KEY); } }catch(e){}
@@ -4133,6 +4341,8 @@
       if (btn.dataset.tab === 'ayarlar') renderAyarlar();
       if (btn.dataset.tab === 'personel') renderPersonel();
       if (btn.dataset.tab === 'hakkinda') renderHakkinda();
+      if (btn.dataset.tab === 'takip') renderReminders();
+      if (btn.dataset.tab === 'istatistik') renderStats();
       document.documentElement.classList.toggle('on-about', btn.dataset.tab === 'hakkinda');
     });
   });
@@ -5835,31 +6045,129 @@
     }
     return `${hi}\n\nBir süredir sizden sipariş alamadık; ihtiyacınız olan bir ürün varsa memnuniyetle hazırlayıp getiririz. Siparişinizi bu numaradan iletebilirsiniz.\n\nTeşekkür ederiz, iyi çalışmalar.\n${company}`;
   }
+  // Müşteri takibi: aranan / mesaj atılanlar (yalnızca bu telefonda tutulur)
+  let tkFilter = 'all';
+  function tkDone(){ try{ return JSON.parse(localStorage.getItem('tidem_aranan') || '{}') || {}; }catch(e){ return {}; } }
+  function tkMark(name){ const m = tkDone(), t = todayStr(); Object.keys(m).forEach(k => { if (m[k] !== t) delete m[k]; }); m[foldText(name)] = t; try{ localStorage.setItem('tidem_aranan', JSON.stringify(m)); }catch(e){} }
+  const tkLevel = (d, lim) => d === null ? 'na' : d >= lim * 2 ? 'hi' : d >= lim ? 'mid' : 'ok';
+  const tkAgo = d => d === null ? '—' : d === 0 ? 'Bugün' : d + ' gün';
+  const PH_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4.1-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.1 1.4v2.7a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>';
+  const WA_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.2-3.6A8 8 0 1 1 8.3 19l-4.3.5Z"/><path d="M9 10.5h6M9 13.5h4"/></svg>';
   function renderReminders(){
-    const box = $id('remindList'), countEl = $id('remindCount'); if (!box) return;
-    const list = customerActivity(), cfg = remindCfg();
-    countEl.textContent = list.length ? list.length + ' müşteri' : 'yok';
-    const tab = document.querySelector('.tab-btn[data-tab="cari"]');
-    if (tab){ let b = tab.querySelector('.tab-dot'); if (list.length){ if (!b){ b = document.createElement('span'); b.className = 'tab-dot'; tab.appendChild(b); } b.textContent = list.length; } else if (b) b.remove(); }
-    $id('remindRule').textContent = `${cfg.pay}+ gündür ödeme yapmayan borçlular · ${cfg.order}+ gündür sipariş vermeyenler`;
-    if (!list.length){ box.innerHTML = '<p class="hist-empty">Şu an hatırlatılacak müşteri yok.</p>'; return; }
-    box.innerHTML = list.map((r, i) => {
-      const tags = [r.needPay ? `<span class="rm-tag pay">${r.payDays} gündür ödeme yok · ${fmt(r.bal)} borç</span>` : '', r.needOrder ? `<span class="rm-tag ord">${r.orderDays} gündür sipariş yok</span>` : ''].join('');
-      return `<div class="rm-item" data-i="${i}"><div class="rm-top"><b>${escHtml(r.name)}</b>${r.phone ? '' : '<small class="rm-nophone">telefon kayıtlı değil</small>'}</div><div class="rm-tags">${tags}</div>
-        <details class="rm-msg"><summary>Hazır mesajı gör / düzenle</summary><textarea rows="8">${escHtml(reminderMessage(r))}</textarea></details>
-        <div class="rm-actions"><button type="button" class="rm-wa" data-i="${i}">WhatsApp'ta gönder</button><button type="button" class="rm-copy" data-i="${i}">Kopyala</button><button type="button" class="rm-open" data-i="${i}">Hesabı aç</button></div></div>`;
+    const box = $id('remindList'); if (!box) return;
+    const all = customerActivity(), cfg = remindCfg(), done = tkDone(), today = todayStr();
+    all.forEach(r => { r.called = done[foldText(r.name)] === today; });
+    const nPay = all.filter(r => r.needPay).length, nOrd = all.filter(r => r.needOrder).length, owe = all.filter(r => r.needPay).reduce((t, r) => t + r.bal, 0);
+    const left = all.filter(r => !r.called).length;
+    // Cari'deki kısa yol ve menü rozeti
+    const cEl = $id('remindCount'); if (cEl) cEl.textContent = left ? left + ' müşteri' : 'yok';
+    const rEl = $id('remindRule'); if (rEl) rEl.textContent = `${cfg.pay}+ gün ödeme yapmayan · ${cfg.order}+ gün sipariş vermeyen`;
+    const tab = document.querySelector('.tab-btn[data-tab="takip"]');
+    if (tab){ let d = tab.querySelector('.tab-dot'); if (left){ if (!d){ d = document.createElement('span'); d.className = 'tab-dot'; tab.appendChild(d); } d.textContent = left; } else if (d) d.remove(); }
+    $id('tkRule').textContent = `${cfg.pay}+ gündür ödeme yapmayan borçlular ve ${cfg.order}+ gündür sipariş vermeyenler`;
+    $id('tkSum').innerHTML = `<div><b>${nPay}</b><span>Ödeme bekleyen</span></div><div><b>${nOrd}</b><span>Sipariş vermeyen</span></div><div class="mny"><b>${fmt(owe)} ₺</b><span>Bekleyen alacak</span></div>`;
+    $id('tkFilt').innerHTML = [['all', 'Tümü', all.length], ['pay', 'Ödeme', nPay], ['ord', 'Sipariş', nOrd]].map(([k, t, n]) => `<button type="button" data-tk-f="${k}" class="${tkFilter === k ? 'on' : ''}">${t} <em>${n}</em></button>`).join('');
+    const list = all.filter(r => tkFilter === 'all' || (tkFilter === 'pay' ? r.needPay : r.needOrder))
+      .sort((a, b) => (a.called - b.called) || (b.needPay - a.needPay) || (b.bal - a.bal) || ((b.orderDays || 0) - (a.orderDays || 0)));
+    if (!list.length){ box.innerHTML = `<div class="tk-empty"><b>✓</b>${all.length ? 'Bu süzgeçte müşteri yok.' : 'Şu an hatırlatılacak müşteri yok.'}</div>`; return; }
+    box.innerHTML = list.map(r => {
+      const i = all.indexOf(r), oL = tkLevel(r.orderDays, cfg.order), pL = r.bal > 0.004 ? tkLevel(r.payDays, cfg.pay) : 'na';
+      const lvl = (oL === 'hi' || pL === 'hi') ? 'hi' : 'mid';
+      return `<div class="tk-row ${lvl}${r.called ? ' called' : ''}" data-i="${i}">
+        <div class="tk-top"><b class="tk-nm">${escHtml(r.name)}</b>${r.bal > 0.004 ? `<span class="tk-bal">${fmt(r.bal)} ₺</span>` : ''}</div>
+        <div class="tk-met">
+          <div class="m ${oL}"><span>SİPARİŞ VERMEDİ</span><b>${tkAgo(r.orderDays)}</b><small>${r.lastOrder ? 'Son: ' + dateDisplay(r.lastOrder) : 'Hiç sipariş yok'}</small></div>
+          <div class="m ${pL}"><span>ÖDEME YAPMADI</span><b>${r.bal > 0.004 ? tkAgo(r.payDays) : 'Borcu yok'}</b><small>${r.lastPay ? 'Son: ' + dateDisplay(r.lastPay) : (r.bal > 0.004 ? 'Hiç ödeme yok' : '')}</small></div>
+        </div>
+        <div class="tk-act">
+          ${r.phone ? `<a class="tk-call" href="tel:${escAttr(String(r.phone).replace(/[^\d+]/g, ''))}" data-tk-call="${i}">${PH_IC}Ara</a>` : `<button type="button" class="tk-call add" data-tk-phone="${i}">${PH_IC}Telefon ekle</button>`}
+          <button type="button" class="tk-wa" data-tk-wa="${i}">${WA_IC}Mesaj</button>
+          <button type="button" class="tk-open" data-tk-open="${i}">Hesap</button>
+        </div>
+        ${r.called ? '<div class="tk-done">✓ Bugün arandı</div>' : ''}
+        <details class="tk-msg"><summary>Hazır mesajı gör / düzenle</summary><textarea rows="7">${escHtml(reminderMessage(r))}</textarea></details>
+      </div>`;
     }).join('');
-    const msgOf = i => box.querySelector(`.rm-item[data-i="${i}"] textarea`).value;
-    box.querySelectorAll('.rm-wa').forEach(b => b.addEventListener('click', () => {
-      const r = list[b.dataset.i]; const phone = waPhone(r.phone);
-      window.open((phone ? `https://wa.me/${phone}` : 'https://wa.me/') + '?text=' + encodeURIComponent(msgOf(b.dataset.i)), '_blank');
-    }));
-    box.querySelectorAll('.rm-copy').forEach(b => b.addEventListener('click', async () => {
-      try{ await navigator.clipboard.writeText(msgOf(b.dataset.i)); b.textContent = 'Kopyalandı ✓'; setTimeout(() => b.textContent = 'Kopyala', 1500); }
-      catch(e){ const ta = box.querySelector(`.rm-item[data-i="${b.dataset.i}"] textarea`); ta.closest('details').open = true; ta.select(); }
-    }));
-    box.querySelectorAll('.rm-open').forEach(b => b.addEventListener('click', () => openCariDetail(list[b.dataset.i].name)));
+    box.onclick = e => {
+      const f = e.target.closest('[data-tk-call]'); if (f){ tkMark(all[f.dataset.tkCall].name); setTimeout(renderReminders, 600); return; }
+      const w = e.target.closest('[data-tk-wa]');
+      if (w){ const r = all[w.dataset.tkWa], ta = w.closest('.tk-row').querySelector('textarea'), ph = waPhone(r.phone);
+        window.open((ph ? `https://wa.me/${ph}` : 'https://wa.me/') + '?text=' + encodeURIComponent(ta.value), '_blank'); tkMark(r.name); setTimeout(renderReminders, 600); return; }
+      const o = e.target.closest('[data-tk-open]'); if (o){ document.querySelector('.tab-btn[data-tab="cari"]').click(); openCariDetail(all[o.dataset.tkOpen].name); return; }
+      const ph = e.target.closest('[data-tk-phone]');
+      if (ph){ const r = all[ph.dataset.tkPhone]; tfAsk(r.name + ' · telefon numarası', '').then(v => { v = (v || '').trim(); if (v){ setCustomerPhone(r.name, v); renderReminders(); } }); }
+    };
   }
+  $id('tkFilt').addEventListener('click', e => { const b = e.target.closest('[data-tk-f]'); if (b){ tkFilter = b.dataset.tkF; renderReminders(); } });
+  $id('tkLink').addEventListener('click', () => document.querySelector('.tab-btn[data-tab="takip"]').click());
+  // ===== İstatistik =====
+  let stPeriod = 'm3', stProdBy = 'koli';
+  const ST_PER = [['m1', 'Bu ay'], ['m3', 'Son 3 ay'], ['y', 'Bu yıl'], ['all', 'Tümü']];
+  const AYLAR = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+  function stStart(){
+    const t = todayStr();
+    if (stPeriod === 'm1') return t.slice(0, 8) + '01';
+    if (stPeriod === 'y') return t.slice(0, 5) + '01-01';
+    if (stPeriod === 'm3'){ const d = new Date(t + 'T00:00:00'); d.setDate(d.getDate() - 89); return d.toISOString().slice(0, 10); }
+    return '';
+  }
+  const stMoney = n => fmt(Math.round(n)) + ' ₺';
+  function renderStats(){
+    const box = $id('stKpi'); if (!box) return;
+    const from = stStart(), orders = getOrders().filter(o => o.customer && (!from || o.date >= from));
+    const groups = safeGet('siparis_product_groups', []), gmap = getGroupMap();
+    let ciro = 0, koli = 0;
+    const prods = new Map(), custs = new Map(), grp = new Map();
+    orders.forEach(o => {
+      const lines = (o.products || []).filter(p => p.name);
+      const tot = num(o.total) || lines.reduce((t, p) => t + num(p.adet) * num(p.fiyat), 0);
+      ciro += tot;
+      const ck = foldText(o.customer); if (!custs.has(ck)) custs.set(ck, { name: o.customer, tutar: 0, n: 0 }); const c = custs.get(ck); c.tutar += tot; c.n++;
+      lines.forEach(p => {
+        const k = foldText(p.name), a = num(p.adet), t = a * num(p.fiyat); koli += a;
+        const g = p.group || assignedGroupForProduct(p.name, gmap) || '';
+        if (!prods.has(k)) prods.set(k, { name: p.name, koli: 0, tutar: 0, g }); const r = prods.get(k); r.koli += a; r.tutar += t;
+        const gk = groups.includes(g) ? g : 'Diğer'; grp.set(gk, (grp.get(gk) || 0) + a);
+      });
+    });
+    $id('stPer').innerHTML = ST_PER.map(([k, t]) => `<button type="button" data-st-p="${k}" class="${stPeriod === k ? 'on' : ''}">${t}</button>`).join('');
+    box.innerHTML = `<div><span>Satış</span><b>${stMoney(ciro)}</b></div><div><span>Sipariş</span><b>${orders.length}</b></div><div><span>Koli</span><b>${fmt(koli)}</b></div><div><span>Ort. sipariş</span><b>${orders.length ? stMoney(ciro / orders.length) : '—'}</b></div>`;
+    // aylık (son 6 ay, dönemden bağımsız)
+    const t = todayStr(), y0 = +t.slice(0, 4), m0 = +t.slice(5, 7) - 1, months = [];
+    for (let i = 5; i >= 0; i--){ const d = new Date(y0, m0 - i, 1); months.push({ key: d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'), lbl: AYLAR[d.getMonth()], v: 0 }); }
+    getOrders().forEach(o => { const m = months.find(x => o.date && o.date.startsWith(x.key)); if (m) m.v += num(o.total) || (o.products || []).reduce((s2, p) => s2 + num(p.adet) * num(p.fiyat), 0); });
+    const mx = Math.max(1, ...months.map(m => m.v));
+    $id('stMonth').innerHTML = months.map((m, i) => `<div class="col${i === months.length - 1 ? ' now' : ''}"><em>${m.v ? (m.v >= 1000 ? fmt(Math.round(m.v / 1000)) + ' bin' : fmt(Math.round(m.v))) : ''}</em><i style="height:${Math.max(3, Math.round(m.v / mx * 100))}%"></i><span>${m.lbl}</span></div>`).join('');
+    // ürünler
+    $id('stProdTog').innerHTML = [['koli', 'Koli'], ['tutar', 'Tutar']].map(([k, l]) => `<button type="button" data-st-pb="${k}" class="${stProdBy === k ? 'on' : ''}">${l}</button>`).join('');
+    const pl = [...prods.values()].sort((a, b) => b[stProdBy] - a[stProdBy]).slice(0, 10), pmx = Math.max(1, ...pl.map(r => r[stProdBy]));
+    $id('stProd').innerHTML = pl.length ? pl.map((r, i) => `<div class="st-bar" style="${groups.includes(r.g) ? grpStyle(r.g) : '--gc:#94A3B8'}"><span class="rk">${i + 1}</span><div class="bd"><div class="tx"><b>${escHtml(r.name)}</b><em>${stProdBy === 'koli' ? fmt(r.koli) + ' koli' : stMoney(r.tutar)}</em></div><div class="tr"><i style="width:${Math.max(2, r[stProdBy] / pmx * 100)}%"></i></div></div></div>`).join('') : '<p class="st-empty">Bu dönemde satış yok.</p>';
+    // gruplar
+    const gl = [...grp.entries()].filter(e => e[1] > 0).sort((a, b) => b[1] - a[1]), gt = gl.reduce((s2, e) => s2 + e[1], 0);
+    $id('stGrp').innerHTML = gt ? `<div class="st-stack">${gl.map(([g, v]) => `<i style="width:${v / gt * 100}%;${g === 'Diğer' ? '--gc:#94A3B8' : grpStyle(g)}"></i>`).join('')}</div><div class="st-leg">${gl.map(([g, v]) => `<span style="${g === 'Diğer' ? '--gc:#94A3B8' : grpStyle(g)}"><i></i>${escHtml(g)} <b>%${Math.round(v / gt * 100)}</b></span>`).join('')}</div>` : '<p class="st-empty">Bu dönemde satış yok.</p>';
+    // müşteriler
+    const cl = [...custs.values()].sort((a, b) => b.tutar - a.tutar).slice(0, 10), cmx = Math.max(1, ...cl.map(r => r.tutar));
+    $id('stCust').innerHTML = cl.length ? cl.map((r, i) => `<button type="button" class="st-bar cust" data-st-c="${escAttr(r.name)}"><span class="rk">${i + 1}</span><div class="bd"><div class="tx"><b>${escHtml(r.name)}</b><em>${stMoney(r.tutar)}</em></div><div class="tr"><i style="width:${Math.max(2, r.tutar / cmx * 100)}%"></i></div><small>${r.n} sipariş · ort. ${stMoney(r.tutar / r.n)}</small></div></button>`).join('') : '<p class="st-empty">Bu dönemde satış yok.</p>';
+  }
+  $id('panel-istatistik').addEventListener('click', e => {
+    const p = e.target.closest('[data-st-p]'); if (p){ stPeriod = p.dataset.stP; renderStats(); return; }
+    const pb = e.target.closest('[data-st-pb]'); if (pb){ stProdBy = pb.dataset.stPb; renderStats(); return; }
+    const c = e.target.closest('[data-st-c]'); if (c){ document.querySelector('.tab-btn[data-tab="cari"]').click(); openCariDetail(c.dataset.stC); }
+  });
+
+  // Günde bir kez hatırlatma çubuğu
+  function tkDailyBar(){
+    const t = todayStr(); let seen = ''; try{ seen = localStorage.getItem('tidem_tk_gun') || ''; }catch(e){}
+    if (seen === t || document.getElementById('tkBar')) return;
+    const done = tkDone(), n = customerActivity().filter(r => done[foldText(r.name)] !== t).length; if (!n) return;
+    const box = document.querySelector('.bars-bottom'); if (!box) return;
+    const bar = document.createElement('div'); bar.id = 'tkBar'; bar.className = 'bk-bar tk-bar'; bar.setAttribute('role', 'status');
+    bar.innerHTML = `<span class="bk-ic">⏰</span><b>Bugün hatırlatılacak ${n} müşteri var</b><button type="button" data-go>GÖR</button><button type="button" class="bk-x" aria-label="Kapat">✕</button>`;
+    bar.addEventListener('click', e => { if (!e.target.closest('button')) return; try{ localStorage.setItem('tidem_tk_gun', t); }catch(_){} bar.remove(); if (e.target.closest('[data-go]')) document.querySelector('.tab-btn[data-tab="takip"]').click(); });
+    box.insertBefore(bar, box.firstChild);
+  }
+  document.addEventListener('tidem:login', () => setTimeout(tkDailyBar, 1200));
+  try{ if (sessionStorage.getItem('tidem_giris_ok') === '1') setTimeout(tkDailyBar, 1500); }catch(e){}
 
   // ===== Gider: nakitten düş (elle seçilir) =====
   function giderFromCash(g){ return g.fromCash === true; }
@@ -8544,8 +8852,10 @@ document.querySelectorAll('.add-pro').forEach(b => b.addEventListener('click', (
     gider:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 9h6M9 13h4"/>',
     personel:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2"/><path d="M16 4.5a3 3 0 0 1 0 6M18 14.8c1.6.7 2.6 2.4 3 5.2"/>',
     cari:'<path d="M5 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+    takip:'<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
     dolap:'<rect x="6" y="3" width="12" height="18" rx="2"/><path d="M6 10h12M9 6v2M9 13v3"/>',
     rapor:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    istatistik:'<path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/>',
     arsiv:'<rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10h14V9M10 13h4"/>',
     arac:'<path d="M1 6h13v10H1zM14 9h4l4 4v3h-8"/><circle cx="5.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/>',
     hakkinda:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.6v.4"/>',
@@ -8648,6 +8958,18 @@ window.__tidemCrop = function(file){
     img.src = url;
   });
 };
+</script>
+<script>
+// Uzun metin yapıştırma kutusu (yedek mesajı için)
+function tfAskLong(title){
+  return new Promise(function(res){
+    var o = document.createElement('div'); o.className = 'tf-dlg';
+    o.innerHTML = '<div class="tf-box"><h3></h3><textarea class="tf-ta" rows="4" placeholder="Basılı tutup Yapıştır deyin"></textarea><div class="tf-act"><button type="button" class="tf-no">Vazgeç</button><button type="button" class="tf-ok">Yükle</button></div></div>';
+    o.querySelector('h3').textContent = title;
+    o.addEventListener('click', function(e){ if (e.target.closest('.tf-ok')){ var v = o.querySelector('textarea').value; o.remove(); res(v); } else if (e.target === o || e.target.closest('.tf-no')){ o.remove(); res(''); } });
+    document.body.appendChild(o); setTimeout(function(){ o.querySelector('textarea').focus(); }, 50);
+  });
+}
 </script>
 <script>
 // WhatsApp vb. uygulamadan "Paylaş → TİDEM GIDA" ile gelen dosyayı al (yedek, gün sonu, güncel durum)
