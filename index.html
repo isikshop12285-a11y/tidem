@@ -1956,6 +1956,30 @@
   .ab-pt small{font-family:var(--font-body);font-size:.58rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)}
   .ab-pt b{font-family:var(--font-display);font-size:1.12rem;font-weight:700;letter-spacing:.06em;font-variant-numeric:tabular-nums;color:#fff}
   .ab-pc{width:8px;height:8px;margin-right:4px;border-right:2px solid rgba(255,255,255,.5);border-bottom:2px solid rgba(255,255,255,.5);transform:rotate(-45deg)}
+  /* Hakkında · ücretli destek */
+  .ab-lock{display:flex;flex-direction:column;gap:12px}
+  .ab-phone.lk{cursor:default}
+  .ab-pi.lk{background:linear-gradient(135deg,#475569,#64748B);box-shadow:none}
+  .ab-fee{flex:none;padding:5px 11px;border-radius:999px;background:#FCD34D;color:#14213F;font-style:normal;font-family:var(--font-display);font-size:.84rem;font-weight:800;white-space:nowrap}
+  .ab-steps{margin:0;padding:0;list-style:none;counter-reset:abs;display:flex;flex-direction:column;gap:8px}
+  .ab-steps li{counter-increment:abs;display:flex;align-items:flex-start;gap:10px;font-family:var(--font-body);font-size:.74rem;font-weight:600;line-height:1.45;color:rgba(255,255,255,.8)}
+  .ab-steps li:before{content:counter(abs);flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.14);font-size:.64rem;font-weight:900;color:#fff}
+  .ab-steps b{color:#fff;font-weight:800}
+  .ab-iban{padding:11px 12px 10px;border-radius:14px;background:#fff;color:#14213F;text-align:left}
+  .ab-iban small{display:block;font-family:var(--font-body);font-size:.56rem;font-weight:900;letter-spacing:.16em;color:#8A97AD}
+  .ab-iban b{display:block;margin:4px 0 6px;font-family:var(--font-display);font-size:clamp(.8rem,3.9vw,.98rem);font-weight:800;letter-spacing:.01em;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ab-iban div{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .ab-iban span{font-family:var(--font-body);font-size:.74rem;font-weight:800;color:#2F4475}
+  .ab-iban button{flex:none;width:auto !important;min-height:30px !important;padding:0 12px !important;border:0;border-radius:9px;background:#14213F;color:#fff;font-family:var(--font-body);font-size:.66rem;font-weight:900;letter-spacing:.1em;cursor:pointer}
+  .ab-iban button.ok{background:#16A34A}
+  .ab-code{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  #panel-hakkinda .ab-code input{width:100%;min-width:0;height:46px;min-height:46px;padding:0 12px !important;border:1px solid rgba(255,255,255,.22) !important;border-radius:12px !important;background:rgba(255,255,255,.08) !important;color:#fff !important;font-family:var(--font-display);font-size:1.05rem;font-weight:800;letter-spacing:.32em;text-align:center}
+  #panel-hakkinda .ab-code input::placeholder{color:rgba(255,255,255,.45);font-family:var(--font-body);font-size:.78rem;font-weight:700;letter-spacing:.06em}
+  #panel-hakkinda .ab-code input:focus{outline:0;border-color:#FCD34D !important}
+  .ab-code button{width:auto !important;height:46px;min-height:46px !important;padding:0 18px !important;border:0;border-radius:12px;background:#16A34A;color:#fff;font-family:var(--font-body);font-size:.78rem;font-weight:900;letter-spacing:.12em;box-shadow:0 8px 18px rgba(22,163,74,.3);cursor:pointer}
+  .ab-msg{margin:-4px 0 0;font-family:var(--font-body);font-size:.72rem;font-weight:700;color:#FCA5A5}
+  .ab-msg:empty{display:none}
+  .ab-okk{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;font-family:var(--font-body);font-size:.64rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#86EFAC}
   /* ===== Ürünler ve Gruplar · sade, kompakt kartlar ===== */
   #panel-urunler .definition-card{padding:16px 14px 14px;border:1px solid #E4E9F1;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,33,63,.04)}
   #panel-urunler .definition-card h3{margin:0;font-family:var(--font-display);font-size:1.12rem;font-weight:800;letter-spacing:.02em;color:#14213F}
@@ -2179,11 +2203,10 @@
   .tk-search{display:flex;align-items:center;gap:10px;height:44px;margin:0 0 10px;padding:0 14px;border:1px solid #E1E7F0;border-radius:12px;background:#fff;color:#94A3B8}
   .tk-search svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
   #tkQ{flex:1;min-width:0;height:100%;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;min-height:0 !important;font:inherit;font-size:.9rem;font-weight:700;color:#14213F;outline:0}
-  .cari-contact{display:grid;grid-template-columns:1.4fr 1fr;gap:8px;margin:10px 0 12px}
+  .cari-contact{display:grid;gap:8px;margin:10px 0 12px}
   .cari-contact a,.cari-contact button{display:flex;align-items:center;justify-content:center;gap:8px;width:auto !important;min-height:50px !important;padding:6px 12px !important;border:0;border-radius:14px;font:inherit;font-size:.9rem;font-weight:900;text-decoration:none;cursor:pointer}
   .cari-contact svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
   .cari-contact small{display:block;margin-left:2px;font-size:.7rem;font-weight:700;opacity:.8}
-  .cc-call{background:#16A34A;color:#fff !important;box-shadow:0 6px 14px rgba(22,163,74,.25)}
   .cc-wa{background:#1A2A55;color:#fff}
   html[data-theme="dark"] .tk-search{background:#24345E;border-color:#33467A}
   html[data-theme="dark"] #tkQ{color:#F1F5F9}
@@ -2302,7 +2325,7 @@
   .hs-amt{flex:none;font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:#14213F}
   .hs-meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:5px;font-size:.7rem;font-weight:800;letter-spacing:.03em;color:#8A6A2E}
   .hs-meta .owe{color:#B91C1C}
-  .hs-acts{display:grid;grid-template-columns:1.4fr 1fr auto;gap:8px;margin-top:10px}
+  .hs-acts{display:grid;grid-template-columns:1.3fr .8fr 1fr auto;gap:6px;margin-top:10px}
   .hs-acts button{width:auto !important;min-height:42px !important;padding:0 12px !important;border:0;border-radius:12px;background:#EEF2F8;color:#2F4475;font:inherit;font-size:.78rem;font-weight:900;cursor:pointer}
   .hs-acts .go{background:#16A34A;color:#fff;box-shadow:0 6px 14px rgba(22,163,74,.25)}
   .hs-acts .del{background:#FDECEE;color:#B91C1C}
@@ -2312,6 +2335,11 @@
   html[data-theme="dark"] .hs-acts button{background:#2B3D6B;color:#DCE4F5}
   html[data-theme="dark"] .hs-acts .go{background:#16A34A;color:#fff}
   html[data-theme="dark"] .hs-acts .del{background:#43161D;color:#FCA5A5}
+  .hs-acts .call{background:#1A2A55;color:#fff}
+  html[data-theme="dark"] .hs-acts .call{background:#F1F5F9;color:#14213F}
+  .cari-msg{flex:none;display:grid;place-items:center;width:42px !important;height:42px;min-height:42px !important;margin-left:6px;padding:0 !important;border:0;border-radius:12px;background:#16A34A;color:#fff;box-shadow:0 4px 10px rgba(22,163,74,.25);cursor:pointer;align-self:center}
+  .cari-msg svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .cari-contact{grid-template-columns:1fr !important}
 </style>
 </head>
 <body>
@@ -2358,7 +2386,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 74 · 14.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 80 · 14.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2761,7 +2789,7 @@
         <div class="pos-sug" id="posSug" hidden></div>
       </div>
       <div class="balance-hint" id="tahsilatBalanceHint"></div>
-      <button type="button" class="pos-send" id="posSend" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.2-3.6A8 8 0 1 1 8.3 19l-4.3.5Z"/><path d="M9 10.5h6M9 13.5h4"/></svg><span>Bakiyeyi gönder</span></button>
+      <button type="button" class="pos-send" id="posSend" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M5.5 3.5h13a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H12l-5 3.8V18H5.5a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3ZM7 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM10.65 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM14.3 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0Z"/></svg><span>Bakiyeyi gönder</span></button>
       <div class="pos-amt"><input id="tahsilatAmount" type="text" inputmode="none" autocomplete="off" placeholder="0" aria-label="Tutar"><span>₺</span></div>
       <div class="pos-quick" id="posQuick"><button type="button" class="th-fill" id="thFill" hidden></button></div>
       <div class="pos-met" id="thMet"><button type="button" data-m="cash"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg>Nakit</button><button type="button" data-m="card"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg>Kart</button><button type="button" data-m="eft"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8M10 10v8M14 10v8M19 10v8M3 20.5h18"/></svg>IBAN / EFT</button></div>
@@ -3127,11 +3155,7 @@
         <div class="ab-name">Süleyman Işık</div>
         <p class="ab-p">Uygulamayla ilgili her türlü soru, öneri ve sorununuz için ulaşın.</p>
         <i class="ab-sep" aria-hidden="true"></i>
-        <a class="ab-phone" href="tel:+905523520704"><span class="ab-pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4.1-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.1 1.4v2.7a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg></span><span class="ab-pt"><small>Destek hattı</small><b>0552 352 07 04</b></span><i class="ab-pc" aria-hidden="true"></i></a>
-        <div class="ab-acts">
-          <a class="ab-btn call" href="tel:+905523520704"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4.1-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.1 1.4v2.7a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>Ara</a>
-          <a class="ab-btn wa" href="https://wa.me/905523520704" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.2-3.6A8 8 0 1 1 8.3 19l-4.3.5Z"/><path d="M9 10.5h6M9 13.5h4"/></svg>WhatsApp</a>
-        </div>
+        <div id="abContact"></div>
       </section>
       <div class="ab-ver"><i></i><span id="abVer"></span></div>
       <p class="ab-foot">© 2026 Tidem Gıda · Tüm hakları saklıdır</p>
@@ -3253,7 +3277,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 74 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 80 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4838,7 +4862,7 @@
         const cnt = custRows.filter(x => foldText(x.info.group) === lastGrp).length;
         head = `<div class="cari-group-head"><span>${escHtml(r.info.group || 'Grubu olmayanlar')}</span><small>${cnt} müşteri</small></div>`;
       }
-      return head + `<div class="definition-row cari-row" data-definition-name="${escAttr(r.name)}" data-search-text="${escAttr(r.name + ' ' + r.info.address + ' ' + r.info.group)}"><input type="checkbox" class="cari-pick" data-pick="${escAttr(r.name)}" ${cariPicked.has(foldText(r.name)) ? 'checked' : ''} aria-label="Seç"><button type="button" class="cari-open" data-cari-open="${r.idx}"><b>${escHtml(r.name)}</b>${meta ? `<small class="cari-meta">${escHtml(meta)}</small>` : ''}<small class="${cls}">${label}</small></button><div class="definition-actions"><button class="edit" data-customer-edit="${r.idx}">Düzelt</button><button class="delete" data-customer-index="${r.idx}">Sil</button></div></div>`;
+      return head + `<div class="definition-row cari-row" data-definition-name="${escAttr(r.name)}" data-search-text="${escAttr(r.name + ' ' + r.info.address + ' ' + r.info.group)}"><input type="checkbox" class="cari-pick" data-pick="${escAttr(r.name)}" ${cariPicked.has(foldText(r.name)) ? 'checked' : ''} aria-label="Seç"><button type="button" class="cari-open" data-cari-open="${r.idx}"><b>${escHtml(r.name)}</b>${meta ? `<small class="cari-meta">${escHtml(meta)}</small>` : ''}<small class="${cls}">${label}</small></button><button type="button" class="cari-msg" data-cari-msg="${escAttr(r.name)}" aria-label="${escAttr(r.name)} bakiye mesajı"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M5.5 3.5h13a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H12l-5 3.8V18H5.5a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3ZM7 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM10.65 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM14.3 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0Z"/></svg></button><div class="definition-actions"><button class="edit" data-customer-edit="${r.idx}">Düzelt</button><button class="delete" data-customer-index="${r.idx}">Sil</button></div></div>`;
     }).join('') || '<div class="definition-empty">Henüz unvan kaydı yok.</div>';
     productBox.querySelectorAll('.definition-row').forEach(row => { row.dataset.searchText = `${row.dataset.definitionName || ''} ${row.querySelector('.definition-group-select')?.value || ''}`; });
     function customerMsg(text){
@@ -4847,6 +4871,7 @@
       setTimeout(() => { st.style.color = ''; filterDefinitionList('manageCustomerSearch', 'manageCustomerList', 'manageCustomerSearchStatus'); }, 3500);
     }
     customerBox.querySelectorAll('[data-cari-open]').forEach(btn => btn.onclick = () => { const nm = getCustomers()[Number(btn.dataset.cariOpen)]; if (nm) openCariDetail(nm); });
+    customerBox.querySelectorAll('[data-cari-msg]').forEach(btn => btn.onclick = () => waOpen(btn.dataset.cariMsg, balanceMessage(btn.dataset.cariMsg, 0)));
     customerBox.querySelectorAll('[data-customer-index]').forEach(btn => btn.onclick = () => {
       const list = getCustomers(); const idx = Number(btn.dataset.customerIndex); const nm = list[idx];
       const keeper = list.find((n, i) => i !== idx && foldText(n) === foldText(nm));
@@ -6199,7 +6224,7 @@
   const tkLevel = (d, lim) => d === null ? 'na' : d >= lim * 2 ? 'hi' : d >= lim ? 'mid' : 'ok';
   const tkAgo = d => d === null ? '—' : d <= 0 ? 'Bugün' : d === 1 ? 'Dün' : d + ' gün önce';
   const PH_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4.1-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.1 1.4v2.7a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>';
-  const WA_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.2-3.6A8 8 0 1 1 8.3 19l-4.3.5Z"/><path d="M9 10.5h6M9 13.5h4"/></svg>';
+  const WA_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M5.5 3.5h13a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H12l-5 3.8V18H5.5a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3ZM7 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM10.65 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM14.3 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0Z"/></svg>';
   function renderReminders(){
     const box = $id('remindList'); if (!box) return;
     const all = customerActivity(), cfg = remindCfg();
@@ -6254,6 +6279,7 @@
       location.href = 'tel:' + v.replace(/[^\d+]/g, '');
     });
   }
+  function waOpen(name, text){ const ph = waPhone(getCustomerPhone(name)); window.open((ph ? `https://wa.me/${ph}` : 'https://wa.me/') + '?text=' + encodeURIComponent(text), '_blank'); }
   $id('tkFilt').addEventListener('click', e => { const b = e.target.closest('[data-tk-f]'); if (b){ tkFilter = b.dataset.tkF; renderReminders(); } });
   $id('tkLink').addEventListener('click', () => document.querySelector('.tab-btn[data-tab="takip"]').click());
   // ===== İstatistik =====
@@ -6941,11 +6967,13 @@
       const days = o.holdDate ? daysBetween(o.holdDate, t) : 0, bal = balanceFor(o.customer), koli = (o.products || []).reduce((a, p) => a + num(p.adet), 0);
       return `<div class="hs-it"><div class="hs-top"><b>${escHtml(o.customer)}</b><span class="hs-amt">${fmt(o.total)} ₺</span></div>
         <div class="hs-meta"><span>${(o.products || []).length} ÜRÜN · ${fmt(koli)} KOLİ</span><span>${days ? days + ' GÜNDÜR BEKLİYOR' : 'BUGÜN ASKIYA ALINDI'}</span>${bal > 0.004 ? `<span class="owe">CARİ BORÇ ${fmt(bal)} ₺</span>` : ''}</div>
-        <div class="hs-acts"><button type="button" class="go" data-hold-id="${o.id}">ASKIDAN AL</button><button type="button" data-hold-view="${o.id}">FİŞİ GÖR</button><button type="button" class="del" data-hold-del="${o.id}">SİL</button></div></div>`;
+        <div class="hs-acts"><button type="button" class="go" data-hold-id="${o.id}">ASKIDAN AL</button><button type="button" class="call" data-hold-call="${escAttr(o.customer)}">ARA</button><button type="button" data-hold-view="${o.id}">FİŞİ GÖR</button><button type="button" class="del" data-hold-del="${o.id}">SİL</button></div></div>`;
     }).join('');
   }
   document.getElementById('holdStrip').addEventListener('click', e => {
     const b = e.target.closest('[data-hold-id]'); if (b) return holdToggle(b.dataset.holdId);
+    const c = e.target.closest('[data-hold-call]');
+    if (c){ const ph = getCustomerPhone(c.dataset.holdCall); if (ph) location.href = 'tel:' + String(ph).replace(/[^\d+]/g, ''); else callAsk(c.dataset.holdCall); return; }
     const v = e.target.closest('[data-hold-view]'); if (v){ const o = getOrders().find(x => x.id === v.dataset.holdView); if (o) openReportDocument(buildArchiveOrderReceipt(o)); return; }
     const d = e.target.closest('[data-hold-del]');
     if (d){ if (!d.dataset.arm){ d.dataset.arm = '1'; d.textContent = 'EMİN MİSİN?'; setTimeout(() => { if (d.isConnected){ delete d.dataset.arm; d.textContent = 'SİL'; } }, 2500); return; }
@@ -7968,7 +7996,6 @@
   }
   document.getElementById('cariContact').addEventListener('click', e => {
     if (!currentCari) return;
-    if (e.target.closest('[data-cc-ask]')) return callAsk(currentCari, () => { document.getElementById('cariPhone').value = getCustomerPhone(currentCari); renderCariDetail(); });
     if (e.target.closest('[data-cc-wa]')){ const ph = waPhone(getCustomerPhone(currentCari)); window.open((ph ? `https://wa.me/${ph}` : 'https://wa.me/') + '?text=' + encodeURIComponent(balanceMessage(currentCari, 0)), '_blank'); }
   });
   function closeCariDetail(){
@@ -7987,9 +8014,7 @@
     const lb = balanceLabel(bal);
     document.getElementById('cariDetailName').textContent = name;
     document.getElementById('cariDetailMeta').textContent = infoLine(name);
-    { const ph = getCustomerPhone(name), d = String(ph || '').replace(/[^\d+]/g, '');
-      document.getElementById('cariContact').innerHTML = (ph ? `<a class="cc-call" href="tel:${escAttr(d)}">${PH_IC}Ara<small>${escHtml(ph)}</small></a>` : `<button type="button" class="cc-call" data-cc-ask>${PH_IC}Ara<small>Numara kayıtlı değil</small></button>`)
-        + `<button type="button" class="cc-wa" data-cc-wa>${WA_IC}Bakiye gönder</button>`; }
+    document.getElementById('cariContact').innerHTML = `<button type="button" class="cc-wa" data-cc-wa>${WA_IC}Bakiye mesajı gönder</button>`;
     document.getElementById('cariGroupList').innerHTML = allGroups().map(g => `<option value="${escAttr(g)}">`).join('');
     document.getElementById('cariHero').className = 'cari-hero ' + lb.cls;
     document.getElementById('cariDetailBalance').innerHTML = `${lb.text}<small>${bal > 0.004 || bal < -0.004 ? '₺ ' + lb.tag : lb.tag}</small>`;
@@ -9322,6 +9347,51 @@ function tfAskLong(title){
   off(document);
   new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if (n.nodeType === 1){ if (/^(INPUT|TEXTAREA|SELECT)$/.test(n.tagName)) off(n.parentNode || document); else off(n); } }); }); })
     .observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+<script>
+/* ===== Hakkında · ücretli destek hattı (fiyat/IBAN sadece buradan değişir) ===== */
+(function(){
+  const DESTEK_UCRET = 2000, UCRET_TXT = DESTEK_UCRET.toLocaleString('tr-TR');
+  const DESTEK_IBAN = 'TR48 0020 5000 0937 6566 7000 03', DESTEK_AD = 'SÜLEYMAN IŞIK', DESTEK_BANKA = 'KUVEYT TÜRK BANKASI';
+  const KEY = 'tidem_destek_acik', HK = 2204996068;
+  const box = document.getElementById('abContact'); if (!box) return;
+  const PH = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4.1-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.1 1.4v2.7a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>';
+  const LK = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg>';
+  const MS = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M5.5 3.5h13a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H12l-5 3.8V18H5.5a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3ZM7 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM10.65 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM14.3 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0Z"/></svg>';
+  function hs(v){ let h = 5381; for (const c of 'tidem-destek|' + v) h = ((h * 33) ^ c.charCodeAt(0)) >>> 0; return h; }
+  function open(){ try{ return localStorage.getItem(KEY) === '1'; }catch(e){ return false; } }
+  function render(){
+    if (open()){
+      const t = atob('MDU1MjM1MjA3MDQ='), show = t.replace(/^(\d{4})(\d{3})(\d{2})(\d{2})$/, '$1 $2 $3 $4'), intl = '90' + t.slice(1);
+      box.innerHTML = `<a class="ab-phone" href="tel:+${intl}"><span class="ab-pi">${PH}</span><span class="ab-pt"><small>Destek hattı</small><b>${show}</b></span><i class="ab-pc" aria-hidden="true"></i></a>
+        <div class="ab-acts"><a class="ab-btn call" href="tel:+${intl}">${PH}Ara</a><a class="ab-btn wa" href="https://wa.me/${intl}" target="_blank" rel="noopener">${MS}WhatsApp</a></div>
+        <div class="ab-okk">✓ Destek hattınız açık</div>`;
+      return;
+    }
+    box.innerHTML = `<div class="ab-lock">
+      <div class="ab-phone lk"><span class="ab-pi lk">${LK}</span><span class="ab-pt"><small>Destek hattı</small><b>0552 ••• •• ••</b></span><em class="ab-fee">${UCRET_TXT} TL</em></div>
+      <ol class="ab-steps"><li><span><b>${UCRET_TXT} TL</b> destek ücretini aşağıdaki IBAN'a gönderin, açıklamaya <b>kendi telefon numaranızı</b> yazın.</span></li><li><span>Ödemeniz ulaşınca size <b>açılış kodu</b> gönderilir.</span></li><li><span>Kodu girin, destek hattı açılsın.</span></li></ol>
+      <div class="ab-iban"><small>IBAN · ${DESTEK_BANKA}</small><b>${DESTEK_IBAN}</b><div><span>${DESTEK_AD}</span><button type="button" data-ab-copy>KOPYALA</button></div></div>
+      <div class="ab-code"><input id="abCode" type="text" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="Açılış kodu"><button type="button" data-ab-unlock>AÇ</button></div>
+      <p class="ab-msg" id="abMsg"></p></div>`;
+  }
+  box.addEventListener('click', e => {
+    const cp = e.target.closest('[data-ab-copy]');
+    if (cp){ const v = DESTEK_IBAN.replace(/\s/g, ''); const ok = () => { cp.textContent = 'KOPYALANDI ✓'; cp.classList.add('ok'); setTimeout(() => { cp.textContent = 'KOPYALA'; cp.classList.remove('ok'); }, 1600); };
+      if (navigator.clipboard) navigator.clipboard.writeText(v).then(ok, ok); else ok(); return; }
+    if (e.target.closest('[data-ab-unlock]')) tryCode();
+  });
+  box.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.id === 'abCode') tryCode(); });
+  function tryCode(){
+    const inp = document.getElementById('abCode'), msg = document.getElementById('abMsg'), v = (inp.value || '').replace(/\D/g, '');
+    if (!v){ msg.textContent = 'Önce açılış kodunu yazın.'; inp.focus(); return; }
+    if (hs(v) !== HK){ msg.textContent = 'Kod hatalı. Ödemeden sonra size gönderilen kodu yazın.'; inp.select(); return; }
+    try{ localStorage.setItem(KEY, '1'); }catch(e){}
+    render();
+  }
+  render();
 })();
 </script>
 </body>
