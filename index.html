@@ -2087,7 +2087,6 @@
   .tk-act a,.tk-act button{display:flex;align-items:center;justify-content:center;gap:7px;width:auto !important;min-height:42px !important;padding:0 12px !important;border:0;border-radius:12px;font:inherit;font-size:.82rem;font-weight:900;letter-spacing:.03em;text-decoration:none;cursor:pointer}
   .tk-act svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
   .tk-call{background:#16A34A;color:#fff !important;box-shadow:0 6px 14px rgba(22,163,74,.25)}
-  .tk-call.add{background:#FFF7E6;color:#B45309 !important;box-shadow:none;border:1.5px dashed #F2C27A !important}
   .tk-wa{background:#1A2A55;color:#fff}
   .tk-open{background:#EEF2F8;color:#2F4475}
   .tk-done{margin-top:8px;font-size:.74rem;font-weight:900;color:#15803D}
@@ -2116,7 +2115,6 @@
   html[data-theme="dark"] .tk-bal{background:#43161D;color:#FCA5A5}
   html[data-theme="dark"] .tk-open{background:#2B3D6B;color:#DCE4F5}
   html[data-theme="dark"] .tk-wa{background:#F1F5F9;color:#14213F}
-  html[data-theme="dark"] .tk-call.add{background:#3B2F14;color:#FCD34D !important;border-color:#6B5320 !important}
   html[data-theme="dark"] .tk-done{color:#86EFAC}
   html[data-theme="dark"] .tk-msg textarea{background:#24345E;border-color:#3A4C7E;color:#F1F5F9}
   html[data-theme="dark"] .tk-empty{border-color:#33467A;color:#A9B6CF}
@@ -2183,6 +2181,82 @@
   html[data-theme="dark"] .st-bar .tx em,html[data-theme="dark"] .st-leg span{color:#DCE4F5}
   html[data-theme="dark"] .st-month em,html[data-theme="dark"] .st-month span,html[data-theme="dark"] .st-ct small,html[data-theme="dark"] .st-bar small{color:#A9B6CF}
   html[data-theme="dark"] .st-month i{background:linear-gradient(#8EA2D8,#5E73AA)}
+  .tk-search{display:flex;align-items:center;gap:10px;height:44px;margin:0 0 10px;padding:0 14px;border:1px solid #E1E7F0;border-radius:12px;background:#fff;color:#94A3B8}
+  .tk-search svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+  #tkQ{flex:1;min-width:0;height:100%;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;min-height:0 !important;font:inherit;font-size:.9rem;font-weight:700;color:#14213F;outline:0}
+  .cari-contact{display:grid;grid-template-columns:1.4fr 1fr;gap:8px;margin:10px 0 12px}
+  .cari-contact a,.cari-contact button{display:flex;align-items:center;justify-content:center;gap:8px;width:auto !important;min-height:50px !important;padding:6px 12px !important;border:0;border-radius:14px;font:inherit;font-size:.9rem;font-weight:900;text-decoration:none;cursor:pointer}
+  .cari-contact svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+  .cari-contact small{display:block;margin-left:2px;font-size:.7rem;font-weight:700;opacity:.8}
+  .cc-call{background:#16A34A;color:#fff !important;box-shadow:0 6px 14px rgba(22,163,74,.25)}
+  .cc-wa{background:#1A2A55;color:#fff}
+  html[data-theme="dark"] .tk-search{background:#24345E;border-color:#33467A}
+  html[data-theme="dark"] #tkQ{color:#F1F5F9}
+  html[data-theme="dark"] .cc-wa{background:#F1F5F9;color:#14213F}
+  /* ===== Tahsilat ===== */
+  #tahsilatTypeSeg[hidden]{display:none !important}
+  .th-fill{width:auto !important;min-height:28px !important;margin-bottom:7px;padding:0 10px !important;border:0;border-radius:999px;background:#FDECEE;color:#B91C1C;font:inherit;font-size:.72rem;font-weight:900;cursor:pointer}
+  .th-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .th-row2 .field{margin-bottom:6px}
+  .th-hist{margin-top:18px}
+  #tahsilatList .hist-item{padding:12px 14px !important;border:1px solid #E4E9F1 !important;border-left:4px solid #16A34A !important;border-radius:14px !important;background:#fff !important;box-shadow:none !important;margin-bottom:8px}
+  #tahsilatList .hist-name{font-weight:900;text-transform:uppercase;letter-spacing:.01em}
+  #tahsilatList .th-amt{color:#15803D !important;font-family:var(--font-display);font-size:1.08rem;font-weight:800}
+  #tahsilatList .archive-date-heading{border-radius:12px}
+  html[data-theme="dark"] .th-fill{background:#43161D;color:#FCA5A5}
+  html[data-theme="dark"] #tahsilatList .hist-item{background:#1C2A4F !important;border-color:#2E4070 !important;border-left-color:#22C55E !important}
+  html[data-theme="dark"] #tahsilatList .th-amt{color:#86EFAC !important}
+  /* ===== Tahsilat · ödeme terminali ===== */
+  .pos{position:relative;margin:-4px -12px 0;padding:14px 16px 18px;border-radius:0 0 26px 26px;background:radial-gradient(120% 80% at 100% 0%,rgba(200,32,47,.32),transparent 60%),linear-gradient(160deg,#0F1A35,#14213F 55%,#1A2A55);color:#fff;box-shadow:0 14px 30px rgba(15,26,53,.25)}
+  .pos-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px}
+  .pos-k{font-size:11px;font-weight:900;letter-spacing:.22em;color:rgba(255,255,255,.6)}
+  .pos-src{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:12px 0 0;padding:4px;border-radius:13px;background:rgba(255,255,255,.08)}
+  .pos-src button{width:auto !important;min-height:38px !important;padding:0 8px !important;border:0;border-radius:10px;background:transparent;color:rgba(255,255,255,.7);font:inherit;font-size:.82rem;font-weight:800;cursor:pointer}
+  .pos-src button.on{background:#fff;color:#14213F}
+  .pos-src button[data-src="liste"].on{background:#22C55E;color:#04210F}
+  .pos-cust{position:relative;margin-top:14px;text-align:center}
+  .pos-cust label{display:block;margin-bottom:6px;font-size:9.5px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+  #tahsilatCustomer{width:100%;height:46px;padding:0 16px !important;border:1px solid rgba(255,255,255,.2) !important;border-radius:999px !important;background:rgba(255,255,255,.1) !important;box-shadow:none !important;color:#fff !important;font:inherit;font-size:.95rem;font-weight:800;text-align:center;text-transform:uppercase;letter-spacing:.02em}
+  #tahsilatCustomer::placeholder{color:rgba(255,255,255,.45);text-transform:none;font-weight:600;letter-spacing:0}
+  #tahsilatCustomer:focus{outline:0;border-color:rgba(255,255,255,.55) !important;background:rgba(255,255,255,.14) !important}
+  .pos-sug{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.35);text-align:left}
+  .pos-sug[hidden]{display:none}
+  .pos-sug button{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100% !important;min-height:48px !important;padding:8px 16px !important;border:0;border-top:1px solid #EEF1F6;background:#fff;color:#14213F;font:inherit;cursor:pointer}
+  .pos-sug button:first-child{border-top:0}
+  .pos-sug b{min-width:0;font-size:.88rem;font-weight:900;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pos-sug small{flex:none;font-size:.74rem;font-weight:800;color:#8A97AD}
+  .pos-sug small.owe{color:#B91C1C}
+  .pos .balance-hint{margin:8px auto 0;padding:0 !important;border:0 !important;background:none !important;text-align:center;font-size:.78rem;font-weight:800;color:rgba(255,255,255,.7) !important}
+  .pos .balance-hint.owes{color:#FCA5A5 !important}
+  .pos-amt{position:relative;margin-top:10px;text-align:center}
+  #tahsilatAmount{width:100%;height:74px;padding:0 40px !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;color:#fff !important;font-family:var(--font-display);font-size:3.2rem;font-weight:800;letter-spacing:-.01em;text-align:center;caret-color:#22C55E}
+  #tahsilatAmount::placeholder{color:rgba(255,255,255,.3)}
+  #tahsilatAmount:focus{outline:0}
+  .pos-amt span{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:1.7rem;font-weight:800;color:rgba(255,255,255,.4)}
+  .pos-quick{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:2px}
+  .pos-quick button{width:auto !important;min-height:30px !important;padding:0 12px !important;border:0;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);font:inherit;font-size:.74rem;font-weight:800;cursor:pointer}
+  .pos-quick button[hidden]{display:none}
+  .pos-quick .th-fill{background:rgba(252,165,165,.18);color:#FECACA}
+  .pos-met{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:14px;padding:4px;border-radius:14px;background:rgba(255,255,255,.08)}
+  .pos-met button{display:flex;align-items:center;justify-content:center;gap:6px;width:auto !important;min-height:40px !important;padding:0 4px !important;border:0;border-radius:11px;background:transparent;color:rgba(255,255,255,.72);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer}
+  .pos-met svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .pos-met button.on{background:#fff;color:#14213F}
+  .pos-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+  .pos-pad button{width:auto !important;min-height:52px !important;padding:0 !important;border:0;border-radius:14px;background:rgba(255,255,255,.07);color:#fff;font-family:var(--font-display);font-size:1.4rem;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color .1s,transform .1s}
+  .pos-pad button:active{background:rgba(255,255,255,.18);transform:scale(.96)}
+  .pos-more{margin-top:12px}
+  .pos-more summary{font-size:.76rem;font-weight:800;color:rgba(255,255,255,.65);cursor:pointer;text-align:center}
+  .pos-more .th-row2{margin-top:10px}
+  .pos-more .field label{display:block;margin-bottom:5px;font-size:9.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+  .pos-more .field input{width:100%;height:44px;padding:0 12px !important;border:1px solid rgba(255,255,255,.2) !important;border-radius:12px !important;background:rgba(255,255,255,.08) !important;color:#fff !important;font:inherit;font-size:.88rem;font-weight:700;color-scheme:dark}
+  .pos .type-hint{display:block;margin-top:10px;text-align:center;font-size:.68rem;font-weight:600;line-height:1.45;color:rgba(255,255,255,.5)}
+  .pos .status-msg{text-align:center;color:#86EFAC}
+  .pos-go{width:100% !important;min-height:58px !important;margin-top:12px !important;border:0 !important;border-radius:16px !important;background:#22C55E !important;color:#04210F !important;font-size:1.02rem !important;font-weight:900 !important;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 10px 24px rgba(34,197,94,.35) !important}
+  html[data-theme="dark"] .pos-go{background:#22C55E !important;color:#04210F !important}
+  html[data-theme="dark"] .pos-go *{color:#04210F !important}
+  .pos-send{display:flex;align-items:center;justify-content:center;gap:7px;width:auto !important;min-height:34px !important;margin:10px auto 0;padding:0 14px !important;border:1px solid rgba(34,197,94,.45);border-radius:999px;background:rgba(34,197,94,.14);color:#86EFAC;font:inherit;font-size:.76rem;font-weight:800;cursor:pointer}
+  .pos-send[hidden]{display:none}
+  .pos-send svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 </style>
 </head>
 <body>
@@ -2229,7 +2303,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 61 · 14.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 66 · 14.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2614,42 +2688,39 @@
   <!-- TAHSİLAT TAB -->
   <div class="panel" id="panel-tahsilat">
     <div class="edit-banner" id="tahsilatEditBanner"><span id="tahsilatEditText"></span><button type="button" id="tahsilatEditCancel">Düzenlemeyi iptal et</button></div>
-    <div class="meta">
-      <div class="field">
-        <label>Tahsilat türü</label>
-        <div class="seg-grid" id="tahsilatTypeSeg">
-          <button type="button" data-val="liste_cash">Liste<small>Nakit</small></button>
-          <button type="button" data-val="liste_card">Liste<small>Kredi kartı</small></button>
-          <button type="button" data-val="liste_eft">Liste<small>IBAN / EFT</small></button>
-          <button type="button" data-val="cari_cash" class="active-account">Cari hesaptan<small>Nakit</small></button>
-          <button type="button" data-val="cari_card">Cari hesaptan<small>Kredi kartı</small></button>
-          <button type="button" data-val="cari_eft">Cari hesaptan<small>IBAN / EFT</small></button>
-        </div>
-        <span class="type-hint" id="tahsilatTypeHint"></span>
+    <section class="pos">
+      <div class="pos-top"><span class="pos-k">TAHSİLAT</span></div>
+      <div class="pos-src" id="thSrc"><button type="button" data-src="cari">Cari hesaptan</button><button type="button" data-src="liste">Liste</button></div>
+      <div class="seg-grid" id="tahsilatTypeSeg" hidden>
+        <button type="button" data-val="liste_cash">Liste<small>Nakit</small></button>
+        <button type="button" data-val="liste_card">Liste<small>Kredi kartı</small></button>
+        <button type="button" data-val="liste_eft">Liste<small>IBAN / EFT</small></button>
+        <button type="button" data-val="cari_cash" class="active-account">Cari hesaptan<small>Nakit</small></button>
+        <button type="button" data-val="cari_card">Cari hesaptan<small>Kredi kartı</small></button>
+        <button type="button" data-val="cari_eft">Cari hesaptan<small>IBAN / EFT</small></button>
       </div>
-      <div class="field">
+      <div class="pos-cust">
         <label for="tahsilatCustomer" id="tahsilatCustomerLabel">Müşteri</label>
-        <input id="tahsilatCustomer" list="customerList" placeholder="Müşteri adı" autocomplete="off">
+        <input id="tahsilatCustomer" placeholder="Müşteri adı yazın…" autocomplete="off" enterkeyhint="done">
+        <div class="pos-sug" id="posSug" hidden></div>
       </div>
       <div class="balance-hint" id="tahsilatBalanceHint"></div>
-      <div class="field">
-        <label for="tahsilatDate">Tarih</label>
-        <input type="date" id="tahsilatDate">
-      </div>
-      <div class="field">
-        <label for="tahsilatAmount">Tutar</label>
-        <input id="tahsilatAmount" type="text" inputmode="decimal" autocomplete="off" placeholder="0">
-      </div>
-      <div class="field">
-        <label for="tahsilatNote">Not (opsiyonel)</label>
-        <input id="tahsilatNote" placeholder="ör. fiş no, açıklama">
-      </div>
-    </div>
-    <div class="status-msg" id="tahsilatStatus"></div>
-    <div class="actions">
-      <button class="btn btn-primary" id="tahsilatSaveBtn" style="flex:1;">Tahsilatı kaydet</button>
-    </div>
-    <div class="history">
+      <button type="button" class="pos-send" id="posSend" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.2-3.6A8 8 0 1 1 8.3 19l-4.3.5Z"/><path d="M9 10.5h6M9 13.5h4"/></svg><span>Bakiyeyi gönder</span></button>
+      <div class="pos-amt"><input id="tahsilatAmount" type="text" inputmode="none" autocomplete="off" placeholder="0" aria-label="Tutar"><span>₺</span></div>
+      <div class="pos-quick" id="posQuick"><button type="button" class="th-fill" id="thFill" hidden></button></div>
+      <div class="pos-met" id="thMet"><button type="button" data-m="cash"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg>Nakit</button><button type="button" data-m="card"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg>Kart</button><button type="button" data-m="eft"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8M10 10v8M14 10v8M19 10v8M3 20.5h18"/></svg>IBAN / EFT</button></div>
+      <div class="pos-pad" id="posPad"><button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button><button type="button">6</button><button type="button">7</button><button type="button">8</button><button type="button">9</button><button type="button">,</button><button type="button">0</button><button type="button" data-k="del" aria-label="Sil">⌫</button></div>
+      <details class="pos-more"><summary>Tarih ve not</summary>
+        <div class="th-row2">
+          <div class="field"><label for="tahsilatDate">Tarih</label><input type="date" id="tahsilatDate"></div>
+          <div class="field"><label for="tahsilatNote">Not</label><input id="tahsilatNote" placeholder="fiş no, açıklama"></div>
+        </div>
+      </details>
+      <span class="type-hint" id="tahsilatTypeHint"></span>
+      <div class="status-msg" id="tahsilatStatus"></div>
+      <button class="btn btn-primary pos-go" id="tahsilatSaveBtn">✓  Tahsil et</button>
+    </section>
+    <div class="history th-hist">
       <h2>Tahsilat geçmişi</h2>
       <div id="tahsilatList"><p class="hist-empty">Henüz kayıtlı tahsilat yok.</p></div>
     </div>
@@ -2748,6 +2819,7 @@
     <div class="tk-head"><span class="tk-kick">HATIRLATMA</span><h2>Müşteri Takibi</h2><p id="tkRule"></p></div>
     <div class="tk-sum" id="tkSum"></div>
     <div class="tk-filt" id="tkFilt"></div>
+    <div class="tk-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="tkQ" placeholder="Müşteri ara…" autocomplete="off" enterkeyhint="search"></div>
     <div class="tk-list" id="remindList"></div>
     <p class="tk-foot">Gün sınırlarını Ayarlar → Hatırlatma bölümünden değiştirebilirsiniz. Aradığınız ya da mesaj attığınız müşteri “Bugün arandı” olarak listenin sonuna iner.</p>
   </div>
@@ -2795,6 +2867,7 @@
         <div class="cari-hero-label">KALAN BAKİYE</div>
         <div class="cari-hero-amount" id="cariDetailBalance">0</div>
       </section>
+      <div class="cari-contact" id="cariContact"></div>
       <div class="breakdown" id="cariBreakdown"></div>
       <div class="actions"><button class="btn btn-secondary" id="cariGoTahsilat">Tahsilat gir</button><button class="btn btn-primary" id="cariStatementBtn" type="button">Hesap hareketleri fişi</button></div>
       <section class="definition-card pr-detail" id="promiseDetail">
@@ -3114,7 +3187,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 61 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 66 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -5051,6 +5124,7 @@
     return { prev, grand, addsToCari };
   }
   function showBalanceHint(el, name){
+    if (el && el.id === 'tahsilatBalanceHint') setTimeout(() => { try{ thSyncFill(); }catch(e){} });
     if (!name){ el.classList.remove('show'); return; }
     const bal = balanceFor(name);
     el.classList.add('show');
@@ -6067,7 +6141,8 @@
     $id('tkRule').textContent = `${cfg.pay}+ gündür ödeme yapmayan borçlular ve ${cfg.order}+ gündür sipariş vermeyenler`;
     $id('tkSum').innerHTML = `<div><b>${nPay}</b><span>Ödeme bekleyen</span></div><div><b>${nOrd}</b><span>Sipariş vermeyen</span></div><div class="mny"><b>${fmt(owe)} ₺</b><span>Bekleyen alacak</span></div>`;
     $id('tkFilt').innerHTML = [['all', 'Tümü', all.length], ['pay', 'Ödeme', nPay], ['ord', 'Sipariş', nOrd]].map(([k, t, n]) => `<button type="button" data-tk-f="${k}" class="${tkFilter === k ? 'on' : ''}">${t} <em>${n}</em></button>`).join('');
-    const list = all.filter(r => tkFilter === 'all' || (tkFilter === 'pay' ? r.needPay : r.needOrder))
+    const q = foldText(($id('tkQ') || {}).value || '');
+    const list = all.filter(r => (tkFilter === 'all' || (tkFilter === 'pay' ? r.needPay : r.needOrder)) && (!q || foldText(r.name).includes(q)))
       .sort((a, b) => (a.called - b.called) || (b.needPay - a.needPay) || (b.bal - a.bal) || ((b.orderDays || 0) - (a.orderDays || 0)));
     if (!list.length){ box.innerHTML = `<div class="tk-empty"><b>✓</b>${all.length ? 'Bu süzgeçte müşteri yok.' : 'Şu an hatırlatılacak müşteri yok.'}</div>`; return; }
     box.innerHTML = list.map(r => {
@@ -6080,7 +6155,7 @@
           <div class="m ${pL}"><span>ÖDEME YAPMADI</span><b>${r.bal > 0.004 ? tkAgo(r.payDays) : 'Borcu yok'}</b><small>${r.lastPay ? 'Son: ' + dateDisplay(r.lastPay) : (r.bal > 0.004 ? 'Hiç ödeme yok' : '')}</small></div>
         </div>
         <div class="tk-act">
-          ${r.phone ? `<a class="tk-call" href="tel:${escAttr(String(r.phone).replace(/[^\d+]/g, ''))}" data-tk-call="${i}">${PH_IC}Ara</a>` : `<button type="button" class="tk-call add" data-tk-phone="${i}">${PH_IC}Telefon ekle</button>`}
+          ${r.phone ? `<a class="tk-call" href="tel:${escAttr(String(r.phone).replace(/[^\d+]/g, ''))}" data-tk-call="${i}">${PH_IC}Ara</a>` : `<button type="button" class="tk-call" data-tk-phone="${i}">${PH_IC}Ara</button>`}
           <button type="button" class="tk-wa" data-tk-wa="${i}">${WA_IC}Mesaj</button>
           <button type="button" class="tk-open" data-tk-open="${i}">Hesap</button>
         </div>
@@ -6095,8 +6170,17 @@
         window.open((ph ? `https://wa.me/${ph}` : 'https://wa.me/') + '?text=' + encodeURIComponent(ta.value), '_blank'); tkMark(r.name); setTimeout(renderReminders, 600); return; }
       const o = e.target.closest('[data-tk-open]'); if (o){ document.querySelector('.tab-btn[data-tab="cari"]').click(); openCariDetail(all[o.dataset.tkOpen].name); return; }
       const ph = e.target.closest('[data-tk-phone]');
-      if (ph){ const r = all[ph.dataset.tkPhone]; tfAsk(r.name + ' · telefon numarası', '').then(v => { v = (v || '').trim(); if (v){ setCustomerPhone(r.name, v); renderReminders(); } }); }
+      if (ph){ const r = all[ph.dataset.tkPhone]; callAsk(r.name, () => { tkMark(r.name); setTimeout(renderReminders, 600); }); }
     };
+  }
+  $id('tkQ').addEventListener('input', () => renderReminders());
+  // Telefonu kayıtlı değilse: numarayı sor, kaydet ve ara
+  function callAsk(name, after){
+    tfAsk(name + ' · telefon numarası (kaydedilir)', '').then(v => {
+      v = (v || '').trim(); if (!v) return;
+      setCustomerPhone(name, v); if (after) after();
+      location.href = 'tel:' + v.replace(/[^\d+]/g, '');
+    });
   }
   $id('tkFilt').addEventListener('click', e => { const b = e.target.closest('[data-tk-f]'); if (b){ tkFilter = b.dataset.tkF; renderReminders(); } });
   $id('tkLink').addEventListener('click', () => document.querySelector('.tab-btn[data-tab="takip"]').click());
@@ -7135,11 +7219,72 @@
     });
     tahsilatTypeHint.textContent = T_HINTS[v];
     tahsilatCustomerLabel.textContent = v.startsWith('cari') ? 'Müşteri' : 'Müşteri (opsiyonel)';
+    const [src, m] = v.split('_');
+    document.querySelectorAll('#thSrc [data-src]').forEach(b => b.classList.toggle('on', b.dataset.src === src));
+    document.querySelectorAll('#thMet [data-m]').forEach(b => b.classList.toggle('on', b.dataset.m === m));
+    thSyncFill();
   }
+  // Müşteriye hazır bakiye mesajı (tahsilattan sonra: alınan tutar + kalan bakiye)
+  let posLast = null;
+  function balanceMessage(name, paid){
+    const company = (document.getElementById('companyName')?.value || 'Tidem Gıda').trim(), bal = balanceFor(name), d = dateDisplay(todayStr());
+    let m = `Merhaba ${name}, iyi günler dileriz.\n\n`;
+    if (paid) m += `${d} tarihinde ${moneyTxt(paid)} tahsilatınız alınmıştır, teşekkür ederiz.\n`;
+    m += bal > 0.004 ? `Cari hesabınızda ${d} itibarıyla ${paid ? 'kalan ' : ''}bakiye ${moneyTxt(bal)}'dir.` : `Cari hesabınızda ${d} itibarıyla borç bulunmamaktadır.`;
+    if (bal > 0.004) m += `\n\nIBAN: ${IBAN_TXT}`;
+    return m + `\n\nİyi çalışmalar.\n${company}`;
+  }
+  function posSyncSend(){
+    const b = document.getElementById('posSend'); if (!b) return;
+    const name = (tahsilatCustomer.value || '').trim();
+    b.hidden = !name || !getCustomers().some(n => foldText(n) === foldText(name));
+    const paid = posLast && foldText(posLast.name) === foldText(name);
+    b.querySelector('span').textContent = paid ? 'Tahsilatı ve kalan bakiyeyi gönder' : 'Bakiyeyi WhatsApp\'tan gönder';
+  }
+  document.getElementById('posSend').addEventListener('click', () => {
+    const name = tahsilatCustomer.value.trim(); if (!name) return;
+    const paid = posLast && foldText(posLast.name) === foldText(name) ? posLast.amount : 0, ph = waPhone(getCustomerPhone(name));
+    window.open((ph ? `https://wa.me/${ph}` : 'https://wa.me/') + '?text=' + encodeURIComponent(balanceMessage(name, paid)), '_blank');
+  });
+  function thSyncFill(){
+    posSyncSend();
+    const f = document.getElementById('thFill'); if (!f) return;
+    const name = (tahsilatCustomer.value || '').trim(), bal = name ? balanceFor(name) : 0;
+    f.hidden = !(tahsilatType.startsWith('cari') && bal > 0.004);
+    if (!f.hidden){ f.textContent = 'Tüm borç · ' + fmt(bal) + ' ₺'; f.dataset.v = fmtAmountValue(bal); }
+  }
+  document.getElementById('thSrc').addEventListener('click', e => { const b = e.target.closest('[data-src]'); if (b) setTahsilatType(b.dataset.src + '_' + tahsilatType.split('_')[1]); });
+  document.getElementById('thMet').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (b) setTahsilatType(tahsilatType.split('_')[0] + '_' + b.dataset.m); });
+  document.getElementById('thFill').addEventListener('click', e => { tahsilatAmount.value = e.currentTarget.dataset.v || ''; });
+  // POS: hızlı tutarlar ve tuş takımı
+  document.getElementById('posPad').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    let raw = String(tahsilatAmount.value || '').replace(/\./g, '');
+    if (b.dataset.k === 'del') raw = raw.slice(0, -1);
+    else if (b.textContent === ','){ if (!raw.includes(',')) raw = (raw || '0') + ','; }
+    else { if (/,\d\d$/.test(raw)) return; raw = (raw === '0' ? '' : raw) + b.textContent; if (raw.replace(/,.*/, '').length > 9) return; }
+    const [ip, dp] = raw.split(',');
+    tahsilatAmount.value = (ip ? Number(ip).toLocaleString('tr-TR') : (dp !== undefined ? '0' : '')) + (dp !== undefined ? ',' + dp : '');
+    if (navigator.vibrate) try{ navigator.vibrate(8); }catch(_){}
+  });
+  // Müşteri adı yazarken öneriler
+  const posSug = document.getElementById('posSug');
+  function posSuggest(){
+    const q = foldText(tahsilatCustomer.value.trim());
+    if (!q){ posSug.hidden = true; return; }
+    const hits = getCustomers().filter(n => foldText(n).includes(q) && foldText(n) !== q).slice(0, 6);
+    if (!hits.length){ posSug.hidden = true; return; }
+    posSug.innerHTML = hits.map(n => { const bal = balanceFor(n); return `<button type="button" data-n="${escAttr(n)}"><b>${escHtml(n)}</b><small class="${bal > 0.004 ? 'owe' : ''}">${bal > 0.004 ? fmt(bal) + ' ₺ borç' : 'borç yok'}</small></button>`; }).join('');
+    posSug.hidden = false;
+  }
+  tahsilatCustomer.addEventListener('input', posSuggest);
+  tahsilatCustomer.addEventListener('blur', () => setTimeout(() => { posSug.hidden = true; }, 200));
+  posSug.addEventListener('pointerdown', e => e.preventDefault());
+  posSug.addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (!b) return; tahsilatCustomer.value = b.dataset.n; posSug.hidden = true; tahsilatCustomer.dispatchEvent(new Event('input')); tahsilatCustomer.blur(); });
   tahsilatTypeSeg.querySelectorAll('button').forEach(b => b.addEventListener('click', () => setTahsilatType(b.dataset.val)));
   setTahsilatType('cari_cash');
 
-  tahsilatCustomer.addEventListener('input', () => showBalanceHint(tahsilatBalanceHint, tahsilatCustomer.value.trim()));
+  tahsilatCustomer.addEventListener('input', () => { showBalanceHint(tahsilatBalanceHint, tahsilatCustomer.value.trim()); thSyncFill(); });
 
   document.getElementById('tahsilatSaveBtn').addEventListener('click', () => {
     const customer = tahsilatCustomer.value.trim();
@@ -7168,11 +7313,13 @@
     if (editingTahsilatId) tahsilatDate.value = todayStr();
     setTahsilatEditMode(null);
     flash(tIdx >= 0 ? 'Tahsilat güncellendi.' : 'Tahsilat kaydedildi.', tahsilatStatus);
+    if (customer){ posLast = { name: customer, amount }; posSyncSend(); }
   });
 
   const openTahsilatDates = new Set();   // tahsilat geçmişinde açık olan günler
   function renderTahsilatHistory(){
     const list = getTahsilat();
+    try{ thSyncFill(); }catch(e){}
     if (list.length === 0){ tahsilatListEl.innerHTML = '<p class="hist-empty">Henüz kayıtlı tahsilat yok.</p>'; return; }
     tahsilatListEl.innerHTML = '';
     const dayStats = {};
@@ -7214,7 +7361,7 @@
             <span class="hist-date">${dateDisplay(t.date)}${t.note ? ' · ' + escHtml(t.note) : ''}</span>
           </div>
           <div class="hist-right">
-            <span class="hist-total">${fmt(t.amount)}</span>
+            <span class="hist-total th-amt">+${fmt(t.amount)} ₺</span>
             <button class="hist-del" data-id="${t.id}" title="Sil">✕</button>
           </div>
         </div>
@@ -7258,7 +7405,7 @@
     if (editingTahsilatId && !t) editingTahsilatId = null;
     document.getElementById('tahsilatEditBanner').classList.toggle('show', !!editingTahsilatId);
     if (t) document.getElementById('tahsilatEditText').textContent = `Düzenleniyor: ${t.customer || 'Liste tahsilatı'} · ${dateDisplay(t.date)}`;
-    document.getElementById('tahsilatSaveBtn').textContent = editingTahsilatId ? 'Değişiklikleri kaydet' : 'Tahsilatı kaydet';
+    document.getElementById('tahsilatSaveBtn').textContent = editingTahsilatId ? '✓  Değişiklikleri kaydet' : '✓  Tahsil et';
   }
   document.getElementById('tahsilatEditCancel').addEventListener('click', () => {
     setTahsilatEditMode(null);
@@ -7693,6 +7840,11 @@
     renderCariDetail();
     window.scrollTo({ top:0, behavior:'smooth' });
   }
+  document.getElementById('cariContact').addEventListener('click', e => {
+    if (!currentCari) return;
+    if (e.target.closest('[data-cc-ask]')) return callAsk(currentCari, () => { document.getElementById('cariPhone').value = getCustomerPhone(currentCari); renderCariDetail(); });
+    if (e.target.closest('[data-cc-wa]')){ const ph = waPhone(getCustomerPhone(currentCari)); window.open((ph ? `https://wa.me/${ph}` : 'https://wa.me/') + '?text=' + encodeURIComponent(balanceMessage(currentCari, 0)), '_blank'); }
+  });
   function closeCariDetail(){
     currentCari = '';
     cariDetailView.hidden = true;
@@ -7709,6 +7861,9 @@
     const lb = balanceLabel(bal);
     document.getElementById('cariDetailName').textContent = name;
     document.getElementById('cariDetailMeta').textContent = infoLine(name);
+    { const ph = getCustomerPhone(name), d = String(ph || '').replace(/[^\d+]/g, '');
+      document.getElementById('cariContact').innerHTML = (ph ? `<a class="cc-call" href="tel:${escAttr(d)}">${PH_IC}Ara<small>${escHtml(ph)}</small></a>` : `<button type="button" class="cc-call" data-cc-ask>${PH_IC}Ara<small>Numara kayıtlı değil</small></button>`)
+        + `<button type="button" class="cc-wa" data-cc-wa>${WA_IC}Bakiye gönder</button>`; }
     document.getElementById('cariGroupList').innerHTML = allGroups().map(g => `<option value="${escAttr(g)}">`).join('');
     document.getElementById('cariHero').className = 'cari-hero ' + lb.cls;
     document.getElementById('cariDetailBalance').innerHTML = `${lb.text}<small>${bal > 0.004 || bal < -0.004 ? '₺ ' + lb.tag : lb.tag}</small>`;
