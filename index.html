@@ -2287,6 +2287,31 @@
   html[data-theme="dark"] .ar-more summary{color:#A9B6CF}
   html[data-theme="dark"] .ar-e{background:#24345E !important;border-color:#33467A !important}
   html[data-theme="dark"] .ar-e.k-o{border-left-color:#8EA2D8 !important}html[data-theme="dark"] .ar-e.k-p{border-left-color:#22C55E !important}html[data-theme="dark"] .ar-e.k-r{border-left-color:#F87171 !important}
+  /* ===== Askıya alma ===== */
+  .oc-btn.t-hold{background:#FFF7E6 !important;color:#B45309 !important}
+  html[data-theme="dark"] .oc-btn.t-hold{background:#3B2F14 !important;color:#FCD34D !important}
+  .hd-quick{display:flex;gap:8px;margin:12px 0 8px}
+  .hd-quick button{flex:1;min-height:40px;border:1.5px solid #D5DCE7;border-radius:10px;background:#fff;color:#14213F;font:inherit;font-size:.86rem;font-weight:800;cursor:pointer}
+  .hd-quick button.on{background:#14213F;border-color:#14213F;color:#fff}
+  .hd-date{display:block;width:100%;height:46px;padding:0 12px;border:1.5px solid #D5DCE7;border-radius:10px;font:inherit;font-size:.95rem;font-weight:700}
+  .hold-list{display:flex;flex-direction:column;gap:10px}
+  .hs-it{position:relative;padding:13px 14px 12px 18px;border:1px solid #F2D7A6;border-radius:16px;background:#fff;overflow:hidden}
+  .hs-it:before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#F59E0B}
+  .hs-top{display:flex;align-items:baseline;gap:10px}
+  .hs-top b{flex:1;min-width:0;font-family:var(--font-display);font-size:1.02rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#14213F;overflow-wrap:anywhere}
+  .hs-amt{flex:none;font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:#14213F}
+  .hs-meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:5px;font-size:.7rem;font-weight:800;letter-spacing:.03em;color:#8A6A2E}
+  .hs-meta .owe{color:#B91C1C}
+  .hs-acts{display:grid;grid-template-columns:1.4fr 1fr auto;gap:8px;margin-top:10px}
+  .hs-acts button{width:auto !important;min-height:42px !important;padding:0 12px !important;border:0;border-radius:12px;background:#EEF2F8;color:#2F4475;font:inherit;font-size:.78rem;font-weight:900;cursor:pointer}
+  .hs-acts .go{background:#16A34A;color:#fff;box-shadow:0 6px 14px rgba(22,163,74,.25)}
+  .hs-acts .del{background:#FDECEE;color:#B91C1C}
+  html[data-theme="dark"] .hs-it{background:#1C2A4F;border-color:#6B5320}
+  html[data-theme="dark"] .hs-top b,html[data-theme="dark"] .hs-amt{color:#F1F5F9}
+  html[data-theme="dark"] .hs-meta{color:#E8C27A}
+  html[data-theme="dark"] .hs-acts button{background:#2B3D6B;color:#DCE4F5}
+  html[data-theme="dark"] .hs-acts .go{background:#16A34A;color:#fff}
+  html[data-theme="dark"] .hs-acts .del{background:#43161D;color:#FCA5A5}
 </style>
 </head>
 <body>
@@ -2333,7 +2358,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 73 · 14.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 74 · 14.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2610,6 +2635,7 @@
     <button class="tab-btn" data-tab="gider">Gider</button>
     <button class="tab-btn" data-tab="personel">Personel</button>
     <button class="tab-btn" data-tab="cari">Cari Hesap</button>
+    <button class="tab-btn" data-tab="askida">Askıdaki Siparişler</button>
     <button class="tab-btn" data-tab="takip">Müşteri Takibi</button>
     <button class="tab-btn" data-tab="dolap">Dolap</button>
     <button class="tab-btn" data-tab="rapor">Rapor</button>
@@ -2842,6 +2868,12 @@
     <section class="st-card"><div class="st-ct"><b>Gruplara göre satış</b><small>Koli payı</small></div><div id="stGrp"></div></section>
     <section class="st-card"><div class="st-ct"><b>En çok alışveriş yapan müşteriler</b><small>Tutara göre · dokunun: hesabı açılır</small></div><div class="st-bars" id="stCust"></div></section>
     <p class="st-foot">Hesaplar teslim edilen ve bekleyen tüm siparişlerden yapılır; iadeler düşülmez.</p>
+  </div>
+
+  <!-- ASKIDAKİ SİPARİŞLER TAB -->
+  <div class="panel" id="panel-askida">
+    <div class="tk-head"><span class="tk-kick">ÖDEME BEKLENİYOR</span><h2>Askıdaki Siparişler</h2><p>Ödeme alınmadan götürülmeyecek siparişler. Cari, rapor ve irsaliyeye girmezler; ödeme gelince “Askıdan al” ile götüreceğiniz güne eklenir.</p></div>
+    <div class="hold-list" id="holdStrip"></div>
   </div>
 
   <!-- MÜŞTERİ TAKİBİ TAB -->
@@ -3221,7 +3253,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 73 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 74 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4455,6 +4487,7 @@
       if (btn.dataset.tab === 'personel') renderPersonel();
       if (btn.dataset.tab === 'hakkinda') renderHakkinda();
       if (btn.dataset.tab === 'takip') renderReminders();
+      if (btn.dataset.tab === 'askida') renderHoldStrip(getOrders());
       if (btn.dataset.tab === 'istatistik') renderStats();
       document.documentElement.classList.toggle('on-about', btn.dataset.tab === 'hakkinda');
     });
@@ -5016,6 +5049,7 @@
 
   // ===== Orders =====
   function getOrders(){ return safeGet('siparis_orders', []); }
+  function liveOrders(){ return getOrders().filter(o => !o.onHold); }   // askıdaki siparişler cari, rapor, irsaliye ve istatistiğe girmez
   function saveOrders(orders){ safeSet('siparis_orders', orders); }
   function lastOrderFor(name){
     const k = foldText(name); return getOrders().filter(o => foldText(o.customer) === k).sort((a,b) => String(b.date).localeCompare(String(a.date)) || idStamp(b.id) - idStamp(a.id))[0];
@@ -5115,7 +5149,7 @@
   // ===== Balance calculation =====
   function balanceFor(name){
     const key = foldText(name);
-    const owed = getOrders()
+    const owed = liveOrders()
       .filter(o => foldText(o.customer) === key && o.paymentType === 'account')
       .reduce((s,o) => s + num(o.total), 0);
     const paid = getTahsilat()
@@ -5149,7 +5183,7 @@
       return idStamp(x.id) < ts;
     };
     const mine = x => foldText(x.customer) === key;
-    const owed = getOrders().filter(o => mine(o) && o.paymentType === 'account' && before(o)).reduce((t, o) => t + num(o.total), 0);
+    const owed = liveOrders().filter(o => mine(o) && o.paymentType === 'account' && before(o)).reduce((t, o) => t + num(o.total), 0);
     const paid = getTahsilat().filter(t => tAffectsCari(t) && mine(t) && before(t)).reduce((t, x) => t + num(x.amount), 0);
     const ret = getReturns().filter(r => r.refundType === 'account' && mine(r) && before(r)).reduce((t, r) => t + num(r.total), 0);
     const old = getDebts().filter(d => mine(d) && before(d)).reduce((t, d) => t + num(d.amount), 0);
@@ -6009,7 +6043,7 @@
   // --- Başlık: bugünün özeti (sipariş sayısı, tutar, açık alacak) ---
   function updateHeadStats(){
     const el = $id('headStats'); if (!el) return;
-    const t = todayStr(), orders = getOrders(), todays = orders.filter(o => o.date === t);
+    const t = todayStr(), orders = liveOrders(), todays = orders.filter(o => o.date === t);
     const recv = orders.filter(o => o.paymentType === 'account').reduce((a, o) => a + num(o.total), 0)
       + getDebts().reduce((a, d) => a + num(d.amount), 0)
       - getTahsilat().filter(tAffectsCari).reduce((a, x) => a + num(x.amount), 0)
@@ -6133,7 +6167,7 @@
     const map = new Map();
     const get = name => { const k = foldText(name); if (!k) return null; if (!map.has(k)) map.set(k, { name, lastOrder:'', lastPay:'', firstOwe:'' }); return map.get(k); };
     getCustomers().forEach(n => get(n));
-    getOrders().forEach(o => { const r = get(o.customer); if (!r) return; if (o.date > r.lastOrder) r.lastOrder = o.date; if (o.paymentType === 'account' && (!r.firstOwe || o.date < r.firstOwe)) r.firstOwe = o.date; });
+    liveOrders().forEach(o => { const r = get(o.customer); if (!r) return; if (o.date > r.lastOrder) r.lastOrder = o.date; if (o.paymentType === 'account' && (!r.firstOwe || o.date < r.firstOwe)) r.firstOwe = o.date; });
     getTahsilat().forEach(t => { const r = get(t.customer); if (r && t.date > r.lastPay) r.lastPay = t.date; });
     getDebts().forEach(d => { const r = get(d.customer); if (r && (!r.firstOwe || d.date < r.firstOwe)) r.firstOwe = d.date; });
     const out = [];
@@ -6236,7 +6270,7 @@
   const stMoney = n => fmt(Math.round(n)) + ' ₺';
   function renderStats(){
     const box = $id('stKpi'); if (!box) return;
-    const from = stStart(), orders = getOrders().filter(o => o.customer && (!from || o.date >= from));
+    const from = stStart(), orders = liveOrders().filter(o => o.customer && (!from || o.date >= from));
     const groups = safeGet('siparis_product_groups', []), gmap = getGroupMap();
     let ciro = 0, koli = 0;
     const prods = new Map(), custs = new Map(), grp = new Map();
@@ -6257,7 +6291,7 @@
     // aylık (son 6 ay, dönemden bağımsız)
     const t = todayStr(), y0 = +t.slice(0, 4), m0 = +t.slice(5, 7) - 1, months = [];
     for (let i = 5; i >= 0; i--){ const d = new Date(y0, m0 - i, 1); months.push({ key: d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'), lbl: AYLAR[d.getMonth()], v: 0 }); }
-    getOrders().forEach(o => { const m = months.find(x => o.date && o.date.startsWith(x.key)); if (m) m.v += num(o.total) || (o.products || []).reduce((s2, p) => s2 + num(p.adet) * num(p.fiyat), 0); });
+    liveOrders().forEach(o => { const m = months.find(x => o.date && o.date.startsWith(x.key)); if (m) m.v += num(o.total) || (o.products || []).reduce((s2, p) => s2 + num(p.adet) * num(p.fiyat), 0); });
     const mx = Math.max(1, ...months.map(m => m.v));
     $id('stMonth').innerHTML = months.map((m, i) => `<div class="col${i === months.length - 1 ? ' now' : ''}"><em>${m.v ? (m.v >= 1000 ? fmt(Math.round(m.v / 1000)) + ' bin' : fmt(Math.round(m.v))) : ''}</em><i style="height:${Math.max(3, Math.round(m.v / mx * 100))}%"></i><span>${m.lbl}</span></div>`).join('');
     // ürünler
@@ -6298,7 +6332,7 @@
   function aracBasis(){ const r = document.querySelector('input[name="aracBasis"]:checked'); return r ? r.value : 'order'; }
   function vehicleOrders(d, includeDelivered, basis){
     const b = basis || aracBasis();
-    return getOrders().filter(o => (b === 'delivery' ? (o.deliveryDate || o.date) : o.date) === d && (includeDelivered || !o.delivered));
+    return liveOrders().filter(o => (b === 'delivery' ? (o.deliveryDate || o.date) : o.date) === d && (includeDelivered || !o.delivered));
   }
   function vehicleSummary(d, includeDelivered){
     const orders = vehicleOrders(d, includeDelivered);
@@ -6865,6 +6899,58 @@
   let histBal = new Map();
   let whoMap = null;
   function whoOf(id){ if (!whoMap){ try{ whoMap = JSON.parse(localStorage.getItem('tidem_kim') || '{}') || {}; }catch(e){ whoMap = {}; } } return whoMap['siparis_orders\u0001' + id]; }
+  // ===== Askıya alma: ödeme alınmadan götürülmeyecek siparişler =====
+  function askDay(title, text){
+    return new Promise(res => {
+      const t = todayStr(), tm = new Date(Date.now() + 864e5), tmS = `${tm.getFullYear()}-${String(tm.getMonth() + 1).padStart(2, '0')}-${String(tm.getDate()).padStart(2, '0')}`;
+      const o = document.createElement('div'); o.className = 'tf-dlg';
+      o.innerHTML = `<div class="tf-box"><h3></h3><p class="tf-p"></p><div class="hd-quick"><button type="button" data-d="${t}" class="on">Bugün</button><button type="button" data-d="${tmS}">Yarın</button></div><input type="date" class="hd-date" value="${t}"><div class="tf-act"><button type="button" class="tf-no">Vazgeç</button><button type="button" class="tf-ok">Bu güne ekle</button></div></div>`;
+      o.querySelector('h3').textContent = title; o.querySelector('.tf-p').textContent = text;
+      const inp = o.querySelector('.hd-date');
+      o.addEventListener('click', e => {
+        const q = e.target.closest('[data-d]'); if (q){ inp.value = q.dataset.d; o.querySelectorAll('[data-d]').forEach(b => b.classList.toggle('on', b === q)); return; }
+        if (e.target.closest('.tf-ok')){ o.remove(); res(inp.value || t); } else if (e.target === o || e.target.closest('.tf-no')){ o.remove(); res(null); }
+      });
+      inp.addEventListener('input', () => o.querySelectorAll('[data-d]').forEach(b => b.classList.toggle('on', b.dataset.d === inp.value)));
+      document.body.appendChild(o);
+    });
+  }
+  function holdToggle(id){
+    const orders = getOrders(), o = orders.find(x => x.id === id); if (!o) return;
+    const done = () => { saveOrders(orders); renderHistory(); renderTahsilatHistory(); renderRapor(); try{ renderCari(); }catch(e){} try{ renderReminders(); }catch(e){} };
+    if (!o.onHold){
+      if (o.delivered) return;
+      o.onHold = true; o.holdDate = todayStr(); done();
+      flash(`“${o.customer}” siparişi askıya alındı. Menüde “Askıdaki Siparişler”de bekliyor.`);
+      return;
+    }
+    askDay('Askıdan al · ' + o.customer, 'Ödeme alındıysa siparişi götüreceğiniz güne ekleyin.').then(d => {
+      if (!d) return;
+      delete o.onHold; delete o.holdDate; o.date = d; done();
+      flash(`“${o.customer}” siparişi ${dateDisplay(d)} gününe eklendi.`);
+    });
+  }
+  function renderHoldStrip(all){
+    const box = document.getElementById('holdStrip'); if (!box) return;
+    const l = all.filter(o => o.onHold).sort((a, b) => String(a.holdDate || '').localeCompare(String(b.holdDate || '')));
+    const tab = document.querySelector('.tab-btn[data-tab="askida"]');
+    if (tab){ let d = tab.querySelector('.tab-dot'); if (l.length){ if (!d){ d = document.createElement('span'); d.className = 'tab-dot'; tab.appendChild(d); } d.textContent = l.length; } else if (d) d.remove(); }
+    if (!l.length){ box.innerHTML = '<div class="tk-empty"><b>✓</b>Askıda sipariş yok. Sipariş kartındaki “Askıya al” ile ekleyebilirsiniz.</div>'; return; }
+    const t = todayStr();
+    box.innerHTML = l.map(o => {
+      const days = o.holdDate ? daysBetween(o.holdDate, t) : 0, bal = balanceFor(o.customer), koli = (o.products || []).reduce((a, p) => a + num(p.adet), 0);
+      return `<div class="hs-it"><div class="hs-top"><b>${escHtml(o.customer)}</b><span class="hs-amt">${fmt(o.total)} ₺</span></div>
+        <div class="hs-meta"><span>${(o.products || []).length} ÜRÜN · ${fmt(koli)} KOLİ</span><span>${days ? days + ' GÜNDÜR BEKLİYOR' : 'BUGÜN ASKIYA ALINDI'}</span>${bal > 0.004 ? `<span class="owe">CARİ BORÇ ${fmt(bal)} ₺</span>` : ''}</div>
+        <div class="hs-acts"><button type="button" class="go" data-hold-id="${o.id}">ASKIDAN AL</button><button type="button" data-hold-view="${o.id}">FİŞİ GÖR</button><button type="button" class="del" data-hold-del="${o.id}">SİL</button></div></div>`;
+    }).join('');
+  }
+  document.getElementById('holdStrip').addEventListener('click', e => {
+    const b = e.target.closest('[data-hold-id]'); if (b) return holdToggle(b.dataset.holdId);
+    const v = e.target.closest('[data-hold-view]'); if (v){ const o = getOrders().find(x => x.id === v.dataset.holdView); if (o) openReportDocument(buildArchiveOrderReceipt(o)); return; }
+    const d = e.target.closest('[data-hold-del]');
+    if (d){ if (!d.dataset.arm){ d.dataset.arm = '1'; d.textContent = 'EMİN MİSİN?'; setTimeout(() => { if (d.isConnected){ delete d.dataset.arm; d.textContent = 'SİL'; } }, 2500); return; }
+      saveOrders(getOrders().filter(x => x.id !== d.dataset.holdDel)); renderHistory(); }
+  });
   function renderHistory(){
     whoMap = null;
     histBal = new Map();
@@ -6873,8 +6959,8 @@
     const statusEl = document.getElementById('historySearchStatus');
     const matches = o => !q || [o.customer, o.note, dateDisplay(o.date), o.date, dateDisplay(o.deliveryDate), ...(o.products || []).flatMap(p => [p.name, p.group])]
       .some(v => foldText(v).includes(q));
-    renderHistOverview(allOrders);
-    const orders = allOrders.filter(matches).filter(o => histDelFilter === 'all' || (histDelFilter === 'wait' ? !o.delivered : !!o.delivered));
+    renderHistOverview(allOrders.filter(o => !o.onHold)); renderHoldStrip(allOrders);
+    const orders = allOrders.filter(o => !o.onHold).filter(matches).filter(o => histDelFilter === 'all' || (histDelFilter === 'wait' ? !o.delivered : !!o.delivered));
     const forceOpen = !!q || histDelFilter !== 'all';
     if (statusEl) statusEl.textContent = q ? (orders.length ? `${orders.length} sipariş bulundu.` : '') : '';
     if (allOrders.length === 0){ historyListEl.innerHTML = '<p class="hist-empty">Henüz kayıtlı sipariş yok.</p>'; return; }
@@ -6949,6 +7035,7 @@
             <button type="button" class="hist-edit oc-btn t-edit" data-id="${o.id}" aria-label="Düzenle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="M13.5 6.5l4 4"/></svg><span>Düzenle</span></button>
             <button type="button" class="hist-wa oc-btn t-wa" data-id="${o.id}" aria-label="WhatsApp'tan gönder"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span>WhatsApp</span></button>
             <button type="button" class="hist-pdf oc-btn t-pdf" data-id="${o.id}" aria-label="PDF olarak gönder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><span>PDF</span></button>
+            ${o.delivered ? '' : `<button type="button" class="oc-btn t-hold" data-action="toggle-hold" data-id="${o.id}" aria-label="Askıya al"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><span>Askıya al</span></button>`}
             <button type="button" class="hist-del oc-del" data-id="${o.id}" title="Sil" aria-label="Sil">✕</button>
           </div>
         `;
@@ -7124,6 +7211,7 @@
           renderRapor();
         });
       });
+      root.querySelectorAll('[data-action="toggle-hold"]').forEach(el => el.addEventListener('click', () => holdToggle(el.dataset.id)));
       root.querySelectorAll('[data-action="toggle-system"]').forEach(el => {
         el.addEventListener('click', () => {
           const orders = getOrders();
@@ -7776,7 +7864,7 @@
 
   function renderCari(){
     try{ renderPromises(); }catch(e){}
-    const orders = getOrders();
+    const orders = liveOrders();
     const tahsilat = getTahsilat().filter(tAffectsCari);
     const returns = getReturns().filter(r => r.refundType === 'account');
     const debts = getDebts();
@@ -7810,7 +7898,7 @@
   function renderCariDay(){
     if (!cariDayDate.value) cariDayDate.value = todayStr();
     const d = cariDayDate.value, box = document.getElementById('cariDayList');
-    const accOrders = getOrders().filter(o => o.paymentType === 'account');
+    const accOrders = liveOrders().filter(o => o.paymentType === 'account');
     const delivered = accOrders.filter(o => o.delivered && (o.deliveryDate || o.date) === d);
     const waiting = accOrders.filter(o => !o.delivered && o.date === d);
     const debts = getDebts().filter(x => x.date === d);
@@ -7850,7 +7938,7 @@
     const k = foldText(name); const out = [];
     getDebts().filter(d => foldText(d.customer) === k).forEach(d => out.push({ kind:'debt', id:d.id, date:d.date, amount:num(d.amount), sign:1, title:'Eski borç', note:d.note || '' }));
     const PAYN = { cash:'Nakit', card:'Kredi kartı', eft:'IBAN / EFT' };
-    getOrders().filter(o => foldText(o.customer) === k).forEach(o => {
+    liveOrders().filter(o => foldText(o.customer) === k).forEach(o => {
       const acc = o.paymentType === 'account';
       out.push({ kind: acc ? 'order' : 'orderPaid', id:o.id, date:o.date, amount:num(o.total), sign: acc ? 1 : 0,
         title: acc ? 'Sipariş · cari hesaba' : `Sipariş · ${PAYN[o.paymentType] || 'Nakit'} ödendi`,
@@ -8321,8 +8409,8 @@
   // Bir günün tüm rakamları (rapor ekranı ve yazdırma aynı hesabı kullanır)
   function dayFigures(d){
     const sum = (arr, fn) => arr.reduce((s,x) => s + num(fn(x)), 0);
-    const orders = getOrders().filter(o => o.date === d && !o.delivered);
-    const deliveredOrders = getOrders().filter(o => o.delivered && (o.deliveryDate || o.date) === d);
+    const orders = liveOrders().filter(o => o.date === d && !o.delivered);
+    const deliveredOrders = liveOrders().filter(o => o.delivered && (o.deliveryDate || o.date) === d);
     // Siparişten otomatik oluşan kart tahsilatları (orderId) sipariş olarak zaten sayılıyor; çift saymamak için hariç
     const tahsilat = getTahsilat().filter(t => t.date === d && !t.orderId);
     const returns = getReturns().filter(r => r.date === d);
@@ -8381,7 +8469,7 @@
       if(!existing || (!assignedGroupForProduct(existing,productGroups) && mapped)) catalogNames.set(key,name);
     });
     const observedNames = new Map();
-    getOrders().filter(o => o.delivered && (o.deliveryDate || o.date) === d).forEach(o => (o.products || []).forEach(p => {
+    liveOrders().filter(o => o.delivered && (o.deliveryDate || o.date) === d).forEach(o => (o.products || []).forEach(p => {
       const qty=num(p.adet); if(qty<=0) return;
       const rawName=(p.name||'Ürün adı yok').trim()||'Ürün adı yok';
       const nameKey=productIdentityKey(rawName);
@@ -8437,7 +8525,7 @@
 
     const tList = document.getElementById('raporTahsilatList');
     const tahsilat = getTahsilat().filter(t => t.date === d);
-    const teslimatlar = getOrders().filter(o => (o.deliveryDate || (o.delivered ? o.date : '')) === d && o.delivered && !['card','account'].includes(o.paymentType));
+    const teslimatlar = liveOrders().filter(o => (o.deliveryDate || (o.delivered ? o.date : '')) === d && o.delivered && !['card','account'].includes(o.paymentType));
     tList.innerHTML = '';
     if (tahsilat.length === 0 && teslimatlar.length === 0){ tList.innerHTML = '<p class="hist-empty">Bu tarihte tahsilat veya teslimat yok.</p>'; }
     tahsilat.forEach(t => {
@@ -8477,7 +8565,7 @@
   function buildReportDoc(d){
     const f = dayFigures(d);
     const payments = getTahsilat().filter(t => t.date === d);
-    const teslimatlar = getOrders().filter(o => (o.deliveryDate || (o.delivered ? o.date : '')) === d && o.delivered && !['card','account'].includes(o.paymentType));
+    const teslimatlar = liveOrders().filter(o => (o.deliveryDate || (o.delivered ? o.date : '')) === d && o.delivered && !['card','account'].includes(o.paymentType));
     const returns = getReturns().filter(r => r.date === d);
     const expenses = getGiderler().filter(g => g.date === d);
     const tag = label => `<span class="tag">${label}</span>`;
@@ -8592,7 +8680,7 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
     if (type === 'all' || type === 'order') orders.forEach(o => {
       const matchedItems = (o.products || []).filter(p => !product || foldText(p.name).includes(product));
       const itemText = matchedItems.map(p => `${p.name || 'Ürün'} · ${fmt(p.adet)} koli`).join(', ');
-      rows.push({ date:o.date, name:o.customer, sub:`Sipariş · ${(o.products || []).length} ürün · ${o.delivered ? 'Teslim edildi' : 'Teslim edilmedi'}${itemText ? ' · ' + itemText : ''}${o.note ? ' · ' + o.note : ''}`, amount:o.total, color:'var(--red)', kind:'Sipariş', orderId:o.id });
+      rows.push({ date:o.date, name:o.customer, sub:`${o.onHold ? 'ASKIDA · ' : ''}Sipariş · ${(o.products || []).length} ürün · ${o.delivered ? 'Teslim edildi' : 'Teslim edilmedi'}${itemText ? ' · ' + itemText : ''}${o.note ? ' · ' + o.note : ''}`, amount:o.total, color:'var(--red)', kind:'Sipariş', orderId:o.id });
     });
     if (type === 'all' || type === 'payment') payments.forEach(t => rows.push({ date:t.date, name:t.customer || 'Liste tahsilatı', sub:`Tahsilat · ${T_LABELS[tMethod(t)]}${t.note ? ' · ' + t.note : ''}`, amount:t.amount, color:'var(--green)', kind:'Tahsilat' }));
     if (type === 'all' || type === 'return') returns.forEach(r => {
@@ -9057,6 +9145,7 @@ document.querySelectorAll('.add-pro').forEach(b => b.addEventListener('click', (
     gider:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 9h6M9 13h4"/>',
     personel:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c.8-3.4 3.2-5.2 6-5.2s5.2 1.8 6 5.2"/><path d="M16 4.5a3 3 0 0 1 0 6M18 14.8c1.6.7 2.6 2.4 3 5.2"/>',
     cari:'<path d="M5 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+    askida:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M10 9v6M14 9v6"/>',
     takip:'<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
     dolap:'<rect x="6" y="3" width="12" height="18" rx="2"/><path d="M6 10h12M9 6v2M9 13v3"/>',
     rapor:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
