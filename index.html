@@ -2303,7 +2303,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 66 · 14.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 68 · 14.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3187,7 +3187,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 66 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 68 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4344,6 +4344,12 @@
   function restoreDraft(){
     const draft = safeGet(draftKey, null);
     if (!draft || (!draft.customer && !draft.products?.some(p => p.name || p.adet || p.fiyat))) return false;
+    // Düzenlemeye açılıp hiç değiştirilmeden bırakılan sipariş: her açılışta "Değişiklikleri kaydet" çıkmasın
+    if (draft.editId){
+      const o = getOrders().find(x => x.id === draft.editId);
+      const sig = (c, d, ps) => [foldText(c || ''), d || '', (ps || []).filter(p => p.name || p.adet || p.fiyat).map(p => [foldText(p.name || ''), num(p.adet), num(p.fiyat)].join(':')).join('|')].join('#');
+      if (!o || sig(o.customer, o.date, o.products) === sig(draft.customer, draft.date, draft.products)){ clearDraft(); return false; }
+    }
     customerInput.value = draft.customer || '';
     orderDate.value = draft.date || todayStr();
     deliveryDate.value = draft.deliveryDate || (draft.delivered ? (draft.date || todayStr()) : '');
@@ -9168,6 +9174,21 @@ function tfAskLong(title){
   }
   var unlocked = false; try{ unlocked = sessionStorage.getItem('tidem_giris_ok') === '1'; }catch(e){}
   if (unlocked) setTimeout(run, 300); else document.addEventListener('tidem:login', function(){ setTimeout(run, 400); }, { once: true });
+})();
+</script>
+<script>
+// Telefonun "kaydedilsin mi / değişiklikleri kaydet" (otomatik doldurma) sorularını kapat: hiçbir alan telefona kaydedilmez
+(function(){
+  function off(root){
+    (root.querySelectorAll ? root.querySelectorAll('input,textarea,select') : []).forEach(function(el){
+      if (el.type === 'file' || el.type === 'checkbox' || el.type === 'radio') return;
+      var a = el.getAttribute('autocomplete'); if (!a || a === 'on') el.setAttribute('autocomplete', 'off');
+      if (el.type === 'password' || el.dataset.noSave !== undefined) el.setAttribute('autocomplete', 'new-password');
+    });
+  }
+  off(document);
+  new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if (n.nodeType === 1){ if (/^(INPUT|TEXTAREA|SELECT)$/.test(n.tagName)) off(n.parentNode || document); else off(n); } }); }); })
+    .observe(document.body, { childList: true, subtree: true });
 })();
 </script>
 </body>
