@@ -1,0 +1,31 @@
+TİDEM GIDA · DESTEK AÇILIŞ KODLARI
+Uygulama açılış kodunu bu dosyadan okur. Kodu değiştirmek için sadece ':' işaretinden sonraki rakamları değiştirin.
+Her kod sadece kendi ayında geçer; girildiği günden itibaren destek hattı 1 ay açık kalır.
+Yeni ay eklemek için aynı biçimde yeni satır yazın (örnek biçim: Ay Yıl: Kod).
+
+Kasım 2026: 267912
+Aralık 2026: 169017
+Ocak 2027: 768133
+Şubat 2027: 595913
+Mart 2027: 146719
+Nisan 2027: 505898
+Mayıs 2027: 627823
+Haziran 2027: 680075
+Temmuz 2027: 654303
+Ağustos 2027: 758753
+Eylül 2027: 764027
+Ekim 2027: 675499
+Kasım 2027: 662638
+Aralık 2027: 151217
+Ocak 2028: 870160
+Şubat 2028: 172369
+Mart 2028: 285548
+Nisan 2028: 981934
+Mayıs 2028: 650115
+Haziran 2028: 768411
+Temmuz 2028: 865025
+Ağustos 2028: 430682
+Eylül 2028: 569286
+Ekim 2028: 862143
+Kasım 2028: 112858
+Aralık 2028: 786672
