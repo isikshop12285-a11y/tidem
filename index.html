@@ -296,9 +296,6 @@
   .hist-item:hover{border-color:#c8b797}
   .btn,.add-btn,.recall-btn,.hist-edit,.definition-actions button{transition:transform .12s,filter .12s,box-shadow .12s}
   .btn:active,.add-btn:active,.hist-edit:active{transform:translateY(1px)}
-  .archive-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .archive-filters .field label span{font-weight:500;color:var(--ink-soft)}
-  .archive-filters .field input,.archive-filters .field select{min-height:44px}
   .product-summary-group[role="button"]{cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;-webkit-tap-highlight-color:transparent}
   .product-summary-group[role="button"]:hover,.product-summary-group[role="button"]:focus-visible{outline:none;border-color:var(--red);box-shadow:0 5px 14px rgba(200,32,47,.12);transform:translateY(-1px)}
   .product-summary-group[role="button"]:active{transform:scale(.99)}
@@ -324,7 +321,7 @@
   #panel-rapor #raporBreakdown{padding:7px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,253,248,.8);box-shadow:none}#panel-rapor #raporBreakdown .breakdown-row b:after{content:" ₺";font-size:.75em;color:var(--ink-soft)}.report-history{margin:0 0 15px;padding:0;border:0}.report-history .hist-item{flex-direction:row;align-items:center;min-height:60px;margin-bottom:7px;padding:11px 13px;border:1px solid rgba(217,205,180,.82);border-radius:12px;background:rgba(255,253,248,.92);box-shadow:0 2px 8px rgba(15,23,42,.035)}.report-history .hist-name{font-size:.82rem}.report-history .hist-date{font-size:.68rem;line-height:1.35}.report-history .hist-total{font-size:.86rem;font-weight:900;white-space:nowrap}.report-history .hist-total:after{content:" ₺";font-size:.78em}
   #panel-rapor #raporProductSummary{padding:0;border:0;background:transparent;box-shadow:none}.report-print-action{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 22px;padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:#E9EDF3}.report-print-action>span{color:var(--ink-soft);font-size:.72rem;font-weight:700;line-height:1.35}.report-print-action .btn{flex:none;min-height:44px;padding:10px 16px;border-radius:10px;font-size:.82rem}
   @media(max-width:520px){#panel-rapor .report-hero{padding:17px;border-radius:16px}.report-hero-top{flex-direction:column;gap:12px}.report-title-lockup h1{font-size:1.72rem}.report-title-lockup p{max-width:260px;font-size:.7rem}.report-date-field{width:100%}.report-date-field input{width:100%;max-width:none;min-height:42px;font-size:.78rem}.report-net-card{margin-top:16px;padding:12px}.report-net-card>strong b{font-size:1.58rem}#panel-rapor .report-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}#panel-rapor .report-kpi{gap:7px;padding:10px 8px}#panel-rapor .report-kpi .s-value{font-size:.86rem}.report-section-heading{align-items:flex-start;flex-direction:column;gap:4px}.report-section-heading p{text-align:left}.report-print-action{align-items:flex-start;flex-direction:column}.report-print-action .btn{width:100%}}
-  @media(max-width:520px){.wrap{padding-left:12px;padding-right:12px}.archive-filters{grid-template-columns:1fr}.summary-strip{gap:8px;padding:11px 7px}.summary-strip .s-value{font-size:.98rem}.tab-btn{padding:8px 7px}}
+  @media(max-width:520px){.wrap{padding-left:12px;padding-right:12px}.summary-strip{gap:8px;padding:11px 7px}.summary-strip .s-value{font-size:.98rem}.tab-btn{padding:8px 7px}}
   /* ===== Giriş ekranı ===== */
   html.locked,html.locked body{overflow:hidden;height:100%}
   #lockScreen{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:max(20px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom));transition:opacity .45s ease,visibility .45s ease,transform .45s ease}
@@ -2069,8 +2066,6 @@
   .tk-row{position:relative;padding:13px 14px 12px 18px;border:1px solid #E4E9F1;border-radius:16px;background:#fff;box-shadow:0 1px 2px rgba(20,33,63,.04);overflow:hidden}
   .tk-row:before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#F59E0B}
   .tk-row.hi:before{background:#DC2626}
-  .tk-row.called{opacity:.62}
-  .tk-row.called:before{background:#16A34A}
   .tk-top{display:flex;align-items:baseline;gap:10px}
   .tk-nm{flex:1;min-width:0;font-family:var(--font-display);font-size:1.02rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#14213F;overflow-wrap:anywhere}
   .tk-bal{flex:none;padding:3px 9px;border-radius:999px;background:#FDECEE;color:#B91C1C;font-size:.76rem;font-weight:900}
@@ -2079,6 +2074,8 @@
   .tk-met .m span{display:block;font-size:9px;font-weight:900;letter-spacing:.12em;color:#6B7A93}
   .tk-met .m b{display:block;margin-top:2px;font-family:var(--font-display);font-size:1.12rem;font-weight:800;line-height:1.15;color:#14213F}
   .tk-met .m small{display:block;margin-top:1px;font-size:.68rem;font-weight:700;color:#8A97AD}
+  .tk-met .m b,.tk-met .m small,.tk-act a,.tk-act button{text-transform:uppercase}
+  .tk-met .m small{letter-spacing:.03em}
   .tk-met .m.mid{background:#FFF7E6}.tk-met .m.mid b{color:#B45309}
   .tk-met .m.hi{background:#FDECEE}.tk-met .m.hi b{color:#B91C1C}
   .tk-met .m.ok b{color:#15803D}
@@ -2089,7 +2086,6 @@
   .tk-call{background:#16A34A;color:#fff !important;box-shadow:0 6px 14px rgba(22,163,74,.25)}
   .tk-wa{background:#1A2A55;color:#fff}
   .tk-open{background:#EEF2F8;color:#2F4475}
-  .tk-done{margin-top:8px;font-size:.74rem;font-weight:900;color:#15803D}
   .tk-msg summary{margin-top:8px;font-size:.72rem;font-weight:700;color:#8A97AD;cursor:pointer}
   .tk-msg textarea{width:100%;margin-top:6px;padding:10px;border:1.5px solid #E1E7F0;border-radius:10px;font:inherit;font-size:.8rem;line-height:1.45;background:#fff;color:#14213F}
   .tk-empty{padding:30px 16px;border:1px dashed #D5DCE7;border-radius:16px;text-align:center;font-size:.86rem;font-weight:700;color:#6B7A93}
@@ -2115,7 +2111,6 @@
   html[data-theme="dark"] .tk-bal{background:#43161D;color:#FCA5A5}
   html[data-theme="dark"] .tk-open{background:#2B3D6B;color:#DCE4F5}
   html[data-theme="dark"] .tk-wa{background:#F1F5F9;color:#14213F}
-  html[data-theme="dark"] .tk-done{color:#86EFAC}
   html[data-theme="dark"] .tk-msg textarea{background:#24345E;border-color:#3A4C7E;color:#F1F5F9}
   html[data-theme="dark"] .tk-empty{border-color:#33467A;color:#A9B6CF}
   html[data-theme="dark"] .tk-link{background:linear-gradient(135deg,rgba(200,32,47,.14),rgba(200,32,47,.04));border-color:rgba(239,68,68,.35);color:#F1F5F9}
@@ -2257,6 +2252,41 @@
   .pos-send{display:flex;align-items:center;justify-content:center;gap:7px;width:auto !important;min-height:34px !important;margin:10px auto 0;padding:0 14px !important;border:1px solid rgba(34,197,94,.45);border-radius:999px;background:rgba(34,197,94,.14);color:#86EFAC;font:inherit;font-size:.76rem;font-weight:800;cursor:pointer}
   .pos-send[hidden]{display:none}
   .pos-send svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  /* ===== Arşiv · yıl / ay / gün ===== */
+  .ar-head{padding:4px 2px 10px}
+  .ar-kick{display:block;font-size:10.5px;font-weight:900;letter-spacing:.18em;color:#C8202F}
+  .ar-head h2{margin:2px 0 0;font-family:var(--font-display);font-size:1.5rem;font-weight:800;line-height:1.1;color:#14213F}
+  .ar-search{display:flex;align-items:center;gap:10px;height:46px;padding:0 14px;border:1px solid #E1E7F0;border-radius:13px;background:#fff;color:#94A3B8}
+  .ar-search svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+  #archiveCustomer{flex:1;min-width:0;height:100%;min-height:0 !important;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;font:inherit;font-size:.92rem;font-weight:700;color:#14213F;outline:0}
+  .ar-types{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:10px;padding:4px;border-radius:12px;background:#E9EEF6}
+  .ar-types button{width:auto !important;min-height:34px !important;padding:0 4px !important;border:0;border-radius:9px;background:transparent;color:#55657F;font:inherit;font-size:.78rem;font-weight:800;cursor:pointer}
+  .ar-types button.on{background:#fff;color:#14213F;box-shadow:0 2px 6px rgba(20,33,63,.12)}
+  .ar-more{margin-top:10px}
+  .ar-more summary{font-size:.76rem;font-weight:800;color:#55657F;cursor:pointer}
+  .ar-more-in{margin-top:10px}
+  .ar-more .field{margin:0 0 8px}
+  .ar-more .field label{display:block;margin-bottom:5px;font-size:9.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#6B7A93}
+  .ar-more .field input{width:100%;height:44px;min-height:44px}
+  .ar-dates{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .ar-kpi{display:grid;grid-template-columns:repeat(4,1fr);margin:12px 0 14px;padding:12px 4px;border-radius:16px;background:linear-gradient(135deg,#14213F,#1A2A55 60%,#2B3F78);box-shadow:0 8px 20px rgba(20,33,63,.16)}
+  .ar-kpi div{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;text-align:center}
+  .ar-kpi div + div{border-left:1px solid rgba(255,255,255,.14)}
+  .ar-kpi span{font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .ar-kpi b{font-family:var(--font-display);font-size:1rem;font-weight:800;color:#fff;white-space:nowrap}
+  .ar-kpi b.g{color:#86EFAC}.ar-kpi b.r{color:#FCA5A5}
+  .ar-e{margin:6px 0 0 !important;padding:10px 12px !important;border:1px solid #EEF1F6 !important;border-left:3px solid #94A3B8 !important;border-radius:10px !important;background:#FBFCFE !important;box-shadow:none !important}
+  .ar-e.k-o{border-left-color:#2F4475 !important}.ar-e.k-p{border-left-color:#16A34A !important}.ar-e.k-r{border-left-color:#C8202F !important}
+  .ar-e .hist-name{font-weight:900;text-transform:uppercase;letter-spacing:.01em}
+  html[data-theme="dark"] .ar-head h2{color:#F1F5F9}
+  html[data-theme="dark"] .ar-search{background:#24345E;border-color:#33467A}
+  html[data-theme="dark"] #archiveCustomer{color:#F1F5F9}
+  html[data-theme="dark"] .ar-types{background:#24345E}
+  html[data-theme="dark"] .ar-types button{color:#A9B6CF}
+  html[data-theme="dark"] .ar-types button.on{background:#F1F5F9;color:#14213F}
+  html[data-theme="dark"] .ar-more summary{color:#A9B6CF}
+  html[data-theme="dark"] .ar-e{background:#24345E !important;border-color:#33467A !important}
+  html[data-theme="dark"] .ar-e.k-o{border-left-color:#8EA2D8 !important}html[data-theme="dark"] .ar-e.k-p{border-left-color:#22C55E !important}html[data-theme="dark"] .ar-e.k-r{border-left-color:#F87171 !important}
 </style>
 </head>
 <body>
@@ -2303,7 +2333,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 68 · 14.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 73 · 14.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2821,7 +2851,7 @@
     <div class="tk-filt" id="tkFilt"></div>
     <div class="tk-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="tkQ" placeholder="Müşteri ara…" autocomplete="off" enterkeyhint="search"></div>
     <div class="tk-list" id="remindList"></div>
-    <p class="tk-foot">Gün sınırlarını Ayarlar → Hatırlatma bölümünden değiştirebilirsiniz. Aradığınız ya da mesaj attığınız müşteri “Bugün arandı” olarak listenin sonuna iner.</p>
+    <p class="tk-foot">Gün sınırlarını Ayarlar → Hatırlatma bölümünden değiştirebilirsiniz.</p>
   </div>
 
   <div class="panel" id="panel-cari">
@@ -3009,22 +3039,26 @@
 
   <!-- ARŞİV TAB -->
   <div class="panel" id="panel-arsiv">
-    <div class="list-head"><h2>Tarih bazlı arşiv</h2></div>
-    <div class="meta archive-filters" style="margin-bottom:12px;">
-      <div class="field"><label for="archiveFrom">Başlangıç tarihi <span>(opsiyonel)</span></label><input type="date" id="archiveFrom"></div>
-      <div class="field"><label for="archiveTo">Bitiş tarihi <span>(opsiyonel)</span></label><input type="date" id="archiveTo"></div>
-      <div class="field"><label for="archiveCustomer">Unvan / kişi ara</label><input id="archiveCustomer" placeholder="Unvan veya kişi adı yazın…" autocomplete="off"></div>
-      <div class="field"><label for="archiveProduct">Ürün ara</label><input id="archiveProduct" placeholder="Ürün adı yazın…" autocomplete="off"></div>
-      <div class="field"><label for="archiveType">Hareket türü</label><select id="archiveType"><option value="all">Tümü</option><option value="order">Siparişler</option><option value="payment">Tahsilatlar</option><option value="return">İadeler</option></select></div>
+    <div class="ar-head"><span class="ar-kick">KAYITLAR</span><h2>Arşiv</h2></div>
+    <div class="ar-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="archiveCustomer" placeholder="Müşteri / unvan ara…" autocomplete="off"></div>
+    <div class="ar-types" id="arTypes"><button type="button" data-t="all">Tümü</button><button type="button" data-t="order">Sipariş</button><button type="button" data-t="payment">Tahsilat</button><button type="button" data-t="return">İade</button></div>
+    <select id="archiveType" hidden><option value="all">Tümü</option><option value="order">Siparişler</option><option value="payment">Tahsilatlar</option><option value="return">İadeler</option></select>
+    <details class="ar-more"><summary>Ürün ve tarih aralığı</summary>
+      <div class="ar-more-in">
+        <div class="field"><label for="archiveProduct">Ürün</label><input id="archiveProduct" placeholder="Ürün adı yazın…" autocomplete="off"></div>
+        <div class="ar-dates">
+          <div class="field"><label for="archiveFrom">Başlangıç</label><input type="date" id="archiveFrom"></div>
+          <div class="field"><label for="archiveTo">Bitiş</label><input type="date" id="archiveTo"></div>
+        </div>
+      </div>
+    </details>
+    <div class="ar-kpi">
+      <div><span>Sipariş</span><b id="archiveOrderTotal">0</b></div>
+      <div><span>Tahsilat</span><b id="archivePaymentTotal" class="g">0</b></div>
+      <div><span>İade</span><b id="archiveReturnTotal" class="r">0</b></div>
+      <div><span>Kayıt</span><b id="archiveCount">0</b></div>
     </div>
-    <div class="summary-strip">
-      <div><div class="s-label">Sipariş</div><div class="s-value" id="archiveOrderTotal">0</div></div>
-      <div><div class="s-label">Tahsilat</div><div class="s-value" id="archivePaymentTotal" style="color:var(--green);">0</div></div>
-      <div><div class="s-label">İade</div><div class="s-value" id="archiveReturnTotal" style="color:var(--red);">0</div></div>
-      <div><div class="s-label">Kayıt</div><div class="s-value" id="archiveCount">0</div></div>
-    </div>
-    <div class="list-head"><h2>Filtrelenen hareketler</h2></div>
-    <div id="archiveList" class="history" style="border-top:none; padding-top:0;"><p class="hist-empty">Filtre uygulanıyor…</p></div>
+    <div id="archiveList" class="history"><p class="hist-empty">Filtre uygulanıyor…</p></div>
   </div>
 
   <!-- ARAÇ TAB -->
@@ -3187,7 +3221,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 68 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 73 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -6127,18 +6161,16 @@
   }
   // Müşteri takibi: aranan / mesaj atılanlar (yalnızca bu telefonda tutulur)
   let tkFilter = 'all';
-  function tkDone(){ try{ return JSON.parse(localStorage.getItem('tidem_aranan') || '{}') || {}; }catch(e){ return {}; } }
-  function tkMark(name){ const m = tkDone(), t = todayStr(); Object.keys(m).forEach(k => { if (m[k] !== t) delete m[k]; }); m[foldText(name)] = t; try{ localStorage.setItem('tidem_aranan', JSON.stringify(m)); }catch(e){} }
+  try{ localStorage.removeItem('tidem_aranan'); }catch(e){}   // eski "arandı" işaretleri (artık kullanılmıyor)
   const tkLevel = (d, lim) => d === null ? 'na' : d >= lim * 2 ? 'hi' : d >= lim ? 'mid' : 'ok';
-  const tkAgo = d => d === null ? '—' : d === 0 ? 'Bugün' : d + ' gün';
+  const tkAgo = d => d === null ? '—' : d <= 0 ? 'Bugün' : d === 1 ? 'Dün' : d + ' gün önce';
   const PH_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4.1-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.1 1.4v2.7a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>';
   const WA_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.2-3.6A8 8 0 1 1 8.3 19l-4.3.5Z"/><path d="M9 10.5h6M9 13.5h4"/></svg>';
   function renderReminders(){
     const box = $id('remindList'); if (!box) return;
-    const all = customerActivity(), cfg = remindCfg(), done = tkDone(), today = todayStr();
-    all.forEach(r => { r.called = done[foldText(r.name)] === today; });
+    const all = customerActivity(), cfg = remindCfg();
     const nPay = all.filter(r => r.needPay).length, nOrd = all.filter(r => r.needOrder).length, owe = all.filter(r => r.needPay).reduce((t, r) => t + r.bal, 0);
-    const left = all.filter(r => !r.called).length;
+    const left = all.length;
     // Cari'deki kısa yol ve menü rozeti
     const cEl = $id('remindCount'); if (cEl) cEl.textContent = left ? left + ' müşteri' : 'yok';
     const rEl = $id('remindRule'); if (rEl) rEl.textContent = `${cfg.pay}+ gün ödeme yapmayan · ${cfg.order}+ gün sipariş vermeyen`;
@@ -6149,34 +6181,34 @@
     $id('tkFilt').innerHTML = [['all', 'Tümü', all.length], ['pay', 'Ödeme', nPay], ['ord', 'Sipariş', nOrd]].map(([k, t, n]) => `<button type="button" data-tk-f="${k}" class="${tkFilter === k ? 'on' : ''}">${t} <em>${n}</em></button>`).join('');
     const q = foldText(($id('tkQ') || {}).value || '');
     const list = all.filter(r => (tkFilter === 'all' || (tkFilter === 'pay' ? r.needPay : r.needOrder)) && (!q || foldText(r.name).includes(q)))
-      .sort((a, b) => (a.called - b.called) || (b.needPay - a.needPay) || (b.bal - a.bal) || ((b.orderDays || 0) - (a.orderDays || 0)));
+      .sort((a, b) => (b.needPay - a.needPay) || (b.bal - a.bal) || ((b.orderDays || 0) - (a.orderDays || 0)));
     if (!list.length){ box.innerHTML = `<div class="tk-empty"><b>✓</b>${all.length ? 'Bu süzgeçte müşteri yok.' : 'Şu an hatırlatılacak müşteri yok.'}</div>`; return; }
     box.innerHTML = list.map(r => {
       const i = all.indexOf(r), oL = tkLevel(r.orderDays, cfg.order), pL = r.bal > 0.004 ? tkLevel(r.payDays, cfg.pay) : 'na';
       const lvl = (oL === 'hi' || pL === 'hi') ? 'hi' : 'mid';
-      return `<div class="tk-row ${lvl}${r.called ? ' called' : ''}" data-i="${i}">
+      return `<div class="tk-row ${lvl}" data-i="${i}">
         <div class="tk-top"><b class="tk-nm">${escHtml(r.name)}</b>${r.bal > 0.004 ? `<span class="tk-bal">${fmt(r.bal)} ₺</span>` : ''}</div>
         <div class="tk-met">
-          <div class="m ${oL}"><span>SİPARİŞ VERMEDİ</span><b>${tkAgo(r.orderDays)}</b><small>${r.lastOrder ? 'Son: ' + dateDisplay(r.lastOrder) : 'Hiç sipariş yok'}</small></div>
-          <div class="m ${pL}"><span>ÖDEME YAPMADI</span><b>${r.bal > 0.004 ? tkAgo(r.payDays) : 'Borcu yok'}</b><small>${r.lastPay ? 'Son: ' + dateDisplay(r.lastPay) : (r.bal > 0.004 ? 'Hiç ödeme yok' : '')}</small></div>
+          <div class="m ${oL}"><span>SON SİPARİŞ</span><b>${r.lastOrder ? tkAgo(r.orderDays) : 'Hiç yok'}</b><small>${r.lastOrder ? dateDisplay(r.lastOrder) : ''}</small></div>
+          <div class="m ${r.bal > 0.004 ? pL : 'ok'}"><span>SON ÖDEME</span>${r.lastPay
+            ? `<b>${tkAgo(daysBetween(r.lastPay, todayStr()))}</b><small>${dateDisplay(r.lastPay)}${r.bal > 0.004 ? '' : ' · borcu yok'}</small>`
+            : (r.bal > 0.004 ? `<b>Hiç ödemedi</b><small>${r.firstOwe ? 'İlk borç ' + dateDisplay(r.firstOwe) : ''}</small>` : `<b>Borcu yok</b><small></small>`)}</div>
         </div>
         <div class="tk-act">
           ${r.phone ? `<a class="tk-call" href="tel:${escAttr(String(r.phone).replace(/[^\d+]/g, ''))}" data-tk-call="${i}">${PH_IC}Ara</a>` : `<button type="button" class="tk-call" data-tk-phone="${i}">${PH_IC}Ara</button>`}
           <button type="button" class="tk-wa" data-tk-wa="${i}">${WA_IC}Mesaj</button>
           <button type="button" class="tk-open" data-tk-open="${i}">Hesap</button>
         </div>
-        ${r.called ? '<div class="tk-done">✓ Bugün arandı</div>' : ''}
         <details class="tk-msg"><summary>Hazır mesajı gör / düzenle</summary><textarea rows="7">${escHtml(reminderMessage(r))}</textarea></details>
       </div>`;
     }).join('');
     box.onclick = e => {
-      const f = e.target.closest('[data-tk-call]'); if (f){ tkMark(all[f.dataset.tkCall].name); setTimeout(renderReminders, 600); return; }
       const w = e.target.closest('[data-tk-wa]');
       if (w){ const r = all[w.dataset.tkWa], ta = w.closest('.tk-row').querySelector('textarea'), ph = waPhone(r.phone);
-        window.open((ph ? `https://wa.me/${ph}` : 'https://wa.me/') + '?text=' + encodeURIComponent(ta.value), '_blank'); tkMark(r.name); setTimeout(renderReminders, 600); return; }
+        window.open((ph ? `https://wa.me/${ph}` : 'https://wa.me/') + '?text=' + encodeURIComponent(ta.value), '_blank'); return; }
       const o = e.target.closest('[data-tk-open]'); if (o){ document.querySelector('.tab-btn[data-tab="cari"]').click(); openCariDetail(all[o.dataset.tkOpen].name); return; }
       const ph = e.target.closest('[data-tk-phone]');
-      if (ph){ const r = all[ph.dataset.tkPhone]; callAsk(r.name, () => { tkMark(r.name); setTimeout(renderReminders, 600); }); }
+      if (ph){ const r = all[ph.dataset.tkPhone]; callAsk(r.name, () => setTimeout(renderReminders, 600)); }
     };
   }
   $id('tkQ').addEventListener('input', () => renderReminders());
@@ -6249,7 +6281,7 @@
   function tkDailyBar(){
     const t = todayStr(); let seen = ''; try{ seen = localStorage.getItem('tidem_tk_gun') || ''; }catch(e){}
     if (seen === t || document.getElementById('tkBar')) return;
-    const done = tkDone(), n = customerActivity().filter(r => done[foldText(r.name)] !== t).length; if (!n) return;
+    const n = customerActivity().length; if (!n) return;
     const box = document.querySelector('.bars-bottom'); if (!box) return;
     const bar = document.createElement('div'); bar.id = 'tkBar'; bar.className = 'bk-bar tk-bar'; bar.setAttribute('role', 'status');
     bar.innerHTML = `<span class="bk-ic">⏰</span><b>Bugün hatırlatılacak ${n} müşteri var</b><button type="button" data-go>GÖR</button><button type="button" class="bk-x" aria-label="Kapat">✕</button>`;
@@ -8525,6 +8557,9 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
   });
 
   const openArchiveDates = new Set();   // arşivde açık olan günler
+  const openArchiveKeys = new Set(), closedArchiveKeys = new Set();    // açık / kapatılan yıllar ve aylar
+  document.getElementById('arTypes').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (!b) return; archiveType.value = b.dataset.t; renderArsiv(); });
+
   function buildArchiveOrderReceipt(order){
     const safe = value => String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     const products = order.products || [];
@@ -8566,41 +8601,51 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
       rows.push({ date:r.date, name:r.customer, sub:`İade · ${R_LABELS[r.refundType]} · ${r.products.length} ürün${itemText ? ' · ' + itemText : ''}${r.note ? ' · ' + r.note : ''}`, amount:r.total, color:'var(--red)', kind:'İade' });
     });
     rows.sort((a,b) => b.date.localeCompare(a.date));
-    if (customer || product || from || to) rows.forEach(row => openArchiveDates.add(row.date));
+    document.querySelectorAll('#arTypes [data-t]').forEach(x => x.classList.toggle('on', x.dataset.t === type));
+    const filtered = !!(customer || product || from || to);
+    const yearNow = todayStr().slice(0, 4), monthNow = todayStr().slice(0, 7);
     document.getElementById('archiveCount').textContent = rows.length;
     const list = document.getElementById('archiveList');
     list.innerHTML = '';
     if (!rows.length){ list.innerHTML = '<p class="hist-empty">Seçilen filtrelere uygun kayıt bulunamadı.</p>'; return; }
-    const dayCounts = {};
-    rows.forEach(row => { dayCounts[row.date] = (dayCounts[row.date] || 0) + 1; });
-    let lastArchiveDate = '';
-    let dayGroup = null;
-    rows.forEach(row => {
-      if (row.date !== lastArchiveDate){
-        const isOpen = openArchiveDates.has(row.date);
-        const heading = document.createElement('div');
-        heading.className = 'list-head archive-date-heading date-toggle';
-        heading.setAttribute('role', 'button');
-        heading.tabIndex = 0;
-        heading.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        heading.innerHTML = `<h2>${dateDisplay(row.date)} <small>${dayCounts[row.date]} kayıt</small></h2><span class="date-chev">${isOpen ? '▾' : '▸'}</span>`;
-        dayGroup = document.createElement('div');
-        dayGroup.hidden = !isOpen;
-        const groupRef = dayGroup, dateRef = row.date;
-        const toggle = () => {
-          const nowOpen = groupRef.hidden;
-          groupRef.hidden = !nowOpen;
-          if (nowOpen) openArchiveDates.add(dateRef); else openArchiveDates.delete(dateRef);
-          heading.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
-          heading.querySelector('.date-chev').textContent = nowOpen ? '▾' : '▸';
-        };
-        heading.addEventListener('click', toggle);
-        heading.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
-        list.appendChild(heading);
-        list.appendChild(dayGroup);
-        lastArchiveDate = row.date;
-      }
+    const sums = rs => { const t = { o:0, p:0, r:0 }; rs.forEach(x => { if (x.kind === 'Tahsilat') t.p += num(x.amount); else if (x.kind === 'İade') t.r += num(x.amount); else t.o += num(x.amount); }); return t; };
+    const parts = t => [t.o ? `sipariş ${fmt(t.o)}` : '', t.p ? `tahsilat +${fmt(t.p)}` : '', t.r ? `iade −${fmt(t.r)}` : ''].filter(Boolean).join(' · ');
+    const byKey = (arr, f) => { const m = new Map(); arr.forEach(x => { const k = f(x); if (!m.has(k)) m.set(k, []); m.get(k).push(x); }); return m; };
+    // Sipariş ekranındaki geçmiş ile aynı katlama düzeni: yıl → ay → gün
+    const toggler = (head, body, key, openSet, closedSet) => {
+      const t = () => { const nowOpen = body.hidden; body.hidden = !nowOpen; if (nowOpen){ openSet.add(key); closedSet && closedSet.delete(key); } else { openSet.delete(key); closedSet && closedSet.add(key); }
+        head.setAttribute('aria-expanded', nowOpen ? 'true' : 'false'); head.querySelector('.date-chev').textContent = nowOpen ? '▾' : '▸'; };
+      head.addEventListener('click', t); head.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); t(); } });
+    };
+    const mk = (cls, open, html) => { const h = document.createElement('div'); h.className = cls; h.setAttribute('role', 'button'); h.tabIndex = 0; h.setAttribute('aria-expanded', open ? 'true' : 'false'); h.innerHTML = html; return h; };
+    const td = todayStr(), GUN = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'], AY3 = ['OCA','ŞUB','MAR','NİS','MAY','HAZ','TEM','AĞU','EYL','EKİ','KAS','ARA'];
+    const ydD = new Date(Date.now() - 864e5), ydS = `${ydD.getFullYear()}-${String(ydD.getMonth() + 1).padStart(2, '0')}-${String(ydD.getDate()).padStart(2, '0')}`;
+    byKey(rows, r => r.date.slice(0, 4)).forEach((yRows, y) => {
+      const yOpen = filtered || openArchiveKeys.has(y) || (!closedArchiveKeys.has(y) && y === yearNow);
+      const yh = mk('year-head', yOpen, `<span class="yh-name">${escHtml(y)}</span><small>${yRows.length} kayıt · ${parts(sums(yRows))}</small><span class="date-chev">${yOpen ? '▾' : '▸'}</span>`);
+      const yb = document.createElement('div'); yb.className = 'year-body'; yb.hidden = !yOpen;
+      toggler(yh, yb, y, openArchiveKeys, closedArchiveKeys); list.appendChild(yh); list.appendChild(yb);
+      byKey(yRows, r => r.date.slice(0, 7)).forEach((mRows, ym) => {
+        const mOpen = filtered || openArchiveKeys.has(ym) || (!closedArchiveKeys.has(ym) && ym === monthNow);
+        const mh = mk('month-head', mOpen, `<span class="mh-name">${monthLabel(ym)}</span><small>${mRows.length} kayıt · ${parts(sums(mRows))}</small><span class="date-chev">${mOpen ? '▾' : '▸'}</span>`);
+        const mb = document.createElement('div'); mb.className = 'month-body'; mb.hidden = !mOpen;
+        toggler(mh, mb, ym, openArchiveKeys, closedArchiveKeys); yb.appendChild(mh); yb.appendChild(mb);
+        byKey(mRows, r => r.date).forEach((dRows, d) => {
+          const dOpen = filtered || openArchiveDates.has(d), t = sums(dRows), dd = new Date(d + 'T00:00:00');
+          const tag = d === td ? '<em class="dh-tag now">BUGÜN</em>' : (d === ydS ? '<em class="dh-tag">DÜN</em>' : '');
+          const line = [t.p ? `<span class="dh-del ok">+${fmt(t.p)} TAHSİLAT</span>` : '', t.r ? `<span class="dh-del wait">−${fmt(t.r)} İADE</span>` : ''].join('');
+          const dh = mk('list-head archive-date-heading date-toggle oh-day', dOpen, `<span class="dh-cal"><i>${AY3[dd.getMonth()]}</i><b>${dd.getDate()}</b></span><span class="dh-txt"><b>${GUN[dd.getDay()]}${tag}</b><small>${dateDisplay(d)} · ${dRows.length} kayıt</small>${line}</span><span class="dh-sum">${t.o ? fmt(t.o) : (t.p ? '+' + fmt(t.p) : fmt(t.r))}<small>₺</small></span><span class="date-chev">${dOpen ? '▾' : '▸'}</span>`);
+          const db = document.createElement('div'); db.hidden = !dOpen;
+          toggler(dh, db, d, openArchiveDates, null);
+          dRows.forEach(row => db.appendChild(archiveEntry(row)));
+          mb.appendChild(dh); mb.appendChild(db);
+        });
+      });
+    });
+  }
+  function archiveEntry(row){
       const entry = raporRow(row.name, row.sub, `${row.kind === 'Tahsilat' ? '+ ' : (row.kind === 'İade' ? '− ' : '')}${fmt(row.amount)}`, row.color);
+      entry.classList.add('ar-e', row.kind === 'Tahsilat' ? 'k-p' : (row.kind === 'İade' ? 'k-r' : 'k-o'));
       if (row.orderId){
         entry.classList.add('archive-order-receipt');
         const hint = document.createElement('button');
@@ -8623,8 +8668,7 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
           pointerStart=null;
         });
       }
-      dayGroup.appendChild(entry);
-    });
+      return entry;
   }
 
   // ===== Ürünler ve Gruplar (katalog) =====
