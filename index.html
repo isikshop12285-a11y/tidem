@@ -1752,7 +1752,8 @@
   html[data-theme="dark"] .me-badge.m{background:#F1F5F9;color:#14213F}
   /* ===== Yan menü ===== */
   .tabbar{display:none !important}
-  html.role-personel .tab-btn[data-tab="personel"],html.role-personel .tab-btn[data-tab="istatistik"]{display:none !important}
+  html.role-personel .tab-btn:is([data-tab="personel"],[data-tab="istatistik"],[data-tab="arsiv"]){display:none !important}
+  html.role-personel :is(#panel-cari .summary-strip,.tk-sum .mny){display:none !important}
   .nav-fab{position:fixed;z-index:940;top:calc(env(safe-area-inset-top,0px) + 14px);left:14px;display:inline-flex;align-items:center;justify-content:center;gap:0;width:46px;height:46px;padding:0;border:0;border-radius:999px;
     background:#14213F;color:#fff;font:inherit;font-size:.86rem;font-weight:800;letter-spacing:.01em;box-shadow:0 8px 20px rgba(20,33,63,.32);cursor:pointer;-webkit-tap-highlight-color:transparent}
   .nav-fab b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -1917,6 +1918,20 @@
   html[data-theme="dark"] .crop-box{background:#1C2A4F}
   html[data-theme="dark"] .crop-t{color:#F1F5F9}
   #panel-urunler{padding-bottom:84px}
+  /* ===== Tahsilat · tam ekran ===== */
+  html.on-tahsilat,html.on-tahsilat body{background:#0F1A35 !important}
+  html.on-tahsilat .brand-row,html.on-tahsilat footer.hint{display:none !important}
+  html.on-tahsilat #navFab{background:rgba(255,255,255,.12) !important;box-shadow:none !important;border:1px solid rgba(255,255,255,.2)}
+  html.on-tahsilat .pos{margin:-20px -16px 0;padding-top:30px;border-radius:0;box-shadow:none}
+  @media(max-width:520px){html.on-tahsilat .pos{margin-left:-12px;margin-right:-12px}}
+  html.on-tahsilat .pos-top{justify-content:center;gap:12px;min-height:46px}
+  html.on-tahsilat .pos-top:before,html.on-tahsilat .pos-top:after{content:'';width:36px;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55))}
+  html.on-tahsilat .pos-top:after{background:linear-gradient(90deg,#C8202F,rgba(200,32,47,0))}
+  html.on-tahsilat .pos-top .pos-k{padding:9px 20px 9px calc(20px + .3em);border:1.5px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.06);font-family:var(--font-display);font-size:.98rem;font-weight:800;letter-spacing:.3em;line-height:1;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+  html.on-tahsilat .pos-cust{margin-top:22px}
+  html.on-tahsilat .th-hist > h2{color:#fff}
+  html.on-tahsilat #tahsilatList .year-head{background:rgba(255,255,255,.08) !important;box-shadow:none}
+  html.on-tahsilat .th-hist > div > .hist-empty{color:rgba(255,255,255,.6)}
   /* ===== Hakkında · koyu vitrin ===== */
   html.on-about,html.on-about body{background:#0F1A35 !important}
   html.on-about .brand-row,html.on-about footer.hint{display:none !important}
@@ -2223,7 +2238,8 @@
   #tahsilatList .hist-item{padding:12px 14px !important;border:1px solid #E4E9F1 !important;border-left:4px solid #16A34A !important;border-radius:14px !important;background:#fff !important;box-shadow:none !important;margin-bottom:8px}
   #tahsilatList .hist-name{font-weight:900;text-transform:uppercase;letter-spacing:.01em}
   #tahsilatList .th-amt{color:#15803D !important;font-family:var(--font-display);font-size:1.08rem;font-weight:800}
-  #tahsilatList .archive-date-heading{border-radius:12px}
+  #tahsilatList .oh-day .dh-sum{color:#15803D}
+  html[data-theme="dark"] #tahsilatList .oh-day .dh-sum{color:#86EFAC}
   html[data-theme="dark"] .th-fill{background:#43161D;color:#FCA5A5}
   html[data-theme="dark"] #tahsilatList .hist-item{background:#1C2A4F !important;border-color:#2E4070 !important;border-left-color:#22C55E !important}
   html[data-theme="dark"] #tahsilatList .th-amt{color:#86EFAC !important}
@@ -2231,10 +2247,6 @@
   .pos{position:relative;margin:-4px -12px 0;padding:14px 16px 18px;border-radius:0 0 26px 26px;background:radial-gradient(120% 80% at 100% 0%,rgba(200,32,47,.32),transparent 60%),linear-gradient(160deg,#0F1A35,#14213F 55%,#1A2A55);color:#fff;box-shadow:0 14px 30px rgba(15,26,53,.25)}
   .pos-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px}
   .pos-k{font-size:11px;font-weight:900;letter-spacing:.22em;color:rgba(255,255,255,.6)}
-  .pos-src{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:12px 0 0;padding:4px;border-radius:13px;background:rgba(255,255,255,.08)}
-  .pos-src button{width:auto !important;min-height:38px !important;padding:0 8px !important;border:0;border-radius:10px;background:transparent;color:rgba(255,255,255,.7);font:inherit;font-size:.82rem;font-weight:800;cursor:pointer}
-  .pos-src button.on{background:#fff;color:#14213F}
-  .pos-src button[data-src="liste"].on{background:#22C55E;color:#04210F}
   .pos-cust{position:relative;margin-top:14px;text-align:center}
   .pos-cust label{display:block;margin-bottom:6px;font-size:9.5px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
   #tahsilatCustomer{width:100%;height:46px;padding:0 16px !important;border:1px solid rgba(255,255,255,.2) !important;border-radius:999px !important;background:rgba(255,255,255,.1) !important;box-shadow:none !important;color:#fff !important;font:inherit;font-size:.95rem;font-weight:800;text-align:center;text-transform:uppercase;letter-spacing:.02em}
@@ -2389,7 +2401,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 84 · 14.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 92 · 18.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2777,7 +2789,6 @@
     <div class="edit-banner" id="tahsilatEditBanner"><span id="tahsilatEditText"></span><button type="button" id="tahsilatEditCancel">Düzenlemeyi iptal et</button></div>
     <section class="pos">
       <div class="pos-top"><span class="pos-k">TAHSİLAT</span></div>
-      <div class="pos-src" id="thSrc"><button type="button" data-src="cari">Cari hesaptan</button><button type="button" data-src="liste">Liste</button></div>
       <div class="seg-grid" id="tahsilatTypeSeg" hidden>
         <button type="button" data-val="liste_cash">Liste<small>Nakit</small></button>
         <button type="button" data-val="liste_card">Liste<small>Kredi kartı</small></button>
@@ -3280,7 +3291,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 84 · 14.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 92 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4517,8 +4528,12 @@
       if (btn.dataset.tab === 'askida') renderHoldStrip(getOrders());
       if (btn.dataset.tab === 'istatistik') renderStats();
       document.documentElement.classList.toggle('on-about', btn.dataset.tab === 'hakkinda');
+      document.documentElement.classList.toggle('on-tahsilat', btn.dataset.tab === 'tahsilat');
     });
   });
+  // Personel toplu rakamları (yıl / ay toplamları, cari genel toplam, aramadaki ürün toplamı) görmez; günlük toplamlar görünür
+  function toplamGizli(){ return document.documentElement.classList.contains('role-personel'); }
+  document.addEventListener('tidem:login', () => { try{ renderHistory(); renderArsiv(); renderTahsilatHistory(); }catch(e){} });
 
   // ===== Personel takibi (yalnızca yönetici; bilgiler bu telefonda + yedekte durur, personel telefonlarına gitmez) =====
   const PT_KEY = 'siparis_personel_takip';
@@ -6739,8 +6754,8 @@
       const perCust = {}; r.rows.forEach(h => { const k = h.o.customer; perCust[k] = (perCust[k] || 0) + num(h.p.adet); });
       const custChips = Object.entries(perCust).sort((a, b) => b[1] - a[1]).map(([c, q]) => `<span class="ms-chip">${escHtml(c)} <b>${fmt(q)}</b></span>`).join('');
       const variantNote = r.variants.length > 1 ? `<small class="ms-var">Farklı yazımlar birlikte sayıldı: ${r.variants.map(escHtml).join(' · ')}</small>` : '';
-      return `<div class="ms-prod-wrap${msMergeMode ? ' merge' : ''}"><label class="ms-pick"><input type="checkbox" data-merge-key="${escAttr(r.key)}"${msMergeSel.has(r.key) ? ' checked' : ''}></label><details class="ms-prod" ${prodList.length === 1 ? 'open' : ''}><summary><b>${escHtml(r.name)}</b>${variantNote}<span>${fmt(r.qty)} koli · ${r.custs.size} müşteri · ${fmt2(r.total)} ₺</span><small class="ms-tap">Dokunun: gün gün ve müşteri müşteri döküm</small></summary>
-        <div class="ms-sub">Müşteriye göre toplam (koli)</div><div class="ms-chips">${custChips}</div><div class="ms-sub">Gün gün satışlar</div>
+      return `<div class="ms-prod-wrap${msMergeMode ? ' merge' : ''}"><label class="ms-pick"><input type="checkbox" data-merge-key="${escAttr(r.key)}"${msMergeSel.has(r.key) ? ' checked' : ''}></label><details class="ms-prod" ${prodList.length === 1 ? 'open' : ''}><summary><b>${escHtml(r.name)}</b>${variantNote}${toplamGizli() ? '<small class="ms-tap">Dokunun: gün gün satışlar</small></summary>' : `<span>${fmt(r.qty)} koli · ${r.custs.size} müşteri · ${fmt2(r.total)} ₺</span><small class="ms-tap">Dokunun: gün gün ve müşteri müşteri döküm</small></summary>
+        <div class="ms-sub">Müşteriye göre toplam (koli)</div><div class="ms-chips">${custChips}</div>`}<div class="ms-sub">Gün gün satışlar</div>
         <div class="ms-tbl"><table><thead><tr><th>Tarih</th><th>Müşteri</th><th class="n">Koli</th><th class="n">Fiyat</th><th class="n">Tutar</th></tr></thead><tbody>${rows}</tbody></table>${r.rows.length > LIM ? `<p class="ms-more">İlk ${LIM} satır gösteriliyor (toplam ${r.rows.length}).</p>` : ''}</div></details></div>`;
     }).join(''));
     html += sec('Müşteriler', custList.length, custList.slice(0, LIM).map(n => { const b = balanceFor(n); const lo = lastOrderFor(n);
@@ -7082,7 +7097,7 @@
           const yh = document.createElement('div');
           yh.className = 'year-head'; yh.setAttribute('role', 'button'); yh.tabIndex = 0;
           yh.setAttribute('aria-expanded', yOpen ? 'true' : 'false');
-          yh.innerHTML = `<span class="yh-name">${escHtml(yKey)}</span><small>${ys.count} sipariş · ${fmt(ys.total)}</small><span class="date-chev">${yOpen ? '▾' : '▸'}</span>`;
+          yh.innerHTML = `<span class="yh-name">${escHtml(yKey)}</span><small>${ys.count} sipariş${toplamGizli() ? '' : ' · ' + fmt(ys.total)}</small><span class="date-chev">${yOpen ? '▾' : '▸'}</span>`;
           const yb = document.createElement('div'); yb.className = 'year-body'; yb.hidden = !yOpen;
           const yToggle = () => {
             const nowOpen = yb.hidden; yb.hidden = !nowOpen;
@@ -7103,7 +7118,7 @@
           const mh = document.createElement('div');
           mh.className = 'month-head'; mh.setAttribute('role', 'button'); mh.tabIndex = 0;
           mh.setAttribute('aria-expanded', mOpen ? 'true' : 'false');
-          mh.innerHTML = `<span class="mh-name">${monthLabel(mKey)}</span><small>${ms.count} sipariş · ${fmt(ms.total)}</small><span class="date-chev">${mOpen ? '▾' : '▸'}</span>`;
+          mh.innerHTML = `<span class="mh-name">${monthLabel(mKey)}</span><small>${ms.count} sipariş${toplamGizli() ? '' : ' · ' + fmt(ms.total)}</small><span class="date-chev">${mOpen ? '▾' : '▸'}</span>`;
           const mb = document.createElement('div'); mb.className = 'month-body'; mb.hidden = !mOpen;
           const mToggle = () => {
             const nowOpen = mb.hidden; mb.hidden = !nowOpen;
@@ -7376,8 +7391,7 @@
     });
     tahsilatTypeHint.textContent = T_HINTS[v];
     tahsilatCustomerLabel.textContent = v.startsWith('cari') ? 'Müşteri' : 'Müşteri (opsiyonel)';
-    const [src, m] = v.split('_');
-    document.querySelectorAll('#thSrc [data-src]').forEach(b => b.classList.toggle('on', b.dataset.src === src));
+    const m = v.split('_')[1];
     document.querySelectorAll('#thMet [data-m]').forEach(b => b.classList.toggle('on', b.dataset.m === m));
     thSyncFill();
   }
@@ -7410,7 +7424,6 @@
     f.hidden = !(tahsilatType.startsWith('cari') && bal > 0.004);
     if (!f.hidden){ f.textContent = 'Tüm borç · ' + fmt(bal) + ' ₺'; f.dataset.v = fmtAmountValue(bal); }
   }
-  document.getElementById('thSrc').addEventListener('click', e => { const b = e.target.closest('[data-src]'); if (b) setTahsilatType(b.dataset.src + '_' + tahsilatType.split('_')[1]); });
   document.getElementById('thMet').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (b) setTahsilatType(tahsilatType.split('_')[0] + '_' + b.dataset.m); });
   document.getElementById('thFill').addEventListener('click', e => { tahsilatAmount.value = e.currentTarget.dataset.v || ''; });
   // POS: hızlı tutarlar ve tuş takımı
@@ -7461,7 +7474,7 @@
     if (tIdx >= 0){ entry.id = editingTahsilatId; list[tIdx] = entry; } else { list.unshift(entry); }
     saveTahsilatList(list);
     if (pendingPromiseId && tIdx < 0){ const pl = getPromises(), pp = pl.find(x => x.id === pendingPromiseId); if (pp){ pp.status = 'kept'; pp.closed = entry.date; pp.paid = amount; pp.tahsilatId = entry.id; savePromises(pl); } pendingPromiseId = null; renderPromises(); }
-    openTahsilatDates.add(entry.date);
+    openTahsilatDates.add(entry.date); [entry.date.slice(0, 4), entry.date.slice(0, 7)].forEach(k => { openThKeys.add(k); closedThKeys.delete(k); });
     saveCustomer(customer);
     tahsilatAmount.value = '';
     tahsilatNote.value = '';
@@ -7474,41 +7487,42 @@
   });
 
   const openTahsilatDates = new Set();   // tahsilat geçmişinde açık olan günler
+  const openThKeys = new Set(), closedThKeys = new Set();   // açık / kapatılan yıllar ve aylar
   function renderTahsilatHistory(){
     const list = getTahsilat();
     try{ thSyncFill(); }catch(e){}
     if (list.length === 0){ tahsilatListEl.innerHTML = '<p class="hist-empty">Henüz kayıtlı tahsilat yok.</p>'; return; }
     tahsilatListEl.innerHTML = '';
-    const dayStats = {};
-    list.forEach(t => { const st = dayStats[t.date] || (dayStats[t.date] = { count:0, total:0 }); st.count++; st.total += t.amount; });
-    let lastDate = '';
-    let dayGroup = null;
-    [...list].sort((a,b) => String(b.date).localeCompare(String(a.date))).forEach(t => {
-      if (t.date !== lastDate){
-        const isOpen = openTahsilatDates.has(t.date);
-        const st = dayStats[t.date];
-        const heading = document.createElement('div');
-        heading.className = 'list-head archive-date-heading date-toggle';
-        heading.setAttribute('role', 'button');
-        heading.tabIndex = 0;
-        heading.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        heading.innerHTML = `<h2>${dateDisplay(t.date)} <small>${st.count} tahsilat · ${fmt(st.total)}</small></h2><span class="date-chev">${isOpen ? '▾' : '▸'}</span>`;
-        dayGroup = document.createElement('div');
-        dayGroup.hidden = !isOpen;
-        const groupRef = dayGroup, dateRef = t.date;
-        const toggle = () => {
-          const nowOpen = groupRef.hidden;
-          groupRef.hidden = !nowOpen;
-          if (nowOpen) openTahsilatDates.add(dateRef); else openTahsilatDates.delete(dateRef);
-          heading.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
-          heading.querySelector('.date-chev').textContent = nowOpen ? '▾' : '▸';
-        };
-        heading.addEventListener('click', toggle);
-        heading.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
-        tahsilatListEl.appendChild(heading);
-        tahsilatListEl.appendChild(dayGroup);
-        lastDate = t.date;
-      }
+    // Sipariş ve Arşiv ile aynı katlama: yıl → ay → gün (personelde yıl/ay toplam tutarı gizli)
+    const td = todayStr(), yNow = td.slice(0, 4), mNow = td.slice(0, 7), GUN = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'], AY3 = ['OCA','ŞUB','MAR','NİS','MAY','HAZ','TEM','AĞU','EYL','EKİ','KAS','ARA'];
+    const ydD = new Date(Date.now() - 864e5), yd = `${ydD.getFullYear()}-${String(ydD.getMonth() + 1).padStart(2, '0')}-${String(ydD.getDate()).padStart(2, '0')}`;
+    const sum = rs => rs.reduce((a, t) => a + num(t.amount), 0);
+    const byKey = (arr, f) => { const m = new Map(); arr.forEach(x => { const k = f(x); if (!m.has(k)) m.set(k, []); m.get(k).push(x); }); return m; };
+    const mk = (cls, open, html) => { const h = document.createElement('div'); h.className = cls; h.setAttribute('role', 'button'); h.tabIndex = 0; h.setAttribute('aria-expanded', open ? 'true' : 'false'); h.innerHTML = html; return h; };
+    const toggler = (head, body, key, openSet, closedSet) => {
+      const t = () => { const nowOpen = body.hidden; body.hidden = !nowOpen; if (nowOpen){ openSet.add(key); closedSet && closedSet.delete(key); } else { openSet.delete(key); closedSet && closedSet.add(key); }
+        head.setAttribute('aria-expanded', nowOpen ? 'true' : 'false'); head.querySelector('.date-chev').textContent = nowOpen ? '▾' : '▸'; };
+      head.addEventListener('click', t); head.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); t(); } });
+    };
+    const sorted = [...list].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    byKey(sorted, t => String(t.date).slice(0, 4)).forEach((yRows, y) => {
+      const yOpen = openThKeys.has(y) || (!closedThKeys.has(y) && y === yNow);
+      const yh = mk('year-head', yOpen, `<span class="yh-name">${escHtml(y)}</span><small>${yRows.length} tahsilat${toplamGizli() ? '' : ' · +' + fmt(sum(yRows))}</small><span class="date-chev">${yOpen ? '▾' : '▸'}</span>`);
+      const yb = document.createElement('div'); yb.className = 'year-body'; yb.hidden = !yOpen;
+      toggler(yh, yb, y, openThKeys, closedThKeys); tahsilatListEl.appendChild(yh); tahsilatListEl.appendChild(yb);
+      byKey(yRows, t => String(t.date).slice(0, 7)).forEach((mRows, ym) => {
+        const mOpen = openThKeys.has(ym) || (!closedThKeys.has(ym) && ym === mNow);
+        const mh = mk('month-head', mOpen, `<span class="mh-name">${monthLabel(ym)}</span><small>${mRows.length} tahsilat${toplamGizli() ? '' : ' · +' + fmt(sum(mRows))}</small><span class="date-chev">${mOpen ? '▾' : '▸'}</span>`);
+        const mb = document.createElement('div'); mb.className = 'month-body'; mb.hidden = !mOpen;
+        toggler(mh, mb, ym, openThKeys, closedThKeys); yb.appendChild(mh); yb.appendChild(mb);
+        byKey(mRows, t => t.date).forEach((dRows, d) => {
+          const dOpen = openTahsilatDates.has(d), dd = new Date(d + 'T00:00:00');
+          const tag = d === td ? '<em class="dh-tag now">BUGÜN</em>' : (d === yd ? '<em class="dh-tag">DÜN</em>' : '');
+          const dh = mk('list-head archive-date-heading date-toggle oh-day', dOpen, `<span class="dh-cal"><i>${AY3[dd.getMonth()]}</i><b>${dd.getDate()}</b></span><span class="dh-txt"><b>${GUN[dd.getDay()]}${tag}</b><small>${dateDisplay(d)} · ${dRows.length} tahsilat</small></span><span class="dh-sum">+${fmt(sum(dRows))}<small>₺</small></span><span class="date-chev">${dOpen ? '▾' : '▸'}</span>`);
+          const db = document.createElement('div'); db.hidden = !dOpen;
+          toggler(dh, db, d, openTahsilatDates, null);
+          mb.appendChild(dh); mb.appendChild(db);
+          dRows.forEach(t => {
       const item = document.createElement('div');
       item.className = 'hist-item';
       item.innerHTML = `
@@ -7524,7 +7538,10 @@
         </div>
         <div class="badge-row" style="align-items:center;"><span class="badge static ${tAffectsCari(t) ? 'account' : 'paid'}">${T_LABELS[tMethod(t)]}</span>${t.orderId ? '' : `<span class="hist-actions"><button class="hist-edit" data-id="${t.id}">Düzenle</button></span>`}</div>
       `;
-      dayGroup.appendChild(item);
+      db.appendChild(item);
+          });
+        });
+      });
     });
     tahsilatListEl.querySelectorAll('.hist-del').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -8738,12 +8755,12 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
     const ydD = new Date(Date.now() - 864e5), ydS = `${ydD.getFullYear()}-${String(ydD.getMonth() + 1).padStart(2, '0')}-${String(ydD.getDate()).padStart(2, '0')}`;
     byKey(rows, r => r.date.slice(0, 4)).forEach((yRows, y) => {
       const yOpen = filtered || openArchiveKeys.has(y) || (!closedArchiveKeys.has(y) && y === yearNow);
-      const yh = mk('year-head', yOpen, `<span class="yh-name">${escHtml(y)}</span><small>${yRows.length} kayıt · ${parts(sums(yRows))}</small><span class="date-chev">${yOpen ? '▾' : '▸'}</span>`);
+      const yh = mk('year-head', yOpen, `<span class="yh-name">${escHtml(y)}</span><small>${yRows.length} kayıt${toplamGizli() ? '' : ' · ' + parts(sums(yRows))}</small><span class="date-chev">${yOpen ? '▾' : '▸'}</span>`);
       const yb = document.createElement('div'); yb.className = 'year-body'; yb.hidden = !yOpen;
       toggler(yh, yb, y, openArchiveKeys, closedArchiveKeys); list.appendChild(yh); list.appendChild(yb);
       byKey(yRows, r => r.date.slice(0, 7)).forEach((mRows, ym) => {
         const mOpen = filtered || openArchiveKeys.has(ym) || (!closedArchiveKeys.has(ym) && ym === monthNow);
-        const mh = mk('month-head', mOpen, `<span class="mh-name">${monthLabel(ym)}</span><small>${mRows.length} kayıt · ${parts(sums(mRows))}</small><span class="date-chev">${mOpen ? '▾' : '▸'}</span>`);
+        const mh = mk('month-head', mOpen, `<span class="mh-name">${monthLabel(ym)}</span><small>${mRows.length} kayıt${toplamGizli() ? '' : ' · ' + parts(sums(mRows))}</small><span class="date-chev">${mOpen ? '▾' : '▸'}</span>`);
         const mb = document.createElement('div'); mb.className = 'month-body'; mb.hidden = !mOpen;
         toggler(mh, mb, ym, openArchiveKeys, closedArchiveKeys); yb.appendChild(mh); yb.appendChild(mb);
         byKey(mRows, r => r.date).forEach((dRows, d) => {
@@ -9190,7 +9207,7 @@ document.querySelectorAll('.add-pro').forEach(b => b.addEventListener('click', (
   function esc(t){ return String(t == null ? '' : t).replace(/[&<>"]/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
   function build(){
     var act = document.querySelector('.tab-btn.active'), a = act ? act.dataset.tab : 'siparis';
-    list.innerHTML = tabs().filter(function(b){ return !(isPersonel() && b.dataset.tab === 'personel'); }).map(function(b){
+    list.innerHTML = tabs().filter(function(b){ return !(isPersonel() && ['personel', 'istatistik', 'arsiv'].indexOf(b.dataset.tab) >= 0); }).map(function(b){
       var t = b.dataset.tab;
       return (t === 'personel' || t === 'ayarlar' ? '<i class="nd-sep"></i>' : '') + '<button type="button" class="nd-item' + (t === a ? ' on' : '') + '" data-nav="' + t + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + (IC[t] || IC.siparis) + '</svg><span>' + esc(label(b)) + '</span>' + badge(b) + '</button>';
     }).join('');
