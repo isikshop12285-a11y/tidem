@@ -2094,6 +2094,10 @@
   .nt-comp{padding:12px;border:1px solid #E4E9F1;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,33,63,.04)}
   #ntText{display:block;width:100%;min-height:88px;padding:12px 13px !important;border:1.5px solid #E1E7F0 !important;border-radius:13px !important;background:#F8FAFD !important;color:#14213F;font:inherit;font-size:.98rem;font-weight:600;line-height:1.45;resize:vertical}
   #ntText:focus{outline:0;border-color:#14213F !important;background:#fff !important}
+  .nt-tw{position:relative}
+  .nt-tw #ntText{padding-right:42px !important}
+  .nt-clr{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:30px !important;height:30px;min-height:30px !important;padding:0 !important;border:0;border-radius:50%;background:#E2E8F0;color:#475569;font:inherit;font-size:.8rem;font-weight:900;cursor:pointer}
+  .nt-clr[hidden]{display:none}
   .nt-row{display:flex;align-items:center;gap:10px;margin-top:10px}
   .nt-mic{position:relative;flex:none;display:grid;place-items:center;width:58px !important;height:58px;min-height:58px !important;padding:0 !important;border:0;border-radius:50%;background:linear-gradient(135deg,#C8202F,#E8505E);color:#fff;box-shadow:0 8px 18px rgba(200,32,47,.3);cursor:pointer}
   .nt-mic svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
@@ -2433,7 +2437,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 96 · 18.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 98 · 18.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2953,12 +2957,12 @@
 
   <!-- MÜŞTERİ TAKİBİ TAB -->
   <div class="panel" id="panel-notlar">
-    <div class="tk-head"><span class="tk-kick">SESLİ NOT</span><h2>Notlar</h2><p>Mikrofona dokunun ve konuşun; söyledikleriniz yazıya çevrilir. Bitince KAYDET'e basın. Notlarınızı sadece siz görürsünüz.</p></div>
+    <div class="tk-head"><span class="tk-kick">SESLİ NOT</span><h2>Notlar</h2></div>
     <section class="nt-comp">
-      <textarea id="ntText" rows="3" placeholder="Notunuzu yazın ya da mikrofona dokunup konuşun…" autocomplete="off"></textarea>
+      <div class="nt-tw"><textarea id="ntText" rows="3" placeholder="Not yazın ya da konuşun…" autocomplete="off"></textarea><button type="button" class="nt-clr" id="ntClr" hidden aria-label="Yazıyı sil">✕</button></div>
       <div class="nt-row">
         <button type="button" class="nt-mic" id="ntMic" aria-label="Konuşarak yaz"><svg class="i-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg><svg class="i-stop" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="5.5" width="13" height="13" rx="2.6"/></svg></button>
-        <div class="nt-st" id="ntSt">Konuşmak için mikrofona dokunun</div>
+        <div class="nt-st" id="ntSt">Dokun, konuş</div>
         <button type="button" class="nt-save" id="ntSave">KAYDET</button>
       </div>
     </section>
@@ -3337,7 +3341,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 96 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 98 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -9520,7 +9524,7 @@ function tfAskLong(title){
     const all = load(), nOpen = all.filter(n => !n.done).length;
     filt.innerHTML = [['open', 'BEKLEYEN', nOpen], ['done', 'TAMAMLANAN', all.length - nOpen], ['all', 'TÜMÜ', all.length]].map(([v, l, c]) => `<button type="button" data-f="${v}" class="${mode === v ? 'on' : ''}">${l} <em>${c}</em></button>`).join('');
     const list = all.filter(n => mode === 'all' || (mode === 'done' ? n.done : !n.done)).sort((a, b) => String(b.at).localeCompare(String(a.at)));
-    if (!list.length){ box.innerHTML = `<div class="tk-empty"><b>✓</b>${mode === 'done' ? 'Tamamlanan not yok.' : (mode === 'open' ? 'Bekleyen not yok.' : 'Henüz not yok.')}</div>`; return; }
+    if (!list.length){ box.innerHTML = `<div class="tk-empty"><b>✓</b>Not yok</div>`; return; }
     const td = ymd(new Date()), yd = ymd(new Date(Date.now() - 864e5));
     let last = '', html = '';
     list.forEach(n => {
@@ -9536,58 +9540,152 @@ function tfAskLong(title){
     const dn = e.target.closest('[data-done]'), ed = e.target.closest('[data-edit]'), dl = e.target.closest('[data-del]');
     const l = load();
     if (dn){ const n = l.find(x => x.id === dn.dataset.done); if (n){ n.done = !n.done; save(l); render(); } return; }
-    if (ed){ const n = l.find(x => x.id === ed.dataset.edit); if (n){ editId = n.id; ta.value = n.text; document.getElementById('ntSave').textContent = 'GÜNCELLE'; ta.focus(); window.scrollTo({ top:0, behavior:'smooth' }); say('Notu düzenliyorsunuz'); } return; }
+    if (ed){ const n = l.find(x => x.id === ed.dataset.edit); if (n){ editId = n.id; ta.value = n.text; clr.hidden = false; document.getElementById('ntSave').textContent = 'GÜNCELLE'; ta.focus(); window.scrollTo({ top:0, behavior:'smooth' }); say('Düzenleniyor'); } return; }
     if (dl){ if (!dl.classList.contains('arm')){ dl.classList.add('arm'); dl.textContent = 'EMİN MİSİN?'; setTimeout(() => { if (dl.isConnected){ dl.classList.remove('arm'); dl.textContent = 'SİL'; } }, 2500); return; }
       save(l.filter(x => x.id !== dl.dataset.del)); render(); }
   });
   document.getElementById('ntSave').addEventListener('click', () => {
     stopRec(true);
-    const t = ta.value.trim(); if (!t){ say('Önce notu yazın ya da konuşun.', 'err'); ta.focus(); return; }
+    const t = ta.value.trim(); if (!t){ say('Not boş', 'err'); ta.focus(); return; }
     const l = load();
     if (editId){ const n = l.find(x => x.id === editId); if (n) n.text = t; }
     else { const m = me(); l.push({ id:'n' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text:t, at:new Date().toISOString(), uid:m.id, by:m.name, done:false }); }
-    save(l); editId = null; ta.value = ''; document.getElementById('ntSave').textContent = 'KAYDET';
+    save(l); editId = null; ta.value = ''; clr.hidden = true; document.getElementById('ntSave').textContent = 'KAYDET';
     if (mode === 'done') mode = 'open';
-    say('✓ Not kaydedildi', 'on'); render();
+    say('✓ Kaydedildi', 'on'); render();
   });
-  // Konuşarak yazma: düğmeye basınca başlar, TEKRAR BASILANA KADAR dinler.
+  // ---- Yazıya çevirmede otomatik düzeltmeler (ağız / şive farkından kaynaklanan yanlışlar; elle bir şey girmek gerekmez) ----
+  const low = w => String(w).toLocaleLowerCase('tr-TR');
+  const fold = w => low(w).replace(/[çğıöşüâîû]/g, c => ({ ç:'c', ğ:'g', ı:'i', ö:'o', ş:'s', ü:'u', â:'a', î:'i', û:'u' })[c]);
+  const UNITS = new Set(['koli','koliyi','koliye','koliler','kolide','adet','paket','kasa','şişe','tane','lira','tl','bidon','kilo','kg','çuval','teneke','balya','litre','lt']);
+  // Birime benzeyen yanlışlar (koli / adet / paket / kasa); "kolej" her yerde, diğerleri sadece sayıdan sonra düzeltilir
+  const ALWAYS = { 'kolej':'koli', 'koleji':'koliyi', 'koleje':'koliye', 'kolejler':'koliler', 'kolejde':'kolide', 'kolileri':'kolileri' };
+  const UNIT_LIKE = { 'kole':'koli', 'kolay':'koli', 'kolye':'koli', 'kolu':'koli', 'kolyi':'koli', 'koly':'koli', 'kuli':'koli', 'köli':'koli', 'holi':'koli', 'koliy':'koli', 'kolik':'koli', 'kollu':'koli', 'golü':'koli', 'göl':'koli', 'kol':'koli', 'koloni':'koli', 'kale':'koli',
+    'adat':'adet', 'adeti':'adet', 'ade':'adet', 'baket':'paket', 'pakat':'paket', 'bakat':'paket', 'kasa':'kasa', 'kase':'kasa', 'gasa':'kasa', 'şişa':'şişe', 'şeşe':'şişe' };
+  const ONES = { 'bir':1, 'iki':2, 'üç':3, 'dört':4, 'beş':5, 'altı':6, 'yedi':7, 'sekiz':8, 'dokuz':9 };
+  const TENS = { 'on':10, 'yirmi':20, 'otuz':30, 'kırk':40, 'elli':50, 'altmış':60, 'yetmiş':70, 'seksen':80, 'doksan':90 };
+  // Sayıların şivede / telefonda sık karıştığı söylenişleri (sadece birimden önce sayıya çevrilir)
+  const NUM_ALIAS = {
+    'bi':'bir', 'bır':'bir', 'ikki':'iki', 'ike':'iki', 'uç':'üç', 'üçe':'üç', 'üci':'üç', 'dörd':'dört', 'dörti':'dört', 'dürt':'dört', 'dort':'dört', 'bes':'beş', 'beşi':'beş', 'beş':'beş',
+    'alti':'altı', 'altu':'altı', 'yeddi':'yedi', 'yedd':'yedi', 'seğiz':'sekiz', 'sekkiz':'sekiz', 'seki':'sekiz', 'dokkuz':'dokuz', 'doğuz':'dokuz', 'dokus':'dokuz',
+    'hilmi':'yirmi', 'ilmi':'yirmi', 'irmi':'yirmi', 'yimi':'yirmi', 'girmi':'yirmi', 'yirme':'yirmi', 'yermi':'yirmi', 'hirmi':'yirmi', 'iymi':'yirmi', 'yürmi':'yirmi', 'yirmiş':'yirmi', 'emir':'yirmi',
+    'otız':'otuz', 'odus':'otuz', 'otus':'otuz', 'odız':'otuz', 'kırık':'kırk', 'kirk':'kırk', 'kurk':'kırk', 'kırx':'kırk', 'gırk':'kırk', 'eli':'elli', 'ellı':'elli', 'elle':'elli', 'heli':'elli',
+    'altmiş':'altmış', 'atmış':'altmış', 'atmiş':'altmış', 'altımış':'altmış', 'yetmis':'yetmiş', 'etmiş':'yetmiş', 'yetmış':'yetmiş', 'sekzen':'seksen', 'seksan':'seksen', 'doksen':'doksan', 'dokson':'doksan', 'yuz':'yüz' };
+  const numOf = w => { const x = NUM_ALIAS[w] || w; return ONES[x] != null ? ['o', ONES[x]] : (TENS[x] != null ? ['t', TENS[x]] : (x === 'yüz' ? ['h', 100] : (x === 'bin' ? ['k', 1000] : null))); };
+  // Uygulamadaki müşteri ve ürün adları: yanlış duyulan ad, en yakın kayıtlı ada çevrilir (ör. "can büfeh" → "Can Büfe")
+  let VOC = null, NAMES = [];
+  function vocab(){
+    const v = new Set(UNITS), names = [];
+    const add = t => { t = String(t || '').trim(); if (!t) return; names.push(t); t.split(/[\s,.\-()/]+/).forEach(w => { w = low(w); if (w.length >= 3) v.add(w); }); };
+    try{ (JSON.parse(localStorage.getItem('siparis_customers') || '[]') || []).forEach(add); }catch(e){}
+    try{ (JSON.parse(localStorage.getItem('siparis_products') || '[]') || []).forEach(p => add(typeof p === 'string' ? p : (p && p.name))); }catch(e){}
+    NAMES = names.map(n => ({ n, f:fold(n).replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim() })).filter(x => x.f.length >= 4);
+    return v;
+  }
+  function lev(a, b){ const m = a.length, n = b.length; if (!m) return n; if (!n) return m; let p = Array.from({ length:n + 1 }, (_, j) => j);
+    for (let i = 1; i <= m; i++){ const c = [i]; for (let j = 1; j <= n; j++) c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); p = c; } return p[n]; }
+  function fixNames(t){
+    if (!NAMES.length) return t;
+    const words = t.split(' '); let out = [], i = 0;
+    while (i < words.length){
+      let hit = null;
+      for (let len = Math.min(4, words.length - i); len >= 1 && !hit; len--){
+        const chunk = words.slice(i, i + len).join(' '); if (/\d/.test(chunk)) continue;
+        const f = fold(chunk).replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim(); if (f.length < 4) continue;
+        // ek almış ad: "demir markete" → "Demir Market" + "e"
+        const pre = NAMES.find(x => f !== x.f && f.startsWith(x.f) && f.length - x.f.length <= 4 && x.f.split(' ').length === len);
+        if (pre){ hit = { n:pre.n + chunk.slice(chunk.length - (f.length - pre.f.length)), len }; break; }
+        let best = null, bd = 99;
+        NAMES.forEach(x => { if (Math.abs(x.f.length - f.length) > 3) return; const d = lev(f, x.f); if (d < bd){ bd = d; best = x; } });
+        if (best && bd > 0 && bd <= Math.max(1, Math.floor(best.f.length * 0.2)) && best.f.split(' ').length === len) hit = { n:best.n, len };
+        else if (best && bd === 0) hit = { n:best.n, len };
+      }
+      if (hit){ out.push(hit.n); i += hit.len; } else { out.push(words[i]); i++; }
+    }
+    return out.join(' ');
+  }
+  function fixText(t){
+    const toks = String(t).split(/(\s+)/), W = [];
+    toks.forEach((x, i) => { if (x && !/^\s+$/.test(x)) W.push(i); });
+    const core = i => low(toks[i]).replace(/[.,!?;:]+$/, ''), tail = i => (toks[i].match(/[.,!?;:]+$/) || [''])[0];
+    W.forEach(i => { const r = ALWAYS[core(i)]; if (r) toks[i] = r + tail(i); });
+    // sayı kelimeleri + birim → rakam + birim (yirmi beş koli → 25 koli, Hilmi kolej → 20 koli)
+    for (let k = 0; k < W.length; k++){
+      let j = k, total = 0, cur = 0, any = false;
+      while (j < W.length){
+        const n = numOf(core(W[j])); if (!n) break;
+        if (n[0] === 'o' || n[0] === 't') cur += n[1]; else if (n[0] === 'h') cur = (cur || 1) * 100; else { total += (cur || 1) * 1000; cur = 0; }
+        any = true; j++;
+      }
+      if (!any || j >= W.length) continue;
+      const u = core(W[j]), uu = UNIT_LIKE[u] || u;
+      if (!UNITS.has(uu)) continue;
+      toks[W[k]] = String(total + cur); for (let m = k + 1; m < j; m++){ toks[W[m]] = ''; toks[W[m] - 1] = ''; }
+      if (UNIT_LIKE[u]) toks[W[j]] = uu + tail(W[j]);
+      k = j;
+    }
+    // rakamdan sonra birime benzeyen kelime → birim (20 kolay → 20 koli)
+    for (let k = 0; k + 1 < W.length; k++){ if (/^\d+$/.test(core(W[k])) && UNIT_LIKE[core(W[k + 1])]) toks[W[k + 1]] = UNIT_LIKE[core(W[k + 1])] + tail(W[k + 1]); }
+    return fixNames(toks.join('').replace(/\s{2,}/g, ' ').trim());
+  }
+  // Telefonun verdiği seçeneklerden, müşteri / ürün adlarına ve sayılara en çok uyanı seçilir
+  function bestAlt(res){
+    let best = res[0] ? res[0].transcript : '', bs = -1;
+    for (let i = 0; i < res.length; i++){
+      const t = res[i].transcript || ''; let sc = 0;
+      t.split(/\s+/).forEach(w => { const c = low(w).replace(/[.,!?]+$/, ''); if (VOC && VOC.has(c)) sc += 2; if (/^\d+$/.test(c)) sc += 1; if (numOf(c)) sc += 1; if (UNIT_LIKE[c]) sc += 1; });
+      if (sc > bs){ bs = sc; best = t; }
+    }
+    return best;
+  }
+
+  // ---- Konuşarak yazma: düğmeye basınca başlar, TEKRAR BASILANA KADAR dinler ----
   // Android'de "sürekli dinleme" aynı kelimeyi defalarca yazdığı için her cümle ayrı dinlenir; cümle bitince yazı sabitlenir
-  // ve dinleme kendiliğinden yeniden başlar. Durdurmak için aynı düğme (■).
+  // ve dinleme kendiliğinden yeniden başlar. Kutudaki yazı elle silinir/değiştirilirse dinleme o yazıdan devam eder.
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition, ANDROID = /Android/i.test(navigator.userAgent);
+  const clr = document.getElementById('ntClr');
   let rec = null, want = false, committed = '', current = '', restartT = null;
   const join = (a, b) => [a, b].map(x => String(x || '').trim()).filter(Boolean).join(' ');
-  function show(){ let t = current; if (t && !committed) t = t.charAt(0).toLocaleUpperCase('tr-TR') + t.slice(1); ta.value = join(committed, t); }
+  const syncClr = () => { clr.hidden = !ta.value.trim(); };
+  function show(){ let t = current; if (t && !committed) t = t.charAt(0).toLocaleUpperCase('tr-TR') + t.slice(1); ta.value = join(committed, t); syncClr(); }
   function setOn(on){ mic.classList.toggle('on', on); mic.setAttribute('aria-label', on ? 'Dinlemeyi durdur' : 'Konuşarak yaz'); }
+  function kill(){ if (!rec) return; const r = rec; rec = null; r.onresult = null; r.onerror = null; r.onend = null; try{ r.abort ? r.abort() : r.stop(); }catch(e){} }
   function stopRec(silent){ want = false; clearTimeout(restartT);
-    if (rec && silent){ const r = rec; rec = null; r.onresult = null; r.onerror = null; r.onend = null; try{ r.abort ? r.abort() : r.stop(); }catch(e){} setOn(false); committed = ''; current = ''; return; }
+    if (silent){ kill(); setOn(false); committed = ''; current = ''; return; }
     if (rec){ try{ rec.stop(); }catch(e){} } else setOn(false); }
   function startSession(){
-    rec = new SR(); rec.lang = 'tr-TR'; rec.interimResults = true; rec.continuous = !ANDROID; rec.maxAlternatives = 1;
+    rec = new SR(); rec.lang = 'tr-TR'; rec.interimResults = true; rec.continuous = !ANDROID; rec.maxAlternatives = 5;
     current = '';
     rec.onresult = e => {
       let t;
-      if (ANDROID) t = e.results[e.results.length - 1][0].transcript;
-      else { const parts = []; for (let i = 0; i < e.results.length; i++) parts.push(e.results[i][0].transcript.trim()); t = parts.join(' '); }
-      current = String(t || '').replace(/\s+/g, ' ').trim(); show();
+      if (ANDROID) t = bestAlt(e.results[e.results.length - 1]);
+      else { const parts = []; for (let i = 0; i < e.results.length; i++) parts.push(bestAlt(e.results[i]).trim()); t = parts.join(' '); }
+      current = fixText(String(t || '').replace(/\s+/g, ' ').trim()); show();
     };
     rec.onerror = e => {
       if (e.error === 'no-speech' || e.error === 'aborted') return;   // sessizlik: dinlemeye devam
-      const m = { 'not-allowed':'Mikrofon izni verilmedi. Telefon ayarlarından izin verin.', 'service-not-allowed':'Mikrofon izni verilmedi.', 'network':'Sesli yazma için internet gerekli.', 'audio-capture':'Mikrofon bulunamadı.' }[e.error];
-      want = false; say(m || 'Sesli yazma durdu, tekrar deneyin.', 'err');
+      const m = { 'not-allowed':'Mikrofon izni yok', 'service-not-allowed':'Mikrofon izni yok', 'network':'İnternet gerekli', 'audio-capture':'Mikrofon bulunamadı' }[e.error];
+      want = false; say(m || 'Tekrar deneyin', 'err');
     };
     rec.onend = () => {
       show(); committed = ta.value.trim(); current = ''; rec = null;
       if (want){ restartT = setTimeout(() => { if (!want) return; try{ startSession(); }catch(e){ want = false; setOn(false); } }, 200); return; }
       setOn(false);
-      if (!st.classList.contains('err')) say(ta.value.trim() ? 'Durdu. Kontrol edip KAYDET\'e basın.' : 'Konuşmak için mikrofona dokunun');
+      if (!st.classList.contains('err')) say(ta.value.trim() ? 'Durdu' : 'Dokun, konuş');
     };
     rec.start();
   }
+  // Kutudaki yazı elle silinir ya da değiştirilirse: eski yazı geri gelmez, dinleme kalan yazıdan devam eder
+  ta.addEventListener('input', () => {
+    syncClr(); committed = ta.value.trim(); current = '';
+    if (want){ kill(); clearTimeout(restartT); restartT = setTimeout(() => { if (want) try{ startSession(); }catch(e){} }, 350); }
+  });
+  clr.addEventListener('click', () => { ta.value = ''; ta.dispatchEvent(new Event('input')); ta.focus(); });
   mic.addEventListener('click', () => {
-    if (!SR){ say('Bu telefon sesli yazmayı desteklemiyor. Klavyedeki mikrofon simgesine basarak da konuşabilirsiniz.', 'err'); ta.focus(); return; }
+    if (!SR){ say('Sesli yazma desteklenmiyor', 'err'); ta.focus(); return; }
     if (want){ stopRec(); return; }
-    committed = ta.value.trim(); want = true;
-    try{ startSession(); setOn(true); say('Dinleniyor… Durdurmak için aynı düğmeye (■) basın.', 'on'); }catch(e){ want = false; say('Sesli yazma başlatılamadı.', 'err'); }
+    VOC = vocab(); committed = ta.value.trim(); want = true;
+    try{ startSession(); setOn(true); say('Dinleniyor…', 'on'); }catch(e){ want = false; say('Başlatılamadı', 'err'); }
   });
   document.querySelector('.tab-btn[data-tab="notlar"]').addEventListener('click', () => { render(); });
   window.addEventListener('storage', e => { if (e.key === KEY) render(); });
