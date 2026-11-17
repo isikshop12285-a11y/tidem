@@ -2433,7 +2433,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 94 · 18.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 96 · 18.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2953,7 +2953,7 @@
 
   <!-- MÜŞTERİ TAKİBİ TAB -->
   <div class="panel" id="panel-notlar">
-    <div class="tk-head"><span class="tk-kick">SESLİ NOT</span><h2>Notlar</h2><p>Mikrofona dokunun ve konuşun; söyledikleriniz yazıya çevrilir. Bitince KAYDET'e basın.</p></div>
+    <div class="tk-head"><span class="tk-kick">SESLİ NOT</span><h2>Notlar</h2><p>Mikrofona dokunun ve konuşun; söyledikleriniz yazıya çevrilir. Bitince KAYDET'e basın. Notlarınızı sadece siz görürsünüz.</p></div>
     <section class="nt-comp">
       <textarea id="ntText" rows="3" placeholder="Notunuzu yazın ya da mikrofona dokunup konuşun…" autocomplete="off"></textarea>
       <div class="nt-row">
@@ -3331,13 +3331,13 @@
   <div class="backup-auto">
     <h4>🛟 Otomatik yedek · tek dosya</h4>
     <p class="backup-auto-p">Bir kez dosya seçin; her değişiklikte <b>aynı dosyanın üzerine</b> yazılır. Dosya birikmez, hep en güncel hâli durur. Telefon değişirse "Yedeği yükle" ile bu dosyayı seçmeniz yeterli.</p>
-    <button type="button" id="autoPickFile" hidden>📁 Yedek dosyasını seç (bir kez)</button>
+    <button type="button" id="autoPickFile" hidden>📁 Yedek klasörünü seç (bir kez)</button>
     <label class="backup-auto-row" id="autoDlRow"><input type="checkbox" id="autoDl"> <span>Değişiklik olan günlerde yedeği günde bir kez indir</span></label>
     <div class="backup-auto-status" id="autoStatus"></div>
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 94 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 96 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -3360,7 +3360,8 @@
 
   function say(msg, bad){ statusEl.style.color = bad ? 'var(--red,#B4222F)' : 'var(--green,#1B6B4C)'; statusEl.textContent = msg; }
   function pad(n){ return String(n).padStart(2,'0'); }
-  function todayISO(){ var d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()); }
+  function todayISO(){ return localISO(new Date()); }
+  function localISO(d){ d = new Date(d); return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()); }
   function stamp(){ var d = new Date(); return todayISO() + '-' + pad(d.getHours()) + pad(d.getMinutes()); }
   function display(iso){ var p = String(iso).split('-'); return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso; }
   function get(k){ var raw = null; try{ raw = localStorage.getItem(k); return JSON.parse(raw); }catch(e){ return raw; } }
@@ -3435,7 +3436,7 @@
     if (liveKeys.length !== keys.length) problems.push('kayıt anahtarı sayısı tutmuyor');
     liveKeys.forEach(function(k){ var c = payload.checks[k]; if (!c || sig(live[k]).hash !== c.hash) problems.push((LABELS[k] || k) + ' yedek sırasında değişti'); });
     if (problems.length) return say('Yedek doğrulanamadı, indirilmedi: ' + problems.join('; '), true);
-    saveFile(text, 'teklif-fisi-yedek-' + stamp() + '.json');
+    saveFile(text, 'tidem-yedek.json');
     try{ localStorage.setItem(LAST_KEY, todayISO()); }catch(e){}
     showLast(); showInfo();
     say('Yedek indirildi ve doğrulandı (' + summary(data) + '). Dosyayı güvenli bir yerde saklayın.');
@@ -3480,14 +3481,23 @@
   function pdfFile(json, base, title, lines){ return new File([makeBackupPdf(json, title, lines)], base + '.pdf', { type:'application/pdf' }); }
 
   // ---------- Otomatik yedek: TEK DOSYA ----------
-  // Bir kez dosya seçilir (Android Chrome 132+ / bilgisayar Chrome-Edge). Her değişiklikte AYNI dosyanın üzerine yazılır:
-  // dosya birikmez, hep en güncel hâli durur. Yazılan dosya geri okunup doğrulanır.
+  // Bir kez KLASÖR seçilir (destek yoksa dosya). Her değişiklikte klasördeki tidem-yedek.json yeniden yazılır ve
+  // klasördeki eski yedekler (tidem-yedek…, teklif-fisi-yedek…) silinir: dosya birikmez, hep en güncel hâli durur.
+  // Yazılan dosya geri okunup doğrulanır.
   // Dosya seçme desteklenmiyorsa: değişiklik varsa günde en fazla bir kez yedek indirilir.
   (function(){
     var AUTO_KEY = 'yedek_otomatik_indir', AUTO_LAST = 'yedek_son_otomatik', BAR_HIDE = 'yedek_cubuk_gizle';
     var autoEl = document.getElementById('autoDl'), autoStatus = document.getElementById('autoStatus'), pickBtn = document.getElementById('autoPickFile');
     var autoRow = document.getElementById('autoDlRow'), bar = document.getElementById('bkBar');
-    var supported = typeof window.showSaveFilePicker === 'function';
+    var dirOK = typeof window.showDirectoryPicker === 'function', FILE_NAME = 'tidem-yedek.json', OLD_RE = /^(tidem-yedek|teklif-fisi-yedek)[^\/]*\.(json|pdf)$/i;
+    var supported = dirOK || typeof window.showSaveFilePicker === 'function';
+    function isDir(h){ return !!h && h.kind === 'directory'; }
+    function hName(h){ return isDir(h) ? h.name + '/' + FILE_NAME : h.name; }
+    async function cleanOld(dir){
+      var gone = [];
+      try{ for await (var ent of dir.values()){ if (ent.kind === 'file' && ent.name !== FILE_NAME && OLD_RE.test(ent.name)) gone.push(ent.name); } }catch(e){}
+      for (var i = 0; i < gone.length; i++){ try{ await dir.removeEntry(gone[i]); }catch(e){} }
+    }
     var dirty = false, fileHandle = null, writing = false, again = false, writeTimer = null, needPerm = false, lastErr = '';
     var _origSet = Storage.prototype.setItem, _origRemove = Storage.prototype.removeItem;
     function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
@@ -3532,10 +3542,15 @@
       return perm(fileHandle, false).then(function(p){
         var text = payloadText();
         if (!text){ lastErr = 'Yedek doğrulanamadı, dosyaya yazılmadı.'; refreshStatus(); return; }
-        return fileHandle.createWritable().then(function(w){ return w.write(text).then(function(){ return w.close(); }); })
-          .then(function(){ return fileHandle.getFile ? fileHandle.getFile().then(function(f){ return f.text(); }) : text; })
+        var dir = isDir(fileHandle) ? fileHandle : null, fh;
+        return (dir ? dir.getFileHandle(FILE_NAME, { create:true }) : Promise.resolve(fileHandle)).then(function(h){ fh = h; return h.createWritable(); })
+          .then(function(w){ return w.write(text).then(function(){ return w.close(); }); })
+          .then(function(){ return fh.getFile ? fh.getFile().then(function(f){ return f.text(); }) : text; })
           .then(function(back){
             if (back !== text) throw new Error('dosyadan geri okunan yedek farklı');
+            if (dir) return cleanOld(dir);
+          })
+          .then(function(){
             dirty = false; needPerm = false; lastErr = '';
             lsSet(AUTO_LAST, new Date().toISOString()); lsSet(LAST_KEY, todayISO());
             try{ showLast(); }catch(e){}
@@ -3553,11 +3568,11 @@
 
     function pickFile(){
       if (!supported) return;
-      window.showSaveFilePicker({ suggestedName:'tidem-yedek.json', types:[{ description:'Yedek (JSON)', accept:{ 'application/json':['.json'] } }] }).then(function(h){
+      (dirOK ? window.showDirectoryPicker({ id:'tidem-yedek', mode:'readwrite' }) : window.showSaveFilePicker({ suggestedName:FILE_NAME, types:[{ description:'Yedek (JSON)', accept:{ 'application/json':['.json'] } }] })).then(function(h){
         fileHandle = h; needPerm = false; lastErr = '';
         idb('readwrite', function(st){ return st.put(h, 'handle'); }).catch(function(){});
         dirty = true; return writeFile();
-      }).catch(function(e){ if (e && e.name !== 'AbortError'){ lastErr = 'Dosya seçilemedi: ' + e.message; refreshStatus(); } });
+      }).catch(function(e){ if (e && e.name !== 'AbortError'){ lastErr = (dirOK ? 'Klasör' : 'Dosya') + ' seçilemedi: ' + e.message; refreshStatus(); } });
     }
     var askedThisOpen = false;
     function askPerm(){
@@ -3588,9 +3603,9 @@
     // --- Dosya seçme desteklenmiyorsa: günde en fazla bir kez indir (ekrana dokunulduğunda) ---
     function maybeDownload(){
       if (supported || !autoEl.checked || !dirty) return;
-      var l = lsGet(AUTO_LAST); if (l && l.slice(0, 10) === todayISO()) return;
+      var l = lsGet(AUTO_LAST); if (l && localISO(l) === todayISO()) return;
       var text = payloadText(); if (!text) return;
-      saveFile(text, 'tidem-yedek-' + todayISO() + '.json');
+      saveFile(text, 'tidem-yedek.json');
       dirty = false; lsSet(AUTO_LAST, new Date().toISOString()); lsSet(LAST_KEY, todayISO());
       try{ showLast(); }catch(e){}
       refreshStatus();
@@ -3605,8 +3620,8 @@
       bar.innerHTML = kind === 'perm'
         ? '<span class="bk-ic">🛟</span><b>Yedek dosyasına kaydetmek için izin verin</b><button type="button" data-bk="perm">İZİN VER</button>'
         : kind === 'err'
-          ? '<span class="bk-ic">⚠️</span><b>Yedek dosyasına yazılamadı</b><button type="button" data-bk="pick">DOSYA SEÇ</button>'
-          : '<span class="bk-ic">🛟</span><b>Otomatik yedek kapalı · bir kez dosya seçin</b><button type="button" data-bk="pick">DOSYA SEÇ</button><button type="button" class="bk-x" data-bk="hide" aria-label="Bugün gösterme">✕</button>';
+          ? '<span class="bk-ic">⚠️</span><b>Yedek dosyasına yazılamadı</b><button type="button" data-bk="pick">' + (dirOK ? 'KLASÖR SEÇ' : 'DOSYA SEÇ') + '</button>'
+          : '<span class="bk-ic">🛟</span><b>Otomatik yedek kapalı · bir kez ' + (dirOK ? 'klasör' : 'dosya') + ' seçin</b><button type="button" data-bk="pick">' + (dirOK ? 'KLASÖR SEÇ' : 'DOSYA SEÇ') + '</button><button type="button" class="bk-x" data-bk="hide" aria-label="Bugün gösterme">✕</button>';
     }
     if (bar) bar.addEventListener('click', function(e){
       var b = e.target.closest('[data-bk]'); if (!b) return;
@@ -3617,18 +3632,18 @@
 
     function refreshStatus(){
       if (autoRow) autoRow.hidden = supported;
-      pickBtn.textContent = fileHandle ? '📁 Başka dosya seç' : '📁 Yedek dosyasını seç (bir kez)';
+      pickBtn.textContent = dirOK ? (fileHandle ? '📁 Başka klasör seç' : '📁 Yedek klasörünü seç (bir kez)') : (fileHandle ? '📁 Başka dosya seç' : '📁 Yedek dosyasını seç (bir kez)');
       if (fileHandle){
-        var l = lsGet(AUTO_LAST), when = l ? display(l.slice(0, 10)) + ' ' + clock(new Date(l)) : '—';
-        if (needPerm){ stat('Yedek dosyası: ' + fileHandle.name + ' — bu açılışta izin verilmedi; değişiklikler uygulamada duruyor, uygulamayı bir sonraki açışınızda dosyaya yazılacak.', true); showBar(null); return; }
-        if (lastErr){ stat(lastErr + ' Dosyayı yeniden seçin.', true); showBar('err'); return; }
-        stat((dirty ? '⏳ Kaydediliyor… ' : '✓ Her değişiklik kaydediliyor. ') + 'Dosya: ' + fileHandle.name + ' · son kayıt: ' + when);
+        var l = lsGet(AUTO_LAST), when = l ? display(localISO(l)) + ' ' + clock(new Date(l)) : '—';
+        if (needPerm){ stat('Yedek dosyası: ' + hName(fileHandle) + ' — bu açılışta izin verilmedi; değişiklikler uygulamada duruyor, uygulamayı bir sonraki açışınızda dosyaya yazılacak.', true); showBar(null); return; }
+        if (lastErr){ stat(lastErr + (isDir(fileHandle) ? ' Klasörü yeniden seçin.' : ' Dosyayı yeniden seçin.'), true); showBar('err'); return; }
+        stat((dirty ? '⏳ Kaydediliyor… ' : '✓ Her değişiklik kaydediliyor. ') + 'Dosya: ' + hName(fileHandle) + (isDir(fileHandle) ? ' (eski yedekler silinir, tek dosya kalır)' : '') + ' · son kayıt: ' + when);
         showBar(null); return;
       }
-      if (supported){ stat(lastErr || 'Otomatik yedek kapalı. "Yedek dosyasını seç"e dokunup bir kez dosya seçin; sonra her değişiklik o dosyaya yazılır.', true); showBar(lastErr ? 'err' : 'pick'); return; }
+      if (supported){ stat(lastErr || (dirOK ? 'Otomatik yedek kapalı. "Yedek klasörünü seç"e dokunup bir kez klasör seçin; her değişiklik o klasördeki tidem-yedek.json dosyasına yazılır, eski yedekler silinir.' : 'Otomatik yedek kapalı. "Yedek dosyasını seç"e dokunup bir kez dosya seçin; sonra her değişiklik o dosyaya yazılır.'), true); showBar(lastErr ? 'err' : 'pick'); return; }
       showBar(null);
       var l2 = lsGet(AUTO_LAST);
-      stat(autoEl.checked ? (l2 ? 'Son otomatik yedek: ' + display(l2.slice(0, 10)) + ' ' + clock(new Date(l2)) : 'Açık. Değişiklik olan günlerde yedek bir kez indirilir.') : 'Bu tarayıcı dosyaya yazmayı desteklemiyor. Yedeği elle indirin.', !autoEl.checked);
+      stat(autoEl.checked ? (l2 ? 'Son otomatik yedek: ' + display(localISO(l2)) + ' ' + clock(new Date(l2)) : 'Açık. Değişiklik olan günlerde yedek bir kez indirilir.') : 'Bu tarayıcı dosyaya yazmayı desteklemiyor. Yedeği elle indirin.', !autoEl.checked);
     }
     refreshStatus();
 
@@ -3637,7 +3652,7 @@
     if (waBtn) waBtn.addEventListener('click', function(){
       var text = payloadText();
       if (!text){ say('Yedek doğrulanamadı, gönderilmedi.', true); return; }
-      var base = 'tidem-yedek-' + stamp();
+      var base = 'tidem-yedek';
       var f = pdfFile(text, base, 'TIDEM GIDA - YEDEK DOSYASI', ['Tarih: ' + nowTxt(), 'Bu dosya uygulamanin yedegidir. Geri yuklemek icin:', 'Tidem uygulamasi > Ayarlar > Yedegi yukle > bu dosyayi secin.', 'Dosyayi silmeyin, degistirmeyin.']);
       var ok = function(x){ try{ return !!(navigator.canShare && navigator.canShare({ files:[x] })); }catch(e){ return false; } };
       if (ok(f)){
@@ -9492,9 +9507,13 @@ function tfAskLong(title){
   const ta = document.getElementById('ntText'), mic = document.getElementById('ntMic'), st = document.getElementById('ntSt'), filt = document.getElementById('ntFilt');
   const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' })[c]);
   const p2 = n => String(n).padStart(2, '0'), ymd = d => `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}`;
-  const load = () => { try{ const l = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(l) ? l : []; }catch(e){ return []; } };
-  const save = l => { try{ localStorage.setItem(KEY, JSON.stringify(l)); }catch(e){} };
-  const who = () => { try{ const s = window.__tidemPin && window.__tidemPin.session ? window.__tidemPin.session() : null; return s && s.role === 'personel' ? s.name : 'Yönetici'; }catch(e){ return ''; } };
+  const loadAll = () => { try{ const l = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(l) ? l : []; }catch(e){ return []; } };
+  // Notlar kişiye özel: herkes sadece kendi yazdığı notları görür (yönetici dahil)
+  const me = () => { try{ const s = window.__tidemPin && window.__tidemPin.session ? window.__tidemPin.session() : null; return s && s.role === 'personel' ? { id:String(s.id), name:s.name } : { id:'admin', name:'Yönetici' }; }catch(e){ return { id:'admin', name:'Yönetici' }; } };
+  const mine = n => { const m = me(); return n.uid ? String(n.uid) === m.id : (m.id === 'admin' ? (!n.by || n.by === 'Yönetici') : n.by === m.name); };
+  const load = () => loadAll().filter(mine);
+  // Kaydederken başkalarının notlarına dokunulmaz: kendi notlarım + diğerleri
+  const save = l => { try{ localStorage.setItem(KEY, JSON.stringify(loadAll().filter(n => !mine(n)).concat(l))); }catch(e){} };
   let mode = 'open', editId = null;
   function say(t, cls){ st.textContent = t; st.className = 'nt-st' + (cls ? ' ' + cls : ''); }
   function render(){
@@ -9507,7 +9526,7 @@ function tfAskLong(title){
     list.forEach(n => {
       const d = new Date(n.at), day = ymd(d);
       if (day !== last){ last = day; html += `<div class="nt-day">${day === td ? 'BUGÜN' : (day === yd ? 'DÜN' : `${p2(d.getDate())}.${p2(d.getMonth() + 1)}.${d.getFullYear()}`)}</div>`; }
-      html += `<div class="nt-it${n.done ? ' done' : ''}"><div class="nt-tx">${esc(n.text)}</div><div class="nt-meta"><small>${p2(d.getHours())}:${p2(d.getMinutes())}${n.by ? ' · ' + esc(String(n.by).toLocaleUpperCase('tr-TR')) : ''}</small>`
+      html += `<div class="nt-it${n.done ? ' done' : ''}"><div class="nt-tx">${esc(n.text)}</div><div class="nt-meta"><small>${p2(d.getHours())}:${p2(d.getMinutes())}</small>`
         + `<button type="button" class="ok" data-done="${n.id}">${n.done ? 'GERİ AL' : '✓ TAMAM'}</button><button type="button" data-edit="${n.id}">DÜZENLE</button><button type="button" class="del" data-del="${n.id}">SİL</button></div></div>`;
     });
     box.innerHTML = html;
@@ -9522,37 +9541,57 @@ function tfAskLong(title){
       save(l.filter(x => x.id !== dl.dataset.del)); render(); }
   });
   document.getElementById('ntSave').addEventListener('click', () => {
-    stopRec();
+    stopRec(true);
     const t = ta.value.trim(); if (!t){ say('Önce notu yazın ya da konuşun.', 'err'); ta.focus(); return; }
     const l = load();
     if (editId){ const n = l.find(x => x.id === editId); if (n) n.text = t; }
-    else l.push({ id:'n' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text:t, at:new Date().toISOString(), by:who(), done:false });
+    else { const m = me(); l.push({ id:'n' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text:t, at:new Date().toISOString(), uid:m.id, by:m.name, done:false }); }
     save(l); editId = null; ta.value = ''; document.getElementById('ntSave').textContent = 'KAYDET';
     if (mode === 'done') mode = 'open';
     say('✓ Not kaydedildi', 'on'); render();
   });
-  // Konuşarak yazma
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  let rec = null, listening = false, baseText = '';
-  function stopRec(){ if (rec && listening){ try{ rec.stop(); }catch(e){} } }
-  function setOn(on){ listening = on; mic.classList.toggle('on', on); mic.setAttribute('aria-label', on ? 'Dinlemeyi durdur' : 'Konuşarak yaz'); }
+  // Konuşarak yazma: düğmeye basınca başlar, TEKRAR BASILANA KADAR dinler.
+  // Android'de "sürekli dinleme" aynı kelimeyi defalarca yazdığı için her cümle ayrı dinlenir; cümle bitince yazı sabitlenir
+  // ve dinleme kendiliğinden yeniden başlar. Durdurmak için aynı düğme (■).
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition, ANDROID = /Android/i.test(navigator.userAgent);
+  let rec = null, want = false, committed = '', current = '', restartT = null;
+  const join = (a, b) => [a, b].map(x => String(x || '').trim()).filter(Boolean).join(' ');
+  function show(){ let t = current; if (t && !committed) t = t.charAt(0).toLocaleUpperCase('tr-TR') + t.slice(1); ta.value = join(committed, t); }
+  function setOn(on){ mic.classList.toggle('on', on); mic.setAttribute('aria-label', on ? 'Dinlemeyi durdur' : 'Konuşarak yaz'); }
+  function stopRec(silent){ want = false; clearTimeout(restartT);
+    if (rec && silent){ const r = rec; rec = null; r.onresult = null; r.onerror = null; r.onend = null; try{ r.abort ? r.abort() : r.stop(); }catch(e){} setOn(false); committed = ''; current = ''; return; }
+    if (rec){ try{ rec.stop(); }catch(e){} } else setOn(false); }
+  function startSession(){
+    rec = new SR(); rec.lang = 'tr-TR'; rec.interimResults = true; rec.continuous = !ANDROID; rec.maxAlternatives = 1;
+    current = '';
+    rec.onresult = e => {
+      let t;
+      if (ANDROID) t = e.results[e.results.length - 1][0].transcript;
+      else { const parts = []; for (let i = 0; i < e.results.length; i++) parts.push(e.results[i][0].transcript.trim()); t = parts.join(' '); }
+      current = String(t || '').replace(/\s+/g, ' ').trim(); show();
+    };
+    rec.onerror = e => {
+      if (e.error === 'no-speech' || e.error === 'aborted') return;   // sessizlik: dinlemeye devam
+      const m = { 'not-allowed':'Mikrofon izni verilmedi. Telefon ayarlarından izin verin.', 'service-not-allowed':'Mikrofon izni verilmedi.', 'network':'Sesli yazma için internet gerekli.', 'audio-capture':'Mikrofon bulunamadı.' }[e.error];
+      want = false; say(m || 'Sesli yazma durdu, tekrar deneyin.', 'err');
+    };
+    rec.onend = () => {
+      show(); committed = ta.value.trim(); current = ''; rec = null;
+      if (want){ restartT = setTimeout(() => { if (!want) return; try{ startSession(); }catch(e){ want = false; setOn(false); } }, 200); return; }
+      setOn(false);
+      if (!st.classList.contains('err')) say(ta.value.trim() ? 'Durdu. Kontrol edip KAYDET\'e basın.' : 'Konuşmak için mikrofona dokunun');
+    };
+    rec.start();
+  }
   mic.addEventListener('click', () => {
     if (!SR){ say('Bu telefon sesli yazmayı desteklemiyor. Klavyedeki mikrofon simgesine basarak da konuşabilirsiniz.', 'err'); ta.focus(); return; }
-    if (listening){ stopRec(); return; }
-    rec = new SR(); rec.lang = 'tr-TR'; rec.interimResults = true; rec.continuous = true;
-    baseText = ta.value.trim(); let fin = '';
-    rec.onresult = e => {
-      let interim = '';
-      for (let i = e.resultIndex; i < e.results.length; i++){ const r = e.results[i]; if (r.isFinal) fin += r[0].transcript + ' '; else interim += r[0].transcript; }
-      let t = (fin + interim).trim(); if (t) t = t.charAt(0).toLocaleUpperCase('tr-TR') + t.slice(1);
-      ta.value = (baseText ? baseText + ' ' : '') + t;
-    };
-    rec.onerror = e => { const m = { 'not-allowed':'Mikrofon izni verilmedi. Telefon ayarlarından izin verin.', 'service-not-allowed':'Mikrofon izni verilmedi.', 'network':'Sesli yazma için internet gerekli.', 'no-speech':'Ses duyulmadı, tekrar deneyin.', 'audio-capture':'Mikrofon bulunamadı.' }[e.error]; if (m) say(m, 'err'); };
-    rec.onend = () => { setOn(false); if (!st.classList.contains('err')) say(ta.value.trim() ? 'Bitti. Kontrol edip KAYDET\'e basın.' : 'Konuşmak için mikrofona dokunun'); };
-    try{ rec.start(); setOn(true); say('Dinleniyor… Bitince aynı düğmeye (■) dokunun.', 'on'); }catch(e){ say('Sesli yazma başlatılamadı.', 'err'); }
+    if (want){ stopRec(); return; }
+    committed = ta.value.trim(); want = true;
+    try{ startSession(); setOn(true); say('Dinleniyor… Durdurmak için aynı düğmeye (■) basın.', 'on'); }catch(e){ want = false; say('Sesli yazma başlatılamadı.', 'err'); }
   });
   document.querySelector('.tab-btn[data-tab="notlar"]').addEventListener('click', () => { render(); });
   window.addEventListener('storage', e => { if (e.key === KEY) render(); });
+  document.addEventListener('tidem:login', () => { editId = null; ta.value = ''; render(); });
   render();
 })();
 </script>
