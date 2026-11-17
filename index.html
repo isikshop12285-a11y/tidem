@@ -2090,6 +2090,38 @@
   html[data-theme="dark"] .tf-col button{border-color:#DCE4F5;color:#F1F5F9}
   html[data-theme="dark"] .tf-col .tf-no{border-color:transparent;color:#A9B6CF}
   /* ===== Müşteri takibi ===== */
+  /* ===== Notlar · sesli not ===== */
+  .nt-comp{padding:12px;border:1px solid #E4E9F1;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,33,63,.04)}
+  #ntText{display:block;width:100%;min-height:88px;padding:12px 13px !important;border:1.5px solid #E1E7F0 !important;border-radius:13px !important;background:#F8FAFD !important;color:#14213F;font:inherit;font-size:.98rem;font-weight:600;line-height:1.45;resize:vertical}
+  #ntText:focus{outline:0;border-color:#14213F !important;background:#fff !important}
+  .nt-row{display:flex;align-items:center;gap:10px;margin-top:10px}
+  .nt-mic{position:relative;flex:none;display:grid;place-items:center;width:58px !important;height:58px;min-height:58px !important;padding:0 !important;border:0;border-radius:50%;background:linear-gradient(135deg,#C8202F,#E8505E);color:#fff;box-shadow:0 8px 18px rgba(200,32,47,.3);cursor:pointer}
+  .nt-mic svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .nt-mic.on{background:linear-gradient(135deg,#16A34A,#22C55E);box-shadow:0 8px 18px rgba(22,163,74,.35)}
+  .nt-mic .i-stop{display:none;fill:currentColor !important;stroke:none !important}
+  .nt-mic.on .i-mic{display:none}.nt-mic.on .i-stop{display:block}
+  .nt-mic.on:after{content:'';position:absolute;inset:-6px;border-radius:50%;border:3px solid rgba(34,197,94,.45);animation:ntPulse 1.2s ease-out infinite}
+  @keyframes ntPulse{from{transform:scale(.9);opacity:1}to{transform:scale(1.25);opacity:0}}
+  .nt-st{flex:1;min-width:0;font-size:.74rem;font-weight:700;line-height:1.35;color:#6B7A93}
+  .nt-st.on{color:#15803D}.nt-st.err{color:#B91C1C}
+  .nt-save{flex:none;width:auto !important;min-height:46px !important;padding:0 18px !important;border:0;border-radius:13px;background:#14213F;color:#fff;font:inherit;font-size:.82rem;font-weight:900;letter-spacing:.08em;cursor:pointer}
+  .nt-list{display:flex;flex-direction:column;gap:8px}
+  .nt-day{margin:6px 2px 0;font-size:.66rem;font-weight:900;letter-spacing:.14em;color:#8A97AD}
+  .nt-it{position:relative;padding:11px 12px 10px 16px;border:1px solid #E4E9F1;border-radius:14px;background:#fff;overflow:hidden}
+  .nt-it:before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#F59E0B}
+  .nt-it.done{opacity:.6}.nt-it.done:before{background:#16A34A}.nt-it.done .nt-tx{text-decoration:line-through}
+  .nt-tx{font-size:.92rem;font-weight:600;line-height:1.45;color:#14213F;white-space:pre-wrap;overflow-wrap:anywhere}
+  .nt-meta{display:flex;align-items:center;gap:6px;margin-top:8px}
+  .nt-meta small{flex:1;min-width:0;font-size:.68rem;font-weight:800;letter-spacing:.04em;color:#8A97AD}
+  .nt-meta button{width:auto !important;min-height:30px !important;padding:0 10px !important;border:0;border-radius:9px;background:#F1F4F9;color:#2F4475;font:inherit;font-size:.68rem;font-weight:900;letter-spacing:.04em;cursor:pointer}
+  .nt-meta button.ok{background:#DCFCE7;color:#15803D}
+  .nt-meta button.del{background:#FDECEE;color:#C8202F}
+  .nt-meta button.del.arm{background:#C8202F;color:#fff}
+  html[data-theme="dark"] :is(.nt-comp,.nt-it){background:#1C2A4F;border-color:#2E4070}
+  html[data-theme="dark"] #ntText{background:#24345E !important;border-color:#3A4C7E !important;color:#F1F5F9}
+  html[data-theme="dark"] .nt-tx{color:#F1F5F9}
+  html[data-theme="dark"] .nt-save{background:#F1F5F9;color:#14213F}
+  html[data-theme="dark"] .nt-meta button{background:#2B3D6B;color:#DCE4F5}
   .tk-head{padding:4px 2px 12px}
   .tk-kick{display:block;font-size:10.5px;font-weight:900;letter-spacing:.18em;color:#C8202F}
   .tk-head h2{margin:2px 0 0;font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:.01em;line-height:1.1;color:#14213F}
@@ -2401,7 +2433,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 92 · 18.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 94 · 18.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2680,6 +2712,7 @@
     <button class="tab-btn" data-tab="cari">Cari Hesap</button>
     <button class="tab-btn" data-tab="askida">Askıdaki Siparişler</button>
     <button class="tab-btn" data-tab="takip">Müşteri Takibi</button>
+    <button class="tab-btn" data-tab="notlar">Notlar</button>
     <button class="tab-btn" data-tab="dolap">Dolap</button>
     <button class="tab-btn" data-tab="rapor">Rapor</button>
     <button class="tab-btn" data-tab="istatistik">İstatistik</button>
@@ -2919,6 +2952,19 @@
   </div>
 
   <!-- MÜŞTERİ TAKİBİ TAB -->
+  <div class="panel" id="panel-notlar">
+    <div class="tk-head"><span class="tk-kick">SESLİ NOT</span><h2>Notlar</h2><p>Mikrofona dokunun ve konuşun; söyledikleriniz yazıya çevrilir. Bitince KAYDET'e basın.</p></div>
+    <section class="nt-comp">
+      <textarea id="ntText" rows="3" placeholder="Notunuzu yazın ya da mikrofona dokunup konuşun…" autocomplete="off"></textarea>
+      <div class="nt-row">
+        <button type="button" class="nt-mic" id="ntMic" aria-label="Konuşarak yaz"><svg class="i-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg><svg class="i-stop" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="5.5" width="13" height="13" rx="2.6"/></svg></button>
+        <div class="nt-st" id="ntSt">Konuşmak için mikrofona dokunun</div>
+        <button type="button" class="nt-save" id="ntSave">KAYDET</button>
+      </div>
+    </section>
+    <div class="tk-filt" id="ntFilt"></div>
+    <div class="nt-list" id="ntList"></div>
+  </div>
   <div class="panel" id="panel-takip">
     <div class="tk-head"><span class="tk-kick">HATIRLATMA</span><h2>Müşteri Takibi</h2><p id="tkRule"></p></div>
     <div class="tk-sum" id="tkSum"></div>
@@ -3291,7 +3337,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 92 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 94 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -9192,6 +9238,7 @@ document.querySelectorAll('.add-pro').forEach(b => b.addEventListener('click', (
     cari:'<path d="M5 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M9 8h6M9 12h6M9 16h3"/>',
     askida:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M10 9v6M14 9v6"/>',
     takip:'<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+    notlar:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/>',
     dolap:'<rect x="6" y="3" width="12" height="18" rx="2"/><path d="M6 10h12M9 6v2M9 13v3"/>',
     rapor:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
     istatistik:'<path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/>',
@@ -9434,6 +9481,78 @@ function tfAskLong(title){
     try{ localStorage.setItem(KEY, ymd(end)); }catch(e){}
     render();
   }
+  render();
+})();
+</script>
+
+<script>
+/* ===== Notlar · konuşarak yazma (tr-TR) ===== */
+(function(){
+  const KEY = 'siparis_notlar', box = document.getElementById('ntList'); if (!box) return;
+  const ta = document.getElementById('ntText'), mic = document.getElementById('ntMic'), st = document.getElementById('ntSt'), filt = document.getElementById('ntFilt');
+  const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' })[c]);
+  const p2 = n => String(n).padStart(2, '0'), ymd = d => `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}`;
+  const load = () => { try{ const l = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(l) ? l : []; }catch(e){ return []; } };
+  const save = l => { try{ localStorage.setItem(KEY, JSON.stringify(l)); }catch(e){} };
+  const who = () => { try{ const s = window.__tidemPin && window.__tidemPin.session ? window.__tidemPin.session() : null; return s && s.role === 'personel' ? s.name : 'Yönetici'; }catch(e){ return ''; } };
+  let mode = 'open', editId = null;
+  function say(t, cls){ st.textContent = t; st.className = 'nt-st' + (cls ? ' ' + cls : ''); }
+  function render(){
+    const all = load(), nOpen = all.filter(n => !n.done).length;
+    filt.innerHTML = [['open', 'BEKLEYEN', nOpen], ['done', 'TAMAMLANAN', all.length - nOpen], ['all', 'TÜMÜ', all.length]].map(([v, l, c]) => `<button type="button" data-f="${v}" class="${mode === v ? 'on' : ''}">${l} <em>${c}</em></button>`).join('');
+    const list = all.filter(n => mode === 'all' || (mode === 'done' ? n.done : !n.done)).sort((a, b) => String(b.at).localeCompare(String(a.at)));
+    if (!list.length){ box.innerHTML = `<div class="tk-empty"><b>✓</b>${mode === 'done' ? 'Tamamlanan not yok.' : (mode === 'open' ? 'Bekleyen not yok.' : 'Henüz not yok.')}</div>`; return; }
+    const td = ymd(new Date()), yd = ymd(new Date(Date.now() - 864e5));
+    let last = '', html = '';
+    list.forEach(n => {
+      const d = new Date(n.at), day = ymd(d);
+      if (day !== last){ last = day; html += `<div class="nt-day">${day === td ? 'BUGÜN' : (day === yd ? 'DÜN' : `${p2(d.getDate())}.${p2(d.getMonth() + 1)}.${d.getFullYear()}`)}</div>`; }
+      html += `<div class="nt-it${n.done ? ' done' : ''}"><div class="nt-tx">${esc(n.text)}</div><div class="nt-meta"><small>${p2(d.getHours())}:${p2(d.getMinutes())}${n.by ? ' · ' + esc(String(n.by).toLocaleUpperCase('tr-TR')) : ''}</small>`
+        + `<button type="button" class="ok" data-done="${n.id}">${n.done ? 'GERİ AL' : '✓ TAMAM'}</button><button type="button" data-edit="${n.id}">DÜZENLE</button><button type="button" class="del" data-del="${n.id}">SİL</button></div></div>`;
+    });
+    box.innerHTML = html;
+  }
+  filt.addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (b){ mode = b.dataset.f; render(); } });
+  box.addEventListener('click', e => {
+    const dn = e.target.closest('[data-done]'), ed = e.target.closest('[data-edit]'), dl = e.target.closest('[data-del]');
+    const l = load();
+    if (dn){ const n = l.find(x => x.id === dn.dataset.done); if (n){ n.done = !n.done; save(l); render(); } return; }
+    if (ed){ const n = l.find(x => x.id === ed.dataset.edit); if (n){ editId = n.id; ta.value = n.text; document.getElementById('ntSave').textContent = 'GÜNCELLE'; ta.focus(); window.scrollTo({ top:0, behavior:'smooth' }); say('Notu düzenliyorsunuz'); } return; }
+    if (dl){ if (!dl.classList.contains('arm')){ dl.classList.add('arm'); dl.textContent = 'EMİN MİSİN?'; setTimeout(() => { if (dl.isConnected){ dl.classList.remove('arm'); dl.textContent = 'SİL'; } }, 2500); return; }
+      save(l.filter(x => x.id !== dl.dataset.del)); render(); }
+  });
+  document.getElementById('ntSave').addEventListener('click', () => {
+    stopRec();
+    const t = ta.value.trim(); if (!t){ say('Önce notu yazın ya da konuşun.', 'err'); ta.focus(); return; }
+    const l = load();
+    if (editId){ const n = l.find(x => x.id === editId); if (n) n.text = t; }
+    else l.push({ id:'n' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text:t, at:new Date().toISOString(), by:who(), done:false });
+    save(l); editId = null; ta.value = ''; document.getElementById('ntSave').textContent = 'KAYDET';
+    if (mode === 'done') mode = 'open';
+    say('✓ Not kaydedildi', 'on'); render();
+  });
+  // Konuşarak yazma
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let rec = null, listening = false, baseText = '';
+  function stopRec(){ if (rec && listening){ try{ rec.stop(); }catch(e){} } }
+  function setOn(on){ listening = on; mic.classList.toggle('on', on); mic.setAttribute('aria-label', on ? 'Dinlemeyi durdur' : 'Konuşarak yaz'); }
+  mic.addEventListener('click', () => {
+    if (!SR){ say('Bu telefon sesli yazmayı desteklemiyor. Klavyedeki mikrofon simgesine basarak da konuşabilirsiniz.', 'err'); ta.focus(); return; }
+    if (listening){ stopRec(); return; }
+    rec = new SR(); rec.lang = 'tr-TR'; rec.interimResults = true; rec.continuous = true;
+    baseText = ta.value.trim(); let fin = '';
+    rec.onresult = e => {
+      let interim = '';
+      for (let i = e.resultIndex; i < e.results.length; i++){ const r = e.results[i]; if (r.isFinal) fin += r[0].transcript + ' '; else interim += r[0].transcript; }
+      let t = (fin + interim).trim(); if (t) t = t.charAt(0).toLocaleUpperCase('tr-TR') + t.slice(1);
+      ta.value = (baseText ? baseText + ' ' : '') + t;
+    };
+    rec.onerror = e => { const m = { 'not-allowed':'Mikrofon izni verilmedi. Telefon ayarlarından izin verin.', 'service-not-allowed':'Mikrofon izni verilmedi.', 'network':'Sesli yazma için internet gerekli.', 'no-speech':'Ses duyulmadı, tekrar deneyin.', 'audio-capture':'Mikrofon bulunamadı.' }[e.error]; if (m) say(m, 'err'); };
+    rec.onend = () => { setOn(false); if (!st.classList.contains('err')) say(ta.value.trim() ? 'Bitti. Kontrol edip KAYDET\'e basın.' : 'Konuşmak için mikrofona dokunun'); };
+    try{ rec.start(); setOn(true); say('Dinleniyor… Bitince aynı düğmeye (■) dokunun.', 'on'); }catch(e){ say('Sesli yazma başlatılamadı.', 'err'); }
+  });
+  document.querySelector('.tab-btn[data-tab="notlar"]').addEventListener('click', () => { render(); });
+  window.addEventListener('storage', e => { if (e.key === KEY) render(); });
   render();
 })();
 </script>
