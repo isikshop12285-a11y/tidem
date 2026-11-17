@@ -2091,6 +2091,14 @@
   html[data-theme="dark"] .tf-col .tf-no{border-color:transparent;color:#A9B6CF}
   /* ===== Müşteri takibi ===== */
   /* ===== Notlar · sesli not ===== */
+  .cari-row .cari-undel{display:block;margin-top:3px;font-size:.66rem;font-weight:900;letter-spacing:.03em;color:#B45309}
+  .cari-undel-box{display:flex;flex-direction:column;gap:2px;margin:10px 0 0;padding:10px 12px;border:1px solid #FCE3C8;border-left:4px solid #F59E0B;border-radius:12px;background:#FFF7E6}
+  .cari-undel-box[hidden]{display:none}
+  .cari-undel-box b{font-size:.78rem;font-weight:900;letter-spacing:.03em;color:#B45309}
+  .cari-undel-box span{font-size:.72rem;font-weight:700;color:#92400E}
+  html[data-theme="dark"] .cari-row .cari-undel{color:#FCD34D}
+  html[data-theme="dark"] .cari-undel-box{background:#3B2F14;border-color:#6B5320;border-left-color:#F59E0B}
+  html[data-theme="dark"] .cari-undel-box b,html[data-theme="dark"] .cari-undel-box span{color:#FCD34D}
   .nt-comp{padding:12px;border:1px solid #E4E9F1;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,33,63,.04)}
   #ntText{display:block;width:100%;min-height:88px;padding:12px 13px !important;border:1.5px solid #E1E7F0 !important;border-radius:13px !important;background:#F8FAFD !important;color:#14213F;font:inherit;font-size:.98rem;font-weight:600;line-height:1.45;resize:vertical}
   #ntText:focus{outline:0;border-color:#14213F !important;background:#fff !important}
@@ -2437,7 +2445,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 98 · 18.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 100 · 18.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3021,6 +3029,7 @@
         <div class="cari-hero-label">KALAN BAKİYE</div>
         <div class="cari-hero-amount" id="cariDetailBalance">0</div>
       </section>
+      <div class="cari-undel-box" id="cariUndel" hidden></div>
       <div class="cari-contact" id="cariContact"></div>
       <div class="breakdown" id="cariBreakdown"></div>
       <div class="actions"><button class="btn btn-secondary" id="cariGoTahsilat">Tahsilat gir</button><button class="btn btn-primary" id="cariStatementBtn" type="button">Hesap hareketleri fişi</button></div>
@@ -3341,7 +3350,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 98 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 100 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4945,7 +4954,7 @@
         const cnt = custRows.filter(x => foldText(x.info.group) === lastGrp).length;
         head = `<div class="cari-group-head"><span>${escHtml(r.info.group || 'Grubu olmayanlar')}</span><small>${cnt} müşteri</small></div>`;
       }
-      return head + `<div class="definition-row cari-row" data-definition-name="${escAttr(r.name)}" data-search-text="${escAttr(r.name + ' ' + r.info.address + ' ' + r.info.group)}"><input type="checkbox" class="cari-pick" data-pick="${escAttr(r.name)}" ${cariPicked.has(foldText(r.name)) ? 'checked' : ''} aria-label="Seç"><button type="button" class="cari-open" data-cari-open="${r.idx}"><b>${escHtml(r.name)}</b>${meta ? `<small class="cari-meta">${escHtml(meta)}</small>` : ''}<small class="${cls}">${label}</small></button><button type="button" class="cari-msg" data-cari-msg="${escAttr(r.name)}" aria-label="${escAttr(r.name)} bakiye mesajı"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M5.5 3.5h13a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H12l-5 3.8V18H5.5a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3ZM7 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM10.65 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM14.3 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0Z"/></svg></button><div class="definition-actions"><button class="edit" data-customer-edit="${r.idx}">Düzelt</button><button class="delete" data-customer-index="${r.idx}">Sil</button></div></div>`;
+      return head + `<div class="definition-row cari-row" data-definition-name="${escAttr(r.name)}" data-search-text="${escAttr(r.name + ' ' + r.info.address + ' ' + r.info.group)}"><input type="checkbox" class="cari-pick" data-pick="${escAttr(r.name)}" ${cariPicked.has(foldText(r.name)) ? 'checked' : ''} aria-label="Seç"><button type="button" class="cari-open" data-cari-open="${r.idx}"><b>${escHtml(r.name)}</b>${meta ? `<small class="cari-meta">${escHtml(meta)}</small>` : ''}<small class="${cls}">${label}</small>${(u => u.n ? `<small class="cari-undel">⚠ ${u.n} TESLİM EDİLMEDİ · ${fmt(u.total)} ₺</small>` : '')(undeliveredFor(r.name))}</button><button type="button" class="cari-msg" data-cari-msg="${escAttr(r.name)}" aria-label="${escAttr(r.name)} bakiye mesajı"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M5.5 3.5h13a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H12l-5 3.8V18H5.5a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3ZM7 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM10.65 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0ZM14.3 10.75a1.35 1.35 0 1 0 2.7 0a1.35 1.35 0 1 0-2.7 0Z"/></svg></button><div class="definition-actions"><button class="edit" data-customer-edit="${r.idx}">Düzelt</button><button class="delete" data-customer-index="${r.idx}">Sil</button></div></div>`;
     }).join('') || '<div class="definition-empty">Henüz unvan kaydı yok.</div>';
     productBox.querySelectorAll('.definition-row').forEach(row => { row.dataset.searchText = `${row.dataset.definitionName || ''} ${row.querySelector('.definition-group-select')?.value || ''}`; });
     function customerMsg(text){
@@ -5158,6 +5167,8 @@
   // ===== Orders =====
   function getOrders(){ return safeGet('siparis_orders', []); }
   function liveOrders(){ return getOrders().filter(o => !o.onHold); }   // askıdaki siparişler cari, rapor, irsaliye ve istatistiğe girmez
+  function cariOrders(){ return getOrders().filter(o => o.delivered && !o.onHold); }   // cari hesaba sadece TESLİM EDİLEN sipariş yazılır
+  function undeliveredFor(name){ const k = foldText(name), l = getOrders().filter(o => !o.delivered && foldText(o.customer) === k); return { n:l.length, total:l.reduce((t, o) => t + num(o.total), 0) }; }
   function saveOrders(orders){ safeSet('siparis_orders', orders); }
   function lastOrderFor(name){
     const k = foldText(name); return getOrders().filter(o => foldText(o.customer) === k).sort((a,b) => String(b.date).localeCompare(String(a.date)) || idStamp(b.id) - idStamp(a.id))[0];
@@ -5257,7 +5268,7 @@
   // ===== Balance calculation =====
   function balanceFor(name){
     const key = foldText(name);
-    const owed = liveOrders()
+    const owed = cariOrders()
       .filter(o => foldText(o.customer) === key && o.paymentType === 'account')
       .reduce((s,o) => s + num(o.total), 0);
     const paid = getTahsilat()
@@ -5291,7 +5302,7 @@
       return idStamp(x.id) < ts;
     };
     const mine = x => foldText(x.customer) === key;
-    const owed = liveOrders().filter(o => mine(o) && o.paymentType === 'account' && before(o)).reduce((t, o) => t + num(o.total), 0);
+    const owed = cariOrders().filter(o => mine(o) && o.paymentType === 'account' && before(o)).reduce((t, o) => t + num(o.total), 0);
     const paid = getTahsilat().filter(t => tAffectsCari(t) && mine(t) && before(t)).reduce((t, x) => t + num(x.amount), 0);
     const ret = getReturns().filter(r => r.refundType === 'account' && mine(r) && before(r)).reduce((t, r) => t + num(r.total), 0);
     const old = getDebts().filter(d => mine(d) && before(d)).reduce((t, d) => t + num(d.amount), 0);
@@ -5498,14 +5509,10 @@
     const customer = (o ? o.customer : customerInput.value.trim()) || '-';
     const date = o ? o.date : (orderDate.value || todayStr());
     const noteText = o ? (o.note || '') : orderNote.value.trim();
-    const companyText = o ? (o.company || '') : companyName.value.trim();
-    const printCompany = document.getElementById('printCompany');
-    if (printCompany) printCompany.textContent = companyText || 'Tidem Gıda';
     const sourceLogo = document.querySelector('.brand-logo');
     const printLogo = document.getElementById('printLogo');
     if (sourceLogo && printLogo) printLogo.src = sourceLogo.dataset.lightSrc || sourceLogo.src;   // fişte her zaman renkli logo
     document.getElementById('printCustomer').textContent = customer;
-    { const pe = document.getElementById('printPayment'); const PAYN = { cash:'NAKİT', paid:'NAKİT', card:'KREDİ KARTI', eft:'IBAN / EFT', account:'CARİ HESAP' }; if (pe) pe.textContent = PAYN[o ? o.paymentType : paymentType] || '—'; }
     document.getElementById('printDate').textContent = dateDisplay(date);
     document.getElementById('printTotal').textContent = fmt2(total);
     { const kb = document.getElementById('printKdv'), kd = kdvBreakdown(products);
@@ -5683,7 +5690,7 @@
     const { groups, ungrouped } = receiptGroups(order);
     const W = 800, H = 800 * 297 / 210, PAD = 46, SC = 3, FONT = 'Arial, Helvetica, sans-serif';
     const SLATE = '#1E293B', MUTE = '#64748B', LINE = '#E2E8F0', ZEBRA = '#F8FAFC', BOX = '#F1F5F9', RED = '#C8202F', DRED = '#8C1A24';
-    const cFiyat = 628, cTop = W - PAD;
+    const cTop = W - PAD;
     const UP = t => String(t == null ? '' : t).toLocaleUpperCase('tr-TR');
     const IBAN_NO = 'TR75 0006 4000 0016 5000 5170 00', IBAN_NAME = 'MEHMET DEMİR';
     const measure = document.createElement('canvas').getContext('2d');
@@ -6276,7 +6283,7 @@
     const map = new Map();
     const get = name => { const k = foldText(name); if (!k) return null; if (!map.has(k)) map.set(k, { name, lastOrder:'', lastPay:'', firstOwe:'' }); return map.get(k); };
     getCustomers().forEach(n => get(n));
-    liveOrders().forEach(o => { const r = get(o.customer); if (!r) return; if (o.date > r.lastOrder) r.lastOrder = o.date; if (o.paymentType === 'account' && (!r.firstOwe || o.date < r.firstOwe)) r.firstOwe = o.date; });
+    liveOrders().forEach(o => { const r = get(o.customer); if (!r) return; if (o.date > r.lastOrder) r.lastOrder = o.date; if (o.paymentType === 'account' && o.delivered && (!r.firstOwe || o.date < r.firstOwe)) r.firstOwe = o.date; });
     getTahsilat().forEach(t => { const r = get(t.customer); if (r && t.date > r.lastPay) r.lastPay = t.date; });
     getDebts().forEach(d => { const r = get(d.customer); if (r && (!r.firstOwe || d.date < r.firstOwe)) r.firstOwe = d.date; });
     const out = [];
@@ -7977,7 +7984,7 @@
 
   function renderCari(){
     try{ renderPromises(); }catch(e){}
-    const orders = liveOrders();
+    const orders = cariOrders();
     const tahsilat = getTahsilat().filter(tAffectsCari);
     const returns = getReturns().filter(r => r.refundType === 'account');
     const debts = getDebts();
@@ -8051,7 +8058,7 @@
     const k = foldText(name); const out = [];
     getDebts().filter(d => foldText(d.customer) === k).forEach(d => out.push({ kind:'debt', id:d.id, date:d.date, amount:num(d.amount), sign:1, title:'Eski borç', note:d.note || '' }));
     const PAYN = { cash:'Nakit', card:'Kredi kartı', eft:'IBAN / EFT' };
-    liveOrders().filter(o => foldText(o.customer) === k).forEach(o => {
+    cariOrders().filter(o => foldText(o.customer) === k).forEach(o => {
       const acc = o.paymentType === 'account';
       out.push({ kind: acc ? 'order' : 'orderPaid', id:o.id, date:o.date, amount:num(o.total), sign: acc ? 1 : 0,
         title: acc ? 'Sipariş · cari hesaba' : `Sipariş · ${PAYN[o.paymentType] || 'Nakit'} ödendi`,
@@ -8100,6 +8107,7 @@
     document.getElementById('cariDetailName').textContent = name;
     document.getElementById('cariDetailMeta').textContent = infoLine(name);
     document.getElementById('cariContact').innerHTML = `<button type="button" class="cc-wa" data-cc-wa>${WA_IC}Bakiye mesajı gönder</button>`;
+    { const u = undeliveredFor(name), w = document.getElementById('cariUndel'); w.hidden = !u.n; if (u.n) w.innerHTML = `<b>⚠ ${u.n} SİPARİŞ TESLİM EDİLMEDİ</b><span>${fmt(u.total)} ₺ · cariye eklenmedi</span>`; }
     document.getElementById('cariGroupList').innerHTML = allGroups().map(g => `<option value="${escAttr(g)}">`).join('');
     document.getElementById('cariHero').className = 'cari-hero ' + lb.cls;
     document.getElementById('cariDetailBalance').innerHTML = `${lb.text}<small>${bal > 0.004 || bal < -0.004 ? '₺ ' + lb.tag : lb.tag}</small>`;
@@ -8776,7 +8784,7 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
     const type = archiveType.value;
     const inRange = date => (!from || date >= from) && (!to || date <= to);
     const hasProduct = items => !product || (items || []).some(p => foldText(p.name).includes(product));
-    const orders = getOrders().filter(o => inRange(o.date) && (!customer || foldText(o.customer).includes(customer)) && hasProduct(o.products));
+    const orders = getOrders().filter(o => o.delivered && !o.onHold && inRange(o.date) && (!customer || foldText(o.customer).includes(customer)) && hasProduct(o.products));   // arşive sadece teslim edilen siparişler
     // Tahsilat kayıtlarında ürün satırı bulunmadığından ürün araması yalnızca sipariş/iade hareketlerini gösterir.
     const payments = getTahsilat().filter(t => inRange(t.date) && !product && (!customer || foldText(t.customer).includes(customer)));
     const returns = getReturns().filter(r => inRange(r.date) && (!customer || foldText(r.customer).includes(customer)) && hasProduct(r.products));
@@ -8790,7 +8798,7 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
     if (type === 'all' || type === 'order') orders.forEach(o => {
       const matchedItems = (o.products || []).filter(p => !product || foldText(p.name).includes(product));
       const itemText = matchedItems.map(p => `${p.name || 'Ürün'} · ${fmt(p.adet)} koli`).join(', ');
-      rows.push({ date:o.date, name:o.customer, sub:`${o.onHold ? 'ASKIDA · ' : ''}Sipariş · ${(o.products || []).length} ürün · ${o.delivered ? 'Teslim edildi' : 'Teslim edilmedi'}${itemText ? ' · ' + itemText : ''}${o.note ? ' · ' + o.note : ''}`, amount:o.total, color:'var(--red)', kind:'Sipariş', orderId:o.id });
+      rows.push({ date:o.date, name:o.customer, sub:`Sipariş · ${(o.products || []).length} ürün · Teslim edildi${itemText ? ' · ' + itemText : ''}${o.note ? ' · ' + o.note : ''}`, amount:o.total, color:'var(--red)', kind:'Sipariş', orderId:o.id });
     });
     if (type === 'all' || type === 'payment') payments.forEach(t => rows.push({ date:t.date, name:t.customer || 'Liste tahsilatı', sub:`Tahsilat · ${T_LABELS[tMethod(t)]}${t.note ? ' · ' + t.note : ''}`, amount:t.amount, color:'var(--green)', kind:'Tahsilat' }));
     if (type === 'all' || type === 'return') returns.forEach(r => {
