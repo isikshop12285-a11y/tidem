@@ -488,7 +488,8 @@
   :is(.print-receipt,.preview-paper) .print-table th{padding:9px 8px;background:#0f2d5c;color:#fff;border:0;white-space:nowrap}
   :is(.print-receipt,.preview-paper) .print-table th:first-child{ border-radius:8px 0 0 8px; } .print-receipt .print-table th:last-child{ border-radius:0 8px 8px 0; }
   :is(.print-receipt,.preview-paper) .print-table td{padding:9px 8px;border-bottom:1px solid #e3e8f0}
-  :is(#printReceipt,.preview-paper) .print-table thead th:nth-child(4), :is(#printReceipt,.preview-paper) .print-table td.r-kdv{text-align:center !important}
+  :is(#printReceipt,.preview-paper) .print-table .r-kdv{text-align:center !important}
+  :is(#printReceipt,.preview-paper) .print-table th.r-kdv[hidden]{display:none}
   :is(.print-receipt,.preview-paper) .print-table tbody tr:nth-child(even):not([style]) td{ background:#f5f7fb; }
   :is(.print-receipt,.preview-paper) .print-total{ width:fit-content; margin:14px 0 0 auto; padding:12px 18px; gap:32px; border:0; border-radius:10px; background:#0f2d5c; color:#fff; font-size:18px; font-weight:900; }
   :is(.print-receipt,.preview-paper) .print-total span:first-child{ font-size:11px; letter-spacing:.16em; color:#e8c77a; align-self:center; }
@@ -2445,7 +2446,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 101 · 18.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 102 · 18.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2696,7 +2697,7 @@
       <div><b>Müşteri</b><span class="print-customer" id="printCustomer">-</span></div>
     </div>
     <table class="print-table">
-      <thead><tr><th>Ürün cinsi</th><th>Adet</th><th>Birim fiyat</th><th>KDV</th><th>Toplam</th></tr></thead>
+      <thead><tr><th>Ürün cinsi</th><th>Adet</th><th>Birim fiyat</th><th class="r-kdv">KDV</th><th>Toplam</th></tr></thead>
       <tbody id="printRows"></tbody>
     </table>
     <div class="print-kdv" id="printKdv"></div>
@@ -3350,7 +3351,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 101 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 102 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -5530,9 +5531,11 @@
       const idx = groupsOrder.indexOf(group);
       return GROUP_TEXT[(idx >= 0 ? idx : groupsOrder.length) % GROUP_TEXT.length];
     }
+    const KDV_ON = kdvCfg().show;   // KDV sütunu sadece Ayarlar'da "KDV dökümünü göster" işaretliyse
+    document.querySelectorAll('.print-table thead th.r-kdv').forEach(th => { th.hidden = !KDV_ON; });
     function plainRow(p){
       const row = document.createElement('tr');
-      row.innerHTML = `<td>${escHtml(p.name || '-')}</td><td>${p.adet || 0}</td><td>${fmt2(p.fiyat || 0)}</td><td class="r-kdv">%${kdvRateFor(p)}</td><td>${fmt2((p.adet || 0) * (p.fiyat || 0))}</td>`;
+      row.innerHTML = `<td>${escHtml(p.name || '-')}</td><td>${p.adet || 0}</td><td>${fmt2(p.fiyat || 0)}</td>${KDV_ON ? `<td class="r-kdv">%${kdvRateFor(p)}</td>` : ''}<td>${fmt2((p.adet || 0) * (p.fiyat || 0))}</td>`;
       return row;
     }
     const rawItems = products.filter(p => p.name || p.adet || p.fiyat);
@@ -5571,12 +5574,12 @@
       const totalRow = document.createElement('tr');
       totalRow.className = 'gt-row';
       totalRow.style.fontWeight = '900';
-      totalRow.innerHTML = `<td colspan="4" style="text-align:right;">${escHtml(label.toLocaleUpperCase('tr-TR'))}</td><td>${fmt2(groupTotal)}</td>`;
+      totalRow.innerHTML = `<td colspan="${KDV_ON ? 4 : 3}" style="text-align:right;">${escHtml(label.toLocaleUpperCase('tr-TR'))}</td><td>${fmt2(groupTotal)}</td>`;
       body.appendChild(totalRow);
     });
     ungrouped.sort(receiptOrder).forEach(p => body.appendChild(plainRow(p)));
     const partsRow = document.createElement('tr'); partsRow.className = 'parts-row';
-    partsRow.innerHTML = `<td colspan="4">TOPLAM PARÇA</td><td>${fmt(items.reduce((t, p) => t + num(p.adet), 0))}</td>`; body.appendChild(partsRow);
+    partsRow.innerHTML = `<td colspan="${KDV_ON ? 4 : 3}">TOPLAM PARÇA</td><td>${fmt(items.reduce((t, p) => t + num(p.adet), 0))}</td>`; body.appendChild(partsRow);
   }
   document.getElementById('printBtn').addEventListener('click', () => {
     preparePrintReceipt();
@@ -5763,7 +5766,7 @@
         fitText(UP(order.customer || '-'), PAD + lw + 24, by + bh / 2 + 1, W - PAD * 2 - lw - 44, 21, 900);
       }
       // tablo: defter düzeni — sütun çizgileri, belirgin çizgili satırlar, dış çerçeve
-      const X1 = 396, X2 = 466, X3 = 580, X4 = 650, XR = W - PAD;
+      const KD = kdvCfg().show, X1 = KD ? 396 : 440, X2 = KD ? 466 : 520, X3 = KD ? 580 : 644, X4 = KD ? 650 : X3, XR = W - PAD;
       const ZB = '#EDF1F7', RL = '#D3DBE6', VL = '#C3CCD9', GT = '#E2E8F0', PC = '#D9E1EC';
       const vlines = (y0, h, xs, col) => { c.fillStyle = col; xs.forEach(x => c.fillRect(x - 0.5, y0, 1, h)); };
       c.fillStyle = SLATE; rr(PAD, tY, W - PAD * 2, TH, 8); c.fill(); c.fillRect(PAD, tY + TH - 8, W - PAD * 2, 8);
@@ -5771,7 +5774,7 @@
       c.fillStyle = '#fff'; c.font = `bold 12px ${FONT}`; c.textAlign = 'left'; spacing('1px');
       c.fillText('ÜRÜN CİNSİ', PAD + 14, tY + TH / 2);
       c.textAlign = 'center'; c.fillText('ADET', (X1 + X2) / 2, tY + TH / 2);
-      c.textAlign = 'right'; c.fillText('BİRİM FİYAT', X3 - 10, tY + TH / 2); c.textAlign = 'center'; c.fillText('KDV', (X3 + X4) / 2, tY + TH / 2); c.textAlign = 'right'; c.fillText('TOPLAM', XR - 12, tY + TH / 2); spacing('0px');
+      c.textAlign = 'right'; c.fillText('BİRİM FİYAT', X3 - 10, tY + TH / 2); if (KD){ c.textAlign = 'center'; c.fillText('KDV', (X3 + X4) / 2, tY + TH / 2); } c.textAlign = 'right'; c.fillText('TOPLAM', XR - 12, tY + TH / 2); spacing('0px');
       let y = rowsTop; let zi = 0;
       const nameMax = X1 - (PAD + 14) - 10;
       pg.items.forEach(it => {
@@ -5784,7 +5787,7 @@
           c.font = `900 ${FS}px ${FONT}`;
           c.textAlign = 'center'; c.fillText(String(it.p.adet || 0), (X1 + X2) / 2, my);
           c.textAlign = 'right'; c.fillText(fmt2(it.p.fiyat || 0), X3 - 10, my);
-          c.textAlign = 'center'; c.fillText('%' + kdvRateFor(it.p), (X3 + X4) / 2, my); c.textAlign = 'right';
+          if (KD){ c.textAlign = 'center'; c.fillText('%' + kdvRateFor(it.p), (X3 + X4) / 2, my); } c.textAlign = 'right';
           c.fillText(fmt2(num(it.p.adet) * num(it.p.fiyat)), XR - 12, my);
           hline(y + RH - 1, 1, RL);
         } else if (it.t === 'gt'){
@@ -8756,13 +8759,13 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
 
   function buildArchiveOrderReceipt(order){
     const safe = value => String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    const products = order.products || [];
+    const products = order.products || [], KDV_ON = kdvCfg().show;
     const paymentNames = {cash:'Nakit',paid:'Nakit',card:'Kredi kartı',eft:'IBAN / EFT',account:'Cari hesap'};
-    const rows = products.map((item,index) => `<tr><td>${index+1}</td><td>${safe(item.name || 'Ürün')}</td><td>${safe(item.group || '—')}</td><td class="num">${fmt2(item.adet)}</td><td class="num">${fmt2(item.fiyat)}</td><td class="num">%${kdvRateFor(item)}</td><td class="num">${fmt2(num(item.adet)*num(item.fiyat))}</td></tr>`).join('');
+    const rows = products.map((item,index) => `<tr><td>${index+1}</td><td>${safe(item.name || 'Ürün')}</td><td>${safe(item.group || '—')}</td><td class="num">${fmt2(item.adet)}</td><td class="num">${fmt2(item.fiyat)}</td>${KDV_ON ? `<td class="num">%${kdvRateFor(item)}</td>` : ''}<td class="num">${fmt2(num(item.adet)*num(item.fiyat))}</td></tr>`).join('');
     const logo = (document.querySelector('.brand-logo')?.dataset.lightSrc || document.getElementById('lockLogo')?.dataset.lightSrc || document.querySelector('.brand-logo')?.src || '');
     const note = order.note ? `<div class="note"><b>Açıklama:</b> ${safe(order.note)}</div>` : '';
     const css = `@page{size:A4;margin:14mm}*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-family:Arial,Helvetica,sans-serif;color:#211a14;margin:0;padding:20px;font-size:13px}.sheet{max-width:820px;margin:0 auto;background:#fff;padding:28px}.head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding-bottom:15px;border-bottom:3px solid #211a14}.brand{display:flex;align-items:center;gap:12px}.logo{width:112px;height:58px;object-fit:contain;object-position:left center}.company{font-size:16px;font-weight:900}.title{font-size:20px;font-weight:900;letter-spacing:.04em;margin-top:4px}.date{text-align:right;white-space:nowrap;line-height:1.6}.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px 0;border-bottom:1px solid #aaa}.meta label{display:block;margin-bottom:3px;font-size:9px;font-weight:800;letter-spacing:.1em;color:#665d52;text-transform:uppercase}.meta strong{font-size:14px}table{width:100%;border-collapse:collapse;margin-top:16px}th{padding:9px 6px;text-align:left;background:#f3ecda;border-top:1px solid #211a14;border-bottom:2px solid #211a14;font-size:9px;text-transform:uppercase}td{padding:9px 6px;border-bottom:1px solid #d9cdb4;vertical-align:top}.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.total{display:flex;justify-content:flex-end;gap:38px;padding:14px 6px;border-top:2px solid #211a14;font-size:17px;font-weight:900}.note{margin-top:12px;padding:10px;background:#f7f2e8;font-size:11px}.foot{margin-top:22px;padding-top:8px;border-top:1px solid #aaa;color:#665d52;font-size:10px}@media screen{body{background:#f0ece4}}@media(max-width:520px){.sheet{padding:14px}.logo{width:82px}.title{font-size:16px}th,td{padding:7px 4px;font-size:10px}}`;
-    return `<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Teklif Fişi · ${safe(order.customer || '')}</title><style>${css}</style></head><body><main class="sheet"><header class="head"><div class="brand">${logo ? `<img class="logo" src="${logo}" alt="">` : ''}<div><div class="company">${safe(order.company || 'Tidem Gıda')}</div><div class="title">TEKLİF FİŞİ</div></div></div><div class="date"><b>Sipariş tarihi</b><br>${dateDisplay(order.date)}${order.delivered ? `<br><b>Teslim</b> · ${dateDisplay(order.deliveryDate || order.date)}` : ''}</div></header><section class="meta"><div><label>Unvan / kişi</label><strong>${safe(order.customer || '—')}</strong></div><div><label>Ödeme şekli</label><strong>${paymentNames[order.paymentType] || '—'}</strong></div></section><table><thead><tr><th>No</th><th>Ürün cinsi</th><th>Grup</th><th class="num">Adet</th><th class="num">Birim fiyat</th><th class="num">KDV</th><th class="num">Tutar</th></tr></thead><tbody>${rows || '<tr><td colspan="7">Ürün bulunamadı.</td></tr>'}<tr style="font-weight:900;background:#EDE7D8"><td colspan="6" class="num">TOPLAM PARÇA</td><td class="num">${fmt(orderPieces(order))}</td></tr></tbody></table><div class="total"><span>GENEL TOPLAM</span><span>${fmt2(order.total)}</span></div>${note}<div class="note"><b>IBAN:</b> ${IBAN_NO} · ${IBAN_NAME}</div><footer class="foot">Belge, arşivde kayıtlı siparişten oluşturulmuştur.</footer></main></body></html>`;
+    return `<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Teklif Fişi · ${safe(order.customer || '')}</title><style>${css}</style></head><body><main class="sheet"><header class="head"><div class="brand">${logo ? `<img class="logo" src="${logo}" alt="">` : ''}<div><div class="company">${safe(order.company || 'Tidem Gıda')}</div><div class="title">TEKLİF FİŞİ</div></div></div><div class="date"><b>Sipariş tarihi</b><br>${dateDisplay(order.date)}${order.delivered ? `<br><b>Teslim</b> · ${dateDisplay(order.deliveryDate || order.date)}` : ''}</div></header><section class="meta"><div><label>Unvan / kişi</label><strong>${safe(order.customer || '—')}</strong></div><div><label>Ödeme şekli</label><strong>${paymentNames[order.paymentType] || '—'}</strong></div></section><table><thead><tr><th>No</th><th>Ürün cinsi</th><th>Grup</th><th class="num">Adet</th><th class="num">Birim fiyat</th>${KDV_ON ? '<th class="num">KDV</th>' : ''}<th class="num">Tutar</th></tr></thead><tbody>${rows || '<tr><td colspan="${KDV_ON ? 7 : 6}">Ürün bulunamadı.</td></tr>'}<tr style="font-weight:900;background:#EDE7D8"><td colspan="${KDV_ON ? 6 : 5}" class="num">TOPLAM PARÇA</td><td class="num">${fmt(orderPieces(order))}</td></tr></tbody></table><div class="total"><span>GENEL TOPLAM</span><span>${fmt2(order.total)}</span></div>${note}<div class="note"><b>IBAN:</b> ${IBAN_NO} · ${IBAN_NAME}</div><footer class="foot">Belge, arşivde kayıtlı siparişten oluşturulmuştur.</footer></main></body></html>`;
   }
   function renderArsiv(){
     const from = archiveFrom.value;
