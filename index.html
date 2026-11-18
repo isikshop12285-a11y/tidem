@@ -2445,7 +2445,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 100 · 18.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 101 · 18.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3350,7 +3350,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 100 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 101 · 18.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -5283,35 +5283,23 @@
     return owed + oldDebt - paid - returned;
   }
 
-  // Bu siparişten ÖNCEKİ cari bakiye (siparişin tarihinden önceki hareketler; aynı gün ise kayıt sırasına göre)
+  // Fişteki ESKİ CARİ BAKİYE = müşterinin Cari Hesap ekranındaki GÜNCEL bakiyesi − (bu fiş zaten cariye yazılmışsa) bu fişin tutarı.
+  // Böylece fişteki GENEL TOPLAM her zaman Cari Hesap'taki bakiyeyle aynı çıkar (teslim edilmemişse: bakiye + bu fiş).
   function idStamp(id){ return parseInt(String(id || '').replace(/\D/g, ''), 10) || 0; }
   function orderSig(o){
     return [foldText(o.customer), o.date || '', Math.round(num(o.total) * 100),
       (o.products || []).filter(p => p.name || p.adet || p.fiyat).map(p => [foldText(p.name), num(p.adet), num(p.fiyat)].join(':')).sort().join('|')].join('#');
   }
-  function prevBalanceFor(name, date, id, selfOrder){
-    const selfSig = selfOrder && !id ? orderSig(selfOrder) : null;
+  function prevBalanceFor(name, order){
     const key = foldText(name); if (!key) return 0;
-    const ts = id ? idStamp(id) : Infinity;
-    const before = x => {
-      if (id && x.id === id) return false;
-      if (selfSig && x.products && orderSig(x) === selfSig) return false;   // form hâlâ az önce kaydedilen siparişi gösteriyor
-      const d = x.date || '';
-      if (d < date) return true;
-      if (d > date) return false;
-      return idStamp(x.id) < ts;
-    };
-    const mine = x => foldText(x.customer) === key;
-    const owed = cariOrders().filter(o => mine(o) && o.paymentType === 'account' && before(o)).reduce((t, o) => t + num(o.total), 0);
-    const paid = getTahsilat().filter(t => tAffectsCari(t) && mine(t) && before(t)).reduce((t, x) => t + num(x.amount), 0);
-    const ret = getReturns().filter(r => r.refundType === 'account' && mine(r) && before(r)).reduce((t, r) => t + num(r.total), 0);
-    const old = getDebts().filter(d => mine(d) && before(d)).reduce((t, d) => t + num(d.amount), 0);
-    return owed + old - paid - ret;
+    const sig = !order.id ? orderSig(order) : null;
+    const saved = cariOrders().find(o => o.paymentType === 'account' && foldText(o.customer) === key && (order.id ? o.id === order.id : orderSig(o) === sig));
+    return balanceFor(name) - (saved ? num(saved.total) : 0);
   }
   // Fişin altında gösterilecek: {prev, grand} — müşteri yoksa null
   function receiptCariInfo(order){
     const name = (order.customer || '').trim(); if (!name || name === '-') return null;
-    const prev = prevBalanceFor(name, order.date || todayStr(), order.id || '', order);
+    const prev = prevBalanceFor(name, order);
     const addsToCari = (order.paymentType || 'account') === 'account';
     const grand = prev + (addsToCari ? num(order.total) : 0);
     return { prev, grand, addsToCari };
