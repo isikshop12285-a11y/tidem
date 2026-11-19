@@ -31,6 +31,11 @@
   html body .customer-toggle{width:46px;border:0 !important;border-radius:0 14px 14px 0;background:transparent !important;color:#fff !important;font-size:0 !important;display:grid;place-items:center}
   html body .customer-toggle::before{content:"";width:9px;height:9px;border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
   html body .customer-toggle[aria-expanded="true"]::before{transform:translateY(2px) rotate(-135deg)}
+  /* Siparişi görüntüle (v117) */
+  html body #viewOrderBtn{flex:1 1 100% !important;width:100% !important;display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;margin-bottom:10px;border:0;border-radius:16px !important;background:linear-gradient(135deg,#0E1A3A,#2B3F78 60%,#3D55A0) !important;color:#fff !important;font-size:.92rem !important;font-weight:900 !important;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 8px 20px rgba(43,63,120,.3),inset 0 1px 0 rgba(255,255,255,.2) !important;cursor:pointer;transition:transform .15s}
+  html body #viewOrderBtn:active{transform:scale(.98)}
+  html body #viewOrderBtn svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  html[data-theme="dark"] body #viewOrderBtn{background:linear-gradient(135deg,#2B3F78,#3D55A0 60%,#5470C0) !important}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2511,7 +2516,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 116 · 19.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 117 · 19.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2875,6 +2880,7 @@
 
     <div class="status-msg" id="statusMsg"></div>
     <div class="actions">
+      <button type="button" class="btn" id="viewOrderBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12v20l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 22Z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>Siparişi görüntüle</button>
       <button class="btn btn-primary" id="saveBtn"><i class="sv-fill" aria-hidden="true"></i><span class="sv-lbl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg><span class="sv-t">Siparişi kaydet</span></span><span class="sv-ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>KAYDEDİLDİ</span></button>
     </div>
 
@@ -3409,7 +3415,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 116 · 19.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 117 · 19.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -5622,6 +5628,11 @@
   const previewOverlay = document.getElementById('previewOverlay');
   const previewPaper = document.getElementById('previewPaper');
   let previewOrder = null;
+  document.getElementById('viewOrderBtn').addEventListener('click', () => {
+    const hasItem = [...rowsEl.querySelectorAll('.row-name')].some(i => i.value.trim());
+    if (!customerInput.value.trim() && !hasItem){ flash('Önce müşteri ve ürün girin.'); return; }
+    openPreview(null);
+  });
   function openPreview(o = null){
     statementMode = false; document.getElementById('previewWaBtn').style.display = ''; document.getElementById('previewPdfBtn').style.display = '';
     previewOrder = o;
