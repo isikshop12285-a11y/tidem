@@ -19,6 +19,18 @@
   .tr-back{flex:none;display:inline-flex;align-items:center;gap:6px;padding:10px 12px;border:0;border-radius:12px;background:linear-gradient(145deg,#15803D,#1FA855 55%,#4ADE80);color:#fff;font:inherit;font-size:.7rem;font-weight:800;box-shadow:0 5px 12px rgba(31,168,85,.3);cursor:pointer}
   .tr-back svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   @keyframes trFade{from{opacity:0}}@keyframes trUp{from{transform:translateY(100%)}}
+  /* Müşteri alanı · degrade çerçeve (v116) */
+  html body .customer-row .field>label{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#64748B}
+  html body .customer-input-wrap{padding:2px;gap:0;border-radius:16px;background:linear-gradient(120deg,#14213F,#2B3F78 45%,#C8202F);box-shadow:0 8px 20px rgba(43,63,120,.22);transition:box-shadow .2s}
+  html body .customer-input-wrap:focus-within{box-shadow:0 0 0 4px rgba(200,32,47,.14),0 8px 20px rgba(43,63,120,.22)}
+  html body .customer-input-wrap .cf-ic{display:grid;place-items:center;width:46px;flex:none;color:#fff}
+  html body .customer-input-wrap .cf-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  html body #customerInput{border:0 !important;border-radius:0 !important;box-shadow:none !important;outline:0 !important;background:#fff !important;color:#14213F !important;font-weight:800;font-size:1.05rem;padding:13px 12px}
+  html body #customerInput::placeholder{font-weight:600;color:#94A3B8}
+  html[data-theme="dark"] body #customerInput{background:#22325A !important;color:#F1F5F9 !important}
+  html body .customer-toggle{width:46px;border:0 !important;border-radius:0 14px 14px 0;background:transparent !important;color:#fff !important;font-size:0 !important;display:grid;place-items:center}
+  html body .customer-toggle::before{content:"";width:9px;height:9px;border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+  html body .customer-toggle[aria-expanded="true"]::before{transform:translateY(2px) rotate(-135deg)}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,14 +86,6 @@
   .customer-suggestion{display:block;width:100%;padding:10px 11px;border:0;border-radius:7px;background:transparent;color:var(--ink);text-align:left;font:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
   .customer-suggestion:hover,.customer-suggestion.active{background:var(--paper-2);color:var(--red)}
   .customer-suggestions-empty{padding:11px;color:var(--ink-soft);font-size:.78rem;font-weight:600}
-  .recall-btn{
-    flex-shrink:0; background:var(--paper-2); border:1.5px solid var(--line); color:var(--ink);
-    font-size:0.78rem; font-weight:600; padding:10px 12px; border-radius:var(--radius-s);
-    white-space:nowrap; cursor:pointer;
-  }
-  .recall-btn:disabled{ opacity:0.35; cursor:default; }
-  .recall-hint{ font-size:0.75rem; color:var(--green); font-weight:600; display:none; }
-  .recall-hint.show{ display:block; }
   .balance-hint{ font-size:0.78rem; font-weight:700; display:none; padding:6px 10px; border-radius:var(--radius-s); }
   .balance-hint.show{ display:block; }
   .balance-hint.owes{ background:rgba(200,32,47,0.12); color:var(--red); }
@@ -311,7 +315,7 @@
   .row-card,.hist-item,.definition-card,.breakdown{box-shadow:0 3px 10px rgba(15,23,42,.055)}
   .hist-item{transition:transform .15s,border-color .15s}
   .hist-item:hover{border-color:#c8b797}
-  .btn,.add-btn,.recall-btn,.hist-edit,.definition-actions button{transition:transform .12s,filter .12s,box-shadow .12s}
+  .btn,.add-btn,.hist-edit,.definition-actions button{transition:transform .12s,filter .12s,box-shadow .12s}
   .btn:active,.add-btn:active,.hist-edit:active{transform:translateY(1px)}
   .product-summary-group[role="button"]{cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;-webkit-tap-highlight-color:transparent}
   .product-summary-group[role="button"]:hover,.product-summary-group[role="button"]:focus-visible{outline:none;border-color:var(--red);box-shadow:0 5px 14px rgba(200,32,47,.12);transform:translateY(-1px)}
@@ -1125,8 +1129,8 @@
   html:not(.no-anim) .queue-chunk.wa.done{animation:tdDone .45s ease both}
   html:not(.no-anim) .td-bump{display:inline-block;animation:tdBump .35s ease}
   html:not(.no-anim) .td-msg{animation:tdMsg .25s ease both}
-  html:not(.no-anim) :is(.btn,.oc-btn,.tab-btn,.queue-chunk,.day-select,.hist-name,.month-head,.date-toggle,.cari-row,.ms-row,.add-btn,.recall-btn,#queueSendBtn,#queueAllBtn,#selSendBtn){transition:transform .14s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease,opacity .2s}
-  html:not(.no-anim) :is(.btn,.oc-btn,.tab-btn,.queue-chunk,.day-select,.add-btn,.recall-btn,#queueSendBtn,#queueAllBtn,#selSendBtn):active{transform:scale(.95)}
+  html:not(.no-anim) :is(.btn,.oc-btn,.tab-btn,.queue-chunk,.day-select,.hist-name,.month-head,.date-toggle,.cari-row,.ms-row,.add-btn,#queueSendBtn,#queueAllBtn,#selSendBtn){transition:transform .14s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease,opacity .2s}
+  html:not(.no-anim) :is(.btn,.oc-btn,.tab-btn,.queue-chunk,.day-select,.add-btn,#queueSendBtn,#queueAllBtn,#selSendBtn):active{transform:scale(.95)}
   html:not(.no-anim) :is(.month-head,.date-toggle,.cari-row,.ms-row):active{transform:scale(.985)}
   html:not(.no-anim) .ord-card{transition:box-shadow .2s ease,transform .2s ease}
   html:not(.no-anim) .ord-card.selected{transform:scale(.985)}
@@ -2507,7 +2511,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 115 · 19.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 116 · 19.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2803,13 +2807,11 @@
       <div class="customer-row">
         <div class="field customer-autocomplete" id="customerAutocomplete">
           <label for="customerInput">Sipariş veren</label>
-          <div class="customer-input-wrap"><input id="customerInput" placeholder="Müşteri / cari adı" autocomplete="off" aria-autocomplete="list" aria-controls="customerSuggestions" aria-expanded="false"><button type="button" class="customer-toggle" id="customerToggle" aria-label="Müşteri listesini göster" aria-expanded="false">▾</button></div>
+          <div class="customer-input-wrap"><span class="cf-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21v-1a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v1"/><circle cx="9" cy="8" r="4"/><path d="M16 3.5a4 4 0 0 1 0 8M21 21v-1a6 6 0 0 0-4-5.7"/></svg></span><input id="customerInput" placeholder="Müşteri / cari adı" autocomplete="off" aria-autocomplete="list" aria-controls="customerSuggestions" aria-expanded="false"><button type="button" class="customer-toggle" id="customerToggle" aria-label="Müşteri listesini göster" aria-expanded="false">▾</button></div>
           <div id="customerSuggestions" class="customer-suggestions" role="listbox" aria-label="Eşleşen müşteriler" hidden></div>
           <datalist id="customerList"></datalist>
         </div>
-        <button class="recall-btn" id="recallBtn" disabled>Son siparişi yükle</button>
       </div>
-      <div class="recall-hint" id="recallHint"></div>
       <div class="balance-hint" id="balanceHint"></div>
       <div class="balance-hint" id="cabHint"></div>
       <div class="dup-hint" id="orderDupHint" role="alert"></div>
@@ -3407,7 +3409,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 115 · 19.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 116 · 19.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4468,8 +4470,6 @@
   const grandTotalEl = document.getElementById('grandTotal');
   const customerInput = document.getElementById('customerInput');
   const customerListEl = document.getElementById('customerList');
-  const recallBtn = document.getElementById('recallBtn');
-  const recallHint = document.getElementById('recallHint');
   const balanceHint = document.getElementById('balanceHint');
   const orderDate = document.getElementById('orderDate');
   const deliveryDate = document.getElementById('deliveryDate');
@@ -5479,31 +5479,13 @@
     });
   });
 
-  // ===== Recall last order =====
+  // ===== Müşteri bilgileri (bakiye, dolap, aynı gün) · isim yoksa hepsi gizlenir =====
   function checkRecall(){
     const name = customerInput.value.trim();
-    const found = name ? lastOrderFor(name) : null;
-    if (found){
-      recallBtn.disabled = false;
-      recallHint.textContent = `${found.customer} için kayıtlı son sipariş bulundu (${dateDisplay(found.date)}).`;
-      recallHint.classList.add('show');
-    } else {
-      recallBtn.disabled = true;
-      recallHint.classList.remove('show');
-    }
     showBalanceHint(balanceHint, name);
     showCabHint(name);
     checkSameDay();
   }
-  recallBtn.addEventListener('click', () => {
-    const name = customerInput.value.trim();
-    const found = lastOrderFor(name);
-    if (!found) return;
-    rowsEl.innerHTML = '';
-    found.products.forEach(p => makeRow(p.name, p.adet || '', p.fiyat || '', p.group || '', {allowDuplicate:true}));
-    updateGrandTotal();
-    flash('Son sipariş yüklendi.');
-  });
   customerInput.addEventListener('input', checkRecall);
   customerInput.addEventListener('change', () => { const match=storedMatch(getCustomers(), customerInput.value); if(match) customerInput.value=match; checkRecall(); saveDraft(); });
   customerInput.addEventListener('blur', () => { const match=storedMatch(getCustomers(), customerInput.value); if(match) customerInput.value=match; checkRecall(); saveDraft(); });
@@ -6051,7 +6033,7 @@
     document.getElementById('orderEditBanner').classList.toggle('show', !!editingOrderId);
     if (o) document.getElementById('orderEditText').textContent = `Düzenleniyor: ${o.customer} · ${dateDisplay(o.date)}`;
     document.querySelector('#saveBtn .sv-t').textContent = editingOrderId ? 'Değişiklikleri kaydet' : 'Siparişi kaydet';
-    checkSameDay();
+    checkRecall();
   }
   function resetOrderForm(){
     customerInput.value = '';
@@ -6064,8 +6046,7 @@
     paymentSeg.querySelector('[data-val="account"]').classList.add('active-account');
     startFreshRows();
     clearDraft();
-    recallHint.classList.remove('show');
-    balanceHint.classList.remove('show');
+    checkRecall();
     setOrderEditMode(null);
     const gp = document.getElementById('groupPicker'); if (gp) gp.open = false;
   }
