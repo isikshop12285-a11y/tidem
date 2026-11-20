@@ -36,6 +36,10 @@
   html body #viewOrderBtn:active{transform:scale(.98)}
   html body #viewOrderBtn svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
   html[data-theme="dark"] body #viewOrderBtn{background:linear-gradient(135deg,#2B3F78,#3D55A0 60%,#5470C0) !important}
+  /* Tahsilat · tarih/not alanı koyu panelde okunur (v119) */
+  html body .pos-more .field input, html body #tahsilatNote, html body #tahsilatDate{background:rgba(255,255,255,.1) !important;color:#fff !important;-webkit-text-fill-color:#fff !important;border:1px solid rgba(255,255,255,.25) !important;color-scheme:dark}
+  html body #tahsilatNote::placeholder{color:rgba(255,255,255,.5) !important;-webkit-text-fill-color:rgba(255,255,255,.5) !important}
+  html body #tahsilatNote:focus, html body #tahsilatDate:focus{border-color:#5EE08C !important;box-shadow:0 0 0 3px rgba(94,224,140,.2) !important;outline:0}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2516,7 +2520,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 118 · 20.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 119 · 20.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3415,7 +3419,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 118 · 20.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 119 · 20.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
