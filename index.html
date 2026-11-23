@@ -40,6 +40,24 @@
   html body .pos-more .field input, html body #tahsilatNote, html body #tahsilatDate{background:rgba(255,255,255,.1) !important;color:#fff !important;-webkit-text-fill-color:#fff !important;border:1px solid rgba(255,255,255,.25) !important;color-scheme:dark}
   html body #tahsilatNote::placeholder{color:rgba(255,255,255,.5) !important;-webkit-text-fill-color:rgba(255,255,255,.5) !important}
   html body #tahsilatNote:focus, html body #tahsilatDate:focus{border-color:#5EE08C !important;box-shadow:0 0 0 3px rgba(94,224,140,.2) !important;outline:0}
+  /* Eksik teslim */
+  .tl-it.eks .tl-dot{background:#D98A1C !important;box-shadow:0 0 0 3px rgba(217,138,28,.2) !important}
+  .tl-it.eks .tl-tx b{color:#B45309}
+  html[data-theme="dark"] .tl-it.eks .tl-tx b{color:#FCD34D}
+  .ek-list{display:flex;flex-direction:column;gap:8px;max-height:52vh;overflow:auto;margin:6px 0 4px}
+  .ek-row{display:flex;align-items:center;gap:10px;padding:10px 10px 10px 12px;border-radius:14px;background:var(--paper-2);border:1px solid var(--line)}
+  .ek-row.on{background:#FFF7E6;border-color:#F5C97A}
+  html[data-theme="dark"] .ek-row.on{background:#3B2F14;border-color:#8A6A1F}
+  .ek-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .ek-tx b{font-size:.82rem;font-weight:800;color:var(--ink);text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ek-tx small{font-size:.7rem;font-weight:700;color:var(--ink-soft)} .ek-tx em{font-style:normal;color:#B45309}
+  html[data-theme="dark"] .ek-tx em{color:#FCD34D}
+  .ek-step{flex:none;display:flex;align-items:center;gap:4px;background:var(--white);border-radius:12px;padding:3px;border:1px solid var(--line)}
+  html[data-theme="dark"] .ek-step{background:#22325A}
+  .ek-step button{width:34px;height:34px;border:0;border-radius:9px;background:#14213F;color:#fff;font-size:1.1rem;font-weight:900;cursor:pointer}
+  .ek-step button:first-child{background:#E2E8F0;color:#14213F}
+  .ek-step span{min-width:28px;text-align:center;font-weight:900;color:var(--ink)}
+  .ek-row.on .ek-step button:last-child{background:#D98A1C}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2520,7 +2538,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 120 · 20.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 121 · 23.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3419,7 +3437,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 120 · 20.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 121 · 23.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -5591,10 +5609,10 @@
     rawItems.forEach(p => {
       const key = [foldText(p.group), foldText(p.name), Number(p.fiyat) || 0].join('|');
       const existing = compactItems.find(item => item._key === key);
-      if(existing) existing.adet = (Number(existing.adet) || 0) + (Number(p.adet) || 0);
+      if(existing){ existing.adet = (Number(existing.adet) || 0) + (Number(p.adet) || 0); existing.eksik = num(existing.eksik) + num(p.eksik); }
       else compactItems.push({...p, _key:key});
     });
-    const items = compactItems.map(({_key, ...p}) => p);
+    const items = compactItems.map(({_key, ...p}) => ({ ...p, name: eksikName(p) }));
     const byGroup = {};
     const ungrouped = [];
     items.forEach(p => {
@@ -5695,8 +5713,9 @@
     (order.products || []).filter(p => p.name || p.adet || p.fiyat).forEach(p => {
       const key = [foldText(p.group), foldText(p.name), Number(p.fiyat) || 0].join('|');
       const ex = compact.find(i => i._key === key);
-      if (ex) ex.adet = (Number(ex.adet) || 0) + (Number(p.adet) || 0); else compact.push({ ...p, _key:key });
+      if (ex){ ex.adet = (Number(ex.adet) || 0) + (Number(p.adet) || 0); ex.eksik = num(ex.eksik) + num(p.eksik); } else compact.push({ ...p, _key:key });
     });
+    compact.forEach(p => { p.name = eksikName(p); });
     const byGroup = {}, ungrouped = [];
     compact.forEach(p => { const g = (p.group || '').trim(); if (!g) ungrouped.push(p); else (byGroup[g] = byGroup[g] || []).push(p); });
     const used = Object.keys(byGroup).sort((x, y) => {
@@ -6124,6 +6143,8 @@
       const prev = orders[editIdx];
       if (prev.systemAdded && prev.paymentType === 'account' && paymentType === 'account' && num(prev.total) === num(total)) order.systemAdded = true;
       order.id = editingOrderId; orders[editIdx] = order;
+      const ek = {}; (prev.products || []).forEach(p => { if (num(p.eksik) > 0) ek[foldText(p.name)] = num(p.eksik); });
+      order.products.forEach(p => { const e = ek[foldText(p.name)]; if (e) p.eksik = Math.min(e, num(p.adet)); });
     } else { orders.unshift(order); }
     saveOrders(orders);
     openDates.add(order.date);
@@ -7174,7 +7195,7 @@
           <div class="oc-status oc-tl">
             <div class="tl-it done"><i class="tl-dot"></i><div class="tl-tx"><b>SİPARİŞ ALINDI</b><small>${dateDisplay(o.date)} · ${o.products.length} ÜRÜN · ${fmt(ocKoli)} KOLİ</small></div></div>
             ${o.delivered
-              ? `<div class="tl-it done"><i class="tl-dot"></i><div class="tl-tx"><button type="button" class="tl-undo" data-action="toggle-delivered" data-undo data-id="${o.id}">TESLİM EDİLDİ</button><small>${dateDisplay(o.deliveryDate || o.date)}</small></div></div>`
+              ? `<div class="tl-it done"><i class="tl-dot"></i><div class="tl-tx"><button type="button" class="tl-undo" data-action="toggle-delivered" data-undo data-id="${o.id}">TESLİM EDİLDİ</button><small>${dateDisplay(o.deliveryDate || o.date)}</small></div></div>${eksikRow(o)}`
               : `<div class="tl-it todo red"><i class="tl-dot"></i><div class="tl-tx"><b>TESLİM EDİLMEDİ</b></div><button type="button" class="tl-act red" data-action="toggle-delivered" data-id="${o.id}">TESLİM ET</button></div>`}
             <div class="tl-it ${o.paymentType === 'account' ? 'acc' : 'done'}"><i class="tl-dot"></i><div class="tl-tx"><b>ÖDEME: ${o.paymentType === 'card' ? 'KREDİ KARTI' : (o.paymentType === 'eft' ? 'IBAN / EFT' : (o.paymentType === 'account' ? 'CARİ HESAP' : 'NAKİT'))}</b></div><button type="button" class="tl-link" data-pay-open="${o.id}">DEĞİŞTİR</button></div>
             ${o.paymentType === 'account' ? (o.systemAdded
@@ -7303,6 +7324,7 @@
         });
       });
       root.querySelectorAll('[data-pay-open]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openPaySheet(b.dataset.payOpen); }));
+      root.querySelectorAll('[data-eksik-open]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openEksikSheet(b.dataset.eksikOpen); }));
       root.querySelectorAll('[data-open-cari]').forEach(b => b.addEventListener('click', e => {
         e.stopPropagation();
         document.querySelector('.tab-btn[data-tab="cari"]').click(); openCariDetail(b.dataset.openCari); window.scrollTo({ top:0, behavior:'smooth' });
@@ -7436,6 +7458,43 @@
       const h = [...historyListEl.querySelectorAll('.date-toggle')].find(x => x.querySelector(`.day-select[data-date="${d}"]`));
       if (h) h.scrollIntoView({ behavior:'smooth', block:'start' });
     }));
+  }
+
+  // ===== Eksik teslim · sadece işaret (tutar/cari değişmez); kartta ve fişte görünür =====
+  function eksikName(p){ const e = num(p.eksik); return e > 0 ? `${p.name || '-'} (${fmt(e)} KOLİ EKSİK)` : p.name; }
+  function eksikRow(o){
+    const ek = (o.products || []).filter(p => num(p.eksik) > 0);
+    if (!ek.length) return `<div class="tl-it done"><i class="tl-dot"></i><div class="tl-tx"><b>EKSİK YOK</b></div><button type="button" class="tl-link" data-eksik-open="${o.id}">EKSİK VAR</button></div>`;
+    const k = ek.reduce((t, p) => t + num(p.eksik), 0);
+    return `<div class="tl-it eks"><i class="tl-dot"></i><div class="tl-tx"><b>EKSİK GİTTİ</b><small>${ek.length} ÜRÜN · ${fmt(k)} KOLİ</small></div><button type="button" class="tl-link" data-eksik-open="${o.id}">DÜZENLE</button></div>`;
+  }
+  function openEksikSheet(id){
+    const o0 = getOrders().find(x => x.id === id); if (!o0) return;
+    let ov = document.getElementById('eksikSheet');
+    if (!ov){
+      ov = document.createElement('div'); ov.id = 'eksikSheet'; ov.className = 'pay-sheet-ov';
+      ov.innerHTML = `<div class="pay-sheet" role="dialog" aria-modal="true" aria-labelledby="ekTitle"><div class="ps-grab"></div><h3 id="ekTitle">Eksik giden ürünler</h3><p class="ps-sub" id="ekSub"></p><div class="ek-list" id="ekList"></div><p class="ps-note">Tutar ve cari değişmez; sadece kartta ve fişte görünür.</p><div class="ps-btns"><button type="button" class="ps-cancel" id="ekCancel">Vazgeç</button><button type="button" class="ps-save" id="ekSave">Kaydet</button></div></div>`;
+      document.body.appendChild(ov);
+      ov.addEventListener('click', e => { if (e.target === ov) ov.classList.remove('open'); });
+      ov.querySelector('#ekCancel').addEventListener('click', () => ov.classList.remove('open'));
+    }
+    const prods = (o0.products || []).map((p, i) => ({ i, name: p.name || '-', adet: num(p.adet), ek: Math.min(num(p.eksik), num(p.adet)) })).filter(p => p.adet > 0);
+    ov.querySelector('#ekSub').textContent = `${o0.customer} · ${dateDisplay(o0.deliveryDate || o0.date)}`;
+    const draw = () => {
+      ov.querySelector('#ekList').innerHTML = prods.map((p, j) => `<div class="ek-row${p.ek ? ' on' : ''}"><div class="ek-tx"><b>${escHtml(p.name)}</b><small>${fmt(p.adet)} koli sipariş${p.ek ? ` · <em>${fmt(p.adet - p.ek)} koli gitti</em>` : ''}</small></div><div class="ek-step"><button type="button" data-j="${j}" data-d="-1" aria-label="Azalt">−</button><span>${fmt(p.ek)}</span><button type="button" data-j="${j}" data-d="1" aria-label="Artır">+</button></div></div>`).join('');
+      ov.querySelectorAll('.ek-step button').forEach(b => b.addEventListener('click', () => { const p = prods[b.dataset.j]; p.ek = Math.max(0, Math.min(p.adet, p.ek + Number(b.dataset.d))); draw(); }));
+    };
+    draw();
+    ov.querySelector('#ekSave').onclick = () => {
+      const orders = getOrders(), o = orders.find(x => x.id === id); if (!o) return;
+      prods.forEach(p => { const t = o.products[p.i]; if (!t) return; if (p.ek > 0) t.eksik = p.ek; else delete t.eksik; });
+      saveOrders(orders);
+      ov.classList.remove('open');
+      renderHistory();
+      const n = prods.filter(p => p.ek > 0).length;
+      flash(n ? `${o.customer}: ${n} üründe eksik işaretlendi.` : `${o.customer}: eksik kaydı kaldırıldı.`);
+    };
+    requestAnimationFrame(() => ov.classList.add('open'));
   }
 
   // ===== Ödeme şekli penceresi (karttan değiştirme) =====
@@ -8685,7 +8744,7 @@
 
     const tList = document.getElementById('raporTahsilatList');
     const tahsilat = getTahsilat().filter(t => t.date === d);
-    const teslimatlar = liveOrders().filter(o => (o.deliveryDate || (o.delivered ? o.date : '')) === d && o.delivered && !['card','account'].includes(o.paymentType));
+    const teslimatlar = liveOrders().filter(o => (o.deliveryDate || (o.delivered ? o.date : '')) === d && o.delivered && !['card','eft','account'].includes(o.paymentType)); // kart/EFT otomatik tahsilat kaydıyla zaten listede
     tList.innerHTML = '';
     if (tahsilat.length === 0 && teslimatlar.length === 0){ tList.innerHTML = '<p class="hist-empty">Bu tarihte tahsilat veya teslimat yok.</p>'; }
     tahsilat.forEach(t => {
@@ -8725,7 +8784,7 @@
   function buildReportDoc(d){
     const f = dayFigures(d);
     const payments = getTahsilat().filter(t => t.date === d);
-    const teslimatlar = liveOrders().filter(o => (o.deliveryDate || (o.delivered ? o.date : '')) === d && o.delivered && !['card','account'].includes(o.paymentType));
+    const teslimatlar = liveOrders().filter(o => (o.deliveryDate || (o.delivered ? o.date : '')) === d && o.delivered && !['card','eft','account'].includes(o.paymentType)); // kart/EFT otomatik tahsilat kaydıyla zaten listede
     const returns = getReturns().filter(r => r.date === d);
     const expenses = getGiderler().filter(g => g.date === d);
     const tag = label => `<span class="tag">${label}</span>`;
