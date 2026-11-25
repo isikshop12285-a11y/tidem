@@ -1876,6 +1876,55 @@
   .bars-bottom .bk-bar{position:static;left:auto;right:auto;bottom:auto;margin:0;pointer-events:auto}
   .bk-bar.gs-bar{background:#B45309}
   .bk-bar.gs-bar button[data-gsbar="send"]{background:#fff;color:#B45309}
+  /* ===== İnternet eşitlemesi ===== */
+  .cl-card{position:relative;overflow:hidden;border:0 !important;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#0EA5E9,#6366F1 55%,#1FA855) border-box !important;border:2px solid transparent !important}
+  .cl-head{display:flex;align-items:center;gap:12px}
+  .cl-ic{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#0EA5E9,#6366F1);box-shadow:0 8px 18px rgba(79,70,229,.3)}
+  .cl-ic svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .cl-ht{flex:1;min-width:0}
+  .cl-ht b{display:block;font-family:var(--font-display);font-size:1.02rem;font-weight:900;color:#14213F}
+  .cl-ht small{display:block;margin-top:2px;font-size:.72rem;font-weight:700;color:#64748B;line-height:1.35}
+  .cl-pill{flex:none;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;font-size:.62rem;font-weight:900;letter-spacing:.1em;background:#EEF2F8;color:#64748B}
+  .cl-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+  .cl-pill.on{background:#DCFCE7;color:#15803D}
+  .cl-pill.on::before{animation:clPulse 1.6s ease-in-out infinite}
+  .cl-pill.wait{background:#E0F2FE;color:#0369A1}
+  .cl-pill.warn{background:#FEF3C7;color:#B45309}
+  .cl-pill.bad{background:#FEE2E2;color:#C8202F}
+  @keyframes clPulse{0%,100%{box-shadow:0 0 0 0 rgba(21,128,61,.5)}50%{box-shadow:0 0 0 5px rgba(21,128,61,0)}}
+  .cl-body{margin-top:12px}
+  .cl-p{margin:0 0 10px;font-size:.76rem;font-weight:600;color:#475569;line-height:1.45}
+  .cl-f{display:block;margin-bottom:8px}
+  .cl-f small{display:block;margin-bottom:4px;font-size:.6rem;font-weight:900;letter-spacing:.14em;color:#6366F1}
+  #cloudCard .cl-f input{width:100%;min-height:46px;padding:0 12px;border:1.5px solid #C7D2FE;border-radius:12px;background:#F8FAFF;color:#14213F;font:inherit;font-size:.9rem;font-weight:700}
+  #cloudCard .cl-f input:focus{outline:0;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.18)}
+  .cl-go{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;margin-top:4px;border:0;border-radius:14px;font:inherit;font-size:.86rem;font-weight:900;letter-spacing:.06em;color:#fff;cursor:pointer;background:linear-gradient(135deg,#0EA5E9,#6366F1);box-shadow:0 10px 22px rgba(79,70,229,.3)}
+  .cl-go:disabled{opacity:.6}
+  .cl-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .cl-stats>div{padding:10px 8px;border-radius:12px;background:#F1F5FF;text-align:center;min-width:0}
+  .cl-stats small{display:block;font-size:.54rem;font-weight:900;letter-spacing:.1em;color:#6366F1}
+  .cl-stats b{display:block;margin-top:3px;font-size:.95rem;font-weight:900;color:#14213F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cl-stats+.cl-p{margin-top:12px}
+  .cl-warn{margin-top:10px;padding:10px 12px;border-radius:12px;background:#FFFBEB;border:1px solid #FDE68A;font-size:.74rem;font-weight:700;color:#92400E;line-height:1.4}
+  .cl-warn button{margin-left:6px;border:0;background:none;font:inherit;font-weight:900;color:#B45309;text-decoration:underline;cursor:pointer}
+  .cl-hh{margin:14px 0 6px;font-size:.6rem;font-weight:900;letter-spacing:.14em;color:#94A3B8}
+  .cl-u{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;padding:10px 0;border-top:1px solid #EEF2F8}
+  .cl-u b{font-size:.88rem;font-weight:900;color:#14213F}
+  .cl-u small{flex-basis:100%;order:3;font-size:.66rem;font-weight:700;color:#94A3B8}
+  .cl-u.off b{color:#94A3B8}
+  .cl-inv{margin-left:auto;display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 12px;border:0;border-radius:11px;background:#1FA855;color:#fff;font:inherit;font-size:.74rem;font-weight:900;cursor:pointer;box-shadow:0 4px 10px rgba(31,168,85,.28)}
+  .cl-inv .wa-ico{width:17px;height:17px;fill:currentColor;vertical-align:0}
+  .cl-off{display:block;margin:12px auto 0;border:0;background:none;font:inherit;font-size:.72rem;font-weight:800;color:#94A3B8;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .cl-off.arm{color:#C8202F}
+  html.cloud-on #gsCard .gs-btns,html.cloud-on #gsCard .gs-note.gs-file{display:none}
+  html[data-theme="dark"] .cl-card{background:linear-gradient(#24345E,#24345E) padding-box,linear-gradient(135deg,#0EA5E9,#6366F1 55%,#1FA855) border-box !important}
+  html[data-theme="dark"] .cl-ht b,html[data-theme="dark"] .cl-stats b,html[data-theme="dark"] .cl-u b{color:#F1F5F9}
+  html[data-theme="dark"] .cl-ht small,html[data-theme="dark"] .cl-p{color:#C7D2EA}
+  html[data-theme="dark"] .cl-stats>div{background:rgba(99,102,241,.16)}
+  html[data-theme="dark"] .cl-stats small,html[data-theme="dark"] .cl-f small{color:#A5B4FC}
+  html[data-theme="dark"] #cloudCard .cl-f input{background:#1B2748;border-color:#4C5FA0;color:#F1F5F9}
+  html[data-theme="dark"] .cl-u{border-color:#33467A}
+  html[data-theme="dark"] .cl-pill.off{background:#1B2748;color:#9FB0D4}
   .gs-card h3{margin:0 0 4px}
   .gs-p0,.gs-p{margin:0 0 12px;font-size:.76rem;color:#64748B;line-height:1.45}
   .gs-card-body{margin-top:12px}
@@ -2732,9 +2781,10 @@
     </div>
     <div class="lf-box" id="lockFresh">
       <b>Bu telefon ilk kez açılıyor</b>
-      <small>Personel iseniz yöneticinin WhatsApp'tan gönderdiği <em>güncel durum</em> dosyasıyla kurun. Kurulunca kendi adınızı seçip şifrenizle girersiniz.</small>
-      <button type="button" class="lf-main" data-lf="file"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg>Yöneticiden gelen dosyayı seç</button>
-      <div class="lf-tip"><b>Android:</b> WhatsApp'ta dosyaya dokunun → ⋮ → Paylaş → TİDEM GIDA. <b>iPhone:</b> önce Paylaş → Dosyalar'a Kaydet, sonra yukarıdaki düğme.</div>
+      <small>Personel iseniz yöneticinin WhatsApp'tan gönderdiği <em>davet mesajını</em> kopyalayın, sonra aşağıya dokunun.</small>
+      <button type="button" class="lf-main" data-lf="invite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.25 4.25 0 0 1-.5 9.5H7Z"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg>Davet koduyla bağlan</button>
+      <div class="lf-tip"><b>Kopyalama:</b> WhatsApp'ta davet mesajına basılı tutun → Kopyala. Bağlanınca kendi adınızı seçip şifrenizle girersiniz.</div>
+      <button type="button" class="lf-link" data-lf="file">Dosyayla kur (eski yöntem) ›</button>
       <button type="button" class="lf-link" data-lf="admin">Yönetici misiniz? Şifreyle girin ›</button>
     </div>
     <p class="lock-sub">6 haneli şifrenizi girin</p>
@@ -2747,7 +2797,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 128 · 25.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 130 · 26.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3620,6 +3670,11 @@
       <div class="status-msg" id="setVehicleStatus"></div>
       <button type="button" class="btn btn-primary" id="setVehicleSave" style="width:100%">Kaydet</button>
     </section>
+<section class="definition-card cl-card" id="cloudCard" aria-label="İnternet eşitlemesi">
+  <div class="cl-head"><span class="cl-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.25 4.25 0 0 1-.5 9.5H7Z"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></span><div class="cl-ht"><b>İnternet eşitlemesi</b><small id="clSub">Tüm telefonlar aynı kayıtları anında görür</small></div><span class="cl-pill off" id="clPill">KAPALI</span></div>
+  <div class="cl-body" id="clBody"></div>
+  <div class="gs-status" id="clStatus" aria-live="polite"></div>
+</section>
 <section class="definition-card gs-card" id="gsCard">
   <h3>🤝 Gün sonu mutabakat</h3>
   <p class="gs-p0">Birden fazla kişi kullanıyorsa: personel akşam gününü gönderir, yönetici kontrol edip onaylar, sabah herkese güncel hâli dağıtır. Kimin yönetici kimin personel olduğunu <b>giriş şifresi</b> belirler.</p>
@@ -3740,7 +3795,7 @@
 })();
 </script>
 
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 128 · 25.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 130 · 26.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4166,10 +4221,29 @@
     }
     snapBase();
     function jkey(k, id){ return k + '\u0001' + id; }
+    // internet eşitlemesi açıksa (bulut modülü sonradan yüklenir; o ana kadarki değişiklikler giden kutusunda bekler)
+    function cloudCfg(){ return lg('tidem_bulut', null) || {}; }
+    function cloudOn(){ return !!cloudCfg().on; }
+    function cloudLocal(k, s, diffs){
+      if (window.__tidemCloud) return window.__tidemCloud.local(k, s, diffs);
+      var out = lg('tidem_bulut_giden', {});
+      diffs.forEach(function(d){ out[encodeURIComponent(k).replace(/\./g, '%2E') + '~' + encodeURIComponent(d.id).replace(/\./g, '%2E')] = { k:k, id:d.id, s:s, v:d.v }; });
+      ls('tidem_bulut_giden', out);
+    }
     function record(k, newRaw){
-      if (!isPersonel() || window.__tidemNoJournal || k === UK){ baseRaw[k] = newRaw; base[k] = null; return; }
+      var toCloud = cloudOn() && cloudCfg().role === 'admin' && isMerkez() && !window.__tidemNoJournal;
+      if (!toCloud && (!isPersonel() || window.__tidemNoJournal || k === UK)){ baseRaw[k] = newRaw; base[k] = null; return; }
       if (baseRaw[k] === newRaw) return;
       var old = base[k] || entries(k, parseRaw(baseRaw[k] == null ? null : baseRaw[k])), nw = entries(k, parseRaw(newRaw)), s = nw.s || old.s;
+      if (toCloud){   // yönetici: değişen kayıtlar internete gider
+        var diffs = [];
+        Object.keys(nw.m).forEach(function(id){ if (old.m[id] !== nw.m[id]) diffs.push({ id:id, v:nw.m[id] }); });
+        Object.keys(old.m).forEach(function(id){ if (!(id in nw.m)) diffs.push({ id:id, v:null }); });
+        base[k] = nw; baseRaw[k] = newRaw;
+        if (diffs.length) cloudLocal(k, s, diffs);
+        return;
+      }
+      if (k === UK){ baseRaw[k] = newRaw; base[k] = null; return; }
       var j = lg(J_KEY, {}), me = dev() || {}, now = Date.now(), changed = false;
       function put(id, before, after){
         var key = jkey(k, id), e = j[key];
@@ -4181,7 +4255,7 @@
       Object.keys(nw.m).forEach(function(id){ if (old.m[id] !== nw.m[id]) put(id, old.m[id] == null ? null : old.m[id], nw.m[id]); });
       Object.keys(old.m).forEach(function(id){ if (!(id in nw.m)) put(id, old.m[id], undefined); });
       base[k] = nw; baseRaw[k] = newRaw;
-      if (changed){ ls(J_KEY, j); refreshCard(); }
+      if (changed){ ls(J_KEY, j); refreshCard(); if (cloudOn() && window.__tidemCloud) window.__tidemCloud.kick(); }
     }
     Storage.prototype.setItem = function(k, v){ var r = _set.apply(this, arguments); if (this === localStorage && syncKey(k)) { try{ record(k, String(v)); }catch(e){} } return r; };
     Storage.prototype.removeItem = function(k){ var r = _rem.apply(this, arguments); if (this === localStorage && syncKey(k)) { try{ record(k, null); }catch(e){} } return r; };
@@ -4417,6 +4491,7 @@
       var imp = lg(IMP_KEY, []); if (!imp.some(function(x){ return x.id === b.id; })){ imp.unshift({ id:b.id, at:Date.now() }); ls(IMP_KEY, imp.slice(0, 200)); }
       var hist = lg(HIST_KEY, []); hist.unshift({ at:Date.now(), from:(b.from && b.from.name) || '', sum:sumText(summarize(b.changes)), applied:applied, rejected:rejected, kept:0, created:b.created }); ls(HIST_KEY, hist.slice(0, 60));
       ls(Q_KEY, lg(Q_KEY, []).filter(function(x){ return x.id !== b.id; }));
+      if (cloudOn() && window.__tidemCloud) window.__tidemCloud.done(b.id);
       refreshCard(); fireOnay();
     }
     function setMeta(e, b){ var meta = lg(META_KEY, {}); meta[jkey(e.k, e.id)] = { by:e.by || (b.from && b.from.name) || '', at:e.at, op:e.op }; var mk = Object.keys(meta); if (mk.length > 3000) mk.slice(0, mk.length - 3000).forEach(function(x){ delete meta[x]; }); ls(META_KEY, meta); }
@@ -4427,13 +4502,86 @@
       var on = lg(ONAY_KEY, {})[id]; if (on && on.s === 'red') return 'red';
       return 'ok';
     }
+    // ---- internet eşitlemesi için yardımcılar ----
+    function rowsAll(){   // bu telefondaki tüm eşitlenen kayıtlar → satırlar
+      var out = [];
+      localKeys().forEach(function(k){ if (LOCAL_ONLY[k] || !syncKey(k)) return; var e = entries(k, parseRaw(localStorage.getItem(k))); Object.keys(e.m).forEach(function(id){ out.push({ k:k, id:id, s:e.s, v:e.m[id] }); }); });
+      return out;
+    }
+    function pendingKeys(){   // personel: onaya gitmemiş / sonucu gelmemiş kayıtlar (internetten gelenle ezilmesin)
+      var m = {}; Object.keys(lg(J_KEY, {})).forEach(function(x){ m[x] = 1; });
+      lg(SENT_KEY, []).forEach(function(b){ ((b.batch && b.batch.changes) || []).forEach(function(c){ m[jkey(c.k, c.id)] = 1; }); });
+      return m;
+    }
+    function applyRows(rows, replace){
+      if (!rows.length && !replace) return 0;
+      var skip = isPersonel() ? pendingKeys() : {}, byK = {}, n = 0;
+      rows.forEach(function(r){ if (!syncKey(r.k) || LOCAL_ONLY[r.k] || skip[jkey(r.k, r.id)]) return; (byK[r.k] = byK[r.k] || []).push(r); });
+      window.__tidemNoJournal = true;
+      try{
+        if (replace) localKeys().forEach(function(k){ if (syncKey(k) && !LOCAL_ONLY[k] && !byK[k]) localStorage.removeItem(k); });
+        Object.keys(byK).forEach(function(k){
+          var list = byK[k], s = list[0].s || 'whole', cur = replace ? null : parseRaw(localStorage.getItem(k));
+          if (s === 'rec'){
+            var arr = Array.isArray(cur) ? cur.slice() : [], idx = {};
+            arr.forEach(function(x, i){ if (x && x.id != null) idx[String(x.id)] = i; });
+            var add = [];
+            list.forEach(function(r){ var i = idx[r.id]; if (r.v == null){ if (i != null) arr[i] = undefined; } else if (i != null) arr[i] = pj(r.v); else add.push(pj(r.v)); n++; });
+            cur = add.reverse().concat(arr.filter(function(x){ return x !== undefined; }));
+          } else if (s === 'set'){
+            var a2 = Array.isArray(cur) ? cur.slice() : [], seen = {};
+            a2.forEach(function(x){ seen[JSON.stringify(x)] = 1; });
+            list.forEach(function(r){ if (r.v == null){ a2 = a2.filter(function(x){ return JSON.stringify(x) !== r.id; }); delete seen[r.id]; } else if (!seen[r.id]){ a2.push(pj(r.v)); seen[r.id] = 1; } n++; });
+            cur = a2;
+          } else if (s === 'map'){
+            var o = (cur && typeof cur === 'object' && !Array.isArray(cur)) ? Object.assign({}, cur) : {};
+            list.forEach(function(r){ if (r.v == null) delete o[r.id]; else o[r.id] = pj(r.v); n++; });
+            cur = o;
+          } else { var last = list[list.length - 1]; n++; if (last.v == null){ localStorage.removeItem(k); return; } cur = pj(last.v); }
+          localStorage.setItem(k, JSON.stringify(cur));
+        });
+      } finally { window.__tidemNoJournal = false; }
+      try{ document.dispatchEvent(new CustomEvent('tidem:remote', { detail:{ n:n } })); }catch(e){}
+      return n;
+    }
+    function journalBatch(){   // personel: gönderilecek değişiklikler (internete)
+      var list = journalList(); if (!list.length) return null;
+      var me = dev() || {};
+      return { id:(me.id || 'cihaz') + '-' + Date.now(), from:{ id:me.id, name:me.name, uid:me.uid }, created:Date.now(), changes:list };
+    }
+    function markSent(batch){   // internete yazıldıktan sonra: defterden gönderilenlere taşı
+      var j = lg(J_KEY, {});
+      batch.changes.forEach(function(c){ var key = jkey(c.k, c.id); if (j[key] && j[key].at <= c.at) delete j[key]; });
+      ls(J_KEY, j);
+      var sent = lg(SENT_KEY, []); sent.unshift({ id:batch.id, at:batch.created, n:batch.changes.length, sum:sumText(summarize(batch.changes)), batch:batch, cloud:true });
+      ls(SENT_KEY, sent.slice(0, 80)); refreshCard(); fireOnay();
+    }
+    function sentPrune(present){   // personel: yöneticinin işlediği (internetten silinen) gönderimler
+      var sent = lg(SENT_KEY, []), gone = [], keep = sent.filter(function(x){ var k = !x.cloud || present[x.id]; if (!k) gone.push(x); return k; });
+      if (keep.length !== sent.length){ ls(SENT_KEY, keep); refreshCard(); fireOnay(); }
+      return gone;
+    }
+    function enqueueSilent(b){   // yönetici: internetten gelen gün sonu
+      if (!b || !Array.isArray(b.changes) || !b.changes.length) return false;
+      if (lg(IMP_KEY, []).some(function(x){ return x.id === b.id; })) return 'done';
+      var q = lg(Q_KEY, []); if (q.some(function(x){ return x.id === b.id; })) return false;
+      q.push({ id:b.id, from:b.from || {}, created:b.created, changes:b.changes, dec:{}, cmap:{}, pmap:{}, at:Date.now(), cloud:true });
+      ls(Q_KEY, q); fireOnay(); return true;
+    }
+    function unqueue(id){   // yönetici: başka yönetici telefonu bu gün sonunu bitirdi
+      var q = lg(Q_KEY, []), n = q.filter(function(x){ return !(x.id === id && x.cloud); });
+      if (n.length !== q.length){ ls(Q_KEY, n); fireOnay(); }
+    }
+    function snapshotLocal(){ var o = {}; localKeys().forEach(function(k){ if (syncKey(k)) o[k] = localStorage.getItem(k); }); return o; }
     window.__tidemSync = {
+      rowsAll:rowsAll, applyRows:applyRows, journalBatch:journalBatch, markSent:markSent, sentPrune:sentPrune, enqueueSilent:enqueueSilent, unqueue:unqueue, snapshotLocal:snapshotLocal,
+      users:function(){ return lg(UK, []); },
       queue:function(){ return lg(Q_KEY, []); },
       saveQueue:function(q){ ls(Q_KEY, q); },
       apply:applyEntry, current:currentJson, describe:describe, finish:finishBatch, setMeta:setMeta,
       openFile:function(){ chooseFile(enqueue); }, sendState:sendState, sendDay:sendDay,
       pending:function(){ return journalList(); }, hist:function(){ return lg(HIST_KEY, []); },
-      statusOf:statusOf, isPersonel:isPersonel, me:function(){ var d = dev(); return recOf(d.uid) || { id:d.uid, name:d.name }; },
+      statusOf:statusOf, me:function(){ var d = dev(); return recOf(d.uid) || { id:d.uid, name:d.name }; },
       lastState:function(){ return lg(DIST_KEY, null); }, waiting:function(){ return lg(SENT_KEY, []).length; }
     };
 
@@ -4447,7 +4595,7 @@
         var list = journalList(), s2 = summarize(list), sent = lg(SENT_KEY, [])[0];
         body.innerHTML = head + '<div class="gs-pending ' + (list.length ? 'has' : '') + '"><b>' + (list.length ? list.length + ' gönderilmemiş değişiklik' : 'Gönderilmemiş değişiklik yok') + '</b><small>' + esc(list.length ? sumText(s2) : (sent ? 'Son gönderim: ' + hm(sent.at) + ' · ' + sent.sum : 'Henüz gönderim yapılmadı')) + '</small></div>' +
           '<div class="gs-btns"><button type="button" class="gs-btn wa" id="gsSend">📤 Gün sonu gönder</button><button type="button" class="gs-btn" id="gsTake">📥 Yöneticiden güncelle</button></div>' +
-          '<div class="gs-note">Son güncel durum: ' + (last ? hm(last.at) + ' · ' + esc(last.by) : 'henüz alınmadı') + '</div>' +
+          (cloudOn() ? '' : '<div class="gs-note">Son güncel durum: ' + (last ? hm(last.at) + ' · ' + esc(last.by) : 'henüz alınmadı') + '</div>') +
           (list.length ? '<details class="gs-list"><summary>Değişiklikleri gör</summary>' + list.slice().reverse().map(function(e){ var x = describe(e); return '<div class="gs-li"><span>' + x.icon + '</span>' + esc(x.text) + '<small>' + hm(e.at) + '</small></div>'; }).join('') + '</details>' : '');
       } else {
         var users = '<div class="gs-users"><div class="gs-hh">PERSONEL · GİRİŞ ŞİFRELERİ</div>' +
@@ -4455,9 +4603,9 @@
             '<button type="button" data-gu="start" data-id="' + esc(u.id) + '"' + (u.start ? ' class="set"' : '') + '>' + (u.start ? '📅 İşe giriş ' + display(u.start) : '📅 İşe giriş tarihi') + '</button><button type="button" data-gu="photo" data-id="' + esc(u.id) + '">Foto</button><button type="button" data-gu="pin" data-id="' + esc(u.id) + '">Şifre</button><button type="button" data-gu="act" data-id="' + esc(u.id) + '">' + (u.active === false ? 'Aç' : 'Kapat') + '</button><button type="button" class="x" data-gu="del" data-id="' + esc(u.id) + '">✕</button></div>'; }).join('')
             : '<p class="gs-p">Henüz personel yok. Personel eklediğinizde her biri <b>kendi şifresiyle</b> girer; uygulama onu Personel olarak tanır, yönetici ekranlarını göremez.</p>') +
           '<div class="gs-add"><input id="guName" placeholder="Ad (ör. Ali)" autocomplete="off"><input id="guPin" type="password" inputmode="numeric" maxlength="6" placeholder="6 haneli şifre" autocomplete="new-password"><button type="button" id="guAdd">➕ Ekle</button></div>' +
-          '<div class="gs-note">Yeni personel ve şifre değişiklikleri, <b>"Güncel durumu gönder"</b> ile personelin telefonuna geçer.</div></div>';
+          '<div class="gs-note">' + (cloudOn() ? 'Yeni personel ve şifre değişiklikleri internetten <b>kendiliğinden</b> personelin telefonuna geçer.' : 'Yeni personel ve şifre değişiklikleri, <b>"Güncel durumu gönder"</b> ile personelin telefonuna geçer.') + '</div></div>';
         body.innerHTML = head + (st.length ? '<div class="gs-btns"><button type="button" class="gs-btn" id="gsOpen">📥 Gün sonu dosyası aç</button><button type="button" class="gs-btn wa" id="gsState">📤 Güncel durumu gönder</button></div>' +
-          '<div class="gs-note">Son gönderilen güncel durum: ' + (last ? hm(last.at) : 'henüz yok') + '</div>' : '') + users +
+          '<div class="gs-note gs-file">Son gönderilen güncel durum: ' + (last ? hm(last.at) : 'henüz yok') + '</div>' : '') + users +
           '';
       }
       updateBar(); renderMe();
@@ -4589,6 +4737,7 @@
       fr.addEventListener('click', function(e){
         var t = e.target.closest('[data-lf]'); if (!t) return;
         if (t.dataset.lf === 'file') chooseFile(takeUpdate);
+        else if (t.dataset.lf === 'invite'){ if (window.__tidemCloudUI) window.__tidemCloudUI.inviteFlow(say2).catch(function(err){ say2((err && err.message) || 'Bağlanılamadı. İnterneti kontrol edin.', true); }); else say2('Biraz bekleyip tekrar dokunun.', true); }
         else document.documentElement.classList.remove('lock-fresh');
       });
     })();
@@ -4596,7 +4745,7 @@
     function updateBar(){
       var bar = document.getElementById('gsBar'); if (!bar) return;
       var hide = false; try{ hide = sessionStorage.getItem('tidem_gs_bar') === '1'; }catch(_){}
-      var n = isPersonel() ? journalList().length : 0;
+      var n = isPersonel() && !cloudOn() ? journalList().length : 0;
       if (!n || hide || new Date().getHours() < 17){ bar.hidden = true; return; }
       bar.hidden = false;
       bar.innerHTML = '<span class="bk-ic">🤝</span><b>' + n + ' değişiklik yöneticiye gönderilmedi</b><button type="button" data-gsbar="send">GÖNDER</button><button type="button" class="bk-x" data-gsbar="hide" aria-label="Kapat">✕</button>';
@@ -5006,6 +5155,15 @@
   // Personel toplu rakamları (yıl / ay toplamları, cari genel toplam, aramadaki ürün toplamı) görmez; günlük toplamlar görünür
   function toplamGizli(){ return document.documentElement.classList.contains('role-personel'); }
   document.addEventListener('tidem:login', () => { try{ renderHistory(); renderArsiv(); renderTahsilatHistory(); }catch(e){} });
+  // internetten başka telefonun değişikliği geldi: listeleri yenile (açık formlara dokunulmaz)
+  let remoteT = null;
+  document.addEventListener('tidem:remote', () => {
+    clearTimeout(remoteT);
+    remoteT = setTimeout(() => {
+      [() => renderHistory(), () => renderArsiv(), () => renderTahsilatHistory(), () => renderGiderHistory(), () => renderIadeHistory(), () => renderCustomerList(), () => renderProductList(), () => renderCari(), () => renderPromises(), () => renderDolap(), () => renderPersBar()]
+        .forEach(f => { try{ f(); }catch(e){ console.warn('[tidem] yenileme', e); } });
+    }, 250);
+  });
 
   // ===== Personel takibi (yalnızca yönetici; bilgiler bu telefonda + yedekte durur, personel telefonlarına gitmez) =====
   const PT_KEY = 'siparis_personel_takip';
@@ -10500,6 +10658,357 @@ function tfAskLong(title){
   document.addEventListener('tidem:login', () => { editId = null; ta.value = ''; render(); });
   render();
 })();
+</script>
+<script type="module">
+/* ================= İNTERNET EŞİTLEMESİ (Firebase) =================
+   Yönetici: her değişiklik store/main/rows'a yazılır; diğer telefonların değişiklikleri anında gelir.
+   Personel: değişiklikleri inbox'a gider (Onay Merkezi), onaylı veriler store'dan okunur.
+   Kayıtlar telefonda (localStorage) kalmaya devam eder; internet yalnızca eşitler. */
+const CFG = { apiKey:'AIzaSyCrQigp9K1E9f-rMXD2S3WyOwASueEIx-4', authDomain:'tidem-gida.firebaseapp.com', projectId:'tidem-gida', storageBucket:'tidem-gida.firebasestorage.app', messagingSenderId:'235278924834', appId:'1:235278924834:web:85da95d0d919be64af9e7b' };
+const V = '13.4.0', URL_ = n => `https://www.gstatic.com/firebasejs/${V}/firebase-${n}.js`;
+const ST = 'tidem_bulut', OUT = 'tidem_bulut_giden', OWNER = 'R2c0HkLUxIeNZx000aPi758tLHU2', DOMAIN = 'tidem-gida.app';
+const lg = (k, d) => { try{ const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); }catch(e){ return d; } };
+const ls = (k, v) => { try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} };
+const S = () => window.__tidemSync;
+let A = null, AU = null, F = null, app = null, auth = null, db = null, user = null;
+let unsubRows = null, unsubInbox = null, flushT = null, kickT = null, memT = null, busy = false;
+const state = { phase:'off', msg:'', last:0 };   // off | connecting | live | offline | error
+const cfg = () => lg(ST, null) || {};
+const setCfg = o => ls(ST, Object.assign({}, cfg(), o));
+const devId = () => { try{ return localStorage.getItem('tidem_cihaz_id') || ''; }catch(e){ return ''; } };
+const isPers = () => (lg(ST, null) || {}).role === 'personel';
+function emit(){ try{ document.dispatchEvent(new CustomEvent('tidem:cloud', { detail:Object.assign({}, state, { cfg:cfg() }) })); }catch(e){} }
+function set(phase, msg){ state.phase = phase; if (msg != null) state.msg = msg; emit(); }
+const enc = x => encodeURIComponent(String(x)).replace(/\./g, '%2E');
+const rid = (k, id) => enc(k) + '~' + enc(id);
+
+async function sdk(){
+  if (A) return;
+  [A, AU, F] = await Promise.all([import(URL_('app')), import(URL_('auth')), import(URL_('firestore'))]);
+  app = A.initializeApp(CFG);
+  auth = AU.getAuth(app);
+  db = F.getFirestore(app);
+}
+function waitUser(){ return new Promise(res => { const u = AU.onAuthStateChanged(auth, x => { u(); res(x); }); }); }
+const rowsCol = () => F.collection(db, 'store', 'main', 'rows');
+const errTx = e => {
+  const c = (e && e.code) || '';
+  if (/invalid-credential|wrong-password|user-not-found|invalid-email|invalid-login/.test(c)) return 'E-posta ya da şifre yanlış.';
+  if (/too-many-requests/.test(c)) return 'Çok fazla deneme yapıldı. Birkaç dakika sonra tekrar deneyin.';
+  if (/network|unavailable/.test(c)) return 'İnternet bağlantısı yok.';
+  if (/permission-denied/.test(c)) return 'Bu hesabın yetkisi yok.';
+  if (/resource-exhausted|quota/.test(c)) return 'Bugünkü ücretsiz kullanım sınırı doldu; yarın kendiliğinden devam eder.';
+  return (e && e.message) || 'Bilinmeyen hata';
+};
+
+// ---------- yönetici: yerel değişiklik → giden kuyruk → internet ----------
+function local(k, s, diffs){
+  const out = lg(OUT, {});
+  diffs.forEach(d => { out[rid(k, d.id)] = { k, id:d.id, s, v:d.v }; });
+  ls(OUT, out);
+  if (k === 'siparis_kullanicilar'){ clearTimeout(memT); memT = setTimeout(syncMembers, 2500); }
+  clearTimeout(flushT); flushT = setTimeout(flush, 1200);
+  emit();
+}
+async function flush(){
+  if (busy || !user || isPers() || state.phase === 'off') return;
+  const out = lg(OUT, {}), ids = Object.keys(out);
+  if (!ids.length) return;
+  busy = true;
+  try{
+    for (let i = 0; i < ids.length; i += 400){
+      const part = ids.slice(i, i + 400), b = F.writeBatch(db);
+      part.forEach(id => { const r = out[id]; b.set(F.doc(rowsCol(), id), { k:r.k, id:r.id, s:r.s, v:r.v == null ? null : r.v, del:r.v == null, t:F.serverTimestamp(), by:user.uid, dev:devId() }); });
+      await b.commit();
+      const now = lg(OUT, {});
+      part.forEach(id => { if (now[id] && JSON.stringify(now[id]) === JSON.stringify(out[id])) delete now[id]; });
+      ls(OUT, now);
+    }
+    state.last = Date.now(); set('live', '');
+  }catch(e){ set(navigator.onLine === false ? 'offline' : 'error', errTx(e)); }
+  finally{ busy = false; if (Object.keys(lg(OUT, {})).length && state.phase === 'live'){ clearTimeout(flushT); flushT = setTimeout(flush, 3000); } }
+}
+
+// ---------- herkes: internetteki değişiklikleri dinle ----------
+function listenRows(){
+  if (unsubRows) unsubRows();
+  const since = cfg().lastT || 0;
+  const q = F.query(rowsCol(), F.where('t', '>=', F.Timestamp.fromMillis(since)));
+  unsubRows = F.onSnapshot(q, snap => {
+    const rows = []; let maxT = cfg().lastT || 0;
+    const pend = isPers() ? {} : lg(OUT, {}), me = devId();
+    snap.docChanges().forEach(ch => {
+      if (ch.type === 'removed') return;
+      const d = ch.doc.data(); if (!d || !d.t) return;
+      maxT = Math.max(maxT, d.t.toMillis());
+      if (d.dev && d.dev === me) return;            // bu telefonun kendi yazdığı
+      if (pend[ch.doc.id]) return;                  // bu telefonda daha yeni hâli gönderilmeyi bekliyor
+      rows.push({ k:d.k, id:d.id, s:d.s, v:d.del ? null : d.v });
+    });
+    if (rows.length) S().applyRows(rows);
+    if (maxT > (cfg().lastT || 0)) setCfg({ lastT:maxT });
+    state.last = Date.now(); set('live', '');
+  }, e => set('error', errTx(e)));
+}
+
+// ---------- personel: değişiklikler → inbox (Onay Merkezi) ----------
+function kick(){ clearTimeout(kickT); kickT = setTimeout(sendInbox, 2500); emit(); }
+async function sendInbox(){
+  if (busy || !user || !isPers() || state.phase === 'off') return;
+  const b = S().journalBatch(); if (!b) return;
+  busy = true;
+  try{
+    const parts = []; for (let i = 0; i < b.changes.length; i += 300) parts.push(b.changes.slice(i, i + 300));
+    for (let i = 0; i < parts.length; i++){
+      const pb = Object.assign({}, b, { id:parts.length > 1 ? b.id + '-' + (i + 1) : b.id, changes:parts[i] });
+      await F.setDoc(F.doc(db, 'inbox', pb.id), { by:user.uid, from:pb.from, created:pb.created, changes:pb.changes, at:F.serverTimestamp() });
+      S().markSent(pb);
+    }
+    state.last = Date.now(); set('live', '');
+  }catch(e){ set(navigator.onLine === false ? 'offline' : 'error', errTx(e)); }
+  finally{ busy = false; }
+}
+function listenInbox(){
+  if (unsubInbox) unsubInbox();
+  if (isPers()){
+    const q = F.query(F.collection(db, 'inbox'), F.where('by', '==', user.uid));
+    unsubInbox = F.onSnapshot(q, snap => {
+      if (snap.metadata.fromCache) return;
+      const p = {}; snap.docs.forEach(d => { p[d.id] = 1; });
+      const gone = S().sentPrune(p) || [];
+      if (gone.length) setTimeout(() => refetch(gone), 1500);
+    }, () => {});
+  } else {
+    unsubInbox = F.onSnapshot(F.collection(db, 'inbox'), snap => {
+      snap.docChanges().forEach(ch => {
+        if (ch.type === 'removed') return S().unqueue(ch.doc.id);
+        const d = ch.doc.data();
+        const r = S().enqueueSilent({ id:ch.doc.id, from:d.from || {}, created:d.created || Date.now(), changes:d.changes || [] });
+        if (r === 'done') F.deleteDoc(F.doc(db, 'inbox', ch.doc.id)).catch(() => {});
+      });
+    }, e => set('error', errTx(e)));
+  }
+}
+// personel: yöneticinin işlediği gönderimdeki kayıtların son (onaylı / reddedilmiş) hâlini internetten al
+async function refetch(batches){
+  const seen = {}, rows = [];
+  batches.forEach(b => ((b.batch && b.batch.changes) || []).forEach(c => { seen[rid(c.k, c.id)] = c; }));
+  for (const id of Object.keys(seen)){
+    const c = seen[id];
+    try{ const d = await F.getDoc(F.doc(rowsCol(), id)); const x = d.exists() ? d.data() : null; rows.push({ k:c.k, id:c.id, s:(x && x.s) || c.s, v:x && !x.del ? x.v : null }); }catch(e){}
+  }
+  if (rows.length) S().applyRows(rows);
+}
+// yönetici: gün sonu bitti → önce onaylanan kayıtlar internete yazılır, sonra gönderim kutusundan silinir
+async function done(id){
+  if (!user || isPers()) return;
+  try{
+    clearTimeout(flushT);
+    for (let i = 0; i < 40 && busy; i++) await new Promise(r => setTimeout(r, 250));
+    await flush();
+    if (Object.keys(lg(OUT, {})).length) return;   // internet yok: kutuda kalır, sonra tekrar
+    await F.deleteDoc(F.doc(db, 'inbox', id));
+  }catch(e){}
+}
+
+// ---------- başlat ----------
+async function start(){
+  const c = cfg(); if (!c.on) return set('off');
+  set('connecting', 'Bağlanıyor…');
+  try{
+    await sdk();
+    user = auth.currentUser || await waitUser();
+    if (!user){ setCfg({ on:false }); return set('off', 'Oturum kapanmış; yeniden bağlanın.'); }
+    listenRows(); listenInbox();
+    if (isPers()) kick(); else flush();
+  }catch(e){ set('error', errTx(e)); }
+}
+window.addEventListener('online', () => { if (cfg().on){ if (state.phase !== 'live') start(); else if (isPers()) kick(); else flush(); } });
+window.addEventListener('offline', () => { if (cfg().on) set('offline', 'İnternet yok; kayıtlar bu telefonda bekliyor.'); });
+document.addEventListener('tidem:login', () => { if (cfg().on){ if (isPers()) kick(); else flush(); } });
+
+// ---------- yönetici: ilk bağlantı ----------
+async function connectAdmin(email, pw){
+  set('connecting', 'Giriş yapılıyor…');
+  await sdk();
+  const cred = await AU.signInWithEmailAndPassword(auth, String(email).trim(), pw);
+  user = cred.user;
+  if (user.uid !== OWNER){ await AU.signOut(auth); user = null; throw { code:'permission-denied' }; }
+  const meta = await F.getDoc(F.doc(db, 'store', 'main'));
+  if (!meta.exists()){
+    set('connecting', 'Kayıtlar internete yükleniyor…');
+    const rows = S().rowsAll();
+    for (let i = 0; i < rows.length; i += 400){
+      const b = F.writeBatch(db);
+      rows.slice(i, i + 400).forEach(r => b.set(F.doc(rowsCol(), rid(r.k, r.id)), { k:r.k, id:r.id, s:r.s, v:r.v, del:false, t:F.serverTimestamp(), by:user.uid, dev:devId() }));
+      await b.commit();
+      set('connecting', `Kayıtlar internete yükleniyor… ${Math.min(i + 400, rows.length)} / ${rows.length}`);
+    }
+    await F.setDoc(F.doc(db, 'store', 'main'), { created:F.serverTimestamp(), by:user.uid, rows:rows.length });
+    ls(OUT, {}); setCfg({ on:true, role:'admin', lastT:0, email:String(email).trim() });
+    await start(); syncMembers();
+    return { first:true, n:rows.length };
+  }
+  // internette kayıt var: bu telefon internetteki hâle geçer (öncesi saklanır)
+  set('connecting', 'İnternetteki kayıtlar indiriliyor…');
+  const snap = await F.getDocs(rowsCol()), rows = [];
+  let maxT = 0;
+  snap.docs.forEach(d => { const x = d.data(); if (x.t) maxT = Math.max(maxT, x.t.toMillis()); if (!x.del) rows.push({ k:x.k, id:x.id, s:x.s, v:x.v }); });
+  try{ localStorage.setItem('tidem_bulut_onceki', JSON.stringify({ at:Date.now(), data:S().snapshotLocal() })); }catch(e){}
+  S().applyRows(rows, true);
+  ls(OUT, {}); setCfg({ on:true, role:'admin', lastT:maxT, email:String(email).trim() });
+  await start();
+  return { first:false, n:rows.length };
+}
+
+// ---------- personel: davet koduyla bağlan ----------
+const b64e = s => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const b64d = s => decodeURIComponent(escape(atob(String(s).replace(/-/g, '+').replace(/_/g, '/'))));
+function parseInvite(t){
+  const m = String(t || '').match(/TDM1\.([A-Za-z0-9_-]+)/); if (!m) return null;
+  try{ const o = JSON.parse(b64d(m[1])); return o && o.e && o.p ? o : null; }catch(e){ return null; }
+}
+async function connectInvite(text){
+  const inv = parseInvite(text); if (!inv) throw { message:'Davet kodu okunamadı. Yöneticinin gönderdiği mesajın tamamını yapıştırın.' };
+  set('connecting', 'Giriş yapılıyor…');
+  await sdk();
+  const cred = await AU.signInWithEmailAndPassword(auth, inv.e, inv.p);
+  user = cred.user;
+  const m = await F.getDoc(F.doc(db, 'members', user.uid));
+  if (!m.exists() || m.data().active !== true){ await AU.signOut(auth); user = null; throw { message:'Bu personelin girişi kapalı. Yöneticiye sorun.' }; }
+  set('connecting', 'Kayıtlar indiriliyor…');
+  const snap = await F.getDocs(rowsCol()), rows = [];
+  let maxT = 0;
+  snap.docs.forEach(d => { const x = d.data(); if (x.t) maxT = Math.max(maxT, x.t.toMillis()); if (!x.del) rows.push({ k:x.k, id:x.id, s:x.s, v:x.v }); });
+  S().applyRows(rows, true);
+  setCfg({ on:true, role:'personel', lastT:maxT, name:inv.n || '' });
+  return { n:rows.length, name:inv.n || '' };
+}
+
+// ---------- yönetici: personel davet kodu ve aç/kapat ----------
+const randPw = () => { const a = new Uint8Array(18); crypto.getRandomValues(a); return Array.from(a, x => 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789'[x % 55]).join(''); };
+async function invite(u){
+  if (!user || isPers()) throw { message:'Önce yönetici olarak internete bağlanın.' };
+  const email = ('p-' + String(u.id).toLowerCase().replace(/[^a-z0-9]/g, '') + '@' + DOMAIN);
+  const found = await F.getDocs(F.query(F.collection(db, 'members'), F.where('appUid', '==', u.id)));
+  let uid, pw;
+  if (!found.empty){ const d = found.docs[0]; uid = d.id; pw = d.data().inv; }
+  if (!uid || !pw){
+    const app2 = A.initializeApp(CFG, 'davet-' + Date.now()), a2 = AU.getAuth(app2);
+    pw = randPw();
+    try{ const c = await AU.createUserWithEmailAndPassword(a2, email, pw); uid = c.user.uid; }
+    finally{ try{ await AU.signOut(a2); }catch(e){} try{ await A.deleteApp(app2); }catch(e){} }
+  }
+  await F.setDoc(F.doc(db, 'members', uid), { name:u.name, appUid:u.id, active:u.active !== false, inv:pw, email }, { merge:true });
+  return 'TDM1.' + b64e(JSON.stringify({ e:email, p:pw, n:u.name }));
+}
+async function syncMembers(){
+  if (!user || isPers()) return;
+  try{
+    const us = S().users(), snap = await F.getDocs(F.collection(db, 'members'));
+    for (const d of snap.docs){
+      const m = d.data(), u = us.find(x => x && x.id === m.appUid);
+      const want = !!(u && u.active !== false && u.role !== 'merkez');
+      if (m.active !== want) await F.setDoc(F.doc(db, 'members', d.id), { active:want }, { merge:true });
+    }
+  }catch(e){}
+}
+
+async function disconnect(){
+  try{ if (unsubRows) unsubRows(); if (unsubInbox) unsubInbox(); }catch(e){}
+  unsubRows = unsubInbox = null;
+  try{ if (auth) await AU.signOut(auth); }catch(e){}
+  user = null; setCfg({ on:false }); set('off', '');
+}
+
+window.__tidemCloud = { local, kick, done };   // eşitleme modülü (gün sonu) buradan çağırır
+
+// ================= Ayarlar → İnternet eşitlemesi kartı =================
+const esc = x => String(x == null ? '' : x).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+const hhmm = ms => { const d = new Date(ms); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); };
+const waIco = () => { const t = document.getElementById('bkWaIco'); return t ? t.innerHTML : ''; };
+const role = () => { const P = window.__tidemPin, se = P && P.session && P.session(); return se && se.role === 'personel' ? 'personel' : 'admin'; };
+const PILL = { off:['KAPALI', 'off'], connecting:['BAĞLANIYOR', 'wait'], live:['CANLI', 'on'], offline:['İNTERNET YOK', 'warn'], error:['SORUN VAR', 'bad'] };
+function say(m, bad){ const el = document.getElementById('clStatus'); if (el){ el.textContent = m || ''; el.className = 'gs-status' + (bad ? ' bad' : ''); } }
+function render(){
+  const card = document.getElementById('cloudCard'); if (!card) return;
+  const c = cfg(), on = !!c.on, me = role(), pill = PILL[on ? state.phase : 'off'] || PILL.off;
+  const pe = document.getElementById('clPill'); pe.textContent = pill[0]; pe.className = 'cl-pill ' + pill[1];
+  card.classList.toggle('is-on', on);
+  document.documentElement.classList.toggle('cloud-on', on);
+  const sub = document.getElementById('clSub');
+  const body = document.getElementById('clBody');
+  if (!on){
+    sub.textContent = 'Tüm telefonlar aynı kayıtları anında görür';
+    if (body.dataset.mode === 'off-' + me) return;   // yazılan e-posta/şifre silinmesin
+    body.dataset.mode = 'off-' + me;
+    body.innerHTML = me === 'personel'
+      ? '<p class="cl-p">Yöneticinin WhatsApp\'tan gönderdiği <b>davet mesajını</b> kopyalayıp yapıştırın.</p><button type="button" class="cl-go" data-cl="paste">📋 Davet kodunu yapıştır</button>'
+      : '<p class="cl-p">Firebase hesabınızla <b>bir kez</b> giriş yapın. Gün sonu dosyası gerekmez; her şey kendiliğinden eşitlenir.</p>' +
+        '<label class="cl-f"><small>E-POSTA</small><input id="clEmail" type="email" autocomplete="username" value="' + esc(c.email || '') + '" placeholder="ornek@gmail.com"></label>' +
+        '<label class="cl-f"><small>ŞİFRE</small><input id="clPw" type="password" autocomplete="current-password" placeholder="Firebase hesap şifresi"></label>' +
+        '<button type="button" class="cl-go" data-cl="admin">BAĞLAN</button>';
+    return;
+  }
+  const out = Object.keys(lg(OUT, {})).length, pend = me === 'personel' && S() ? (S().pending() || []).length + (S().waiting() || 0) : 0;
+  sub.textContent = state.phase === 'live' ? 'Kayıtlar canlı eşitleniyor' : (state.msg || 'Bağlanıyor…');
+  let h = '<div class="cl-stats"><div><small>SON EŞİTLEME</small><b>' + (state.last ? hhmm(state.last) : '—') + '</b></div><div><small>' + (me === 'personel' ? 'ONAY BEKLEYEN' : 'GÖNDERİLECEK') + '</small><b>' + (me === 'personel' ? pend : out) + '</b></div><div><small>HESAP</small><b>' + (c.role === 'personel' ? esc(c.name || 'Personel') : 'Yönetici') + '</b></div></div>';
+  if (state.phase === 'error' || state.phase === 'offline') h += '<div class="cl-warn">' + esc(state.msg || 'Bağlantı kurulamadı.') + ' <button type="button" data-cl="retry">Tekrar dene</button></div>';
+  if (c.role === 'admin' && me !== 'personel'){
+    const st = (S() ? S().users() : []).filter(u => u && u.role !== 'merkez');
+    h += '<div class="cl-hh">PERSONEL DAVETİ</div>' + (st.length ? st.map(u => '<div class="cl-u' + (u.active === false ? ' off' : '') + '"><b>' + esc(u.name) + '</b><small>' + (u.active === false ? 'Girişi kapalı' : 'Yeni telefonu bu kodla bağlanır') + '</small>' + (u.active === false ? '' : '<button type="button" class="cl-inv" data-cl="inv" data-id="' + esc(u.id) + '">' + waIco() + 'Davet gönder</button>') + '</div>').join('')
+      : '<p class="cl-p">Aşağıdaki Gün sonu bölümünden personel ekleyin; sonra buradan davet gönderin.</p>');
+  } else h += '<p class="cl-p">Siparişleriniz ve tahsilatlarınız <b>kendiliğinden</b> yöneticinin Onay Merkezi\'ne gider.</p>';
+  h += '<button type="button" class="cl-off" data-cl="off">Bu telefonun bağlantısını kes</button>';
+  body.dataset.mode = 'on';
+  body.innerHTML = h;
+}
+document.addEventListener('tidem:cloud', render);
+document.addEventListener('tidem:login', render);
+document.addEventListener('tidem:onay', () => { if (cfg().on) render(); });
+async function pasteInvite(){
+  let t = '';
+  try{ t = await navigator.clipboard.readText(); }catch(e){}
+  if (!parseInvite(t)) t = await window.tfAskLong('Davet mesajını buraya yapıştırın');
+  if (!t) return null;
+  return connectInvite(t);
+}
+async function inviteFlow(msgFn){
+  const r = await pasteInvite(); if (!r) return;
+  msgFn('✓ Bağlandı: ' + r.n + ' kayıt indirildi. ' + (r.name ? r.name + ', ' : '') + 'şimdi kendi şifrenizle girin…');
+  setTimeout(() => location.reload(), 1400);
+}
+document.addEventListener('click', async e => {
+  const t = e.target.closest('[data-cl]'); if (!t) return;
+  const a = t.dataset.cl;
+  try{
+    if (a === 'admin'){
+      const em = (document.getElementById('clEmail').value || '').trim(), pw = document.getElementById('clPw').value;
+      if (!em || !pw) return say('E-posta ve şifreyi yazın.', true);
+      t.disabled = true; say('Bağlanıyor…');
+      const r = await connectAdmin(em, pw);
+      say(r.first ? '✓ Bağlandı. ' + r.n + ' kayıt internete yüklendi.' : '✓ Bağlandı. İnternetteki ' + r.n + ' kayıt bu telefona alındı.');
+      render();
+    } else if (a === 'paste'){ await inviteFlow(say); }
+    else if (a === 'retry'){ say(''); start(); }
+    else if (a === 'off'){
+      if (!t.dataset.arm){ t.dataset.arm = '1'; t.textContent = 'Emin misiniz? Bağlantıyı kes'; t.classList.add('arm'); setTimeout(() => { if (t.isConnected){ delete t.dataset.arm; t.textContent = 'Bu telefonun bağlantısını kes'; t.classList.remove('arm'); } }, 4000); return; }
+      await disconnect(); say('Bağlantı kesildi. Kayıtlar bu telefonda duruyor.'); render();
+    } else if (a === 'inv'){
+      const u = S().users().find(x => x && x.id === t.dataset.id); if (!u) return;
+      t.disabled = true; say('Davet hazırlanıyor…');
+      const code = await invite(u);
+      const msg = 'TİDEM GIDA · ' + u.name + ' için davet\n\n1) Uygulamayı açın: https://isikshop12285-a11y.github.io/tidem/\n2) Bu mesajı tamamen kopyalayın\n3) "Davet koduyla bağlan" düğmesine dokunun\n\n' + code;
+      t.disabled = false;
+      if (navigator.share){ try{ await navigator.share({ text:msg }); say('✓ Davet gönderildi.'); return; }catch(err){ if (err && err.name === 'AbortError') return say(''); } }
+      window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+      say('✓ Davet WhatsApp\'ta açıldı.');
+    }
+  }catch(err){ t.disabled = false; say(errTx(err), true); if (!cfg().on) set('off'); }
+});
+window.__tidemCloudUI = { inviteFlow };
+render();
+start();
 </script>
 </body>
 </html>

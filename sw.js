@@ -2,7 +2,7 @@
    Uygulama HER ZAMAN telefondaki kayıtlı kopyayla hemen açılır (internet beklenmez → açılış görseli takılı kalmaz).
    Aynı anda internetten yeni sürüm arka planda kontrol edilir; yeni sürüm varsa kaydedilir ve uygulamada
    "Yeni sürüm hazır · YENİLE" çubuğu çıkar. Verileriniz bu dosyada değil, telefonun kendi hafızasında durur. */
-const CACHE = 'tidem-v6';
+const CACHE = 'tidem-v7';
 const SHARE = 'tidem-paylasim';   // WhatsApp'tan paylaşılan dosya geçici olarak burada bekler
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-192.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
@@ -62,6 +62,8 @@ self.addEventListener('fetch', e => {
     e.respondWith(fetch(req).then(res => { if (res && res.ok){ const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); } return res; }).catch(() => caches.match(req)));
     return;
   }
+  // internet eşitlemesi (Firebase) istekleri asla saklanmaz; yalnızca uygulama dosyaları ve Firebase kütüphanesi saklanır
+  if (url.origin !== location.origin && url.hostname !== 'www.gstatic.com') return;
   e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(res => {
     if (res && (res.ok || res.type === 'opaque')){ const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); }
     return res;
