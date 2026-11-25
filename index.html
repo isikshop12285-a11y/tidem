@@ -61,6 +61,7 @@
   /* ===================== ONAY MERKEZİ (v122) ===================== */
   html.role-personel .tab-btn:is([data-tab="onay"],[data-tab="urunler"]){display:none !important}
   html.role-personel :is([data-customer-edit],[data-customer-index],#cariTools){display:none !important}
+  html.role-personel .ord-card.oc-lock :is(.t-edit,.t-del){display:none !important}
   :root{--oc:#fff}
   html[data-theme="dark"]{--oc:#24345E}
   .tab-btn.tab-onay{position:relative}
@@ -261,6 +262,63 @@
   .lf-box .lf-tip{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:.74rem;font-weight:600;line-height:1.5;color:#C7D2EA;text-align:left}
   .lf-box .lf-tip b{color:#fff}
   .lf-box .lf-link{margin-top:8px;border:0;background:none;font:inherit;font-size:.8rem;font-weight:800;color:#9FB0D4;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  /* ===== Yedek ve aktarım (v127) ===== */
+  #backupCard.bk2{padding:16px !important;border-radius:24px !important}
+  #backupCard.bk2 svg{fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  #backupCard.bk2 .wa-ico,.bk-sheet .wa-ico{fill:currentColor;stroke:none}
+  .bk-h{display:flex !important;align-items:center;gap:10px;margin:0 0 12px !important;font-family:var(--font-display) !important;font-size:1.15rem !important;font-weight:900;color:var(--ink)}
+  .bk-hi{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,#1B2B57,#2B3F78)}
+  .bk-hi svg{width:20px;height:20px}
+  .bk-hero{display:flex;align-items:center;gap:14px;width:100%;padding:16px !important;border:0 !important;border-radius:20px !important;text-align:left;font:inherit;color:#fff !important;cursor:pointer;
+    background:radial-gradient(120% 140% at 100% 0%,rgba(61,208,122,.45),transparent 55%),linear-gradient(150deg,#0B3A22,#137A3B 70%) !important;box-shadow:0 12px 26px rgba(19,122,59,.3)}
+  .bk-hero.warn{background:radial-gradient(120% 140% at 100% 0%,rgba(245,158,11,.45),transparent 55%),linear-gradient(150deg,#5A3305,#A15C07 70%) !important;box-shadow:0 12px 26px rgba(161,92,7,.3)}
+  .bk-big{flex:none;width:54px;height:54px;border-radius:18px;background:rgba(255,255,255,.14);display:grid;place-items:center}
+  .bk-big svg{width:30px;height:30px}
+  .bk-ht{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .bk-ht b{font-family:var(--font-display);font-size:1.05rem;font-weight:900}
+  .bk-ht small{font-size:.74rem;font-weight:700;color:#C9F1D8;line-height:1.35;overflow-wrap:anywhere}
+  .bk-hero.warn .bk-ht small{color:#FCE7C3}
+  .bk-ht small[hidden]{display:none}
+  .bk-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  .bk-tile{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:14px;min-height:100px;padding:14px 12px !important;border-radius:18px !important;text-align:left;font:inherit;cursor:pointer}
+  .bk-tile svg{width:24px;height:24px}
+  .bk-tile b{display:block;font-family:var(--font-display);font-size:.92rem;font-weight:900;letter-spacing:.04em}
+  .bk-tile small{display:block;margin-top:2px;font-size:.68rem;font-weight:700;opacity:.8}
+  .bk-tile.navy{border:0 !important;color:#fff !important;background:linear-gradient(145deg,#0E1A3A,#2B3F78 60%,#3D55A0) !important;box-shadow:0 10px 22px rgba(43,63,120,.3)}
+  .bk-tile.white{border:1.5px solid var(--line) !important;color:var(--ink) !important;background:var(--oc) !important}
+  .bk-tile.white svg{color:#C8202F}
+  .bk-link{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;padding:12px 14px !important;border:0 !important;border-radius:16px !important;background:var(--paper-2) !important;color:var(--ink) !important;text-align:left;font:inherit;font-size:.86rem !important;font-weight:800 !important;cursor:pointer}
+  .bk-link>svg:first-child{width:22px;height:22px;flex:none}
+  .bk-link>svg:last-child{width:18px;height:18px;flex:none;color:#94A3B8}
+  .bk-link span{flex:1;min-width:0}.bk-link small{display:block;font-size:.68rem;font-weight:700;color:var(--ink-soft)}
+  .bk-info{margin-top:12px;font-size:.68rem;font-weight:700;color:var(--ink-soft);line-height:1.4}
+  #backupCard.bk2 .backup-status:empty{display:none}
+  #backupCard.bk2 .backup-status{margin-top:10px}
+  :is(.bk-tile,.bk-link,.bk-hero,.bk-opt):active{transform:scale(.97)}
+  .bk-ov{position:fixed;inset:0;z-index:9500;display:flex;align-items:flex-end;background:rgba(11,18,36,.55);opacity:0;transition:opacity .2s}
+  .bk-ov.open{opacity:1}
+  .bk-sheet{width:100%;max-width:620px;margin:0 auto;padding:10px 16px calc(18px + env(safe-area-inset-bottom));border-radius:26px 26px 0 0;background:var(--oc);box-shadow:0 -14px 40px rgba(0,0,0,.3)}
+  html:not(.no-anim) .bk-ov.open .bk-sheet{animation:onUp .28s cubic-bezier(.2,.9,.3,1.05)}
+  .bk-grab{display:block;width:44px;height:5px;border-radius:5px;background:#D5DCE8;margin:0 auto 14px}
+  .bk-sheet h4{margin:0 0 10px;font-family:var(--font-display);font-size:1.15rem;font-weight:900;color:var(--ink)}
+  .bk-note{margin:-4px 0 12px;font-size:.76rem;font-weight:700;color:var(--ink-soft);line-height:1.45}
+  .bk-note b{color:#C8202F}
+  .bk-opt{display:flex;align-items:center;gap:12px;width:100%;margin-bottom:8px;padding:12px !important;border:1px solid var(--line) !important;border-radius:16px !important;background:var(--oc) !important;color:var(--ink) !important;text-align:left;font:inherit;cursor:pointer}
+  .bk-oi{flex:none;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;color:#fff}
+  .bk-oi svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  .bk-oi .wa-ico{width:24px;height:24px;fill:currentColor;stroke:none}
+  .bk-oi.navy{background:linear-gradient(145deg,#1B2B57,#2B3F78)}.bk-oi.wa{background:#1FA855}.bk-oi.amber{background:linear-gradient(145deg,#A15C07,#D98A1C)}
+  .bk-opt b{display:block;font-size:.88rem;font-weight:800}.bk-opt small{display:block;font-size:.7rem;font-weight:700;color:var(--ink-soft)}
+  .bk-cancel{width:100%;min-height:48px;margin-top:4px;border:0 !important;border-radius:14px !important;background:var(--paper-2) !important;color:var(--ink) !important;font:inherit;font-size:.86rem !important;font-weight:800 !important;cursor:pointer}
+  .gs-newdate{flex-basis:100%;display:flex;align-items:flex-end;gap:8px;margin-top:4px;padding:10px;border-radius:14px;background:#F1F5FB;border:1px solid #DCE3EE}
+  .gs-newdate label{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+  .gs-newdate small{font-size:.58rem;font-weight:900;letter-spacing:.1em;color:#64748B}
+  html body .gs-newdate input{width:100%;min-height:44px;padding:0 12px;border:1.5px solid #C9D3E3 !important;border-radius:12px;background:#fff !important;color:#14213F !important;-webkit-text-fill-color:#14213F;font:inherit;font-size:1rem;font-weight:800;color-scheme:light}
+  .gs-newdate button{min-height:44px;margin-left:0 !important;padding:0 14px !important;border-radius:12px !important;background:#16A34A !important;border:0 !important;color:#fff !important;font-weight:900 !important}
+  .gs-newdate button.clr{background:#fff !important;color:#B4142A !important;border:1.5px solid #F3B4BC !important}
+  html[data-theme="dark"] .gs-newdate{background:#22325A;border-color:#33467A}
+  html[data-theme="dark"] body .gs-newdate input{background:#1C2A4F !important;border-color:#3A4C7E !important;color:#F1F5F9 !important;-webkit-text-fill-color:#F1F5F9;color-scheme:dark}
+  .gs-user button[data-gu="start"].set{background:#E8EDF6 !important;border-color:#B8C6E0 !important;color:#2B3F78 !important}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -802,14 +860,6 @@
   .backup-card{margin:22px 0 0;padding:14px;border:1.5px solid var(--line,#DDE3EC)}
   .backup-card h3{margin:0 0 4px;font-family:var(--font-display,system-ui);font-size:1rem}
   .backup-card p{margin:0 0 12px;color:var(--ink-soft,#64748B);font-size:.75rem;line-height:1.45}
-  .backup-actions{display:flex;flex-wrap:wrap;gap:8px}
-  .backup-info{margin:0 0 10px;padding:8px 10px;background:var(--paper-2,#E9EDF3);border-radius:6px;font-size:.74rem;font-weight:600;color:var(--ink-soft,#64748B);line-height:1.5}
-  .backup-actions button{flex:1 1 140px;padding:11px 8px;border-radius:6px;font-family:var(--font-body,system-ui);font-weight:700;font-size:.82rem;cursor:pointer;border:1.5px solid var(--ink,#0F172A);background:transparent;color:var(--ink,#0F172A)}
-  .backup-actions button#backupDownload{background:var(--red,#C8202F);border-color:var(--red,#C8202F);color:#fff}
-  .backup-auto{margin-top:12px;padding:10px;border:1.5px dashed var(--line,#DDE3EC);border-radius:8px}
-  .backup-auto h4{margin:0 0 6px;font-size:.85rem}
-  .backup-auto-row{display:flex;gap:8px;align-items:flex-start;font-size:.76rem;font-weight:600;cursor:pointer}
-  .backup-auto-row input{margin-top:2px;accent-color:var(--red,#C8202F)}
   #autoPickFile{margin-top:8px;width:100%;padding:10px 8px;border-radius:6px;border:1.5px solid var(--ink,#0F172A);font:inherit;font-size:.8rem;cursor:pointer}
   #autoPickFile[hidden]{display:none!important}
   .backup-auto-status{margin-top:8px;font-size:.74rem;font-weight:700;color:var(--green,#15803D);line-height:1.4}
@@ -1417,8 +1467,6 @@
   .oc-btn{flex:1;display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;padding:7px 2px !important;border:0 !important;border-radius:13px !important;box-shadow:none !important;font:inherit;font-size:.66rem !important;font-weight:800 !important;cursor:pointer}
   .oc-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
   .oc-btn .wa-ico{fill:currentColor;stroke:none;width:21px;height:21px;vertical-align:0}
-  @media screen{
-  }
   html:not(.no-anim) .ord-card .hist-name.oc-name{transition:transform .14s ease,box-shadow .2s ease}
   html:not(.no-anim) .ocn-go{transition:transform .2s ease}
   html:not(.no-anim) .ord-card .hist-name.oc-name:active .ocn-go{transform:translateX(3px)}
@@ -1438,8 +1486,6 @@
   html[data-theme="dark"] .ord-card .oc-sub{color:#AAB6CF}
   html[data-theme="dark"] .ord-card .oc-amt{background:#33467A;color:#F1F5F9 !important}
   html[data-theme="dark"] .ord-card .oc-amt small{color:#AAB6CF}
-  @media screen{
-  }
   /* ===== Sipariş kartı: lacivert başlık bandı + büyük harf ===== */
   .hist-item.ord-card{padding:0 0 12px !important}
   .hist-item.ord-card::before{z-index:2}
@@ -1812,8 +1858,6 @@
   #panel-arac .arac-print:active{background:#0F172A}
   html[data-theme="dark"] #panel-arac .arac-print{background:#F1F5F9;color:#14213F}
   /* ===== Tek dosya otomatik yedek ===== */
-  .backup-auto{border-style:solid !important;border-color:#16A34A33 !important;background:linear-gradient(180deg,#F0FDF4,#fff)}
-  .backup-auto-p{margin:0 0 10px !important;font-size:.74rem !important}
   #autoPickFile{background:#16A34A !important;border-color:#16A34A !important;color:#fff !important;font-weight:900 !important;letter-spacing:.02em}
   #autoDlRow[hidden]{display:none !important}
   .bk-bar{position:fixed;left:10px;right:10px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:900;display:flex;align-items:center;gap:8px;padding:9px 9px 9px 12px;border-radius:16px;background:#14213F;color:#fff;box-shadow:0 10px 26px rgba(20,33,63,.35);font-size:.74rem;max-width:560px;margin:0 auto}
@@ -1826,10 +1870,7 @@
   .bk-bar .bk-x{background:rgba(255,255,255,.14);padding:0 10px !important}
   html:not(.no-anim) .bk-bar:not([hidden]){animation:bkIn .3s cubic-bezier(.2,.8,.2,1) both}
   @keyframes bkIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-  html[data-theme="dark"] .backup-auto{background:linear-gradient(180deg,rgba(22,163,74,.12),transparent) !important}
   html[data-theme="dark"] .bk-bar{background:#0B1530;border:1px solid #33467A}
-  .backup-actions .bk-wa{flex:1 1 100% !important;display:flex;align-items:center;justify-content:center;gap:8px;background:#1FA855 !important;border-color:#1FA855 !important;color:#fff !important;font-weight:900 !important}
-  .backup-actions .bk-wa .wa-ico{width:20px;height:20px}
   /* ===== Gün sonu mutabakat ===== */
   .bars-bottom{position:fixed;left:10px;right:10px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:900;display:flex;flex-direction:column;gap:8px;max-width:560px;margin:0 auto;pointer-events:none}
   .bars-bottom .bk-bar{position:static;left:auto;right:auto;bottom:auto;margin:0;pointer-events:auto}
@@ -1852,7 +1893,6 @@
   .gs-list summary{cursor:pointer;font-size:.76rem;font-weight:800;color:#2F4475}
   .gs-li{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;padding:7px 0;border-bottom:1px solid #EEF2F8;font-size:.76rem;font-weight:700;color:#14213F}
   .gs-li small{flex-basis:100%;font-size:.66rem;color:#94A3B8;padding-left:24px}
-  .gs-hist{margin-top:12px}
   .gs-hh{font-size:.62rem;font-weight:900;letter-spacing:.14em;color:#94A3B8;margin-bottom:2px}
   .ord-card .oc-sub .oc-who{color:#2F4475;font-weight:800}
   html[data-theme="dark"] .gs-pending{background:rgba(22,163,74,.12);border-color:rgba(22,163,74,.35)}
@@ -2338,9 +2378,6 @@
   html[data-theme="dark"] #panel-urunler .definition-search button.clear{background:#24345E;color:#DCE4F5}
   html[data-theme="dark"] #manageProductList .definition-row.is-highlighted{background:#4A3F1A !important}
   .tf-p{margin:0;font-size:.86rem;font-weight:600;line-height:1.5;color:var(--ink-soft,#55657F)}
-  .bk-msg{flex:1 1 100% !important;background:#1A2A55 !important;border-color:#1A2A55 !important;color:#fff !important;font-weight:900 !important}
-  .bk-msg2{flex:1 1 100% !important;background:#fff !important;border-color:#1A2A55 !important;color:#1A2A55 !important;font-weight:900 !important}
-  html[data-theme="dark"] .bk-msg2{background:#24345E !important;border-color:#5E73AA !important;color:#F1F5F9 !important}
   .tf-ta{display:block;width:100%;min-height:96px;padding:10px 12px;border:1.5px solid #D5DCE7;border-radius:10px;font:inherit;font-size:.85rem;resize:vertical}
   .tf-dlg{z-index:100000 !important}
   .tf-col{display:flex;flex-direction:column;gap:8px;margin-top:14px}
@@ -2710,7 +2747,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 125 · 25.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 128 · 25.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3590,29 +3627,120 @@
   <div class="gs-status" id="gsStatus"></div>
   <input type="file" id="gsFile" hidden>
 </section>
-<section class="backup-card definition-card" id="backupCard" aria-label="Yedekleme">
-  <h3>Yedekleme</h3>
-  <p>Bu cihazdaki <b>tüm</b> kayıtlar tek dosyaya alınır: siparişler (teslim / "sisteme eklendi" işaretleri dahil), tahsilat, iade, gider, eski borçlar, müşteriler, telefonlar, ürünler, gruplar, grup fiyatları, firma adı ve yarım kalan fiş taslağı. Dosya indirilmeden önce ve yüklenirken içeriği kontrol edilir; eksik veya bozuk dosya yüklenmez. Yedek yüklenince cihaz, yedek alındığı andaki hâline aynen döner; sonradan silinenler de dahil hiçbir kayıt eski hâlinden karışmaz.</p>
-  <div class="backup-info" id="backupInfo"></div>
-  <div class="backup-actions">
-    <button type="button" id="backupDownload">⬇ Yedeği indir</button>
-    <button type="button" id="backupRestore">⬆ Yedeği yükle (yedekteki hâliyle)</button>
-    <input type="file" id="backupFile" hidden>
-    <button type="button" id="backupWa" class="bk-wa"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Yedeği WhatsApp'tan gönder</button>
-    <button type="button" id="aktarSend" class="bk-msg">💬 Yeni telefona aktar (mesajla)</button>
-    <button type="button" id="aktarLoad" class="bk-msg2">📋 Kopyalanan yedeği yükle</button>
+<section class="backup-card definition-card bk2" id="backupCard" aria-label="Yedek ve aktarım">
+  <h3 class="bk-h"><span class="bk-hi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>Yedek ve aktarım</h3>
+  <button type="button" class="bk-hero" id="bkHero"><span class="bk-big"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="bk-ht"><b id="bkHeroT">Yedek durumu</b><small id="bkHeroS"></small><small id="bkHeroF"></small></span></button>
+  <div class="bk-two">
+    <button type="button" class="bk-tile navy" data-bks="take"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg><span><b>YEDEK AL</b><small>İndir ya da WhatsApp</small></span></button>
+    <button type="button" class="bk-tile white" data-bks="back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9M7 14l5-5 5 5"/><path d="M4 7V4h16v3"/></svg><span><b>GERİ YÜKLE</b><small>Yedekten geri dön</small></span></button>
   </div>
-  <div class="backup-last" id="backupLast"></div>
-  <div class="backup-auto">
-    <h4>🛟 Otomatik yedek · tek dosya</h4>
-    <p class="backup-auto-p">Bir kez dosya seçin; her değişiklikte <b>aynı dosyanın üzerine</b> yazılır. Dosya birikmez, hep en güncel hâli durur. Telefon değişirse "Yedeği yükle" ile bu dosyayı seçmeniz yeterli.</p>
-    <button type="button" id="autoPickFile" hidden>📁 Yedek klasörünü seç (bir kez)</button>
-    <label class="backup-auto-row" id="autoDlRow"><input type="checkbox" id="autoDl"> <span>Değişiklik olan günlerde yedeği günde bir kez indir</span></label>
-    <div class="backup-auto-status" id="autoStatus"></div>
-  </div>
+  <button type="button" class="bk-link" data-bks="move"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><span>Yeni telefona aktar<small>Bu telefondaki her şeyi diğer telefona taşı</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  <div class="bk-info" id="backupInfo"></div>
   <div class="backup-status" id="backupStatus"></div>
+  <div class="bk-legacy" hidden>
+    <button type="button" id="backupDownload">Yedeği indir</button>
+    <button type="button" id="backupRestore">Yedeği yükle</button>
+    <input type="file" id="backupFile" hidden>
+    <button type="button" id="backupWa">WhatsApp</button>
+    <button type="button" id="aktarSend">Yeni telefona aktar</button>
+    <button type="button" id="aktarLoad">Kopyalanan yedeği yükle</button>
+    <div id="backupLast"></div>
+    <button type="button" id="autoPickFile" hidden>Klasör seç</button>
+    <label id="autoDlRow"><input type="checkbox" id="autoDl"></label>
+    <div id="autoStatus"></div>
+  </div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 125 · 25.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+<template id="bkWaIco"><svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></template>
+<script>
+/* Yedek ve aktarım kartı: durum kutusu + alttan açılan seçenekler (eski düğmeler gizli, işlevleri aynen kullanılır) */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var hero = $('bkHero'); if (!hero) return;
+  var I = {
+    shield:'<path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
+    warn:'<path d="M12 3 2 20h20Z"/><path d="M12 10v4M12 17h.01"/>', clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    down:'<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/>', folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>',
+    paste:'<rect x="8" y="3" width="8" height="4" rx="1"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>',
+    msg:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/>'
+  };
+  var sv = function(n){ return '<svg viewBox="0 0 24 24" aria-hidden="true">' + I[n] + '</svg>'; };
+  var waIco = ($('bkWaIco') && $('bkWaIco').innerHTML) || '';
+  function p2(n){ return String(n).padStart(2, '0'); }
+  function when(iso){
+    if (!iso) return '';
+    var d = new Date(iso); if (isNaN(d)) return '';
+    var t = new Date(), y = new Date(t); y.setDate(t.getDate() - 1);
+    var same = function(a, b){ return a.toDateString() === b.toDateString(); };
+    var hm = p2(d.getHours()) + ':' + p2(d.getMinutes());
+    if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) return same(d, t) ? 'bugün' : same(d, y) ? 'dün' : p2(d.getDate()) + '.' + p2(d.getMonth() + 1) + '.' + d.getFullYear();
+    return same(d, t) ? 'bugün ' + hm : same(d, y) ? 'dün ' + hm : p2(d.getDate()) + '.' + p2(d.getMonth() + 1) + ' ' + hm;
+  }
+  var act = null;
+  function render(){
+    var A = window.__tidemAuto, st = A ? A.state() : null, last = null;
+    try{ last = localStorage.getItem('yedek_son_tarih'); }catch(e){}
+    var T = '', S = '', F = '', cls = 'ok', ic = 'shield';
+    if (!st){ T = 'Yedek durumu'; S = ''; }
+    else if (st.needPerm){ cls = 'warn'; ic = 'warn'; T = 'İzin gerekiyor'; S = 'Yedek dosyasına yazmak için dokunun'; F = st.file; act = function(){ A.perm(); }; }
+    else if (st.err){ cls = 'warn'; ic = 'warn'; T = 'Yedek yazılamadı'; S = 'Klasörü yeniden seçmek için dokunun'; act = function(){ A.pick(); }; }
+    else if (st.on){
+      T = 'Kayıtlarınız güvende';
+      S = (st.supported ? 'Otomatik yedek açık' : 'Günlük yedek açık') + (st.dirty && st.supported ? ' · kaydediliyor…' : (st.last ? ' · son yedek ' + when(st.last) : ''));
+      F = st.supported ? 'Dosya: ' + st.file : 'Değişiklik olan günlerde bir kez indirilir · kapatmak için dokunun';
+      act = st.supported ? function(){ A.pick(); } : function(){ A.toggleDl(); };
+    } else {
+      cls = 'warn'; ic = 'clock'; T = 'Otomatik yedek kapalı';
+      S = st.supported ? 'Bir kez klasör seçmek için dokunun' : 'Günlük yedeği açmak için dokunun';
+      F = last ? 'Son elle yedek: ' + when(last) : 'Henüz yedek alınmadı';
+      act = st.supported ? function(){ A.pick(); } : function(){ A.toggleDl(); };
+    }
+    hero.className = 'bk-hero ' + cls;
+    hero.querySelector('.bk-big').innerHTML = sv(ic);
+    $('bkHeroT').textContent = T; $('bkHeroS').textContent = S; $('bkHeroF').textContent = F; $('bkHeroF').hidden = !F;
+  }
+  hero.addEventListener('click', function(){ if (act) act(); });
+  document.addEventListener('tidem:auto', render);
+  setTimeout(render, 0); window.addEventListener('load', render);
+  try{ new MutationObserver(render).observe($('backupStatus'), { childList:true, characterData:true, subtree:true }); }catch(e){}
+
+  // ---- alttan açılan seçenekler ----
+  function sheet(title, note, opts){
+    var ov = document.createElement('div'); ov.className = 'bk-ov';
+    ov.innerHTML = '<div class="bk-sheet" role="dialog" aria-label="' + title + '"><i class="bk-grab"></i><h4>' + title + '</h4>' + (note ? '<p class="bk-note">' + note + '</p>' : '') +
+      opts.map(function(o, i){ return '<button type="button" class="bk-opt" data-i="' + i + '"><span class="bk-oi ' + o.c + '">' + o.ic + '</span><span><b>' + o.t + '</b><small>' + o.s + '</small></span></button>'; }).join('') +
+      '<button type="button" class="bk-cancel">Vazgeç</button></div>';
+    document.body.appendChild(ov);
+    requestAnimationFrame(function(){ ov.classList.add('open'); });
+    ov.addEventListener('click', function(e){
+      var b = e.target.closest('.bk-opt');
+      if (b){ ov.remove(); opts[b.dataset.i].go(); return; }
+      if (e.target === ov || e.target.closest('.bk-cancel')) ov.remove();
+    });
+  }
+  var click = function(id, twice){ var b = $(id); if (!b) return; b.click(); if (twice) b.click(); };
+  document.getElementById('backupCard').addEventListener('click', function(e){
+    var k = e.target.closest('[data-bks]'); if (!k) return;
+    var pers = document.documentElement.classList.contains('role-personel');
+    if (k.dataset.bks === 'take') sheet('Yedek al', '', [
+      { c:'navy', ic:sv('down'), t:'Telefona indir', s:'İndirilenler (Download) klasörüne kaydedilir', go:function(){ click('backupDownload'); } },
+      { c:'wa', ic:waIco, t:'WhatsApp\'tan gönder', s:'Kendinize gönderin, telefon değişse de kaybolmaz', go:function(){ click('backupWa'); } }
+    ]);
+    else if (k.dataset.bks === 'back'){
+      if (pers){ click('backupRestore'); return; }
+      sheet('Geri yükle', 'Bu telefondaki kayıtlar <b>yedekteki hâle döner</b>. Yüklemeden önce yedeğin içindekiler gösterilir.', [
+        { c:'navy', ic:sv('folder'), t:'Dosya seç', s:'tidem-yedek ile başlayan dosya', go:function(){ click('backupRestore', true); } },
+        { c:'amber', ic:sv('paste'), t:'Kopyalanan mesajı yapıştır', s:'"Yeni telefona aktar" ile gelen mesaj', go:function(){ click('aktarLoad', true); } }
+      ]);
+    }
+    else if (k.dataset.bks === 'move') sheet('Yeni telefona aktar', 'Eski telefonda gönderin, yeni telefonda <b>Geri yükle</b> ile açın.', [
+      { c:'wa', ic:waIco, t:'Dosyayla aktar', s:'Yedek dosyasını WhatsApp\'tan yeni telefona gönderin', go:function(){ click('backupWa'); } },
+      { c:'amber', ic:sv('msg'), t:'Mesajla aktar', s:'Yedek tek mesaj olur; yeni telefonda kopyalayıp yapıştırın', go:function(){ click('aktarSend'); } }
+    ]);
+  });
+})();
+</script>
+
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 128 · 25.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -3920,6 +4048,14 @@
       var l2 = lsGet(AUTO_LAST);
       stat(autoEl.checked ? (l2 ? 'Son otomatik yedek: ' + display(localISO(l2)) + ' ' + clock(new Date(l2)) : 'Açık. Değişiklik olan günlerde yedek bir kez indirilir.') : 'Bu tarayıcı dosyaya yazmayı desteklemiyor. Yedeği elle indirin.', !autoEl.checked);
     }
+    refreshStatus();
+    // Yeni yedek kartı (üst durum kutusu) için durum bildirimi
+    window.__tidemAuto = {
+      state:function(){ var l = lsGet(AUTO_LAST); return { supported:supported, dirOK:dirOK, on:supported ? !!fileHandle : autoEl.checked, needPerm:needPerm, err:lastErr, dirty:dirty, file:fileHandle ? hName(fileHandle) : '', last:l }; },
+      pick:function(){ if (supported) pickFile(); }, perm:function(){ askPerm(); },
+      toggleDl:function(){ autoEl.checked = !autoEl.checked; autoEl.dispatchEvent(new Event('change')); }
+    };
+    var _rs0 = refreshStatus; refreshStatus = function(){ _rs0(); try{ document.dispatchEvent(new CustomEvent('tidem:auto')); }catch(e){} };
     refreshStatus();
 
     // --- Yedeği WhatsApp'tan gönder (paylaşım menüsü) ---
@@ -4314,16 +4450,15 @@
           '<div class="gs-note">Son güncel durum: ' + (last ? hm(last.at) + ' · ' + esc(last.by) : 'henüz alınmadı') + '</div>' +
           (list.length ? '<details class="gs-list"><summary>Değişiklikleri gör</summary>' + list.slice().reverse().map(function(e){ var x = describe(e); return '<div class="gs-li"><span>' + x.icon + '</span>' + esc(x.text) + '<small>' + hm(e.at) + '</small></div>'; }).join('') + '</details>' : '');
       } else {
-        var hist = lg(HIST_KEY, []);
         var users = '<div class="gs-users"><div class="gs-hh">PERSONEL · GİRİŞ ŞİFRELERİ</div>' +
           (st.length ? st.map(function(u){ return '<div class="gs-user' + (u.active === false ? ' off' : '') + '">' + tile(u, 'sm') + '<b>' + esc(u.name) + '</b><small>' + (u.active === false ? 'GİRİŞ KAPALI' : 'AKTİF') + '</small>' +
-            '<button type="button" data-gu="start" data-id="' + esc(u.id) + '">' + (u.start ? '📅 İşe giriş ' + display(u.start) : '📅 İşe giriş tarihi') + '</button><button type="button" data-gu="photo" data-id="' + esc(u.id) + '">Foto</button><button type="button" data-gu="pin" data-id="' + esc(u.id) + '">Şifre</button><button type="button" data-gu="act" data-id="' + esc(u.id) + '">' + (u.active === false ? 'Aç' : 'Kapat') + '</button><button type="button" class="x" data-gu="del" data-id="' + esc(u.id) + '">✕</button></div>'; }).join('')
+            '<button type="button" data-gu="start" data-id="' + esc(u.id) + '"' + (u.start ? ' class="set"' : '') + '>' + (u.start ? '📅 İşe giriş ' + display(u.start) : '📅 İşe giriş tarihi') + '</button><button type="button" data-gu="photo" data-id="' + esc(u.id) + '">Foto</button><button type="button" data-gu="pin" data-id="' + esc(u.id) + '">Şifre</button><button type="button" data-gu="act" data-id="' + esc(u.id) + '">' + (u.active === false ? 'Aç' : 'Kapat') + '</button><button type="button" class="x" data-gu="del" data-id="' + esc(u.id) + '">✕</button></div>'; }).join('')
             : '<p class="gs-p">Henüz personel yok. Personel eklediğinizde her biri <b>kendi şifresiyle</b> girer; uygulama onu Personel olarak tanır, yönetici ekranlarını göremez.</p>') +
           '<div class="gs-add"><input id="guName" placeholder="Ad (ör. Ali)" autocomplete="off"><input id="guPin" type="password" inputmode="numeric" maxlength="6" placeholder="6 haneli şifre" autocomplete="new-password"><button type="button" id="guAdd">➕ Ekle</button></div>' +
           '<div class="gs-note">Yeni personel ve şifre değişiklikleri, <b>"Güncel durumu gönder"</b> ile personelin telefonuna geçer.</div></div>';
         body.innerHTML = head + (st.length ? '<div class="gs-btns"><button type="button" class="gs-btn" id="gsOpen">📥 Gün sonu dosyası aç</button><button type="button" class="gs-btn wa" id="gsState">📤 Güncel durumu gönder</button></div>' +
           '<div class="gs-note">Son gönderilen güncel durum: ' + (last ? hm(last.at) : 'henüz yok') + '</div>' : '') + users +
-          (hist.length ? '<div class="gs-hist"><div class="gs-hh">MUTABAKAT GEÇMİŞİ</div>' + hist.slice(0, 8).map(function(h){ return '<div class="gs-li"><span>🤝</span><b>' + esc(h.from) + '</b> · ' + esc(h.sum) + '<small>' + hm(h.at) + ' · ' + h.applied + ' uygulandı' + (h.rejected ? ', ' + h.rejected + ' red' : '') + (h.kept ? ', ' + h.kept + ' sizdeki kaldı' : '') + '</small></div>'; }).join('') + '</div>' : '');
+          '';
       }
       updateBar(); renderMe();
     }
@@ -4407,13 +4542,15 @@
           saveUsers(l2.filter(function(x){ return x.id !== u.id; })); say2(u.name + ' silindi.'); return;
         }
         if (t.dataset.gu === 'start'){
-          var row0 = t.closest('.gs-user'), ex0 = row0.querySelector('.gs-newpin');
+          var row0 = t.closest('.gs-user'), ex0 = row0.querySelector('.gs-newdate');
           if (ex0){ ex0.remove(); return; }
-          var bx = document.createElement('div'); bx.className = 'gs-newpin';
-          bx.innerHTML = '<input type="date" value="' + esc(u.start || '') + '"><button type="button">Kaydet</button>';
+          var bx = document.createElement('div'); bx.className = 'gs-newdate';
+          bx.innerHTML = '<label><small>İŞE GİRİŞ TARİHİ</small><input type="date" value="' + esc(u.start || todayISO()) + '"></label><button type="button" class="sv">Kaydet</button>' + (u.start ? '<button type="button" class="clr">Kaldır</button>' : '');
           row0.appendChild(bx);
-          bx.querySelector('button').addEventListener('click', function(){
+          if (bx.querySelector('.clr')) bx.querySelector('.clr').addEventListener('click', function(){ delete u.start; saveUsers(l2); say2('✓ ' + u.name + ' için işe giriş tarihi kaldırıldı. "Güncel durumu gönder" ile telefonuna geçer.'); });
+          bx.querySelector('.sv').addEventListener('click', function(){
             var v = bx.querySelector('input').value;
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return say2('Tarihi seçin.', true);
             if (v) u.start = v; else delete u.start;
             saveUsers(l2); say2('✓ ' + u.name + (v ? ' işe giriş: ' + display(v) + '. Bu tarihten önceki siparişleri görmez.' : ' için giriş tarihi kaldırıldı.') + ' "Güncel durumu gönder" ile telefonuna geçer.');
           });
@@ -6194,7 +6331,7 @@
     obj(2, () => push(`<< /Type /Pages /Kids [${pageIds.map(id => id + ' 0 R').join(' ')}] /Count ${n} >>`));
     canvases.forEach((cv, i) => {
       const pid = pageIds[i], cid = pid + 1, iid = pid + 2;
-      const jpg = dataUrlBytes(cv.toDataURL('image/jpeg', 0.95));
+      const jpg = cv.jpg || dataUrlBytes(cv.toDataURL('image/jpeg', 0.95));
       const content = `q ${PW} 0 0 ${PH} 0 0 cm /Im0 Do Q`;
       obj(pid, () => push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${PW} ${PH}] /Resources << /XObject << /Im0 ${iid} 0 R >> >> /Contents ${cid} 0 R >>`));
       obj(cid, () => { push(`<< /Length ${content.length} >>\nstream\n`); push(content); push('\nendstream'); });
@@ -7001,7 +7138,7 @@
     const q = foldText(msInput.value.trim());
     if (q.length < 2){ msOut.innerHTML = '<p class="ms-hint">En az 2 harf yazın. Ürün adı yazarsanız hangi gün, hangi müşteriye, kaç koli satıldığını görürsünüz. Müşteri, not, tahsilat ve gider de aranır.</p>'; return; }
     const has = v => foldText(v).includes(q);
-    const orders = getOrders().filter(o => msInRange(o.date) && isMine(o));
+    const orders = getOrders().filter(o => msInRange(o.date) && (!isPers() || (myStart() ? String(o.date) >= myStart() : isMine(o))));
     // 1) Ürün satışları
     const prodHits = [];
     orders.forEach(o => (o.products || []).forEach(p => { if (num(p.adet) > 0 && (has(p.name) || has(p.group))) prodHits.push({ o, p }); }));
@@ -7134,10 +7271,21 @@
       }
     }catch(e){ flashError('Fişler hazırlanamadı. Bir kez daha deneyin.', msg); return; }
     if (navigator.share && canWebShare(files.slice(0, 1))){
-      // Hazırlık bitti: her düğme en fazla 10 görseli anında paylaşır (Chrome sınırı)
+      // Telefon (Chrome) tek seferde en fazla 10 dosya paylaşabiliyor. Daha fazlası varsa hepsi TEK PDF'te, tek gönderimde gider.
       const parts = [];
-      for (let i = 0; i < files.length; i += SHARE_MAX) parts.push({ files: files.slice(i, i + SHARE_MAX), ids: owners.slice(i, i + SHARE_MAX).filter(Boolean) });
-      flash(parts.length > 1 ? `Hazır. ${parts.length} parça halinde gönderin; her birinde aynı kişiyi seçin.` : 'Hazır.', msg);
+      if (files.length > SHARE_MAX){
+        try{
+          const pages = []; let n = 0;
+          const add = cv => { pages.push({ jpg:dataUrlBytes(cv.toDataURL('image/jpeg', 0.9)), width:cv.width, height:cv.height }); cv.width = cv.height = 0; };
+          buildSummaryPages(list).forEach(add);
+          for (const o of list){ flash(`Tek dosyada birleştiriliyor… ${++n} / ${list.length}`, msg); (await buildReceiptPages(o)).forEach(add); }
+          const d = new Date(), nm = `Siparis-fisleri-${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}.${d.getFullYear()}-${list.length}-fis.pdf`;
+          const pdf = new File([buildPdfFromCanvases(pages)], nm, { type:'application/pdf' });
+          if (canWebShare([pdf])) parts.push({ files:[pdf], ids:list.map(o => o.id), pdf:true });
+        }catch(e){}
+      }
+      if (!parts.length) for (let i = 0; i < files.length; i += SHARE_MAX) parts.push({ files: files.slice(i, i + SHARE_MAX), ids: owners.slice(i, i + SHARE_MAX).filter(Boolean) });
+      flash(parts[0] && parts[0].pdf ? `Hazır. ${list.length} fiş tek PDF dosyasında, tek seferde gider.` : parts.length > 1 ? `Hazır. ${parts.length} parça halinde gönderin; her birinde aynı kişiyi seçin.` : 'Hazır.', msg);
       const waIco = '<svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>';
       box.innerHTML = parts.map((p, i) => `<button type="button" class="queue-chunk wa" data-part="${i}" aria-label="WhatsApp'tan gönder">${waIco}${parts.length > 1 ? `<b>${i + 1}</b>` : ''}</button>`).join('');
       box.querySelectorAll('.queue-chunk[data-part]').forEach(b => b.addEventListener('click', async () => {
@@ -7705,7 +7853,7 @@
     histBal = new Map();
     renderPersBar();
     const st0 = myStart();
-    const allOrders = isPers() ? getOrders().filter(o => isMine(o) && (!st0 || String(o.date) >= st0)) : getOrders();
+    const allOrders = isPers() ? getOrders().filter(o => st0 ? String(o.date) >= st0 : isMine(o)) : getOrders();
     const q = foldText(document.getElementById('historySearch')?.value);
     const statusEl = document.getElementById('historySearchStatus');
     const matches = o => !q || [o.customer, o.note, dateDisplay(o.date), o.date, dateDisplay(o.deliveryDate), ...(o.products || []).flatMap(p => [p.name, p.group])]
@@ -7743,7 +7891,7 @@
     }
     const buildCard = (o, dayGroup) => {
         const item = document.createElement('div');
-        item.className = 'hist-item ord-card ' + (o.delivered ? 'st-ok' : 'st-no') + (selectedIds.has(o.id) ? ' selected' : '') + (cardFolded.has(o.id) ? ' folded' : '');
+        item.className = 'hist-item ord-card ' + (o.delivered ? 'st-ok' : 'st-no') + (selectedIds.has(o.id) ? ' selected' : '') + (cardFolded.has(o.id) ? ' folded' : '') + (isMine(o) ? '' : ' oc-lock');
         item.dataset.card = o.id;
         const ocInfo = getCustInfo(o.customer), ocKoli = (o.products || []).reduce((t, p) => t + num(p.adet), 0);
         const IC = {
