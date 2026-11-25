@@ -58,6 +58,189 @@
   .ek-step button:first-child{background:#E2E8F0;color:#14213F}
   .ek-step span{min-width:28px;text-align:center;font-weight:900;color:var(--ink)}
   .ek-row.on .ek-step button:last-child{background:#D98A1C}
+  /* ===================== ONAY MERKEZİ (v122) ===================== */
+  html.role-personel .tab-btn:is([data-tab="onay"],[data-tab="urunler"]){display:none !important}
+  html.role-personel :is([data-customer-edit],[data-customer-index]){display:none !important}
+  html.role-personel .ord-card.oc-lock :is(.t-edit,.t-del){display:none !important}
+  :root{--oc:#fff}
+  html[data-theme="dark"]{--oc:#24345E}
+  .tab-btn.tab-onay{position:relative}
+  .tab-badge{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:6px;padding:0 6px;border-radius:999px;background:#C8202F;color:#fff;font-size:.66rem;font-weight:900;vertical-align:middle}
+  .tab-badge[hidden]{display:none}
+  #onayRoot{padding-bottom:90px}
+  #onayRoot svg,.on-ov svg,#persBar svg,.on-note svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .on-hero{position:relative;overflow:hidden;border-radius:24px;padding:18px 18px 14px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,rgba(200,32,47,.55),transparent 55%),linear-gradient(150deg,#0B1530,#1F3263 70%);box-shadow:0 14px 30px rgba(20,33,63,.3)}
+  .on-hero::after{content:"";position:absolute;right:-40px;bottom:-60px;width:180px;height:180px;border-radius:50%;border:26px solid rgba(255,255,255,.05);pointer-events:none}
+  .on-k{font-size:.64rem;font-weight:900;letter-spacing:.14em;color:#FCA5A5}
+  .on-hero h2{margin:4px 0 2px;font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:#fff}
+  .on-hero p{margin:0;font-size:.8rem;font-weight:700;color:#C7D2EA}
+  .on-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:14px}
+  .on-chips div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:9px 4px 8px;text-align:center}
+  .on-chips b{display:block;font-family:var(--font-display);font-size:1.35rem;font-weight:900;line-height:1}
+  .on-chips span{display:block;margin-top:4px;font-size:.52rem;font-weight:900;letter-spacing:.06em;color:#C7D2EA}
+  .on-chips .g b{color:#6EE7A0}.on-chips .a b{color:#FCD34D}.on-chips .r b{color:#FF8A95}
+  .on-hbtn{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;position:relative;z-index:1}
+  .on-hbtn button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:0 8px !important;border:1px solid rgba(255,255,255,.22) !important;border-radius:14px !important;background:rgba(255,255,255,.1) !important;color:#fff !important;font:inherit;font-size:.72rem !important;font-weight:900 !important;letter-spacing:.02em;cursor:pointer}
+  .on-hbtn button:last-child{background:linear-gradient(135deg,#0F6B33,#1FA855) !important;border-color:transparent !important;box-shadow:0 6px 14px rgba(31,168,85,.35)}
+  .on-hbtn svg{width:17px;height:17px}
+  .on-last{display:block;margin-top:9px;font-size:.66rem;font-weight:700;color:#9FB0D4}
+  .on-sec{display:flex;align-items:center;gap:8px;margin:18px 4px 10px}
+  .on-sec::before{content:"";width:4px;height:20px;border-radius:3px;background:#C8202F}
+  .on-sec b{font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:var(--ink)}
+  .on-sec span{font-size:.7rem;font-weight:800;color:var(--ink-soft)}
+  .on-sec.sm{margin:16px 2px 8px}.on-sec.sm b{font-size:.9rem}
+  .on-batch{background:var(--oc);border:1px solid var(--line);border-radius:22px;box-shadow:0 8px 22px rgba(20,33,63,.08);overflow:hidden;margin-bottom:12px}
+  .on-bh{display:flex;align-items:center;gap:12px;width:100%;padding:14px !important;border:0 !important;background:none !important;text-align:left;font:inherit;cursor:pointer;min-height:0 !important}
+  .on-hrow .on-bh{cursor:default}
+  .on-av{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:#fff;background:linear-gradient(145deg,#9B1C28,#C8202F 55%,#E04A57);box-shadow:0 6px 14px rgba(200,32,47,.3)}
+  .on-av.g{background:linear-gradient(145deg,#0F6B33,#1FA855);box-shadow:0 6px 14px rgba(31,168,85,.3)}
+  .on-bt{flex:1;min-width:0}.on-bt b{display:block;font-family:var(--font-display);font-size:1rem;font-weight:900;color:var(--ink)}.on-bt small{font-size:.7rem;font-weight:700;color:var(--ink-soft)}
+  .on-pill{flex:none;display:inline-block;padding:5px 9px;border-radius:999px;font-size:.6rem;font-weight:900;letter-spacing:.06em;white-space:nowrap}
+  .on-pill.a{background:#FFF4DB;color:#A15C07}.on-pill.g{background:#DCF5E5;color:#137A3B}.on-pill.r{background:#FDE3E6;color:#B4142A}.on-pill.n{background:#E8EDF6;color:#2B3F78}.on-pill.s{background:#EEF1F5;color:#64748B}
+  .on-bs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .on-bs div{padding:10px 12px;border-right:1px solid var(--line)}.on-bs div:last-child{border:0}
+  .on-bs b{display:block;font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:var(--ink)}.on-bs span{font-size:.54rem;font-weight:900;letter-spacing:.08em;color:#94A3B8}
+  .on-items{display:flex;flex-direction:column;gap:7px;padding:8px 10px 10px;background:var(--paper-2);border-top:1px solid var(--line)}
+  .on-items.solo{padding:0;background:none;border:0}
+  .on-it{display:flex;align-items:center;gap:10px;width:100%;padding:10px 10px 10px 12px !important;min-height:0 !important;border:1px solid var(--line) !important;border-radius:14px !important;background:var(--oc) !important;text-align:left;font:inherit;cursor:pointer;color:var(--ink)}
+  .on-it.done{opacity:.72}
+  .on-ic{flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;color:#fff}
+  .on-ic svg{width:18px;height:18px}
+  .on-ic.t-ord{background:linear-gradient(145deg,#1B2B57,#2B3F78)}.on-ic.t-para{background:linear-gradient(145deg,#137A3B,#1FA855)}.on-ic.t-cust{background:linear-gradient(145deg,#A15C07,#D98A1C)}.on-ic.t-prod{background:linear-gradient(145deg,#6D28D9,#8B5CF6)}
+  .on-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+  .on-tx b{font-size:.8rem;font-weight:800;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .on-tx small{font-size:.68rem;font-weight:700;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .on-fl{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}.on-fl:empty{display:none}
+  .on-flag{display:inline-block;padding:2px 6px;border-radius:6px;background:#FFF4DB;color:#A15C07;font-size:.56rem;font-weight:900;letter-spacing:.04em}
+  .on-am{flex:none;font-family:var(--font-display);font-size:.95rem;font-weight:900;color:var(--ink)}
+  .on-more{border:0 !important;background:none !important;min-height:30px !important;font:inherit;font-size:.72rem !important;font-weight:800 !important;color:#2B3F78 !important;cursor:pointer}
+  .on-bulk{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:50px !important;border:0 !important;border-radius:16px !important;font:inherit;font-size:.8rem !important;font-weight:900 !important;letter-spacing:.06em;text-transform:uppercase;color:#fff !important;cursor:pointer;background:linear-gradient(135deg,#0F6B33,#1FA855 60%,#3DD07A) !important;box-shadow:0 10px 22px rgba(31,168,85,.35),inset 0 1px 0 rgba(255,255,255,.25)}
+  .on-bulk.nav{background:linear-gradient(135deg,#0E1A3A,#2B3F78 60%,#3D55A0) !important;box-shadow:0 10px 22px rgba(43,63,120,.3)}
+  .on-bulk.ghost{background:var(--paper-2) !important;color:var(--ink) !important;box-shadow:none;border:1px solid var(--line) !important}
+  .on-bulk svg{width:19px;height:19px}
+  .on-stick{position:sticky;bottom:12px;margin-top:14px;z-index:5}
+  .on-empty{display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 18px;border-radius:22px;border:1.5px dashed var(--line);background:var(--oc);text-align:center}
+  .on-empty svg{width:40px;height:40px;color:#94A3B8}.on-empty b{font-family:var(--font-display);font-size:1rem;color:var(--ink)}.on-empty small{font-size:.74rem;font-weight:700;color:var(--ink-soft)}
+  .on-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .on-top>div{flex:1;min-width:0}.on-top b{display:block;font-family:var(--font-display);font-size:1.1rem;font-weight:900;color:var(--ink)}.on-top small{font-size:.7rem;font-weight:700;color:var(--ink-soft)}
+  .on-back{flex:none;width:42px !important;height:42px;min-height:0 !important;padding:0 !important;display:grid;place-items:center;border:1px solid var(--line) !important;border-radius:13px !important;background:var(--oc) !important;color:var(--ink) !important;cursor:pointer;box-shadow:0 4px 10px rgba(20,33,63,.08)}
+  .on-back svg{width:19px;height:19px;stroke-width:2.6}
+  .on-ring{--p:0;flex:none;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#1FA855 calc(var(--p)*1%),var(--line) 0)}
+  .on-ring>span{width:40px;height:40px;border-radius:50%;background:var(--oc);display:grid;place-items:center;font-family:var(--font-display);font-size:.72rem;font-weight:900;color:var(--ink)}
+  .on-ring.sm{width:46px;height:46px}.on-ring.sm>span{width:36px;height:36px;font-size:.9rem}
+  .on-oth{margin-top:14px;padding:10px 14px;border-radius:16px;background:var(--oc);border:1px solid var(--line);font-size:.72rem;font-weight:700;color:var(--ink-soft)}
+  .on-oth summary{display:flex;align-items:center;gap:8px;font-weight:900;color:var(--ink);cursor:pointer;list-style:none}
+  .on-oth summary small{margin-left:auto;font-weight:700;color:var(--ink-soft)}
+  .on-oth summary svg{width:16px;height:16px}
+  .on-oth div{padding:6px 0;border-top:1px solid var(--line)}
+  /* pencereler */
+  body.on-lock{overflow:hidden}
+  .on-ov{position:fixed;inset:0;z-index:9500;background:rgba(11,18,36,.55);opacity:0;transition:opacity .2s}
+  .on-ov.open{opacity:1}
+  .on-ov.full{background:var(--paper);display:flex;flex-direction:column}
+  .on-page{flex:1;overflow:auto;padding:14px 14px 120px;-webkit-overflow-scrolling:touch}
+  html:not(.no-anim) .on-ov.full .on-page{animation:onIn .25s cubic-bezier(.2,.9,.3,1)}
+  @keyframes onIn{from{transform:translateX(30px);opacity:.4}}
+  .on-card{background:var(--oc);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 22px rgba(20,33,63,.08);padding-bottom:6px}
+  .on-oh{display:flex;align-items:center;gap:10px;padding:14px 16px;color:#fff;background:linear-gradient(150deg,#0B1530,#1F3263)}
+  .on-oh>div{flex:1;min-width:0}.on-oh b{display:block;margin-top:2px;font-family:var(--font-display);font-size:1.08rem;font-weight:900;text-transform:uppercase}
+  .on-amt{flex:none;padding:6px 12px;border-radius:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font-family:var(--font-display);font-size:1.25rem;font-weight:900}
+  .on-alert{margin:12px 12px 0;padding:12px;border-radius:16px;border:1.5px dashed}
+  .on-alert.c{background:#FFF8EA;border-color:#F2C46B}.on-alert.p{background:#F5F0FF;border-color:#C4B0F7}.on-alert.w{background:#FFF8EA;border-color:#F2C46B}
+  .on-alert.rd{background:#FFF5F6;border-color:#F3B4BC;border-style:solid}.on-alert.ok{background:#F0FBF4;border-color:#A7E3BD;border-style:solid}
+  .on-alert .h{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:.8rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+  .on-alert .h svg{width:17px;height:17px}
+  .on-alert.c .h,.on-alert.w .h{color:#A15C07}.on-alert.p .h{color:#6D28D9}.on-alert.rd .h{color:#B4142A}.on-alert.ok .h{color:#137A3B}
+  .on-alert p{margin:6px 0 9px;font-size:.76rem;font-weight:700;color:#475569}.on-alert p q{font-weight:900;color:#14213F}
+  .on-sug{display:flex;align-items:center;gap:9px;margin-bottom:7px;padding:9px 11px;border-radius:12px;background:#fff;border:1px solid #EADBB8;cursor:pointer}
+  .on-alert.p .on-sug{border-color:#DDD0FB}
+  .on-sug input{width:18px;height:18px;accent-color:#14213F;flex:none}
+  .on-sug b{flex:1;font-size:.78rem;font-weight:800;color:#14213F;text-transform:uppercase}
+  .on-sug small{font-size:.6rem;font-weight:900;color:#137A3B;background:#DCF5E5;padding:3px 7px;border-radius:6px}
+  .on-ab{display:flex;gap:7px}
+  .on-ab button{flex:1;min-height:40px !important;padding:0 6px !important;border-radius:11px !important;font:inherit;font-size:.72rem !important;font-weight:900 !important;cursor:pointer}
+  .on-ab .on{background:#14213F !important;color:#fff !important;border:0 !important}.on-ab .off{background:#fff !important;color:#14213F !important;border:1px solid #DCE3EE !important}
+  .on-done{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:12px;background:#fff;font-size:.76rem;font-weight:900;color:#137A3B}
+  .on-done svg{width:16px;height:16px;stroke-width:2.8}
+  .on-done button{margin-left:auto;min-height:30px !important;padding:0 10px !important;border:1px solid #DCE3EE !important;border-radius:9px !important;background:#fff !important;color:#14213F !important;font:inherit;font-size:.66rem !important;font-weight:900 !important}
+  .on-meta{margin:12px 16px 0;font-size:.74rem;font-weight:700;color:var(--ink-soft)}
+  .on-meta.ch{padding:8px 10px;border-radius:10px;background:var(--paper-2);color:var(--ink)}
+  .on-lines{padding:6px 14px 4px}
+  .on-ln{display:grid;grid-template-columns:1fr auto auto;gap:3px 10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+  .on-ln:last-child{border:0}
+  .on-ln b{font-size:.76rem;font-weight:800;text-transform:uppercase;color:var(--ink)}
+  .on-ln .q{font-size:.74rem;font-weight:800;color:var(--ink-soft)}.on-ln .s{min-width:62px;text-align:right;font-family:var(--font-display);font-size:.9rem;font-weight:900;color:var(--ink)}
+  .on-ln .pr{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.68rem;font-weight:700;color:var(--ink-soft)}
+  .on-ln .pr del{color:#94A3B8}.on-ln .pr em{font-style:normal;font-weight:900;color:#C8202F;background:#FDE3E6;padding:2px 7px;border-radius:6px}
+  .on-ln .pr i{font-style:normal;font-weight:900;color:#A15C07;background:#FFF4DB;padding:2px 7px;border-radius:6px}
+  .on-cari{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:10px 12px 6px;padding:12px 14px;border-radius:16px;background:var(--paper-2);border:1px solid var(--line)}
+  .on-cari span{flex-basis:100%;font-size:.58rem;font-weight:900;letter-spacing:.12em;color:#94A3B8}
+  .on-cari b{font-family:var(--font-display);font-size:1.15rem;font-weight:900;color:var(--ink)}.on-cari i{font-style:normal;font-weight:900;color:#94A3B8}
+  .on-cari small{flex-basis:100%;font-size:.68rem;font-weight:800;color:var(--ink-soft)}
+  .on-cari.up{background:#FFF5F6;border-color:#F3B4BC}.on-cari.up b.n{color:#C8202F}.on-cari.up small{color:#B4142A}
+  .on-act{position:fixed;left:0;right:0;bottom:0;z-index:2;display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:8px;padding:14px 14px calc(16px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,var(--paper) 30%)}
+  .on-act.two{grid-template-columns:1fr 1.6fr}
+  .on-act button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:58px !important;padding:0 !important;border-radius:18px !important;font:inherit;font-size:.72rem !important;font-weight:900 !important;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:#fff !important;border:0 !important}
+  .on-act button svg{width:20px;height:20px;stroke-width:2.4}
+  .on-act .red{background:var(--oc) !important;color:#C8202F !important;border:1.5px solid #F3C4C9 !important;box-shadow:0 6px 14px rgba(20,33,63,.08)}
+  .on-act .nav{background:linear-gradient(135deg,#0E1A3A,#2B3F78 60%,#3D55A0) !important;box-shadow:0 10px 22px rgba(43,63,120,.3)}
+  .on-act .ok{background:linear-gradient(135deg,#0F6B33,#1FA855 60%,#3DD07A) !important;box-shadow:0 10px 22px rgba(31,168,85,.35)}
+  .on-act button:disabled{opacity:.4;filter:grayscale(.6);box-shadow:none}
+  .on-hint{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + env(safe-area-inset-bottom));z-index:3;white-space:nowrap;padding:7px 12px;border-radius:999px;background:#FFF4DB;border:1px solid #F2C46B;box-shadow:0 6px 14px rgba(20,33,63,.12);font-size:.68rem;font-weight:900;color:#A15C07}
+  .on-ov.bottom{display:flex;align-items:flex-end}
+  .on-sheet{width:100%;max-width:620px;margin:0 auto;background:var(--oc);border-radius:28px 28px 0 0;padding:10px 18px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -14px 40px rgba(0,0,0,.3)}
+  html:not(.no-anim) .on-ov.open .on-sheet{animation:onUp .28s cubic-bezier(.2,.9,.3,1.05)}
+  @keyframes onUp{from{transform:translateY(100%)}}
+  .on-sheet .grab{width:44px;height:5px;border-radius:5px;background:#D5DCE8;margin:0 auto 14px}
+  .on-sheet h3{margin:0;font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--ink)}
+  .on-sheet .sub{margin:3px 0 14px;font-size:.74rem;font-weight:700;color:var(--ink-soft)}
+  .on-k2{margin-bottom:8px;font-size:.6rem;font-weight:900;letter-spacing:.12em;color:#64748B}
+  .on-rs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+  .on-rs button{min-height:36px !important;padding:0 12px !important;border-radius:999px !important;border:1px solid var(--line) !important;background:var(--paper-2) !important;color:var(--ink) !important;font:inherit;font-size:.72rem !important;font-weight:800 !important;cursor:pointer}
+  .on-rs button.on{background:#FDE3E6 !important;color:#B4142A !important;border-color:#F3B4BC !important}
+  .on-sheet textarea{width:100%;min-height:90px;padding:12px 14px;border:1.5px solid var(--line);border-radius:16px;background:var(--paper-2);color:var(--ink);font:inherit;font-size:.86rem;font-weight:700;resize:none}
+  .on-cnt{display:block;text-align:right;font-size:.62rem;font-weight:700;color:#94A3B8;margin-top:4px}
+  .on-row2{display:grid;grid-template-columns:1fr 1.6fr;gap:9px;margin-top:12px}
+  .on-row2 button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px !important;border-radius:18px !important;font:inherit;font-size:.82rem !important;font-weight:900 !important;letter-spacing:.06em;cursor:pointer;border:0 !important}
+  .on-row2 .ghost{background:var(--paper-2) !important;color:var(--ink) !important;letter-spacing:0}
+  .on-row2 .red{background:linear-gradient(135deg,#8E1622,#C8202F 60%,#E04A57) !important;color:#fff !important;text-transform:uppercase;box-shadow:0 10px 22px rgba(200,32,47,.3)}
+  .on-row2 svg{width:18px;height:18px}
+  /* personel */
+  #persBar{margin-bottom:10px}
+  #persBar[hidden]{display:none}
+  .on-send{padding:14px;border-radius:22px;background:var(--oc);border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,33,63,.08);margin-bottom:10px}
+  .on-send .top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .on-send .top>div{flex:1;min-width:0}.on-send .top b{display:block;font-family:var(--font-display);font-size:1rem;font-weight:900;color:var(--ink)}.on-send .top small{font-size:.7rem;font-weight:700;color:var(--ink-soft)}
+  .on-redc{position:relative;overflow:hidden;margin-bottom:10px;padding:12px 12px 12px 18px;border-radius:20px;background:var(--oc);border:1px solid var(--line);box-shadow:0 6px 16px rgba(20,33,63,.06)}
+  .on-redc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#C8202F}
+  .on-redc .r1{display:flex;align-items:center;gap:8px}.on-redc .r1 b{flex:1;font-family:var(--font-display);font-size:.95rem;font-weight:900;text-transform:uppercase;color:var(--ink)}
+  .on-redc .r2{display:flex;justify-content:space-between;margin:4px 0 8px;font-size:.72rem;font-weight:700;color:var(--ink-soft)}.on-redc .r2 strong{font-family:var(--font-display);font-size:1rem;color:var(--ink)}
+  .on-note{margin:8px 0 2px;padding:10px 12px;border-radius:14px;background:#FFF5F6;border:1px solid #F7CDD2}
+  .ord-card .on-note{margin:0 12px 10px}
+  .on-note .h{display:flex;align-items:center;gap:6px;font-size:.6rem;font-weight:900;letter-spacing:.1em;color:#B4142A}
+  .on-note .h svg{width:14px;height:14px}
+  .on-note p{margin:4px 0 9px;font-size:.78rem;font-weight:700;color:#4B1218}
+  .on-nb{display:flex;gap:8px;flex-wrap:wrap}
+  .on-note .fx,.on-note .ok2{display:inline-flex;align-items:center;gap:6px;min-height:36px !important;width:auto !important;padding:0 12px !important;border-radius:10px !important;font:inherit;font-size:.68rem !important;font-weight:900 !important;letter-spacing:.06em;cursor:pointer;border:0 !important}
+  .on-note .fx{color:#fff !important;background:linear-gradient(135deg,#8E1622,#C8202F) !important}
+  .on-note .ok2{background:#fff !important;color:#B4142A !important;border:1px solid #F3B4BC !important}
+  .on-note .fx svg{width:14px;height:14px}
+  .oc-onay{margin-left:6px;vertical-align:middle}
+  .row-card.row-talep{box-shadow:0 0 0 2px #8B5CF6 inset}
+  .row-card.row-talep::after{content:"LİSTEDE YOK · YÖNETİCİYE TALEP OLARAK GİDECEK";display:block;margin:6px 12px 2px;font-size:.6rem;font-weight:900;letter-spacing:.06em;color:#6D28D9}
+  html[data-theme="dark"] :is(.on-alert.c,.on-alert.w){background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.45)}
+  html[data-theme="dark"] .on-alert.p{background:rgba(139,92,246,.14);border-color:rgba(139,92,246,.5)}
+  html[data-theme="dark"] .on-alert.rd,html[data-theme="dark"] .on-note,html[data-theme="dark"] .on-cari.up{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.4)}
+  html[data-theme="dark"] .on-alert.ok{background:rgba(31,168,85,.12);border-color:rgba(31,168,85,.4)}
+  html[data-theme="dark"] :is(.on-alert p,.on-note p){color:#DCE4F5}
+  html[data-theme="dark"] .on-alert p q{color:#fff}
+  html[data-theme="dark"] :is(.on-sug,.on-done,.on-ab .off,.on-done button){background:#22325A !important;border-color:#33467A !important;color:#F1F5F9 !important}
+  html[data-theme="dark"] .on-sug b{color:#F1F5F9}
+  html[data-theme="dark"] .on-ring>span{background:#24345E}
+  html[data-theme="dark"] .on-alert.p .h{color:#C4B5FD}
+  html[data-theme="dark"] :is(.on-alert.c,.on-alert.w) .h{color:#FCD34D}
+  html[data-theme="dark"] .on-alert.rd .h{color:#FCA5A5}
+  html[data-theme="dark"] .on-alert.ok .h{color:#86EFAC}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1651,38 +1834,6 @@
   .gs-li small{flex-basis:100%;font-size:.66rem;color:#94A3B8;padding-left:24px}
   .gs-hist{margin-top:12px}
   .gs-hh{font-size:.62rem;font-weight:900;letter-spacing:.14em;color:#94A3B8;margin-bottom:2px}
-  .gs-overlay{position:fixed;inset:0;z-index:1200;background:rgba(10,18,40,.55);display:flex;align-items:flex-end;justify-content:center}
-  .gs-overlay[hidden]{display:none}
-  .gs-sheet{width:100%;max-width:620px;max-height:94vh;display:flex;flex-direction:column;background:#F4F6FA;border-radius:22px 22px 0 0;overflow:hidden;box-shadow:0 -10px 30px rgba(0,0,0,.25)}
-  html:not(.no-anim) .gs-overlay:not([hidden]) .gs-sheet{animation:gsUp .28s cubic-bezier(.2,.8,.2,1) both}
-  @keyframes gsUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
-  .gs-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;background:#14213F;color:#fff}
-  .gs-top b{font-size:.95rem;font-weight:900}
-  .gs-top button{min-height:32px !important;width:auto !important;padding:0 10px !important;border:0;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font:inherit;font-size:.68rem;font-weight:800}
-  .gs-body{flex:1;overflow-y:auto;padding:12px 12px 4px;-webkit-overflow-scrolling:touch}
-  .gs-head{padding:14px;border-radius:16px;background:#fff;box-shadow:0 2px 8px rgba(20,33,63,.06)}
-  .gs-who{font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:#14213F;text-transform:uppercase}
-  .gs-when{font-size:.66rem;font-weight:900;letter-spacing:.12em;color:#94A3B8;margin-top:2px}
-  .gs-sum{margin-top:8px;font-size:.84rem;font-weight:800;color:#15803D}
-  .gs-warn{margin-top:8px;padding:8px 10px;border-radius:10px;background:#FFFBEB;color:#92400E;font-size:.74rem;font-weight:700}
-  .gs-sec{margin-top:14px}
-  .gs-sec h4{margin:0 0 6px 4px;font-size:.78rem;font-weight:900;color:#14213F}
-  .gs-sec h4 small{margin-left:4px;padding:1px 7px;border-radius:999px;background:#E2E8F0;color:#475569;font-size:.66rem}
-  .gs-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid #E6EBF3;cursor:pointer}
-  .gs-row input[type=checkbox]{flex:none;width:20px;height:20px;margin-top:2px;accent-color:#16A34A}
-  .gs-row.del{border-color:#F8C9CD;background:#FFF7F7}
-  .gs-row.conflict{border-color:#FCD34D;background:#FFFBEB}
-  .gs-row.same{opacity:.55;cursor:default}
-  .gs-ic{flex:none;font-size:1.05rem;line-height:1.3}
-  .gs-tx{flex:1;min-width:0}
-  .gs-tx b{display:block;font-size:.8rem;font-weight:800;color:#14213F;line-height:1.35}
-  .gs-tx small{display:block;margin-top:2px;font-size:.66rem;font-weight:700;color:#94A3B8}
-  .gs-choice{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 14px}
-  .gs-choice label{display:flex;align-items:center;gap:5px;font-size:.74rem;font-weight:800;color:#92400E}
-  .gs-choice small{flex-basis:100%;color:#B45309 !important}
-  .gs-foot{display:grid;grid-template-columns:1fr 2fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid #E2E8F0}
-  .gs-foot button{min-height:48px !important;width:100% !important;border:1.5px solid #CBD5E1;border-radius:14px;background:#fff;color:#475569;font:inherit;font-size:.84rem;font-weight:900}
-  .gs-foot #gsApply{border:0;background:#16A34A;color:#fff;box-shadow:0 4px 12px rgba(22,163,74,.3)}
   .ord-card .oc-sub .oc-who{color:#2F4475;font-weight:800}
   html[data-theme="dark"] .gs-pending{background:rgba(22,163,74,.12);border-color:rgba(22,163,74,.35)}
   html[data-theme="dark"] .gs-pending.has{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.35)}
@@ -1690,14 +1841,6 @@
   html[data-theme="dark"] .gs-li{border-color:#33467A}
   html[data-theme="dark"] .gs-btn{background:#24345E;border-color:#5A6FA8;color:#F1F5F9}
   html[data-theme="dark"] .gs-btn.wa{background:#1FA855;border-color:#1FA855}
-  html[data-theme="dark"] .gs-sheet{background:#15213F}
-  html[data-theme="dark"] .gs-head,html[data-theme="dark"] .gs-row{background:#24345E;border-color:#33467A}
-  html[data-theme="dark"] .gs-row.del{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.35)}
-  html[data-theme="dark"] .gs-row.conflict{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.4)}
-  html[data-theme="dark"] .gs-who,html[data-theme="dark"] .gs-tx b,html[data-theme="dark"] .gs-sec h4{color:#F1F5F9}
-  html[data-theme="dark"] .gs-foot{background:#1C2A4F;border-color:#33467A}
-  html[data-theme="dark"] .gs-foot button{background:#24345E;border-color:#5A6FA8;color:#DCE4F5}
-  html[data-theme="dark"] .gs-foot #gsApply{background:#16A34A;color:#fff}
   html[data-theme="dark"] .ord-card .oc-sub .oc-who{color:#AFC3F0}
   /* ===== Giriş: kim olduğu şifreden ===== */
   html.role-personel .pin-admin,html.role-personel #backupRestore{display:none !important}
@@ -2538,7 +2681,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 121 · 23.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 122 · 25.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -2809,6 +2952,7 @@
 
   <div class="tabbar">
     <button class="tab-btn active" data-tab="siparis">Sipariş</button>
+    <button class="tab-btn tab-onay" data-tab="onay">Onay Merkezi<b class="tab-badge" id="onayBadge" hidden></b></button>
     <button class="tab-btn" data-tab="urunler">Ürünler ve Gruplar</button>
     <button class="tab-btn" data-tab="tahsilat">Tahsilat</button>
     <button class="tab-btn" data-tab="iade">İade</button>
@@ -2912,11 +3056,13 @@
       <div class="definition-search-status" id="historySearchStatus" aria-live="polite"></div>
       <div id="histOverview" class="hist-overview"></div>
       <button type="button" class="trash-chip" id="trashBtn" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M5 6l1.5 14a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2L19 6"/></svg><span>SİLİNENLER</span><b id="trashN">0</b></button>
+      <div id="persBar" hidden></div>
       <div id="historyList"><p class="hist-empty">Henüz kayıtlı sipariş yok.</p></div>
     </div>
   </div>
 
   <!-- TAHSİLAT TAB -->
+  <div class="panel" id="panel-onay"><div id="onayRoot"></div></div>
   <div class="panel" id="panel-tahsilat">
     <div class="edit-banner" id="tahsilatEditBanner"><span id="tahsilatEditText"></span><button type="button" id="tahsilatEditCancel">Düzenlemeyi iptal et</button></div>
     <section class="pos">
@@ -3437,7 +3583,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 121 · 23.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 122 · 25.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -3971,7 +4117,7 @@
         if (r === 'fail'){ say2('Paylaşım açılamadı, bir kez daha deneyin.', true); return; }
         var sent = lg(SENT_KEY, []); sent.unshift({ id:batch.id, at:batch.created, n:list.length, sum:sumText(summarize(list)), batch:batch });
         var lim = Date.now() - 21 * 864e5; ls(SENT_KEY, sent.filter(function(x){ return x.at > lim; }).slice(0, 40));
-        ls(J_KEY, {}); refreshCard();
+        ls(J_KEY, {}); refreshCard(); fireOnay();
         say2('✓ Gün sonu gönderildi: ' + sumText(summarize(list)) + '.');
       });
     }
@@ -4067,66 +4213,6 @@
       setTimeout(function(){ location.reload(); }, 900);
     }
 
-    // ---------- MERKEZ: gün sonu dosyasını aç ve mutabakat ----------
-    var pendingBatch = null, rows = [];
-    function openReview(p){
-      if (!p || p.app !== 'tidem-gunsonu' || !p.batch || !Array.isArray(p.batch.changes)) return say2('Bu dosya bir gün sonu dosyası değil.', true);
-      var b = p.batch, imp = lg(IMP_KEY, []);
-      var again = imp.some(function(x){ return x.id === b.id; });
-      pendingBatch = b;
-      rows = b.changes.map(function(e, i){
-        var cur = currentJson(e), d = describe(e), state;
-        if ((e.op === 'del' && cur == null) || (e.op !== 'del' && cur === e.v)) state = 'same';
-        else if (cur === (e.before == null ? null : e.before)) state = 'clean';
-        else state = 'conflict';
-        return { i:i, e:e, d:d, state:state, ok: state !== 'same', cur:cur };
-      });
-      var s = summarize(b.changes), ov = document.getElementById('gsOverlay');
-      var secs = [['siparis', '📦 Siparişler'], ['para', '💰 Para hareketleri'], ['diger', '🗂️ Müşteri, ürün ve ayarlar']];
-      var conf = rows.filter(function(r){ return r.state === 'conflict'; }).length;
-      ov.querySelector('.gs-body').innerHTML =
-        '<div class="gs-head"><div class="gs-who">' + esc((b.from && b.from.name) || 'Personel') + '</div><div class="gs-when">GÜN SONU · ' + hm(b.created) + '</div>' +
-        '<div class="gs-sum">' + esc(sumText(s)) + '</div>' +
-        (again ? '<div class="gs-warn">⚠ Bu dosya daha önce işlendi. Yeniden işlerseniz aynı değişiklikler tekrar uygulanır (çoğu "zaten aynı" görünür).</div>' : '') +
-        (conf ? '<div class="gs-warn">⚠ ' + conf + ' kayıtta çakışma var: bu kaydı siz de değiştirmişsiniz. Hangisinin geçerli olacağını seçin.</div>' : '') + '</div>' +
-        secs.map(function(sc){
-          var rs = rows.filter(function(r){ return r.d.sec === sc[0]; }); if (!rs.length) return '';
-          return '<div class="gs-sec"><h4>' + sc[1] + ' <small>' + rs.length + '</small></h4>' + rs.map(function(r){
-            var e = r.e;
-            if (r.state === 'same') return '<div class="gs-row same"><span class="gs-ic">✓</span><div class="gs-tx"><b>' + esc(r.d.text) + '</b><small>Sizde zaten aynı · ' + hm(e.at) + '</small></div></div>';
-            var conflict = r.state === 'conflict' ? '<div class="gs-choice"><label><input type="radio" name="gsc' + r.i + '" value="1" checked> Gelen geçerli</label><label><input type="radio" name="gsc' + r.i + '" value="0"> Bendeki kalsın</label><small>Sizdeki: ' + esc(r.cur == null ? 'silinmiş' : describe({ k:e.k, id:e.id, s:e.s, op:'up', v:r.cur, before:e.before }).text) + '</small></div>' : '';
-            return '<label class="gs-row ' + r.state + (e.op === 'del' ? ' del' : '') + '"><input type="checkbox" data-gs="' + r.i + '" checked><span class="gs-ic">' + r.d.icon + '</span><div class="gs-tx"><b>' + esc(r.d.text) + '</b><small>' + hm(e.at) + '</small>' + conflict + '</div></label>';
-          }).join('') + '</div>';
-        }).join('');
-      ov.hidden = false; document.body.style.overflow = 'hidden';
-      ov.querySelector('.gs-body').scrollTop = 0;
-    }
-    function closeReview(){ var ov = document.getElementById('gsOverlay'); ov.hidden = true; document.body.style.overflow = ''; pendingBatch = null; }
-    function applyReview(){
-      if (!pendingBatch) return;
-      var ov = document.getElementById('gsOverlay'), applied = 0, rejected = 0, kept = 0;
-      var snap = {}; localKeys().forEach(function(k){ snap[k] = localStorage.getItem(k); });
-      var meta = lg(META_KEY, {});
-      try{
-        rows.forEach(function(r){
-          if (r.state === 'same') return;
-          var cb = ov.querySelector('[data-gs="' + r.i + '"]');
-          if (!cb || !cb.checked){ rejected++; return; }
-          if (r.state === 'conflict'){ var rd = ov.querySelector('input[name="gsc' + r.i + '"]:checked'); if (rd && rd.value === '0'){ kept++; return; } }
-          applyEntry(r.e); applied++;
-          if (r.e.s === 'rec') meta[jkey(r.e.k, r.e.id)] = { by:r.e.by || (pendingBatch.from && pendingBatch.from.name) || '', at:r.e.at, op:r.e.op };
-        });
-      }catch(e){
-        try{ localKeys().forEach(function(k){ localStorage.removeItem(k); }); Object.keys(snap).forEach(function(k){ localStorage.setItem(k, snap[k]); }); }catch(_){}
-        say2('İşlenemedi, kayıtlar eski hâline döndü: ' + e.message, true); closeReview(); return;
-      }
-      var mk = Object.keys(meta); if (mk.length > 3000) mk.slice(0, mk.length - 3000).forEach(function(x){ delete meta[x]; });
-      ls(META_KEY, meta);
-      var imp = lg(IMP_KEY, []); imp.unshift({ id:pendingBatch.id, at:Date.now() }); ls(IMP_KEY, imp.slice(0, 200));
-      var hist = lg(HIST_KEY, []); hist.unshift({ at:Date.now(), from:(pendingBatch.from && pendingBatch.from.name) || '', sum:sumText(summarize(pendingBatch.changes)), applied:applied, rejected:rejected, kept:kept }); ls(HIST_KEY, hist.slice(0, 60));
-      try{ sessionStorage.setItem(FLASH_KEY, '✓ ' + ((pendingBatch.from && pendingBatch.from.name) || 'Personel') + ' gün sonu işlendi: ' + applied + ' değişiklik uygulandı' + (rejected ? ', ' + rejected + ' reddedildi' : '') + (kept ? ', ' + kept + ' çakışmada sizdeki kaldı' : '') + '.'); }catch(e){}
-      closeReview(); say2('İşlendi, sayfa yenileniyor…'); setTimeout(function(){ location.reload(); }, 700);
-    }
     // ---------- MERKEZ: güncel durumu gönder ----------
     // Yönetici kaydı girişte güçlü özetle oluşur (kilit ekranı); burada ayrıca bir şey gerekmez.
     function ensureAdmin(){}
@@ -4145,6 +4231,47 @@
       });
     }
 
+    // ---------- ONAY MERKEZİ altyapısı ----------
+    // Yönetici: gelen gün sonu kuyruğa girer, kayıt kayıt onaylanır/reddedilir (ekran ana kodda).
+    // Personel: her kaydın durumu = gönderilmedi / onay bekliyor / reddedildi / onaylandı.
+    var Q_KEY = 'tidem_onay_kuyruk', ONAY_KEY = 'siparis_onay';
+    function fireOnay(){ try{ document.dispatchEvent(new CustomEvent('tidem:onay')); }catch(e){} }
+    function enqueue(p){
+      if (!p || p.app !== 'tidem-gunsonu' || !p.batch || !Array.isArray(p.batch.changes)){ say2('Bu dosya bir gün sonu dosyası değil.', true); return; }
+      if (!isMerkez()){ say2('Gün sonu dosyaları yönetici telefonunda açılır.', true); return; }
+      var b = p.batch, q = lg(Q_KEY, []);
+      if (lg(IMP_KEY, []).some(function(x){ return x.id === b.id; })){ say2('Bu gün sonu daha önce onaylandı.', true); fireOnay(); return; }
+      if (!q.some(function(x){ return x.id === b.id; })){
+        q.unshift({ id:b.id, from:b.from || {}, created:b.created, changes:b.changes, dec:{}, cmap:{}, pmap:{}, at:Date.now() });
+        ls(Q_KEY, q);
+      }
+      say2('✓ ' + ((b.from && b.from.name) || 'Personel') + ' gün sonu Onay Merkezi\'ne geldi.');
+      try{ document.dispatchEvent(new CustomEvent('tidem:onay', { detail:{ open:b.id } })); }catch(e){}
+    }
+    function finishBatch(b, applied, rejected){
+      var imp = lg(IMP_KEY, []); if (!imp.some(function(x){ return x.id === b.id; })){ imp.unshift({ id:b.id, at:Date.now() }); ls(IMP_KEY, imp.slice(0, 200)); }
+      var hist = lg(HIST_KEY, []); hist.unshift({ at:Date.now(), from:(b.from && b.from.name) || '', sum:sumText(summarize(b.changes)), applied:applied, rejected:rejected, kept:0, created:b.created }); ls(HIST_KEY, hist.slice(0, 60));
+      ls(Q_KEY, lg(Q_KEY, []).filter(function(x){ return x.id !== b.id; }));
+      refreshCard(); fireOnay();
+    }
+    function setMeta(e, b){ var meta = lg(META_KEY, {}); meta[jkey(e.k, e.id)] = { by:e.by || (b.from && b.from.name) || '', at:e.at, op:e.op }; var mk = Object.keys(meta); if (mk.length > 3000) mk.slice(0, mk.length - 3000).forEach(function(x){ delete meta[x]; }); ls(META_KEY, meta); }
+    function statusOf(k, id){
+      id = String(id);
+      if (lg(J_KEY, {})[jkey(k, id)]) return 'draft';
+      if (lg(SENT_KEY, []).some(function(x){ return ((x.batch && x.batch.changes) || []).some(function(c){ return c.k === k && String(c.id) === id; }); })) return 'wait';
+      var on = lg(ONAY_KEY, {})[id]; if (on && on.s === 'red') return 'red';
+      return 'ok';
+    }
+    window.__tidemSync = {
+      queue:function(){ return lg(Q_KEY, []); },
+      saveQueue:function(q){ ls(Q_KEY, q); },
+      apply:applyEntry, current:currentJson, describe:describe, finish:finishBatch, setMeta:setMeta,
+      openFile:function(){ chooseFile(enqueue); }, sendState:sendState, sendDay:sendDay,
+      pending:function(){ return journalList(); }, hist:function(){ return lg(HIST_KEY, []); },
+      statusOf:statusOf, isPersonel:isPersonel, me:function(){ var d = dev(); return recOf(d.uid) || { id:d.uid, name:d.name }; },
+      lastState:function(){ return lg(DIST_KEY, null); }, waiting:function(){ return lg(SENT_KEY, []).length; }
+    };
+
     // ---------- Ayarlar kartı ----------
     function say2(m, bad){ var el = document.getElementById('gsStatus'); if (el){ el.textContent = m; el.className = 'gs-status' + (bad ? ' bad' : ''); } var ls2 = document.getElementById('lockScreen'), lm = document.getElementById('lockMsg'); if (ls2 && lm && !ls2.hidden && document.documentElement.classList.contains('locked')){ lm.textContent = m; lm.style.color = bad ? '#FCA5A5' : '#86EFAC'; } }
     function refreshCard(){
@@ -4161,7 +4288,7 @@
         var hist = lg(HIST_KEY, []);
         var users = '<div class="gs-users"><div class="gs-hh">PERSONEL · GİRİŞ ŞİFRELERİ</div>' +
           (st.length ? st.map(function(u){ return '<div class="gs-user' + (u.active === false ? ' off' : '') + '">' + tile(u, 'sm') + '<b>' + esc(u.name) + '</b><small>' + (u.active === false ? 'GİRİŞ KAPALI' : 'AKTİF') + '</small>' +
-            '<button type="button" data-gu="photo" data-id="' + esc(u.id) + '">Foto</button><button type="button" data-gu="pin" data-id="' + esc(u.id) + '">Şifre</button><button type="button" data-gu="act" data-id="' + esc(u.id) + '">' + (u.active === false ? 'Aç' : 'Kapat') + '</button><button type="button" class="x" data-gu="del" data-id="' + esc(u.id) + '">✕</button></div>'; }).join('')
+            '<button type="button" data-gu="start" data-id="' + esc(u.id) + '">' + (u.start ? 'Giriş ' + display(u.start) : 'Giriş tarihi') + '</button><button type="button" data-gu="photo" data-id="' + esc(u.id) + '">Foto</button><button type="button" data-gu="pin" data-id="' + esc(u.id) + '">Şifre</button><button type="button" data-gu="act" data-id="' + esc(u.id) + '">' + (u.active === false ? 'Aç' : 'Kapat') + '</button><button type="button" class="x" data-gu="del" data-id="' + esc(u.id) + '">✕</button></div>'; }).join('')
             : '<p class="gs-p">Henüz personel yok. Personel eklediğinizde her biri <b>kendi şifresiyle</b> girer; uygulama onu Personel olarak tanır, yönetici ekranlarını göremez.</p>') +
           '<div class="gs-add"><input id="guName" placeholder="Ad (ör. Ali)" autocomplete="off"><input id="guPin" type="password" inputmode="numeric" maxlength="6" placeholder="6 haneli şifre" autocomplete="new-password"><button type="button" id="guAdd">➕ Ekle</button></div>' +
           '<div class="gs-note">Yeni personel ve şifre değişiklikleri, <b>"Güncel durumu gönder"</b> ile personelin telefonuna geçer.</div></div>';
@@ -4209,7 +4336,7 @@
     function saveUsers(list){ ensureAdmin(); var l = lg(UK, []).filter(function(u){ return u && u.role === 'merkez'; }).concat(list); localStorage.setItem(UK, JSON.stringify(l)); refreshCard(); }
     function chooseFile(cb){ var inp = document.getElementById('gsFile'); inp.onchange = function(){ readFile(inp).then(cb, function(m){ if (m) say2(m, true); }); }; inp.click(); }
     document.addEventListener('click', function(e){
-      var t = e.target.closest('#gsSend, #gsTake, #gsOpen, #gsState, #gsApply, #gsCancel, #gsAll, [data-gsbar], #gsLogout, #whoOut, #guAdd, [data-gu], #lockSetup'); if (!t) return;
+      var t = e.target.closest('#gsSend, #gsTake, #gsOpen, #gsState, [data-gsbar], #gsLogout, #whoOut, #guAdd, [data-gu], #lockSetup'); if (!t) return;
       if (t.id === 'gsLogout' || t.id === 'whoOut'){ if (window.__tidemPin) window.__tidemPin.lockNow(); return; }
       if (t.id === 'lockSetup'){ setupChoice(); return; }
       if (t.id === 'guAdd'){
@@ -4250,6 +4377,19 @@
           if (!t.dataset.arm){ t.dataset.arm = '1'; t.textContent = 'SİL?'; t.classList.add('arm'); setTimeout(function(){ if (t.isConnected){ delete t.dataset.arm; t.textContent = '✕'; t.classList.remove('arm'); } }, 3000); return; }
           saveUsers(l2.filter(function(x){ return x.id !== u.id; })); say2(u.name + ' silindi.'); return;
         }
+        if (t.dataset.gu === 'start'){
+          var row0 = t.closest('.gs-user'), ex0 = row0.querySelector('.gs-newpin');
+          if (ex0){ ex0.remove(); return; }
+          var bx = document.createElement('div'); bx.className = 'gs-newpin';
+          bx.innerHTML = '<input type="date" value="' + esc(u.start || '') + '"><button type="button">Kaydet</button>';
+          row0.appendChild(bx);
+          bx.querySelector('button').addEventListener('click', function(){
+            var v = bx.querySelector('input').value;
+            if (v) u.start = v; else delete u.start;
+            saveUsers(l2); say2('✓ ' + u.name + (v ? ' işe giriş: ' + display(v) + '. Bu tarihten önceki siparişleri görmez.' : ' için giriş tarihi kaldırıldı.') + ' "Güncel durumu gönder" ile telefonuna geçer.');
+          });
+          return;
+        }
         if (t.dataset.gu === 'pin'){
           var row = t.closest('.gs-user'), ex = row.querySelector('.gs-newpin');
           if (ex){ ex.remove(); return; }
@@ -4268,11 +4408,8 @@
       }
       if (t.id === 'gsSend' || t.dataset.gsbar === 'send'){ if (!isPersonel()) return; sendDay(); }
       else if (t.id === 'gsTake') chooseFile(takeUpdate);
-      else if (t.id === 'gsOpen') chooseFile(openReview);
+      else if (t.id === 'gsOpen') chooseFile(enqueue);
       else if (t.id === 'gsState') sendState();
-      else if (t.id === 'gsApply') applyReview();
-      else if (t.id === 'gsCancel') closeReview();
-      else if (t.id === 'gsAll'){ var cbs = document.querySelectorAll('#gsOverlay [data-gs]'), all = [].every.call(cbs, function(c){ return c.checked; }); cbs.forEach(function(c){ c.checked = !all; }); }
       else if (t.dataset.gsbar === 'hide'){ try{ sessionStorage.setItem('tidem_gs_bar', '1'); }catch(_){} updateBar(); }
     });
     document.addEventListener('input', function(e){ if (e.target.id === 'guPin' || (e.target.closest && e.target.closest('.gs-newpin'))) e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); });
@@ -4293,7 +4430,7 @@
     refreshCard();
     document.addEventListener('tidem:login', function(){ refreshCard(); });
     window.__tidemGsFile = function(p){
-      if (p && p.app === 'tidem-gunsonu'){ if (!isMerkez()) return say2('Gün sonu dosyaları yönetici telefonunda açılır.', true); return openReview(p); }
+      if (p && p.app === 'tidem-gunsonu'){ return enqueue(p); }
       return takeUpdate(p);
     };
     setInterval(updateBar, 5 * 60 * 1000);
@@ -4429,13 +4566,6 @@
   <footer class="hint">Veriler yalnızca bu cihazda, bu sayfada saklanır.</footer>
 </div>
 
-<div class="gs-overlay" id="gsOverlay" hidden role="dialog" aria-modal="true" aria-label="Gün sonu mutabakat">
-  <div class="gs-sheet">
-    <div class="gs-top"><b>🤝 Gün sonu mutabakat</b><button type="button" id="gsAll">Tümünü seç / kaldır</button></div>
-    <div class="gs-body"></div>
-    <div class="gs-foot"><button type="button" id="gsCancel">Vazgeç</button><button type="button" id="gsApply">✓ Seçilenleri işle</button></div>
-  </div>
-</div>
 <div class="report-overlay" id="reportOverlay" role="dialog" aria-modal="true" aria-label="Gün sonu raporu">
   <div class="report-toolbar">
     <button type="button" id="reportCloseBtn">Kapat</button>
@@ -4682,6 +4812,7 @@
       if (btn.dataset.tab === 'arac') renderArac();
       if (btn.dataset.tab === 'ayarlar') renderAyarlar();
       if (btn.dataset.tab === 'personel') renderPersonel();
+      if (btn.dataset.tab === 'onay') renderOnay();
       if (btn.dataset.tab === 'hakkinda') renderHakkinda();
       if (btn.dataset.tab === 'takip') renderReminders();
       if (btn.dataset.tab === 'askida') renderHoldStrip(getOrders());
@@ -5460,14 +5591,15 @@
       }
       nameInput.value = canonical;
       lastValidName = canonical;
-      saveProduct(canonical);
+      card.classList.toggle('row-talep', isPers() && !match);   // personel listede olmayan ürün yazdı: yöneticiye talep olarak gider
+      if (!isPers()) saveProduct(canonical);
       if (!groupInput.value.trim()){
         const assignedGroup=assignedGroupForProduct(canonical);
         if (assignedGroup) groupInput.value=assignedGroup;
       }
       saveDraft();
     });
-    groupInput.addEventListener('blur', () => { const v = groupInput.value.trim(); if (v) saveProductGroup(v); });
+    groupInput.addEventListener('blur', () => { const v = groupInput.value.trim(); if (v && !isPers()) saveProductGroup(v); });
     adetInput.addEventListener('input', () => { recalc(); saveDraft(); });
     fiyatInput.addEventListener('input', () => { recalc(); saveDraft(); });
     delBtn.addEventListener('click', () => { card.remove(); if (!rowsEl.children.length) makeRow('', '', ''); updateGrandTotal(); saveDraft(); });
@@ -6112,8 +6244,11 @@
     const products = getRowsData().map(p => {
       const matchedProduct = storedMatch(getProducts(), p.name);
       if (matchedProduct && matchedProduct !== p.name.trim()) duplicateNotes.push(`Ürün: “${matchedProduct}”`);
-      return {...p, name: matchedProduct || p.name};
+      const q = {...p, name: matchedProduct || p.name};
+      if (isPers() && p.name && !matchedProduct) q.talep = true; else delete q.talep;
+      return q;
     });
+    const talepN = products.filter(p => p.talep).length;
     if (products.length === 0){ flashError('En az bir üründe adet veya fiyat girin.'); return; }
     const sameDay = findSameDayOrder(name, orderDate.value || todayStr(), editingOrderId);
     if (sameDay){
@@ -6150,7 +6285,7 @@
     openDates.add(order.date);
     addAutomaticCardCollection(order);
     saveCustomer(name);
-    products.forEach(p => { if (p.name) saveProduct(p.name); });
+    products.forEach(p => { if (p.name && !p.talep) saveProduct(p.name); });
     clearDraft();
     renderHistory();
     checkRecall();
@@ -6161,7 +6296,7 @@
       const keepDate = orderDate.value, keepDelivery = deliveryDate.value;
       resetOrderForm();
       orderDate.value = keepDate || todayStr(); deliveryDate.value = keepDelivery;
-      flash('✓ Sipariş kaydedildi, yeni sipariş için form temizlendi.' + duplicateMessage);
+      flash('✓ Sipariş kaydedildi, yeni sipariş için form temizlendi.' + duplicateMessage + (talepN ? ` ${talepN} ürün listede yok; yöneticiye talep olarak gitti.` : ''));
     }
   });
 
@@ -7123,10 +7258,400 @@
   document.getElementById('trashBtn')?.addEventListener('click', trashOpen);
   setTimeout(trashUi, 0);
 
+  // ===================== ONAY MERKEZİ =====================
+  // Personelin gün sonu kayıtları yönetici onaylayana kadar cariye/rapora girmez.
+  // Yönetici: yeni müşteri ve ürün talebini mevcut kayıtla birleştirir ya da yeni ekler; siparişi onaylar, düzeltir ya da notla reddeder.
+  // Personel: her siparişinde durum görür; reddedilende yöneticinin notu ve "Düzelt ve tekrar gönder" çıkar.
+  function SY(){ return window.__tidemSync || null; }
+  function isPers(){ return document.documentElement.classList.contains('role-personel'); }
+  function pjs(x){ try{ return x == null ? null : JSON.parse(x); }catch(e){ return null; } }
+  var ONAY_KEY = 'siparis_onay', RED_HIDE = 'tidem_red_gizli';
+  var RED_SEBEP = ['Fiyat yanlış', 'Adet yanlış', 'Yanlış müşteri', 'Mükerrer sipariş', 'Ürün yanlış', 'Cari borcu yüksek'];
+  var PARA_K = { siparis_tahsilat:'Tahsilat', siparis_returns:'İade', siparis_giderler:'Gider', siparis_debts:'Eski borç', siparis_promises:'Ödeme sözü', siparis_cabinets:'Dolap' };
+  var PAY_TX = { cash:'Nakit', card:'Kredi kartı', eft:'IBAN / EFT', account:'Cari hesap' };
+  var OI = {
+    ord:'<path d="M6 2h12v20l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 22Z"/><path d="M9 7h6M9 11h6M9 15h4"/>',
+    para:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/>',
+    cust:'<path d="M3 21v-1a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v1"/><circle cx="9" cy="8" r="4"/><path d="M19 8v6M16 11h6"/>',
+    prod:'<path d="M3 7l9-4 9 4v10l-9 4-9-4Z"/><path d="M3 7l9 4 9-4M12 11v10"/>',
+    oth:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/>',
+    check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>', back:'<path d="M15 5l-7 7 7 7"/>',
+    pen:'<path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6"/><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4Z"/>',
+    send:'<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>', warn:'<path d="M12 3 2 20h20Z"/><path d="M12 10v4M12 17h.01"/>',
+    inbox:'<path d="M3 13h5l1.5 3h5L16 13h5"/><path d="M5 5h14l2 8v6H3v-6Z"/>', info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+    lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>', file:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/>'
+  };
+  function oic(n, c = ''){ return `<svg viewBox="0 0 24 24" aria-hidden="true"${c}>${OI[n]}</svg>`; }
+  function simScore(a, b){
+    const f = t => foldText(t).replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+    a = f(a); b = f(b); if (!a || !b) return 0; if (a === b) return 1;
+    let p = Array.from({ length:b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++){ const c = [i]; for (let j = 1; j <= b.length; j++) c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); p = c; }
+    let sc = 1 - p[b.length] / Math.max(a.length, b.length);
+    if (a.length >= 4 && (b.includes(a) || a.includes(b))) sc = Math.max(sc, .8);
+    return sc;
+  }
+  function suggestFor(name, list){ return list.map(x => ({ x, sc:simScore(name, x) })).filter(r => r.sc >= .55).sort((a, b) => b.sc - a.sc).slice(0, 3); }
+  function ini2(n){ const w = String(n || '').trim().split(/\s+/).filter(Boolean); return ((w[0] || '?').charAt(0) + (w.length > 1 ? w[w.length - 1].charAt(0) : '')).toLocaleUpperCase('tr-TR'); }
+  function hmTx(ms){ const d = new Date(ms); return d.toLocaleDateString('tr-TR', { weekday:'long', day:'numeric', month:'long' }) + ' · ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
+
+  // ---- kalemler: bir gün sonundaki değişiklikler, karar verilecek birimlere ayrılır ----
+  function onayItems(b){
+    const custs = getCustomers(), prods = getProducts();
+    const items = [], byOrder = {}, cMap = new Map(), pMap = new Map(), others = [];
+    const regC = (n, i) => {
+      if (!n) return; const k = 'c:' + foldText(n);
+      if (!cMap.has(k)){ if (!b.dec[k] && storedMatch(custs, n)){ if (i != null) others.push(i); return; } cMap.set(k, { key:k, type:'cust', name:n, idx:[] }); }
+      if (i != null) cMap.get(k).idx.push(i);
+    };
+    const regP = (n, i) => {
+      if (!n) return; const k = 'p:' + foldText(n);
+      if (!pMap.has(k)){ if (!b.dec[k] && storedMatch(prods, n)){ if (i != null) others.push(i); return; } pMap.set(k, { key:k, type:'prod', name:n, idx:[] }); }
+      if (i != null) pMap.get(k).idx.push(i);
+    };
+    const stateOf = e => { const cur = SY().current(e); if ((e.op === 'del' && cur == null) || (e.op !== 'del' && cur === e.v)) return 'same'; return cur === (e.before == null ? null : e.before) ? 'clean' : 'conflict'; };
+    b.changes.forEach((e, i) => {
+      if (e.k !== 'siparis_orders') return;
+      const r = pjs(e.v) || pjs(e.before) || {}, st = stateOf(e);
+      if (st === 'same' && !b.dec['r' + i]) return;
+      const it = { key:'r' + i, i, type:'ord', e, r, st, kids:[] }; items.push(it); byOrder[String(e.id)] = it;
+    });
+    b.changes.forEach((e, i) => {
+      if (e.k === 'siparis_orders') return;
+      const r = pjs(e.v) || pjs(e.before) || {};
+      if (e.k === 'siparis_tahsilat' && r.orderId && byOrder[String(r.orderId)]){ byOrder[String(r.orderId)].kids.push(i); return; }
+      if (e.k === 'siparis_customers' && e.op !== 'del'){ regC(pjs(e.id), i); return; }
+      if (e.k === 'siparis_products' && e.op !== 'del'){ regP(pjs(e.id), i); return; }
+      if (PARA_K[e.k]){ const st = stateOf(e); if (st === 'same' && !b.dec['r' + i]) return; items.push({ key:'r' + i, i, type:'para', e, r, st }); return; }
+      others.push(i);
+    });
+    items.forEach(it => { if (it.e.op === 'del') return; if (it.r.customer) regC(it.r.customer); if (it.type === 'ord') (it.r.products || []).forEach(p => regP(p.name)); });
+    const all = [...cMap.values(), ...pMap.values(), ...items];
+    all.forEach(it => {
+      it.dec = b.dec[it.key] || null; it.flags = [];
+      if (it.type === 'cust'){ it.sug = suggestFor(it.name, custs); it.flags.push(it.sug.length ? 'KONTROL' : 'YENİ MÜŞTERİ'); }
+      else if (it.type === 'prod'){ it.sug = suggestFor(it.name, prods); it.flags.push('EŞLEŞTİR'); }
+      else {
+        if (it.e.op === 'del') it.flags.push('SİLME');
+        if (it.st === 'conflict') it.flags.push('ÇAKIŞMA');
+        if (it.type === 'ord' && it.e.op !== 'del'){
+          it.cKey = 'c:' + foldText(it.r.customer); it.pKeys = (it.r.products || []).map(p => 'p:' + foldText(p.name)).filter(k => pMap.has(k));
+          if (cMap.has(it.cKey)) it.flags.push('YENİ MÜŞTERİ'); if (it.pKeys.length) it.flags.push('YENİ ÜRÜN');
+          if (priceDiffs(it.r).length) it.flags.push('FİYAT');
+        }
+        if (it.type === 'para' && it.e.op !== 'del' && it.r.customer && cMap.has('c:' + foldText(it.r.customer))){ it.cKey = 'c:' + foldText(it.r.customer); it.flags.push('YENİ MÜŞTERİ'); }
+      }
+      it.blocked = (it.cKey && cMap.has(it.cKey) && !b.dec[it.cKey]) || (it.pKeys || []).some(k => !b.dec[k]);
+    });
+    return { all, others, cMap, pMap };
+  }
+  function anaFiyat(p){ const g = p.group || assignedGroupForProduct(p.name); const gp = getGroupPrices(); return g && num(gp[g]) > 0 ? num(gp[g]) : 0; }
+  function priceDiffs(o){ return (o.products || []).map(p => ({ p, ana:anaFiyat(p) })).filter(x => x.ana > 0 && num(x.p.fiyat) > 0 && num(x.p.fiyat) !== x.ana); }
+  // personel adlarını yöneticinin kararına göre çevir (birleştirilen müşteri / eşleştirilen ürün)
+  function mapName(map, n){ const k = foldText(n); return Object.prototype.hasOwnProperty.call(map, k) ? map[k] : n; }
+  function tfEntry(e, b){
+    let v = pjs(e.v), id = e.id;
+    if (v && typeof v === 'object' && !Array.isArray(v)){
+      v = { ...v };
+      if (v.customer) v.customer = mapName(b.cmap, v.customer);
+      if (Array.isArray(v.products)) v.products = v.products.map(p => { const q = { ...p, name:mapName(b.pmap, p.name) }; delete q.talep; return q; });
+    }
+    if (e.s === 'map'){ id = mapName(b.cmap, mapName(b.pmap, id)); }
+    return { ...e, id, v: v == null ? e.v : JSON.stringify(v) };
+  }
+  function onayWrite(id, rec){ const m = safeGet(ONAY_KEY, {}); if (rec) m[String(id)] = rec; else delete m[String(id)]; const lim = Date.now() - 60 * 864e5; Object.keys(m).forEach(k => { if (m[k].at < lim) delete m[k]; }); safeSet(ONAY_KEY, m); }
+  function saveB(b){ const q = SY().queue().map(x => x.id === b.id ? b : x); SY().saveQueue(q); }
+  function decide(b, it, d){
+    const S = SY();
+    if (it.type === 'cust'){
+      if (d.s === 'merge') b.cmap[foldText(it.name)] = d.to;
+      else { delete b.cmap[foldText(it.name)]; if (it.idx.length) it.idx.forEach(i => S.apply(b.changes[i])); else saveCustomer(it.name); }
+    } else if (it.type === 'prod'){
+      if (d.s === 'merge') b.pmap[foldText(it.name)] = d.to;
+      else { delete b.pmap[foldText(it.name)]; if (it.idx.length) it.idx.forEach(i => S.apply(b.changes[i])); else saveProduct(it.name); }
+    } else if (d.s === 'ok'){
+      const e = tfEntry(it.e, b); S.apply(e); S.setMeta(e, b);
+      (it.kids || []).forEach(i => { const k = tfEntry(b.changes[i], b); S.apply(k); S.setMeta(k, b); });
+      onayWrite(it.e.id, null);
+    } else if (d.s === 'red'){
+      onayWrite(it.e.id, { s:'red', k:it.e.k, op:it.e.op, sebep:d.sebep || '', note:d.note || '', at:Date.now(), by:(b.from && b.from.name) || '', cust:it.r.customer || '', amt:num(it.r.total || it.r.amount), date:it.r.date || '', data:it.e.v });
+    }
+    b.dec[it.key] = { ...d, at:Date.now() };
+    saveB(b);
+    const left = onayItems(b);
+    if (left.all.every(x => x.dec)){
+      left.others.forEach(i => { const e = b.changes[i]; if ((e.k === 'siparis_customers' || e.k === 'siparis_products') && e.op !== 'del') return; const t = tfEntry(e, b); S.apply(t); if (t.s === 'rec') S.setMeta(t, b); });
+      const vals = Object.values(b.dec), ok = vals.filter(x => x.s !== 'red').length, red = vals.filter(x => x.s === 'red').length;
+      S.finish(b, ok, red); onayView = null;
+      flash(`✓ ${(b.from && b.from.name) || 'Personel'} gün sonu tamamlandı: ${ok} onay${red ? ', ' + red + ' red' : ''}. Şimdi "Güncel durumu gönder" ile personele iletin.`);
+    }
+    refreshAfterOnay();
+  }
+  function refreshAfterOnay(){
+    try{ renderHistory(); }catch(e){} try{ renderCari(); }catch(e){} try{ renderTahsilatHistory(); }catch(e){} try{ renderRapor(); }catch(e){} try{ checkRecall(); }catch(e){}
+    try{ renderCustomerList(); }catch(e){} try{ renderProductList(); }catch(e){}
+    renderOnay(); onayBadge();
+  }
+  function onayBadge(){
+    const el = document.getElementById('onayBadge'); if (!el || !SY()) return;
+    let n = 0; SY().queue().forEach(b => { n += onayItems(b).all.filter(x => !x.dec).length; });
+    el.textContent = n ? String(n) : ''; el.hidden = !n;
+  }
+
+  // ---- ekranlar ----
+  var onayView = null;   // { b: batchId }
+  function batchStats(b){
+    const o = { sip:0, tut:0, tah:0, tahN:0 };
+    b.changes.forEach(e => { const v = pjs(e.v); if (!v || e.op === 'del') return; if (e.k === 'siparis_orders' && e.before == null){ o.sip++; o.tut += num(v.total); } if (e.k === 'siparis_tahsilat' && e.before == null){ o.tahN++; o.tah += num(v.amount); } });
+    return o;
+  }
+  function itemRow(it, b){
+    let ic = it.type, title = '', sub = '', amt = '';
+    if (it.type === 'cust'){ title = it.name; sub = it.sug.length ? 'Yeni müşteri · benzeri var' : 'Yeni müşteri'; }
+    else if (it.type === 'prod'){ title = it.name; sub = 'Yeni ürün talebi · listede yok'; }
+    else if (it.type === 'ord'){
+      const r = it.r, koli = (r.products || []).reduce((t, p) => t + num(p.adet), 0);
+      title = r.customer || '—'; amt = fmt(r.total);
+      sub = it.e.op === 'del' ? 'Sipariş silindi' : (it.e.before == null ? `${(r.products || []).length} ürün · ${fmt(koli)} koli` : SY().describe(it.e).text.replace(/^Sipariş · [^·]+· /, ''));
+      if (it.e.op !== 'del' && r.delivered) sub += ' · teslim edildi';
+    } else { const r = it.r; title = r.customer || PARA_K[it.e.k]; amt = fmt(r.amount || r.total); sub = PARA_K[it.e.k] + (r.type ? ' · ' + (PAY_TX[r.type] || r.type) : '') + (it.e.op === 'del' ? ' · silindi' : (it.e.before ? ' · düzenlendi' : '')); }
+    const pill = it.dec ? (it.dec.s === 'red' ? '<span class="on-pill r">REDDEDİLDİ</span>' : it.dec.s === 'merge' ? '<span class="on-pill n">BİRLEŞTİRİLDİ</span>' : '<span class="on-pill g">ONAYLANDI</span>') : it.flags.map(f => `<span class="on-flag">${f}</span>`).join('');
+    return `<button type="button" class="on-it${it.dec ? ' done' : ''}" data-on-it="${escAttr(it.key)}"><span class="on-ic t-${ic}">${oic(ic)}</span><span class="on-tx"><b>${escHtml(title)}</b><small>${escHtml(sub)}</small><span class="on-fl">${pill}</span></span>${amt ? `<span class="on-am">${amt}</span>` : ''}</button>`;
+  }
+  function renderOnay(){
+    const root = document.getElementById('onayRoot'); if (!root || !SY()) return;
+    if (isPers()){ root.innerHTML = ''; return; }
+    const q = SY().queue();
+    if (onayView && !q.some(b => b.id === onayView.b)) onayView = null;
+    if (onayView) return renderBatch(root, q.find(b => b.id === onayView.b));
+    let cS = 0, cT = 0, cC = 0, cP = 0;
+    q.forEach(b => onayItems(b).all.filter(x => !x.dec).forEach(x => { if (x.type === 'ord') cS++; else if (x.type === 'para') cT++; else if (x.type === 'cust') cC++; else cP++; }));
+    const hist = SY().hist().slice(0, 5), last = SY().lastState();
+    root.innerHTML = `
+      <div class="on-hero"><div class="on-k">YÖNETİCİ PANELİ</div><h2>Onay Merkezi</h2><p>Onaylanmayan kayıt cariye ve rapora girmez.</p>
+        <div class="on-chips"><div><b>${cS}</b><span>SİPARİŞ</span></div><div class="g"><b>${cT}</b><span>TAHSİLAT</span></div><div class="a"><b>${cC}</b><span>YENİ MÜŞTERİ</span></div><div class="r"><b>${cP}</b><span>YENİ ÜRÜN</span></div></div>
+        <div class="on-hbtn"><button type="button" data-on-act="file">${oic('file')}Gün sonu dosyası aç</button><button type="button" data-on-act="state">${oic('send')}Güncel durumu gönder</button></div>
+        <small class="on-last">Son güncel durum: ${last ? hmTx(last.at) : 'henüz gönderilmedi'}</small></div>
+      <div class="on-sec"><b>Bekleyenler</b><span>${q.length ? '· ' + q.length + ' gün sonu' : ''}</span></div>
+      ${q.length ? q.map(b => {
+        const I = onayItems(b), st = batchStats(b), open = I.all.filter(x => !x.dec), easy = open.filter(x => !x.flags.length && !x.blocked);
+        const prev = open.slice().sort((a, c) => c.flags.length - a.flags.length).slice(0, 4);
+        return `<div class="on-batch"><button type="button" class="on-bh" data-on-open="${escAttr(b.id)}"><span class="on-av">${escHtml(ini2(b.from && b.from.name))}</span><span class="on-bt"><b>${escHtml((b.from && b.from.name) || 'Personel')}</b><small>${hmTx(b.created)}</small></span><span class="on-pill a">${open.length} KARAR</span></button>
+          <div class="on-bs"><div><b>${st.sip}</b><span>SİPARİŞ</span></div><div><b>${fmt(st.tut)}</b><span>TUTAR ₺</span></div><div><b>${fmt(st.tah)}</b><span>TAHSİLAT ₺</span></div></div>
+          <div class="on-items">${prev.map(it => itemRow(it, b)).join('')}${open.length > prev.length ? `<button type="button" class="on-more" data-on-open="${escAttr(b.id)}">+${open.length - prev.length} kayıt daha · tümünü gör ›</button>` : ''}
+          ${easy.length ? `<button type="button" class="on-bulk" data-on-bulk="${escAttr(b.id)}">${oic('check')}Sorunsuzları toplu onayla · ${easy.length}</button>` : ''}</div></div>`;
+      }).join('') : `<div class="on-empty">${oic('inbox')}<b>Bekleyen kayıt yok</b><small>Personelin gün sonu dosyasını "Gün sonu dosyası aç" ile ekleyin.</small></div>`}
+      ${hist.length ? `<div class="on-sec"><b>Son onaylananlar</b></div>${hist.map(h => `<div class="on-batch on-hrow"><div class="on-bh"><span class="on-av g">${escHtml(ini2(h.from))}</span><span class="on-bt"><b>${escHtml(h.from || 'Personel')}</b><small>${hmTx(h.at)} · ${h.applied} onay${h.rejected ? ' · ' + h.rejected + ' red' : ''}</small></span><span class="on-pill g">TAMAM</span></div></div>`).join('')}` : ''}`;
+  }
+  function renderBatch(root, b){
+    const I = onayItems(b), open = I.all.filter(x => !x.dec), done = I.all.filter(x => x.dec);
+    const flagged = open.filter(x => x.flags.length || x.blocked), easy = open.filter(x => !x.flags.length && !x.blocked);
+    const pct = I.all.length ? Math.round(done.length / I.all.length * 100) : 100;
+    root.innerHTML = `
+      <div class="on-top"><button type="button" class="on-back" data-on-act="home" aria-label="Geri">${oic('back')}</button><div><b>${escHtml((b.from && b.from.name) || 'Personel')}</b><small>${hmTx(b.created)}</small></div><span class="on-ring" style="--p:${pct}"><span>${done.length}/${I.all.length}</span></span></div>
+      ${flagged.length ? `<div class="on-sec"><b>Kontrol gerekenler</b><span>· ${flagged.length}</span></div><div class="on-items solo">${flagged.map(it => itemRow(it, b)).join('')}</div>` : ''}
+      ${easy.length ? `<div class="on-sec"><b>Sorunsuzlar</b><span>· ${easy.length}</span></div><div class="on-items solo">${easy.map(it => itemRow(it, b)).join('')}</div>` : ''}
+      ${done.length ? `<div class="on-sec"><b>Karar verilenler</b><span>· ${done.length}</span></div><div class="on-items solo">${done.map(it => itemRow(it, b)).join('')}</div>` : ''}
+      ${I.others.length ? `<details class="on-oth"><summary>${oic('oth')}Diğer değişiklikler · ${I.others.length}<small>son kararla birlikte işlenir</small></summary>${I.others.map(i => `<div>${escHtml(SY().describe(b.changes[i]).text)}</div>`).join('')}</details>` : ''}
+      ${easy.length ? `<div class="on-stick"><button type="button" class="on-bulk" data-on-bulk="${escAttr(b.id)}">${oic('check')}Sorunsuzları toplu onayla · ${easy.length}</button></div>` : ''}`;
+  }
+  // ---- kalem penceresi ----
+  function closeSheets(){ document.querySelectorAll('.on-ov').forEach(x => x.remove()); document.body.classList.remove('on-lock'); }
+  function sheet(html, cls = ''){
+    const ov = document.createElement('div'); ov.className = 'on-ov ' + cls; ov.innerHTML = html;
+    document.body.appendChild(ov); document.body.classList.add('on-lock');
+    requestAnimationFrame(() => ov.classList.add('open'));
+    ov.addEventListener('click', e => { if (e.target === ov) { ov.remove(); if (!document.querySelector('.on-ov')) document.body.classList.remove('on-lock'); } });
+    return ov;
+  }
+  function pickBlock(b, it, kind){
+    // kind: cust | prod — birleştir / yeni ekle seçimi
+    const d = b.dec[it.key], cur = d ? (d.s === 'merge' ? 'Birleştirildi: ' + d.to : 'Yeni olarak eklendi') : '';
+    return `<div class="on-alert ${kind === 'cust' ? 'c' : 'p'}" data-pick="${escAttr(it.key)}"><div class="h">${oic(kind === 'cust' ? 'warn' : 'prod')}${kind === 'cust' ? (it.sug.length ? 'Benzer müşteri var' : 'Yeni müşteri') : 'Yeni ürün talebi'}</div>
+      <p>Personel <q>${escHtml(it.name)}</q> yazdı.${it.sug.length ? (kind === 'cust' ? ' Kayıtlı müşteriniz olabilir:' : ' Listedeki ürün olabilir:') : ' Listenizde benzeri yok.'}</p>
+      ${d ? `<div class="on-done">${oic('check')}${escHtml(cur)}<button type="button" data-pick-undo>Değiştir</button></div>` : `
+      ${it.sug.map((s, i) => `<label class="on-sug"><input type="radio" name="sg${escAttr(it.key)}" value="${escAttr(s.x)}"${i ? '' : ' checked'}><b>${escHtml(s.x)}</b><small>%${Math.round(s.sc * 100)} benzer</small></label>`).join('')}
+      <div class="on-ab">${it.sug.length ? `<button type="button" class="on" data-pick-do="merge">${kind === 'cust' ? 'Bununla birleştir' : 'Bu ürünle eşleştir'}</button>` : ''}<button type="button" class="${it.sug.length ? 'off' : 'on'}" data-pick-do="new">${kind === 'cust' ? 'Yeni müşteri ekle' : 'Yeni ürün olarak ekle'}</button></div>`}</div>`;
+  }
+  function openItem(b, key){
+    const I = onayItems(b), it = I.all.find(x => x.key === key); if (!it) return;
+    closeSheets();
+    let body = '', head = '', canFix = false;
+    const byKey = k => I.all.find(x => x.key === k);
+    if (it.type === 'cust' || it.type === 'prod'){
+      head = `<div class="on-oh"><div><div class="on-k">${it.type === 'cust' ? 'MÜŞTERİ · YENİ' : 'ÜRÜN · TALEP'}</div><b>${escHtml(it.name)}</b></div></div>`;
+      body = pickBlock(b, it, it.type);
+      const uses = I.all.filter(x => x.type !== 'cust' && x.type !== 'prod' && (x.cKey === it.key || (x.pKeys || []).includes(it.key)));
+      if (uses.length) body += `<div class="on-sec sm"><b>Geçtiği kayıtlar</b><span>· ${uses.length}</span></div><div class="on-items solo">${uses.map(x => itemRow(x, b)).join('')}</div>`;
+    } else {
+      const r = it.r, e = it.e;
+      const amt = fmt(r.total != null ? r.total : r.amount);
+      head = `<div class="on-oh"><div><div class="on-k">${it.type === 'ord' ? 'SİPARİŞ' : PARA_K[e.k].toLocaleUpperCase('tr-TR')}${e.op === 'del' ? ' · SİLME' : (e.before == null ? ' · YENİ' : ' · DÜZENLEME')}</div><b>${escHtml(mapName(b.cmap, r.customer || '—'))}</b></div><span class="on-amt">${amt} ₺</span></div>`;
+      if (it.cKey && byKey(it.cKey)) body += pickBlock(b, byKey(it.cKey), 'cust');
+      (it.pKeys || []).forEach(k => { const x = byKey(k); if (x) body += pickBlock(b, x, 'prod'); });
+      if (it.st === 'conflict') body += `<div class="on-alert w"><div class="h">${oic('warn')}Bu kaydı siz de değiştirdiniz</div><p>Onaylarsanız personelin hâli geçerli olur; reddederseniz sizinki kalır.</p></div>`;
+      if (e.op === 'del') body += `<div class="on-alert w"><div class="h">${oic('warn')}Personel bu kaydı sildi</div><p>Onaylarsanız kayıt sizde de silinir.</p></div>`;
+      if (it.type === 'ord'){
+        const meta = [dateDisplay(r.date), PAY_TX[r.paymentType] || '', r.delivered ? 'Teslim edildi' + (r.deliveryDate ? ' ' + dateDisplay(r.deliveryDate) : '') : 'Teslim bekliyor'].filter(Boolean).join(' · ');
+        body += `<div class="on-meta">${escHtml(meta)}${r.note ? `<br><i>“${escHtml(r.note)}”</i>` : ''}</div>`;
+        if (e.before && e.op !== 'del') body += `<div class="on-meta ch">${escHtml(SY().describe(e).text)}</div>`;
+        body += `<div class="on-lines">${(r.products || []).map(p => {
+          const ana = anaFiyat(p), f = num(p.fiyat), pk = 'p:' + foldText(p.name), tal = I.pMap.has(pk) && !b.dec[pk];
+          const pr = tal ? '<i>Eşleştirme bekliyor</i>' : (ana > 0 && f > 0 && f !== ana ? `Birim <del>${fmt(ana)}</del> → <em>${fmt(f)}</em> personel değiştirdi` : `Birim ${fmt(f)}${ana > 0 ? ' · ana fiyat' : ''}`);
+          return `<div class="on-ln"><b>${escHtml(mapName(b.pmap, p.name))}${num(p.eksik) > 0 ? ` <span class="on-flag">${fmt(p.eksik)} KOLİ EKSİK</span>` : ''}</b><span class="q">${fmt(p.adet)} koli</span><span class="s">${fmt(num(p.adet) * f)}</span><div class="pr">${pr}</div></div>`;
+        }).join('')}</div>`;
+        if (r.paymentType === 'account' && e.op !== 'del'){
+          const nm = mapName(b.cmap, r.customer), bal = balanceFor(nm), after = bal + (e.before == null ? num(r.total) : 0);
+          body += `<div class="on-cari${after > bal && bal > 0 ? ' up' : ''}"><span>CARİ BORÇ</span><b>${fmt(bal)} ₺</b>${after !== bal ? `<i>→</i><b class="n">${fmt(after)} ₺</b>` : ''}<small>${after > bal && bal > 0 ? 'Bu siparişle borç yükseliyor' : 'Müşterinin güncel cari borcu'}</small></div>`;
+        }
+        canFix = e.op !== 'del';
+      } else {
+        body += `<div class="on-meta">${escHtml([dateDisplay(r.date), r.type ? (PAY_TX[r.type] || r.type) : '', r.note || r.description || ''].filter(Boolean).join(' · '))}</div>`;
+        if (r.customer && e.op !== 'del' && e.k === 'siparis_tahsilat'){ const bal = balanceFor(mapName(b.cmap, r.customer)); body += `<div class="on-cari"><span>CARİ BORÇ</span><b>${fmt(bal)} ₺</b><small>Müşterinin güncel cari borcu</small></div>`; }
+      }
+      if (it.dec) body += `<div class="on-alert ${it.dec.s === 'red' ? 'rd' : 'ok'}"><div class="h">${oic(it.dec.s === 'red' ? 'x' : 'check')}${it.dec.s === 'red' ? 'Reddedildi' + (it.dec.sebep ? ' · ' + escHtml(it.dec.sebep) : '') : 'Onaylandı'}</div>${it.dec.note ? `<p>${escHtml(it.dec.note)}</p>` : ''}</div>`;
+    }
+    const isRec = it.type === 'ord' || it.type === 'para';
+    const blocked = isRec && onayItems(b).all.find(x => x.key === key).blocked;
+    const foot = isRec && !it.dec ? `<div class="on-act${canFix ? '' : ' two'}"><button type="button" class="red" data-do="red">${oic('x')}Reddet</button>${canFix ? `<button type="button" class="nav" data-do="fix"${blocked ? ' disabled' : ''}>${oic('pen')}Düzelt</button>` : ''}<button type="button" class="ok" data-do="ok"${blocked ? ' disabled' : ''}>${oic('check')}Onayla</button></div>${blocked ? '<div class="on-hint">Önce yukarıdaki müşteri / ürün kararını verin.</div>' : ''}` : '';
+    const ov = sheet(`<div class="on-page"><div class="on-top"><button type="button" class="on-back" data-x aria-label="Geri">${oic('back')}</button><div><b>${it.type === 'cust' ? 'Yeni müşteri' : it.type === 'prod' ? 'Yeni ürün talebi' : it.type === 'ord' ? 'Sipariş inceleme' : 'Kayıt inceleme'}</b><small>${escHtml((b.from && b.from.name) || '')} · ${hmTx(b.created)}</small></div></div><div class="on-card">${head}${body}</div></div>${foot}`, 'full');
+    ov.addEventListener('click', ev => {
+      const t = ev.target;
+      if (t.closest('[data-x]')){ closeSheets(); return; }
+      const pk = t.closest('[data-pick]');
+      if (pk && t.closest('[data-pick-undo]')){ delete b.dec[pk.dataset.pick]; const xi = onayItems(b).all.find(x => x.key === pk.dataset.pick); if (xi){ if (xi.type === 'cust') delete b.cmap[foldText(xi.name)]; else delete b.pmap[foldText(xi.name)]; } saveB(b); openItem(b, key); renderOnay(); onayBadge(); return; }
+      if (pk && t.closest('[data-pick-do]')){
+        const how = t.closest('[data-pick-do]').dataset.pickDo, xi = onayItems(b).all.find(x => x.key === pk.dataset.pick); if (!xi) return;
+        if (how === 'merge'){ const r = pk.querySelector('input[type=radio]:checked'); if (!r) return; decide(b, xi, { s:'merge', to:r.value }); }
+        else decide(b, xi, { s:'new' });
+        const nb = SY().queue().find(x => x.id === b.id);
+        if (!nb){ closeSheets(); return; }
+        Object.assign(b, nb);
+        if (it.type === 'cust' || it.type === 'prod') closeSheets(); else openItem(b, key);
+        return;
+      }
+      const act = t.closest('[data-do]'); if (!act || act.disabled) return;
+      if (act.dataset.do === 'ok'){ decide(b, it, { s:'ok' }); closeSheets(); flash('✓ Onaylandı.'); }
+      else if (act.dataset.do === 'fix'){ const id = it.e.id; decide(b, it, { s:'ok', fix:true }); closeSheets(); loadOrderToForm(id, true); }
+      else if (act.dataset.do === 'red') openReject(b, it);
+    });
+  }
+  function openReject(b, it){
+    const r = it.r, amt = fmt(r.total != null ? r.total : r.amount);
+    const ov = sheet(`<div class="on-sheet"><div class="grab"></div><h3>${it.type === 'ord' ? 'Siparişi' : 'Kaydı'} reddet</h3><div class="sub">${escHtml(r.customer || '')} · ${amt} ₺ · ${escHtml((b.from && b.from.name) || '')}</div>
+      <div class="on-k2">HAZIR SEBEPLER</div><div class="on-rs">${RED_SEBEP.map((x, i) => `<button type="button" data-rs="${escAttr(x)}"${i ? '' : ' class="on"'}>${escHtml(x)}</button>`).join('')}</div>
+      <div class="on-k2">NOT</div><textarea maxlength="200" placeholder="Personele kısa bir not yazın (isteğe bağlı)"></textarea><small class="on-cnt">0 / 200</small>
+      <div class="on-row2"><button type="button" class="ghost" data-x>Vazgeç</button><button type="button" class="red" data-send>${oic('send')}Reddet ve gönder</button></div></div>`, 'bottom');
+    const ta = ov.querySelector('textarea'), cnt = ov.querySelector('.on-cnt');
+    ta.addEventListener('input', () => { cnt.textContent = ta.value.length + ' / 200'; });
+    ov.addEventListener('click', e => {
+      const rs = e.target.closest('[data-rs]'); if (rs){ ov.querySelectorAll('[data-rs]').forEach(x => x.classList.toggle('on', x === rs)); return; }
+      if (e.target.closest('[data-x]')){ ov.remove(); return; }
+      if (e.target.closest('[data-send]')){
+        const sb = ov.querySelector('[data-rs].on');
+        decide(b, it, { s:'red', sebep:sb ? sb.dataset.rs : '', note:ta.value.trim() });
+        closeSheets(); flash('Reddedildi; not personele "Güncel durumu gönder" ile ulaşır.');
+      }
+    });
+  }
+  function bulkApprove(id){
+    const b = SY().queue().find(x => x.id === id); if (!b) return;
+    const easy = onayItems(b).all.filter(x => !x.dec && !x.flags.length && !x.blocked);
+    let n = 0;
+    easy.forEach(it => { const nb = SY().queue().find(x => x.id === id); if (!nb) return; const cur = onayItems(nb).all.find(x => x.key === it.key); if (cur && !cur.dec){ decide(nb, cur, { s:'ok', bulk:true }); n++; } });
+    if (n && SY().queue().some(x => x.id === id)) flash(`✓ ${n} kayıt onaylandı. Kontrol gerekenler kaldı.`);
+  }
+  document.getElementById('onayRoot')?.addEventListener('click', e => {
+    const S = SY(); if (!S) return;
+    const a = e.target.closest('[data-on-act]');
+    if (a){ if (a.dataset.onAct === 'file') S.openFile(); else if (a.dataset.onAct === 'state') S.sendState(); else if (a.dataset.onAct === 'home'){ onayView = null; renderOnay(); window.scrollTo({ top:0, behavior:'smooth' }); } return; }
+    const op = e.target.closest('[data-on-open]'); if (op){ onayView = { b:op.dataset.onOpen }; renderOnay(); window.scrollTo({ top:0, behavior:'smooth' }); return; }
+    const bk = e.target.closest('[data-on-bulk]'); if (bk){ bulkApprove(bk.dataset.onBulk); return; }
+    const itb = e.target.closest('[data-on-it]'); if (itb){
+      const card = itb.closest('.on-batch'); const bid = onayView ? onayView.b : card && card.querySelector('[data-on-open]')?.dataset.onOpen;
+      const b = S.queue().find(x => x.id === bid); if (b) openItem(b, itb.dataset.onIt);
+    }
+  });
+  document.addEventListener('click', e => {   // pencere içindeki "geçtiği kayıtlar" satırları
+    const itb = e.target.closest('.on-ov [data-on-it]'); if (!itb) return;
+    const S = SY(); const b = S && S.queue().find(x => onayItems(x).all.some(y => y.key === itb.dataset.onIt) && (!onayView || x.id === onayView.b));
+    if (b) openItem(b, itb.dataset.onIt);
+  });
+  document.addEventListener('tidem:onay', e => {
+    onayBadge();
+    if (e.detail && e.detail.open && !isPers()){ onayView = { b:e.detail.open }; document.querySelector('.tab-btn[data-tab="onay"]')?.click(); }
+    else renderOnay();
+    if (isPers()) { try{ renderHistory(); }catch(_){} }
+  });
+
+  // ---- personel: durum rozetleri, reddedilenler, gün sonu kartı ----
+  function persStatus(o){ const S = SY(); return S && isPers() ? S.statusOf('siparis_orders', o.id) : ''; }
+  function persPill(o){
+    const st = persStatus(o); if (!st) return '';
+    const m = { draft:['s', 'GÖNDERİLMEDİ'], wait:['a', 'ONAY BEKLİYOR'], red:['r', 'REDDEDİLDİ'], ok:['g', 'ONAYLANDI'] }[st];
+    return `<span class="on-pill ${m[0]} oc-onay">${m[1]}</span>`;
+  }
+  function persRedNote(o){
+    if (persStatus(o) !== 'red') return '';
+    const r = safeGet(ONAY_KEY, {})[o.id] || {};
+    return `<div class="on-note"><div class="h">${oic('info')}YÖNETİCİ NOTU${r.sebep ? ' · ' + escHtml(r.sebep.toLocaleUpperCase('tr-TR')) : ''}</div>${r.note ? `<p>${escHtml(r.note)}</p>` : ''}<button type="button" class="fx" data-red-fix="${escAttr(o.id)}">${oic('pen')}DÜZELT VE TEKRAR GÖNDER</button></div>`;
+  }
+  function myStart(){ const S = SY(); if (!S || !isPers()) return ''; const u = S.me() || {}; if (u.start) return u.start; return ''; }
+  function renderPersBar(){
+    const el = document.getElementById('persBar'); if (!el) return;
+    const S = SY(); if (!S || !isPers()){ el.innerHTML = ''; el.hidden = true; return; }
+    el.hidden = false;
+    const list = S.pending(), me = (S.me() || {}).name || '';
+    const o = list.filter(e => e.k === 'siparis_orders').length, t = list.filter(e => e.k === 'siparis_tahsilat').length;
+    let hide = []; try{ hide = JSON.parse(localStorage.getItem(RED_HIDE) || '[]'); }catch(e){}
+    const orders = getOrders(), onay = safeGet(ONAY_KEY, {});
+    const reds = Object.keys(onay).filter(id => { const r = onay[id]; return r.s === 'red' && r.by === me && !hide.includes(id + '|' + r.at) && !(r.k === 'siparis_orders' && orders.some(x => x.id === id)); });
+    const last = S.lastState();
+    el.innerHTML = `<div class="on-send"><div class="top"><span class="on-ring sm" style="--p:${list.length ? 30 : 100}"><span>${list.length ? list.length : '✓'}</span></span><div><b>${list.length ? 'Gönderilmemiş kayıtlar' : (S.waiting() ? 'Gönderildi · onay bekliyor' : 'Yöneticiyle güncel')}</b><small>${list.length ? [o ? o + ' sipariş' : '', t ? t + ' tahsilat' : '', (list.length - o - t) ? (list.length - o - t) + ' diğer' : ''].filter(Boolean).join(' · ') : (last ? 'Son güncelleme ' + hmTx(last.at) : 'Henüz güncelleme alınmadı')}</small></div></div>
+      ${list.length ? `<button type="button" class="on-bulk nav" data-pers="send">${oic('send')}Gün sonunu gönder</button>` : `<button type="button" class="on-bulk ghost" data-pers="take">${oic('file')}Yöneticiden güncelle</button>`}</div>
+      ${reds.map(id => { const r = onay[id]; return `<div class="on-redc"><div class="r1"><b>${escHtml(r.cust || (r.k === 'siparis_orders' ? 'Sipariş' : 'Kayıt'))}</b><span class="on-pill r">REDDEDİLDİ</span></div><div class="r2">${escHtml([r.k === 'siparis_orders' ? 'Sipariş' : (PARA_K[r.k] || 'Kayıt'), r.date ? dateDisplay(r.date) : ''].filter(Boolean).join(' · '))}<strong>${fmt(r.amt)} ₺</strong></div>
+        <div class="on-note"><div class="h">${oic('info')}YÖNETİCİ NOTU${r.sebep ? ' · ' + escHtml(r.sebep.toLocaleUpperCase('tr-TR')) : ''}</div>${r.note ? `<p>${escHtml(r.note)}</p>` : ''}
+        <div class="on-nb">${r.k === 'siparis_orders' && r.op !== 'del' ? `<button type="button" class="fx" data-red-fix="${escAttr(id)}">${oic('pen')}DÜZELT VE TEKRAR GÖNDER</button>` : ''}<button type="button" class="ok2" data-red-ok="${escAttr(id + '|' + r.at)}">ANLADIM</button></div></div></div>`; }).join('')}`;
+  }
+  document.addEventListener('click', e => {
+    const S = SY(); if (!S) return;
+    const ps = e.target.closest('[data-pers]'); if (ps){ if (ps.dataset.pers === 'send') S.sendDay(); else document.getElementById('gsTake')?.click() || S.openFile(); return; }
+    const ok = e.target.closest('[data-red-ok]'); if (ok){ let h = []; try{ h = JSON.parse(localStorage.getItem(RED_HIDE) || '[]'); }catch(_){} h.push(ok.dataset.redOk); try{ localStorage.setItem(RED_HIDE, JSON.stringify(h.slice(-200))); }catch(_){} renderPersBar(); return; }
+    const fx = e.target.closest('[data-red-fix]'); if (fx){
+      const id = fx.dataset.redFix, r = safeGet(ONAY_KEY, {})[id];
+      if (!getOrders().some(o => o.id === id)){ const d = r && pjs(r.data); if (!d) return; const l = getOrders(); l.unshift(d); saveOrders(l); }
+      try{ let h = JSON.parse(localStorage.getItem(RED_HIDE) || '[]'); h.push(id + '|' + (r && r.at)); localStorage.setItem(RED_HIDE, JSON.stringify(h.slice(-200))); }catch(_){}
+      loadOrderToForm(id, true); renderHistory();
+    }
+  });
+  function loadOrderToForm(id, editing = true){
+    const o = getOrders().find(x => x.id === id);
+    if (!o) return;
+    if (!document.getElementById('panel-siparis').classList.contains('active')) document.querySelector('.tab-btn[data-tab="siparis"]')?.click();
+    customerInput.value = o.customer;
+    orderDate.value = o.date;
+    deliveryDate.value = o.deliveryDate || (o.delivered ? o.date : '');
+    orderNote.value = o.note || '';
+    companyName.value = o.company || 'Tidem Gıda';
+    deliveredCheck.checked = !!o.delivered;
+    paymentType = ['cash','card','eft','account'].includes(o.paymentType) ? o.paymentType : 'cash';
+    paymentSeg.querySelectorAll('button').forEach(b => b.classList.remove('active-paid','active-account'));
+    paymentSeg.querySelector(`[data-val="${paymentType}"]`)?.classList.add(paymentType === 'account' ? 'active-account' : 'active-paid');
+    rowsEl.innerHTML = '';
+    o.products.forEach(p => makeRow(p.name, p.adet || '', p.fiyat || '', p.group || '', {allowDuplicate:true}));
+    updateGrandTotal();
+    checkRecall();
+    setOrderEditMode(editing ? o.id : null);
+    saveDraft();
+    flash(editing ? 'Sipariş düzenleme için yüklendi. Değişiklikleri kaydetmeyi unutmayın.' : 'Sipariş forma yüklendi.');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
   function renderHistory(){
     whoMap = null;
     histBal = new Map();
-    const allOrders = getOrders();
+    renderPersBar();
+    const st0 = myStart();
+    const allOrders = st0 ? getOrders().filter(o => String(o.date) >= st0) : getOrders();
     const q = foldText(document.getElementById('historySearch')?.value);
     const statusEl = document.getElementById('historySearchStatus');
     const matches = o => !q || [o.customer, o.note, dateDisplay(o.date), o.date, dateDisplay(o.deliveryDate), ...(o.products || []).flatMap(p => [p.name, p.group])]
@@ -7164,7 +7689,7 @@
     }
     const buildCard = (o, dayGroup) => {
         const item = document.createElement('div');
-        item.className = 'hist-item ord-card ' + (o.delivered ? 'st-ok' : 'st-no') + (selectedIds.has(o.id) ? ' selected' : '') + (cardFolded.has(o.id) ? ' folded' : '');
+        item.className = 'hist-item ord-card ' + (o.delivered ? 'st-ok' : 'st-no') + (selectedIds.has(o.id) ? ' selected' : '') + (cardFolded.has(o.id) ? ' folded' : '') + (['wait', 'ok'].includes(persStatus(o)) ? ' oc-lock' : '');
         item.dataset.card = o.id;
         const ocInfo = getCustInfo(o.customer), ocKoli = (o.products || []).reduce((t, p) => t + num(p.adet), 0);
         const IC = {
@@ -7187,7 +7712,7 @@
         item.innerHTML = `
           <div class="oc-head">
             <label class="sel-box"><input type="checkbox" class="sel-cb" data-id="${o.id}"${selectedIds.has(o.id) ? ' checked' : ''} aria-label="Seç"></label>
-            <div class="hist-name oc-name"><span class="ocn-k">MÜŞTERİ</span><button type="button" class="ocn-t" data-open-cari="${escAttr(o.customer)}" title="Cari hesabını aç"><span class="ocn-tx">${escHtml(o.customer)}</span><span class="ocn-go">›</span></button><span class="ocn-st ${o.delivered ? 'ok' : 'no'}">${o.delivered ? '✓ TESLİM EDİLDİ' : '● TESLİM BEKLİYOR'}</span></div>
+            <div class="hist-name oc-name"><span class="ocn-k">MÜŞTERİ</span><button type="button" class="ocn-t" data-open-cari="${escAttr(o.customer)}" title="Cari hesabını aç"><span class="ocn-tx">${escHtml(o.customer)}</span><span class="ocn-go">›</span></button><span class="ocn-st ${o.delivered ? 'ok' : 'no'}">${o.delivered ? '✓ TESLİM EDİLDİ' : '● TESLİM BEKLİYOR'}</span>${persPill(o)}</div>
             <span class="oc-amt hist-total"><b>${fmt(o.total)}</b><small>₺</small></span>
             <i class="oc-fold" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></i>
           </div>
@@ -7202,6 +7727,7 @@
               ? `<div class="tl-it done"><i class="tl-dot"></i><div class="tl-tx"><button type="button" class="tl-undo" data-action="toggle-system" data-undo data-id="${o.id}">SİSTEME İŞLENDİ</button></div></div>`
               : `<div class="tl-it todo"><i class="tl-dot"></i><div class="tl-tx"><b>SİSTEME İŞLENMEDİ</b></div><button type="button" class="tl-act" data-action="toggle-system" data-id="${o.id}">İŞLE</button></div>`) : ''}
           </div>
+          ${persRedNote(o)}
           <div class="oc-acts hist-actions">
             <button type="button" class="hist-view oc-btn t-view" data-id="${o.id}" aria-label="Görüntüle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>Gör</span></button>
             <button type="button" class="hist-edit oc-btn t-edit" data-id="${o.id}" aria-label="Düzenle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6"/><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg><span>Düzenle</span></button>
@@ -7300,28 +7826,7 @@
 
     const bindCards = (root) => {
       root.querySelectorAll('.hist-edit').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const o = getOrders().find(x => x.id === btn.dataset.id);
-          if (!o) return;
-          const editing = btn.classList.contains('hist-edit');
-          customerInput.value = o.customer;
-          orderDate.value = o.date;
-          deliveryDate.value = o.deliveryDate || (o.delivered ? o.date : '');
-          orderNote.value = o.note || '';
-          companyName.value = o.company || 'Tidem Gıda';
-          deliveredCheck.checked = !!o.delivered;
-          paymentType = ['cash','card','eft','account'].includes(o.paymentType) ? o.paymentType : 'cash';
-          paymentSeg.querySelectorAll('button').forEach(b => b.classList.remove('active-paid','active-account'));
-          paymentSeg.querySelector(`[data-val="${paymentType}"]`)?.classList.add(paymentType === 'account' ? 'active-account' : 'active-paid');
-          rowsEl.innerHTML = '';
-          o.products.forEach(p => makeRow(p.name, p.adet || '', p.fiyat || '', p.group || '', {allowDuplicate:true}));
-          updateGrandTotal();
-          checkRecall();
-          setOrderEditMode(editing ? o.id : null);
-          saveDraft();
-          flash(editing ? 'Sipariş düzenleme için yüklendi. Değişiklikleri kaydetmeyi unutmayın.' : 'Sipariş forma yüklendi.');
-          window.scrollTo({top:0, behavior:'smooth'});
-        });
+        btn.addEventListener('click', () => loadOrderToForm(btn.dataset.id, btn.classList.contains('hist-edit')));
       });
       root.querySelectorAll('[data-pay-open]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openPaySheet(b.dataset.payOpen); }));
       root.querySelectorAll('[data-eksik-open]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openEksikSheet(b.dataset.eksikOpen); }));
