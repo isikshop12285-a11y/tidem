@@ -1863,7 +1863,9 @@
   html[data-theme="dark"] .gs-btn.wa{background:#1FA855;border-color:#1FA855}
   html[data-theme="dark"] .ord-card .oc-sub .oc-who{color:#AFC3F0}
   /* ===== Giriş: kim olduğu şifreden ===== */
-  html.role-personel .pin-admin,html.role-personel #backupRestore{display:none !important}
+  html.role-personel .pin-admin{display:none !important}
+  .me-start{display:inline-block;margin-left:6px;padding:3px 8px;border-radius:999px;background:#E8EDF6;color:#2B3F78;font-size:.62rem;font-weight:900;letter-spacing:.04em;vertical-align:middle}
+  html[data-theme="dark"] .me-start{background:#33467A;color:#DCE4F5}
   .lock-setup{margin-top:14px;min-height:40px;padding:0 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.1);color:#fff;font:inherit;font-size:.78rem;font-weight:800;cursor:pointer}
   .lock-setup[hidden]{display:none}
   .gs-users{margin-top:14px}
@@ -2708,7 +2710,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 124 · 25.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 125 · 25.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3610,7 +3612,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 124 · 25.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 125 · 25.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4345,7 +4347,7 @@
     function renderMe(){
       var row = document.getElementById('meRow'); if (!row) return;
       var d = dev(), adm = d.role !== 'personel', u = recOf(adm ? 'admin' : d.uid) || { name:d.name, role:adm ? 'merkez' : 'personel' };
-      row.innerHTML = tile(u, 'me') + '<div class="me-tx"><small>OTURUM</small><b>' + esc(adm ? 'Yönetici' : d.name) + '</b>' + (adm ? '' : '<span class="me-badge p">PERSONEL</span>') + '</div>' +
+      row.innerHTML = tile(u, 'me') + '<div class="me-tx"><small>OTURUM</small><b>' + esc(adm ? 'Yönetici' : d.name) + '</b>' + (adm ? '' : '<span class="me-badge p">PERSONEL</span>' + (u.start ? '<span class="me-start">📅 İşe giriş ' + display(u.start) + '</span>' : '')) + '</div>' +
         '<div class="me-acts">' + (adm ? '<button type="button" class="me-btn" data-gu="photo" data-id="admin">📷 Fotoğraf</button>' : '') + '<button type="button" class="me-btn out" id="gsLogout">Çıkış</button></div>';
     }
     function trivial(p){ return /^(\d)\1{5}$/.test(p) || '0123456789'.indexOf(p) >= 0 || '9876543210'.indexOf(p) >= 0; }
@@ -4517,6 +4519,14 @@
     return r;
   }
 
+  // Personel telefonu yedekten değil, yöneticinin güncel durum dosyasından güncellenir (yedek, onay sistemini atlardı)
+  document.getElementById('backupRestore')?.addEventListener('click', e => {
+    if (!document.documentElement.classList.contains('role-personel')) return;
+    e.stopImmediatePropagation(); e.preventDefault();
+    const g = document.getElementById('gsTake');
+    const st = document.getElementById('backupStatus'); if (st){ st.textContent = 'Personel telefonu, yöneticinin gönderdiği "güncel durum" dosyasıyla güncellenir. Açılan pencereden o dosyayı seçin.'; st.className = 'backup-status'; }
+    if (g) g.click();
+  }, true);
   (function(){ var b = document.getElementById('backupRestore'), armed = false, tm = null, label = b.textContent;
     b.addEventListener('click', function(){
       if (!armed){ armed = true; b.textContent = 'Cihazdaki kayıtlar yedekteki hâle dönecek! Emin misin? Tekrar dokun'; tm = setTimeout(function(){ armed = false; b.textContent = label; }, 4000); return; }
