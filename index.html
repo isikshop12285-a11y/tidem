@@ -60,8 +60,7 @@
   .ek-row.on .ek-step button:last-child{background:#D98A1C}
   /* ===================== ONAY MERKEZİ (v122) ===================== */
   html.role-personel .tab-btn:is([data-tab="onay"],[data-tab="urunler"]){display:none !important}
-  html.role-personel :is([data-customer-edit],[data-customer-index]){display:none !important}
-  html.role-personel .ord-card.oc-lock :is(.t-edit,.t-del){display:none !important}
+  html.role-personel :is([data-customer-edit],[data-customer-index],#cariTools){display:none !important}
   :root{--oc:#fff}
   html[data-theme="dark"]{--oc:#24345E}
   .tab-btn.tab-onay{position:relative}
@@ -241,6 +240,27 @@
   html[data-theme="dark"] :is(.on-alert.c,.on-alert.w) .h{color:#FCD34D}
   html[data-theme="dark"] .on-alert.rd .h{color:#FCA5A5}
   html[data-theme="dark"] .on-alert.ok .h{color:#86EFAC}
+  .on-help{margin-top:10px;padding:10px 14px;border-radius:16px;background:var(--oc);border:1px solid var(--line)}
+  .on-send .on-help{margin-top:10px;background:var(--paper-2)}
+  .on-help summary{display:flex;align-items:center;gap:8px;font-size:.74rem;font-weight:900;color:var(--ink);cursor:pointer;list-style:none}
+  .on-help summary::-webkit-details-marker{display:none}
+  .on-help summary svg{width:17px;height:17px;flex:none;color:#2B3F78}
+  html[data-theme="dark"] .on-help summary svg{color:#9FB0D4}
+  .on-help ol{margin:10px 0 2px;padding-left:18px;display:flex;flex-direction:column;gap:7px;font-size:.74rem;font-weight:700;color:var(--ink-soft);line-height:1.45}
+  .on-help b{color:var(--ink)}
+  .on-help svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  /* İlk açılış (boş telefon) · dosyayla kurulum */
+  .lf-box{display:none}
+  html.lock-fresh #lockScreen :is(.li-badge,.li-body,.li-meta,.lock-dots,.lock-sub,.lock-pad,#lockSetup){display:none !important}
+  html.lock-fresh #lockScreen .lf-box{display:flex;flex-direction:column;gap:12px;margin-top:22px;text-align:center;color:#fff}
+  .lf-box>b{font-family:var(--font-display);font-size:1.35rem;font-weight:900}
+  .lf-box>small{font-size:.84rem;font-weight:600;line-height:1.5;color:#C7D2EA}
+  .lf-box>small em{font-style:normal;font-weight:900;color:#fff}
+  .lf-box .lf-main{display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;margin-top:6px;border:0;border-radius:18px;font:inherit;font-size:.92rem;font-weight:900;letter-spacing:.04em;color:#fff;cursor:pointer;background:linear-gradient(135deg,#0F6B33,#1FA855 60%,#3DD07A);box-shadow:0 12px 26px rgba(31,168,85,.4),inset 0 1px 0 rgba(255,255,255,.25)}
+  .lf-box .lf-main svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .lf-box .lf-tip{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:.74rem;font-weight:600;line-height:1.5;color:#C7D2EA;text-align:left}
+  .lf-box .lf-tip b{color:#fff}
+  .lf-box .lf-link{margin-top:8px;border:0;background:none;font:inherit;font-size:.8rem;font-weight:800;color:#9FB0D4;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2671,6 +2691,13 @@
       <div class="li-meta"><span id="liLast"></span><button type="button" class="li-switch" id="liSwitch" hidden>⇄ Değiştir</button></div>
       <div class="lock-dots" id="lockDots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
     </div>
+    <div class="lf-box" id="lockFresh">
+      <b>Bu telefon ilk kez açılıyor</b>
+      <small>Personel iseniz yöneticinin WhatsApp'tan gönderdiği <em>güncel durum</em> dosyasıyla kurun. Kurulunca kendi adınızı seçip şifrenizle girersiniz.</small>
+      <button type="button" class="lf-main" data-lf="file"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg>Yöneticiden gelen dosyayı seç</button>
+      <div class="lf-tip"><b>Android:</b> WhatsApp'ta dosyaya dokunun → ⋮ → Paylaş → TİDEM GIDA. <b>iPhone:</b> önce Paylaş → Dosyalar'a Kaydet, sonra yukarıdaki düğme.</div>
+      <button type="button" class="lf-link" data-lf="admin">Yönetici misiniz? Şifreyle girin ›</button>
+    </div>
     <p class="lock-sub">6 haneli şifrenizi girin</p>
     <div class="lock-msg" id="lockMsg" aria-live="polite"></div>
     <div class="lock-pad" id="lockPad">
@@ -2681,7 +2708,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 122 · 25.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 124 · 25.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3583,7 +3610,7 @@
   </div>
   <div class="backup-status" id="backupStatus"></div>
 </section>
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 122 · 25.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 124 · 25.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4093,7 +4120,7 @@
       return out.join(' · ') || 'değişiklik yok';
     }
     function shareText(text, base, title, msgOk){
-      var f = pdfFile(text, base, asciiTr(title).toUpperCase(), ['Tarih: ' + nowTxt(), 'Bu dosyayi Tidem uygulamasinda acin:', base.indexOf('gunsonu') === 0 ? 'Ayarlar > Gun sonu mutabakat > Gun sonu dosyasi ac' : 'Ayarlar > Gun sonu mutabakat > Yoneticiden guncelle', 'Dosyayi silmeyin, degistirmeyin.']);
+      var f = pdfFile(text, base, asciiTr(title).toUpperCase(), ['Tarih: ' + nowTxt(), 'Bu dosyayi Tidem uygulamasinda acin:', base.indexOf('gunsonu') === 0 ? 'WhatsApp: dosya > Paylas > TIDEM GIDA  ya da  Onay Merkezi > Gun sonu dosyasi ac' : 'WhatsApp: dosya > Paylas > TIDEM GIDA  ya da  Siparis > Yoneticiden guncelle', 'Dosyayi silmeyin, degistirmeyin.']);
       var ok = function(x){ try{ return !!(navigator.canShare && navigator.canShare({ files:[x] })); }catch(e){ return false; } };
       if (ok(f)) return navigator.share({ files:[f], title:title }).then(function(){ return 'ok'; }).catch(function(e){ return e && e.name === 'AbortError' ? 'cancel' : 'fail'; });
       saveFile(text, base + '.json'); window.open('https://wa.me/', '_blank'); return Promise.resolve('download');
@@ -4288,7 +4315,7 @@
         var hist = lg(HIST_KEY, []);
         var users = '<div class="gs-users"><div class="gs-hh">PERSONEL · GİRİŞ ŞİFRELERİ</div>' +
           (st.length ? st.map(function(u){ return '<div class="gs-user' + (u.active === false ? ' off' : '') + '">' + tile(u, 'sm') + '<b>' + esc(u.name) + '</b><small>' + (u.active === false ? 'GİRİŞ KAPALI' : 'AKTİF') + '</small>' +
-            '<button type="button" data-gu="start" data-id="' + esc(u.id) + '">' + (u.start ? 'Giriş ' + display(u.start) : 'Giriş tarihi') + '</button><button type="button" data-gu="photo" data-id="' + esc(u.id) + '">Foto</button><button type="button" data-gu="pin" data-id="' + esc(u.id) + '">Şifre</button><button type="button" data-gu="act" data-id="' + esc(u.id) + '">' + (u.active === false ? 'Aç' : 'Kapat') + '</button><button type="button" class="x" data-gu="del" data-id="' + esc(u.id) + '">✕</button></div>'; }).join('')
+            '<button type="button" data-gu="start" data-id="' + esc(u.id) + '">' + (u.start ? '📅 İşe giriş ' + display(u.start) : '📅 İşe giriş tarihi') + '</button><button type="button" data-gu="photo" data-id="' + esc(u.id) + '">Foto</button><button type="button" data-gu="pin" data-id="' + esc(u.id) + '">Şifre</button><button type="button" data-gu="act" data-id="' + esc(u.id) + '">' + (u.active === false ? 'Aç' : 'Kapat') + '</button><button type="button" class="x" data-gu="del" data-id="' + esc(u.id) + '">✕</button></div>'; }).join('')
             : '<p class="gs-p">Henüz personel yok. Personel eklediğinizde her biri <b>kendi şifresiyle</b> girer; uygulama onu Personel olarak tanır, yönetici ekranlarını göremez.</p>') +
           '<div class="gs-add"><input id="guName" placeholder="Ad (ör. Ali)" autocomplete="off"><input id="guPin" type="password" inputmode="numeric" maxlength="6" placeholder="6 haneli şifre" autocomplete="new-password"><button type="button" id="guAdd">➕ Ekle</button></div>' +
           '<div class="gs-note">Yeni personel ve şifre değişiklikleri, <b>"Güncel durumu gönder"</b> ile personelin telefonuna geçer.</div></div>';
@@ -4417,6 +4444,14 @@
     (function(){
       var b = document.getElementById('lockSetup'); if (!b) return;
       b.hidden = !isFresh();
+      // Hiç kaydı/kullanıcısı olmayan telefon: önce "dosyayla kur" ekranı (personel yanlışlıkla yönetici şifresine yönelmesin)
+      var fr = document.getElementById('lockFresh'); if (!fr) return;
+      if (isFresh()) document.documentElement.classList.add('lock-fresh');
+      fr.addEventListener('click', function(e){
+        var t = e.target.closest('[data-lf]'); if (!t) return;
+        if (t.dataset.lf === 'file') chooseFile(takeUpdate);
+        else document.documentElement.classList.remove('lock-fresh');
+      });
     })();
     // akşam hatırlatma çubuğu (personel, 17:00 sonrası, gönderilmemiş iş varsa)
     function updateBar(){
@@ -6278,9 +6313,10 @@
       const prev = orders[editIdx];
       if (prev.systemAdded && prev.paymentType === 'account' && paymentType === 'account' && num(prev.total) === num(total)) order.systemAdded = true;
       order.id = editingOrderId; orders[editIdx] = order;
+      if (prev.byId){ order.byId = prev.byId; order.byName = prev.byName; }
       const ek = {}; (prev.products || []).forEach(p => { if (num(p.eksik) > 0) ek[foldText(p.name)] = num(p.eksik); });
       order.products.forEach(p => { const e = ek[foldText(p.name)]; if (e) p.eksik = Math.min(e, num(p.adet)); });
-    } else { orders.unshift(order); }
+    } else { const ses = sesNow(); if (ses.role === 'personel'){ order.byId = ses.id; order.byName = ses.name; } orders.unshift(order); }
     saveOrders(orders);
     openDates.add(order.date);
     addAutomaticCardCollection(order);
@@ -6955,7 +6991,7 @@
     const q = foldText(msInput.value.trim());
     if (q.length < 2){ msOut.innerHTML = '<p class="ms-hint">En az 2 harf yazın. Ürün adı yazarsanız hangi gün, hangi müşteriye, kaç koli satıldığını görürsünüz. Müşteri, not, tahsilat ve gider de aranır.</p>'; return; }
     const has = v => foldText(v).includes(q);
-    const orders = getOrders().filter(o => msInRange(o.date));
+    const orders = getOrders().filter(o => msInRange(o.date) && isMine(o));
     // 1) Ürün satışları
     const prodHits = [];
     orders.forEach(o => (o.products || []).forEach(p => { if (num(p.adet) > 0 && (has(p.name) || has(p.group))) prodHits.push({ o, p }); }));
@@ -7432,6 +7468,7 @@
         <div class="on-chips"><div><b>${cS}</b><span>SİPARİŞ</span></div><div class="g"><b>${cT}</b><span>TAHSİLAT</span></div><div class="a"><b>${cC}</b><span>YENİ MÜŞTERİ</span></div><div class="r"><b>${cP}</b><span>YENİ ÜRÜN</span></div></div>
         <div class="on-hbtn"><button type="button" data-on-act="file">${oic('file')}Gün sonu dosyası aç</button><button type="button" data-on-act="state">${oic('send')}Güncel durumu gönder</button></div>
         <small class="on-last">Son güncel durum: ${last ? hmTx(last.at) : 'henüz gönderilmedi'}</small></div>
+      <details class="on-help"><summary>${oic('info')}WhatsApp'tan gelen dosya nasıl açılır?</summary><ol><li><b>Android:</b> WhatsApp'ta dosyaya dokunun → sağ üst <b>⋮</b> → <b>Paylaş</b> → <b>TİDEM GIDA</b>. Dosya doğrudan buraya düşer.</li><li><b>iPhone:</b> Dosyaya dokunun → <b>Paylaş</b> → <b>Dosyalar'a Kaydet</b>. Sonra burada <b>Gün sonu dosyası aç</b> → kaydettiğiniz dosyayı seçin.</li><li>Telefonda indirilen dosyalar <b>İndirilenler</b> (Download) klasöründe, adı <b>gunsonu-…</b> ile başlar.</li></ol></details>
       <div class="on-sec"><b>Bekleyenler</b><span>${q.length ? '· ' + q.length + ' gün sonu' : ''}</span></div>
       ${q.length ? q.map(b => {
         const I = onayItems(b), st = batchStats(b), open = I.all.filter(x => !x.dec), easy = open.filter(x => !x.flags.length && !x.blocked);
@@ -7596,7 +7633,14 @@
     const r = safeGet(ONAY_KEY, {})[o.id] || {};
     return `<div class="on-note"><div class="h">${oic('info')}YÖNETİCİ NOTU${r.sebep ? ' · ' + escHtml(r.sebep.toLocaleUpperCase('tr-TR')) : ''}</div>${r.note ? `<p>${escHtml(r.note)}</p>` : ''}<button type="button" class="fx" data-red-fix="${escAttr(o.id)}">${oic('pen')}DÜZELT VE TEKRAR GÖNDER</button></div>`;
   }
-  function myStart(){ const S = SY(); if (!S || !isPers()) return ''; const u = S.me() || {}; if (u.start) return u.start; return ''; }
+  function sesNow(){ const P = window.__tidemPin; return (P && P.session && P.session()) || { role:'merkez' }; }
+  // Personel yalnızca KENDİ girdiği siparişleri görür, düzenler, siler (cari hesaptaki fişler hariç).
+  function isMine(o){
+    const s = sesNow(); if (s.role !== 'personel') return true;
+    if (o.byId) return o.byId === s.id;
+    const w = whoOf(o.id); return !!(w && w.by && foldText(w.by) === foldText(s.name) && w.op !== 'del');
+  }
+  function myStart(){ const S = SY(); if (!S || !isPers()) return ''; const u = S.me() || {}; return u.start || ''; }
   function renderPersBar(){
     const el = document.getElementById('persBar'); if (!el) return;
     const S = SY(); if (!S || !isPers()){ el.innerHTML = ''; el.hidden = true; return; }
@@ -7608,7 +7652,7 @@
     const reds = Object.keys(onay).filter(id => { const r = onay[id]; return r.s === 'red' && r.by === me && !hide.includes(id + '|' + r.at) && !(r.k === 'siparis_orders' && orders.some(x => x.id === id)); });
     const last = S.lastState();
     el.innerHTML = `<div class="on-send"><div class="top"><span class="on-ring sm" style="--p:${list.length ? 30 : 100}"><span>${list.length ? list.length : '✓'}</span></span><div><b>${list.length ? 'Gönderilmemiş kayıtlar' : (S.waiting() ? 'Gönderildi · onay bekliyor' : 'Yöneticiyle güncel')}</b><small>${list.length ? [o ? o + ' sipariş' : '', t ? t + ' tahsilat' : '', (list.length - o - t) ? (list.length - o - t) + ' diğer' : ''].filter(Boolean).join(' · ') : (last ? 'Son güncelleme ' + hmTx(last.at) : 'Henüz güncelleme alınmadı')}</small></div></div>
-      ${list.length ? `<button type="button" class="on-bulk nav" data-pers="send">${oic('send')}Gün sonunu gönder</button>` : `<button type="button" class="on-bulk ghost" data-pers="take">${oic('file')}Yöneticiden güncelle</button>`}</div>
+      ${list.length ? `<button type="button" class="on-bulk nav" data-pers="send">${oic('send')}Gün sonunu gönder</button>` : `<button type="button" class="on-bulk ghost" data-pers="take">${oic('file')}Yöneticiden güncelle</button>`}<details class="on-help"><summary>${oic('info')}WhatsApp'tan gelen dosya nasıl açılır?</summary><ol><li><b>Android:</b> WhatsApp'ta dosyaya dokunun → sağ üst <b>⋮</b> → <b>Paylaş</b> → <b>TİDEM GIDA</b>. Dosya doğrudan buraya düşer.</li><li><b>iPhone:</b> Dosyaya dokunun → <b>Paylaş</b> → <b>Dosyalar'a Kaydet</b>. Sonra burada <b>Yöneticiden güncelle</b> → kaydettiğiniz dosyayı seçin.</li><li>Telefonda indirilen dosyalar <b>İndirilenler</b> (Download) klasöründe, adı <b>tidem-guncel-…</b> ile başlar.</li></ol></details></div>
       ${reds.map(id => { const r = onay[id]; return `<div class="on-redc"><div class="r1"><b>${escHtml(r.cust || (r.k === 'siparis_orders' ? 'Sipariş' : 'Kayıt'))}</b><span class="on-pill r">REDDEDİLDİ</span></div><div class="r2">${escHtml([r.k === 'siparis_orders' ? 'Sipariş' : (PARA_K[r.k] || 'Kayıt'), r.date ? dateDisplay(r.date) : ''].filter(Boolean).join(' · '))}<strong>${fmt(r.amt)} ₺</strong></div>
         <div class="on-note"><div class="h">${oic('info')}YÖNETİCİ NOTU${r.sebep ? ' · ' + escHtml(r.sebep.toLocaleUpperCase('tr-TR')) : ''}</div>${r.note ? `<p>${escHtml(r.note)}</p>` : ''}
         <div class="on-nb">${r.k === 'siparis_orders' && r.op !== 'del' ? `<button type="button" class="fx" data-red-fix="${escAttr(id)}">${oic('pen')}DÜZELT VE TEKRAR GÖNDER</button>` : ''}<button type="button" class="ok2" data-red-ok="${escAttr(id + '|' + r.at)}">ANLADIM</button></div></div></div>`; }).join('')}`;
@@ -7651,7 +7695,7 @@
     histBal = new Map();
     renderPersBar();
     const st0 = myStart();
-    const allOrders = st0 ? getOrders().filter(o => String(o.date) >= st0) : getOrders();
+    const allOrders = isPers() ? getOrders().filter(o => isMine(o) && (!st0 || String(o.date) >= st0)) : getOrders();
     const q = foldText(document.getElementById('historySearch')?.value);
     const statusEl = document.getElementById('historySearchStatus');
     const matches = o => !q || [o.customer, o.note, dateDisplay(o.date), o.date, dateDisplay(o.deliveryDate), ...(o.products || []).flatMap(p => [p.name, p.group])]
@@ -7689,7 +7733,7 @@
     }
     const buildCard = (o, dayGroup) => {
         const item = document.createElement('div');
-        item.className = 'hist-item ord-card ' + (o.delivered ? 'st-ok' : 'st-no') + (selectedIds.has(o.id) ? ' selected' : '') + (cardFolded.has(o.id) ? ' folded' : '') + (['wait', 'ok'].includes(persStatus(o)) ? ' oc-lock' : '');
+        item.className = 'hist-item ord-card ' + (o.delivered ? 'st-ok' : 'st-no') + (selectedIds.has(o.id) ? ' selected' : '') + (cardFolded.has(o.id) ? ' folded' : '');
         item.dataset.card = o.id;
         const ocInfo = getCustInfo(o.customer), ocKoli = (o.products || []).reduce((t, p) => t + num(p.adet), 0);
         const IC = {
@@ -9854,6 +9898,7 @@ document.querySelectorAll('.add-pro').forEach(b => b.addEventListener('click', (
   if (!fab || !dr) return;
   var IC = {
     siparis:'<path d="M9 4h6v3H9z"/><path d="M7 5H5v15h14V5h-2"/><path d="M8 11h8M8 15h5"/>',
+    onay:'<path d="M9 11l2.5 2.5L16 9"/><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/>',
     urunler:'<path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
     tahsilat:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/>',
     iade:'<path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/>',
@@ -9878,7 +9923,7 @@ document.querySelectorAll('.add-pro').forEach(b => b.addEventListener('click', (
   function esc(t){ return String(t == null ? '' : t).replace(/[&<>"]/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
   function build(){
     var act = document.querySelector('.tab-btn.active'), a = act ? act.dataset.tab : 'siparis';
-    list.innerHTML = tabs().filter(function(b){ return !(isPersonel() && ['personel', 'istatistik', 'arsiv'].indexOf(b.dataset.tab) >= 0); }).map(function(b){
+    list.innerHTML = tabs().filter(function(b){ return !(isPersonel() && ['personel', 'istatistik', 'arsiv', 'onay', 'urunler'].indexOf(b.dataset.tab) >= 0); }).map(function(b){
       var t = b.dataset.tab;
       return (t === 'personel' || t === 'ayarlar' ? '<i class="nd-sep"></i>' : '') + '<button type="button" class="nd-item' + (t === a ? ' on' : '') + '" data-nav="' + t + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + (IC[t] || IC.siparis) + '</svg><span>' + esc(label(b)) + '</span>' + badge(b) + '</button>';
     }).join('');
