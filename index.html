@@ -59,7 +59,7 @@
   .ek-step span{min-width:28px;text-align:center;font-weight:900;color:var(--ink)}
   .ek-row.on .ek-step button:last-child{background:#D98A1C}
   /* ===================== ONAY MERKEZİ (v122) ===================== */
-  html.role-personel .tab-btn:is([data-tab="onay"],[data-tab="urunler"]){display:none !important}
+  html.role-personel .tab-btn:is([data-tab="onay"],[data-tab="urunler"]),html.role-personel :is(#panel-onay,#panel-urunler){display:none !important}
   html.role-personel :is([data-customer-edit],[data-customer-index],#cariTools){display:none !important}
   html.role-personel .ord-card.oc-lock :is(.t-edit,.t-del){display:none !important}
   :root{--oc:#fff}
@@ -91,7 +91,19 @@
   .on-sec.sm{margin:16px 2px 8px}.on-sec.sm b{font-size:.9rem}
   .on-batch{background:var(--oc);border:1px solid var(--line);border-radius:22px;box-shadow:0 8px 22px rgba(20,33,63,.08);overflow:hidden;margin-bottom:12px}
   .on-bh{display:flex;align-items:center;gap:12px;width:100%;padding:14px !important;border:0 !important;background:none !important;text-align:left;font:inherit;cursor:pointer;min-height:0 !important}
-  .on-hrow .on-bh{cursor:default}
+  .on-hrow>summary{list-style:none}.on-hrow>summary::-webkit-details-marker{display:none}
+  .on-hx{flex:none;display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:999px;background:#DCF5E5;color:#137A3B;font-size:.6rem;font-weight:900;letter-spacing:.06em}
+  .on-hx svg{width:14px;height:14px;transition:transform .2s}
+  .on-hrow[open] .on-hx svg{transform:rotate(180deg)}
+  .on-hd{border-top:1px solid var(--line);padding:4px 14px 10px}
+  .on-hi{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .on-hi:last-child{border-bottom:0}
+  .on-hi .on-tx{flex:1;min-width:0}
+  .on-hi .on-tx b{display:block;font-size:.84rem;font-weight:900;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .on-hi .on-tx small{display:block;font-size:.68rem;font-weight:700;color:var(--ink-soft)}
+  .on-hi .on-am{font-size:.82rem;font-weight:900;color:var(--ink);white-space:nowrap}
+  .on-hp{margin:10px 0 4px;font-size:.76rem;font-weight:700;color:var(--ink-soft)}
+  html[data-theme="dark"] .on-hx{background:rgba(31,168,85,.2);color:#6EE7A0}
   .on-av{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:#fff;background:linear-gradient(145deg,#9B1C28,#C8202F 55%,#E04A57);box-shadow:0 6px 14px rgba(200,32,47,.3)}
   .on-av.g{background:linear-gradient(145deg,#0F6B33,#1FA855);box-shadow:0 6px 14px rgba(31,168,85,.3)}
   .on-bt{flex:1;min-width:0}.on-bt b{display:block;font-family:var(--font-display);font-size:1rem;font-weight:900;color:var(--ink)}.on-bt small{font-size:.7rem;font-weight:700;color:var(--ink-soft)}
@@ -243,6 +255,11 @@
   html[data-theme="dark"] .on-alert.ok .h{color:#86EFAC}
   .on-help{margin-top:10px;padding:10px 14px;border-radius:16px;background:var(--oc);border:1px solid var(--line)}
   .on-send .on-help{margin-top:10px;background:var(--paper-2)}
+  .on-send.has{border-color:#F2C46B;box-shadow:0 8px 22px rgba(217,138,28,.14)}
+  .on-pl{list-style:none;margin:0 0 12px;padding:0;border-top:1px solid var(--line)}
+  .on-pl li{display:flex;gap:8px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line);font-size:.76rem;font-weight:700;color:var(--ink);line-height:1.4}
+  .on-pl li span{flex:none;width:18px;text-align:center}
+  .on-pl li.more{color:var(--ink-soft);font-weight:800;justify-content:center}
   .on-help summary{display:flex;align-items:center;gap:8px;font-size:.74rem;font-weight:900;color:var(--ink);cursor:pointer;list-style:none}
   .on-help summary::-webkit-details-marker{display:none}
   .on-help summary svg{width:17px;height:17px;flex:none;color:#2B3F78}
@@ -1193,7 +1210,6 @@
   /* ===================== KOYU MOD ===================== */
   @media screen{
   html[data-theme="dark"]{--paper:#2C3E68;--paper-2:#3B5082;--ink:#E6EBF4;--ink-soft:#A3B1C6;--line:#4A5F96;--gold:#FBBF24;color-scheme:dark}
-  html[data-theme="dark"], html[data-theme="dark"] body{background:#30436F !important}
   html[data-theme="dark"] body{color:#E6EBF4}
   html[data-theme="dark"] :is(.definition-card,.hist-item,.summary-strip,.breakdown,.arac-stats div,.arac-stop,.ms-row,.backup-card,.report-kpi,.cari-row,.definition-row,.brand-row,.tabbar,.list-head.archive-date-heading.date-toggle,.pk-panel,.arac-group,.gider-cash,.arac-basis,.theme-pick label,.ms-prod,.ms-merge-top button){
     background:#354A78 !important;border-color:rgba(255,255,255,.08) !important;color:#E6EBF4;box-shadow:0 1px 2px rgba(0,0,0,.25),0 8px 22px rgba(0,0,0,.22) !important}
@@ -1269,10 +1285,12 @@
   .lock-logo{background:none !important;padding:0 !important;border-radius:0 !important;box-shadow:none !important;height:74px !important;opacity:0;transition:opacity .15s;filter:drop-shadow(0 8px 18px rgba(0,0,0,.4))}
   /* Koyu mod: lacivert + Tidem kırmızısı harmanı */
   @media screen{
-  html[data-theme="dark"] body{background:
-      radial-gradient(70% 45% at 100% 0%,rgba(200,32,47,.24) 0%,rgba(200,32,47,0) 70%) fixed,
-      radial-gradient(75% 50% at 0% 100%,rgba(200,32,47,.16) 0%,rgba(200,32,47,0) 70%) fixed,
-      linear-gradient(165deg,#26375E 0%,#2C3C68 50%,#343A63 100%) fixed !important}
+  /* arka plan sabit bir katmanda: kaydırırken her karede yeniden boyanmaz */
+  html[data-theme="dark"]{background:#36497A !important}html[data-theme="dark"] body{background:transparent !important}
+  html[data-theme="dark"] body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+      radial-gradient(70% 45% at 100% 0%,rgba(200,32,47,.22) 0%,rgba(200,32,47,0) 70%),
+      radial-gradient(75% 50% at 0% 100%,rgba(200,32,47,.14) 0%,rgba(200,32,47,0) 70%),
+      linear-gradient(165deg,#33477A 0%,#394D82 50%,#424C7E 100%)}
   html[data-theme="dark"] .brand-row.brand-row.brand-row.brand-row{background:radial-gradient(100% 90% at 100% 0%,rgba(200,32,47,.32) 0%,rgba(200,32,47,0) 62%),radial-gradient(70% 80% at 0% 100%,rgba(200,32,47,.12) 0%,rgba(200,32,47,0) 60%),linear-gradient(160deg,#2C3E68 0%,#34487A 58%,#40568A 100%) !important}
   html[data-theme="dark"] .tab-btn.active{background:#C8202F !important;color:#fff !important;box-shadow:0 6px 16px rgba(200,32,47,.35) !important}
   html[data-theme="dark"] .month-head{background:linear-gradient(90deg,#465C92,#544E80) !important}
@@ -1804,8 +1822,9 @@
   .ov-promise i{margin-left:auto;font-style:normal;font-size:1.4rem;font-weight:900}
   .ov-promise{flex-wrap:nowrap}
   .tab-pr{margin-left:5px;padding:1px 6px;border-radius:999px;background:#D97706;color:#fff;font-size:.66rem;font-weight:900}
-  html:not(.no-anim) .ov-promise{animation:prGlow 2.2s ease-in-out infinite}
-  @keyframes prGlow{0%,100%{box-shadow:0 6px 16px rgba(180,83,9,.3)}50%{box-shadow:0 6px 22px rgba(217,119,6,.55)}}
+  html:not(.no-anim) .ov-promise{position:relative}
+  html:not(.no-anim) .ov-promise::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:0 6px 22px rgba(217,119,6,.55);opacity:0;pointer-events:none;animation:prGlow 2.2s ease-in-out infinite}
+  @keyframes prGlow{0%,100%{opacity:0}50%{opacity:1}}
   html[data-theme="dark"] .pr-row{background:#1C2A4F;border-color:#33467A}
   html[data-theme="dark"] .pr-row.late{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.35)}
   html[data-theme="dark"] .pr-row.today{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.35)}
@@ -1914,9 +1933,22 @@
   .cl-u.off b{color:#94A3B8}
   .cl-inv{margin-left:auto;display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 12px;border:0;border-radius:11px;background:#1FA855;color:#fff;font:inherit;font-size:.74rem;font-weight:900;cursor:pointer;box-shadow:0 4px 10px rgba(31,168,85,.28)}
   .cl-inv .wa-ico{width:17px;height:17px;fill:currentColor;vertical-align:0}
+  .cl-bk{display:flex;align-items:center;gap:10px;width:100%;margin-top:12px;padding:12px 14px !important;border:1.5px solid #C7D2FE !important;border-radius:14px !important;background:#F5F7FF !important;font:inherit;text-align:left;cursor:pointer;min-height:0 !important}
+  .cl-bk span{flex:1;min-width:0}.cl-bk b{display:block;font-size:.86rem;font-weight:900;color:#14213F}.cl-bk small{display:block;margin-top:2px;font-size:.68rem;font-weight:700;color:#64748B}
+  .cl-bk em{font-style:normal;font-size:.74rem;font-weight:900;color:#6366F1}
+  .cl-sheet{max-height:86vh;overflow:auto}
+  .cl-br{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #EEF2F8}
+  .cl-br span{flex:1;min-width:0}.cl-br b{display:block;font-size:.84rem;font-weight:900;color:#14213F}.cl-br small{display:block;font-size:.68rem;font-weight:700;color:#64748B}
+  .cl-br button{flex:none;min-height:36px;padding:0 12px;border:1.5px solid #6366F1;border-radius:10px;background:#fff;color:#4F46E5;font:inherit;font-size:.72rem;font-weight:900;cursor:pointer}
+  .cl-br button.arm{background:#C8202F;border-color:#C8202F;color:#fff}
+  html[data-theme="dark"] .cl-bk{background:rgba(99,102,241,.14) !important;border-color:#4C5FA0 !important}
+  html[data-theme="dark"] .cl-bk b,html[data-theme="dark"] .cl-br b{color:#F1F5F9}
+  html[data-theme="dark"] .cl-br{border-color:#33467A}
+  html[data-theme="dark"] .cl-br button{background:transparent;color:#A5B4FC;border-color:#6366F1}
   .cl-off{display:block;margin:12px auto 0;border:0;background:none;font:inherit;font-size:.72rem;font-weight:800;color:#94A3B8;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
   .cl-off.arm{color:#C8202F}
-  html.cloud-on #gsCard .gs-btns,html.cloud-on #gsCard .gs-note.gs-file{display:none}
+  .hint .hint-c,html.cloud-on .hint .hint-l{display:none}html.cloud-on .hint .hint-c{display:inline}
+  html.cloud-on :is(.on-hbtn,.on-help,.on-last),html.cloud-on #gsCard .gs-btns,html.cloud-on #gsCard .gs-note.gs-file{display:none}
   html[data-theme="dark"] .cl-card{background:linear-gradient(#24345E,#24345E) padding-box,linear-gradient(135deg,#0EA5E9,#6366F1 55%,#1FA855) border-box !important}
   html[data-theme="dark"] .cl-ht b,html[data-theme="dark"] .cl-stats b,html[data-theme="dark"] .cl-u b{color:#F1F5F9}
   html[data-theme="dark"] .cl-ht small,html[data-theme="dark"] .cl-p{color:#C7D2EA}
@@ -2248,9 +2280,9 @@
   #saveBtn.sv-done .sv-fill{width:100%;transition:width .6s ease}
   #saveBtn.sv-done .sv-lbl{opacity:0;transition:opacity .2s .4s}
   #saveBtn.sv-done .sv-ok{opacity:1;transform:none;transition:opacity .3s .5s,transform .35s .5s cubic-bezier(.3,1.6,.5,1)}
-  #saveBtn:before{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg)}
+  #saveBtn:before{content:'';position:absolute;top:0;bottom:0;left:0;width:40%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:translateX(-150%) skewX(-18deg);will-change:transform}
   html:not(.no-anim) #saveBtn:before{animation:svShine 3.2s ease-in-out infinite}
-  @keyframes svShine{0%,55%{left:-60%}100%{left:130%}}
+  @keyframes svShine{0%,55%{transform:translateX(-150%) skewX(-18deg)}100%{transform:translateX(325%) skewX(-18deg)}}
   html:not(.no-anim) #saveBtn:active{transform:scale(.97)}
   /* ===== Seçerek gönder · gün başlığında SEÇ, altta yüzen seçim çubuğu ===== */
   .history .day-select{display:inline-flex !important;align-items:center;gap:6px;flex:none;margin-left:auto;padding:7px 12px;border:1.5px solid #14213F;border-radius:999px;background:#fff;color:#14213F;font:inherit;font-size:.68rem;font-weight:900;letter-spacing:.06em;cursor:pointer}
@@ -2797,7 +2829,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 130 · 26.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 134 · 26.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3735,7 +3767,12 @@
     var A = window.__tidemAuto, st = A ? A.state() : null, last = null;
     try{ last = localStorage.getItem('yedek_son_tarih'); }catch(e){}
     var T = '', S = '', F = '', cls = 'ok', ic = 'shield';
+    var cl = null; try{ cl = JSON.parse(localStorage.getItem('tidem_bulut') || 'null'); }catch(e){}
     if (!st){ T = 'Yedek durumu'; S = ''; }
+    else if (cl && cl.on && cl.role === 'admin'){
+      T = 'Kayıtlarınız güvende'; S = 'İnternette canlı' + (cl.bkAt ? ' · günlük yedek ' + when(new Date(cl.bkAt).toISOString()) : '');
+      F = 'Son 7 günün yedeği internette saklanır'; act = function(){ var c = document.getElementById('cloudCard'); if (c) c.scrollIntoView({ behavior:'smooth', block:'start' }); };
+    }
     else if (st.needPerm){ cls = 'warn'; ic = 'warn'; T = 'İzin gerekiyor'; S = 'Yedek dosyasına yazmak için dokunun'; F = st.file; act = function(){ A.perm(); }; }
     else if (st.err){ cls = 'warn'; ic = 'warn'; T = 'Yedek yazılamadı'; S = 'Klasörü yeniden seçmek için dokunun'; act = function(){ A.pick(); }; }
     else if (st.on){
@@ -3755,6 +3792,7 @@
   }
   hero.addEventListener('click', function(){ if (act) act(); });
   document.addEventListener('tidem:auto', render);
+  document.addEventListener('tidem:cloud', render);
   setTimeout(render, 0); window.addEventListener('load', render);
   try{ new MutationObserver(render).observe($('backupStatus'), { childList:true, characterData:true, subtree:true }); }catch(e){}
 
@@ -3795,7 +3833,7 @@
 })();
 </script>
 
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 130 · 26.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 134 · 26.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4032,10 +4070,8 @@
         dirty = true; return writeFile();
       }).catch(function(e){ if (e && e.name !== 'AbortError'){ lastErr = (dirOK ? 'Klasör' : 'Dosya') + ' seçilemedi: ' + e.message; refreshStatus(); } });
     }
-    var askedThisOpen = false;
     function askPerm(){
       if (!fileHandle) return;
-      askedThisOpen = true;
       perm(fileHandle, true).then(function(p){ if (p === 'granted'){ needPerm = false; dirty = true; writeFile(); } else refreshStatus(); }).catch(function(){ refreshStatus(); });
     }
     if (supported){
@@ -4049,14 +4085,8 @@
     }
     document.addEventListener('visibilitychange', function(){
       if (document.visibilityState === 'hidden'){ if (fileHandle && dirty && !needPerm) writeFile(); }
-      else askedThisOpen = false;   // uygulamaya geri dönüş = yeni açılış
     });
-    // İzin gerekiyorsa: bu açılıştaki İLK dokunuşta bir kez sorulur (çubuk yok)
-    document.addEventListener('pointerdown', function(e){
-      if (!fileHandle || !needPerm || askedThisOpen) return;
-      if (e.target && e.target.closest && e.target.closest('#bkBar')) return;
-      askPerm();
-    }, true);
+    // İzin gerekiyorsa kendiliğinden sorulmaz; yalnızca yedek kartına dokunulunca sorulur.
 
     // --- Dosya seçme desteklenmiyorsa: günde en fazla bir kez indir (ekrana dokunulduğunda) ---
     function maybeDownload(){
@@ -4107,7 +4137,7 @@
     // Yeni yedek kartı (üst durum kutusu) için durum bildirimi
     window.__tidemAuto = {
       state:function(){ var l = lsGet(AUTO_LAST); return { supported:supported, dirOK:dirOK, on:supported ? !!fileHandle : autoEl.checked, needPerm:needPerm, err:lastErr, dirty:dirty, file:fileHandle ? hName(fileHandle) : '', last:l }; },
-      pick:function(){ if (supported) pickFile(); }, perm:function(){ askPerm(); },
+      pick:function(){ if (supported) pickFile(); }, perm:function(){ askPerm(); }, text:payloadText,
       toggleDl:function(){ autoEl.checked = !autoEl.checked; autoEl.dispatchEvent(new Event('change')); }
     };
     var _rs0 = refreshStatus; refreshStatus = function(){ _rs0(); try{ document.dispatchEvent(new CustomEvent('tidem:auto')); }catch(e){} };
@@ -4487,9 +4517,9 @@
       say2('✓ ' + ((b.from && b.from.name) || 'Personel') + ' gün sonu Onay Merkezi\'ne geldi.');
       try{ document.dispatchEvent(new CustomEvent('tidem:onay', { detail:{ open:b.id } })); }catch(e){}
     }
-    function finishBatch(b, applied, rejected){
+    function finishBatch(b, applied, rejected, rows){
       var imp = lg(IMP_KEY, []); if (!imp.some(function(x){ return x.id === b.id; })){ imp.unshift({ id:b.id, at:Date.now() }); ls(IMP_KEY, imp.slice(0, 200)); }
-      var hist = lg(HIST_KEY, []); hist.unshift({ at:Date.now(), from:(b.from && b.from.name) || '', sum:sumText(summarize(b.changes)), applied:applied, rejected:rejected, kept:0, created:b.created }); ls(HIST_KEY, hist.slice(0, 60));
+      var hist = lg(HIST_KEY, []); hist.unshift({ at:Date.now(), from:(b.from && b.from.name) || '', sum:sumText(summarize(b.changes)), applied:applied, rejected:rejected, created:b.created, items:(rows || []).slice(0, 80) }); ls(HIST_KEY, hist.slice(0, 60));
       ls(Q_KEY, lg(Q_KEY, []).filter(function(x){ return x.id !== b.id; }));
       if (cloudOn() && window.__tidemCloud) window.__tidemCloud.done(b.id);
       refreshCard(); fireOnay();
@@ -4894,7 +4924,7 @@
 })();
 </script>
 
-  <footer class="hint">Veriler yalnızca bu cihazda, bu sayfada saklanır.</footer>
+  <footer class="hint"><span class="hint-l">Veriler yalnızca bu cihazda saklanır.</span><span class="hint-c">Veriler bu telefonda ve internette saklanır.</span></footer>
 </div>
 
 <div class="report-overlay" id="reportOverlay" role="dialog" aria-modal="true" aria-label="Gün sonu raporu">
@@ -5044,9 +5074,23 @@
   function fmt(n){
     return FMT_NF.format(num(n));
   }
+  // Okuma önbelleği: bir ekran çizilirken aynı kayıt (ör. 300+ sipariş) müşteri başına yeniden çözülmesin.
+  // Yalnızca o anki iş süresince geçerli; herhangi bir kayıt yazılınca hemen silinir. Dizi/nesne kopyası döner.
+  const SG = new Map(); let sgT = false;
+  function sgClear(){ SG.clear(); }
+  ['setItem', 'removeItem', 'clear'].forEach(m => { const f = Storage.prototype[m]; Storage.prototype[m] = function(){ if (this === localStorage) SG.clear(); return f.apply(this, arguments); }; });
+  window.addEventListener('storage', sgClear);
   function safeGet(key, fallback){
-    try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
-    catch(e){ return fallback; }
+    try{
+      let c = SG.get(key);
+      if (!c){
+        const v = localStorage.getItem(key); c = { v:v ? JSON.parse(v) : undefined }; SG.set(key, c);
+        if (!sgT){ sgT = true; queueMicrotask(() => { SG.clear(); sgT = false; }); }
+      }
+      const v = c.v;
+      if (v === undefined) return fallback;
+      return Array.isArray(v) ? v.slice() : (v && typeof v === 'object') ? Object.assign({}, v) : v;
+    }catch(e){ return fallback; }
   }
   function safeSet(key, value){ try{ localStorage.setItem(key, JSON.stringify(value)); }catch(e){} }
   companyName.value = safeGet('siparis_company_name', companyName.value || 'Tidem Gıda');
@@ -5154,6 +5198,14 @@
   });
   // Personel toplu rakamları (yıl / ay toplamları, cari genel toplam, aramadaki ürün toplamı) görmez; günlük toplamlar görünür
   function toplamGizli(){ return document.documentElement.classList.contains('role-personel'); }
+  // Personel girişinde yöneticiye ait sekme açık kaldıysa Sipariş'e dön
+  function persTabGuard(){
+    if (!toplamGizli()) return;
+    const a = document.querySelector('.tab-btn.active');
+    if (a && ['onay', 'urunler', 'personel', 'istatistik', 'arsiv'].includes(a.dataset.tab)) document.querySelector('.tab-btn[data-tab="siparis"]')?.click();
+  }
+  document.addEventListener('tidem:login', () => setTimeout(persTabGuard, 0));
+  setTimeout(persTabGuard, 0);
   document.addEventListener('tidem:login', () => { try{ renderHistory(); renderArsiv(); renderTahsilatHistory(); }catch(e){} });
   // internetten başka telefonun değişikliği geldi: listeleri yenile (açık formlara dokunulmaz)
   let remoteT = null;
@@ -7621,7 +7673,7 @@
   var RED_SEBEP = ['Fiyat yanlış', 'Adet yanlış', 'Yanlış müşteri', 'Mükerrer sipariş', 'Ürün yanlış', 'Cari borcu yüksek'];
   var PARA_K = { siparis_tahsilat:'Tahsilat', siparis_returns:'İade', siparis_giderler:'Gider', siparis_debts:'Eski borç', siparis_promises:'Ödeme sözü', siparis_cabinets:'Dolap' };
   var PAY_TX = { cash:'Nakit', card:'Kredi kartı', eft:'IBAN / EFT', account:'Cari hesap' };
-  var OI = {
+  var OI = {chev:'<path d="M6 9l6 6 6-6"/>', 
     ord:'<path d="M6 2h12v20l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 22Z"/><path d="M9 7h6M9 11h6M9 15h4"/>',
     para:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/>',
     cust:'<path d="M3 21v-1a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v1"/><circle cx="9" cy="8" r="4"/><path d="M19 8v6M16 11h6"/>',
@@ -7734,7 +7786,11 @@
     if (left.all.every(x => x.dec)){
       left.others.forEach(i => { const e = b.changes[i]; if ((e.k === 'siparis_customers' || e.k === 'siparis_products') && e.op !== 'del') return; const t = tfEntry(e, b); S.apply(t); if (t.s === 'rec') S.setMeta(t, b); });
       const vals = Object.values(b.dec), ok = vals.filter(x => x.s !== 'red').length, red = vals.filter(x => x.s === 'red').length;
-      S.finish(b, ok, red); onayView = null;
+      const rows = left.all.filter(x => x.dec).map(it => {
+        const r = it.r || {}, t = it.type === 'cust' ? 'Yeni müşteri' : it.type === 'prod' ? 'Yeni ürün' : it.type === 'ord' ? (it.e.op === 'del' ? 'Sipariş silindi' : 'Sipariş') : (PARA_K[it.e.k] || 'Kayıt');
+        return { k:it.type, t, n:it.name || r.customer || '', a:it.type === 'ord' ? num(r.total) : (it.type === 'para' ? num(r.amount || r.total) : 0), s:it.dec.s, why:it.dec.sebep || it.dec.note || '' };
+      });
+      S.finish(b, ok, red, rows); onayView = null;
       flash(`✓ ${(b.from && b.from.name) || 'Personel'} gün sonu tamamlandı: ${ok} onay${red ? ', ' + red + ' red' : ''}. Şimdi "Güncel durumu gönder" ile personele iletin.`);
     }
     refreshAfterOnay();
@@ -7793,8 +7849,14 @@
           <div class="on-bs"><div><b>${st.sip}</b><span>SİPARİŞ</span></div><div><b>${fmt(st.tut)}</b><span>TUTAR ₺</span></div><div><b>${fmt(st.tah)}</b><span>TAHSİLAT ₺</span></div></div>
           <div class="on-items">${prev.map(it => itemRow(it, b)).join('')}${open.length > prev.length ? `<button type="button" class="on-more" data-on-open="${escAttr(b.id)}">+${open.length - prev.length} kayıt daha · tümünü gör ›</button>` : ''}
           ${easy.length ? `<button type="button" class="on-bulk" data-on-bulk="${escAttr(b.id)}">${oic('check')}Sorunsuzları toplu onayla · ${easy.length}</button>` : ''}</div></div>`;
-      }).join('') : `<div class="on-empty">${oic('inbox')}<b>Bekleyen kayıt yok</b><small>Personelin gün sonu dosyasını "Gün sonu dosyası aç" ile ekleyin.</small></div>`}
-      ${hist.length ? `<div class="on-sec"><b>Son onaylananlar</b></div>${hist.map(h => `<div class="on-batch on-hrow"><div class="on-bh"><span class="on-av g">${escHtml(ini2(h.from))}</span><span class="on-bt"><b>${escHtml(h.from || 'Personel')}</b><small>${hmTx(h.at)} · ${h.applied} onay${h.rejected ? ' · ' + h.rejected + ' red' : ''}</small></span><span class="on-pill g">TAMAM</span></div></div>`).join('')}` : ''}`;
+      }).join('') : `<div class="on-empty">${oic('inbox')}<b>Bekleyen kayıt yok</b><small>${document.documentElement.classList.contains('cloud-on') ? 'Personelin kayıtları internetten kendiliğinden buraya gelir.' : 'Personelin gün sonu dosyasını "Gün sonu dosyası aç" ile ekleyin.'}</small></div>`}
+      ${hist.length ? `<div class="on-sec"><b>Son onaylananlar</b></div>${hist.map(h => `<details class="on-batch on-hrow"><summary class="on-bh"><span class="on-av g">${escHtml(ini2(h.from))}</span><span class="on-bt"><b>${escHtml(h.from || 'Personel')}</b><small>${hmTx(h.at)} · ${h.applied} onay${h.rejected ? ' · ' + h.rejected + ' red' : ''}</small></span><span class="on-hx">DETAY${oic('chev')}</span></summary>${histDetail(h)}</details>`).join('')}` : ''}`;
+  }
+  // Son onaylananlar: dokununca o gün sonunda ne onaylandı / reddedildi
+  function histDetail(h){
+    const P = { ok:['ONAYLANDI', 'g'], merge:['BİRLEŞTİRİLDİ', 'n'], red:['REDDEDİLDİ', 'r'] };
+    if (!h.items || !h.items.length) return `<div class="on-hd"><p class="on-hp">${escHtml(h.sum || 'Ayrıntı yok')}</p></div>`;
+    return `<div class="on-hd">${h.items.map(x => { const p = P[x.s] || P.ok; return `<div class="on-hi"><span class="on-ic t-${x.k}">${oic(x.k)}</span><span class="on-tx"><b>${escHtml(x.n || x.t)}</b><small>${escHtml(x.t)}${x.why ? ' · ' + escHtml(x.why) : ''}</small></span>${x.a ? `<span class="on-am">${fmt(x.a)} ₺</span>` : ''}<span class="on-pill ${p[1]}">${p[0]}</span></div>`; }).join('')}</div>`;
   }
   function renderBatch(root, b){
     const I = onayItems(b), open = I.all.filter(x => !x.dec), done = I.all.filter(x => x.dec);
@@ -7967,8 +8029,13 @@
     const orders = getOrders(), onay = safeGet(ONAY_KEY, {});
     const reds = Object.keys(onay).filter(id => { const r = onay[id]; return r.s === 'red' && r.by === me && !hide.includes(id + '|' + r.at) && !(r.k === 'siparis_orders' && orders.some(x => x.id === id)); });
     const last = S.lastState();
-    el.innerHTML = `<div class="on-send"><div class="top"><span class="on-ring sm" style="--p:${list.length ? 30 : 100}"><span>${list.length ? list.length : '✓'}</span></span><div><b>${list.length ? 'Gönderilmemiş kayıtlar' : (S.waiting() ? 'Gönderildi · onay bekliyor' : 'Yöneticiyle güncel')}</b><small>${list.length ? [o ? o + ' sipariş' : '', t ? t + ' tahsilat' : '', (list.length - o - t) ? (list.length - o - t) + ' diğer' : ''].filter(Boolean).join(' · ') : (last ? 'Son güncelleme ' + hmTx(last.at) : 'Henüz güncelleme alınmadı')}</small></div></div>
-      ${list.length ? `<button type="button" class="on-bulk nav" data-pers="send">${oic('send')}Gün sonunu gönder</button>` : `<button type="button" class="on-bulk ghost" data-pers="take">${oic('file')}Yöneticiden güncelle</button>`}<details class="on-help"><summary>${oic('info')}WhatsApp'tan gelen dosya nasıl açılır?</summary><ol><li><b>Android:</b> WhatsApp'ta dosyaya dokunun → sağ üst <b>⋮</b> → <b>Paylaş</b> → <b>TİDEM GIDA</b>. Dosya doğrudan buraya düşer.</li><li><b>iPhone:</b> Dosyaya dokunun → <b>Paylaş</b> → <b>Dosyalar'a Kaydet</b>. Sonra burada <b>Yöneticiden güncelle</b> → kaydettiğiniz dosyayı seçin.</li><li>Telefonda indirilen dosyalar <b>İndirilenler</b> (Download) klasöründe, adı <b>tidem-guncel-…</b> ile başlar.</li></ol></details></div>
+    const cloud = document.documentElement.classList.contains('cloud-on'), wait = S.waiting();
+    const T = list.length ? (cloud ? 'Yöneticiye gönderiliyor…' : `Yöneticiye gitmedi · ${list.length} değişiklik`) : (wait ? 'Yöneticinin onayını bekliyor' : 'Yöneticiyle güncel');
+    const Sub = list.length ? (cloud ? 'İnternet gelince kendiliğinden gider' : 'Göndermezseniz yönetici bu değişiklikleri görmez') : (wait ? 'Onaylanınca bu telefona kendiliğinden gelir' : (cloud ? 'Her şey internetle eşit' : (last ? 'Son güncelleme ' + hmTx(last.at) : 'Henüz güncelleme alınmadı')));
+    const rows = list.slice().reverse().slice(0, 5).map(e => { const d = S.describe(e); return `<li><span>${d.icon}</span>${escHtml(d.text)}</li>`; }).join('');
+    el.innerHTML = `<div class="on-send${list.length ? ' has' : ''}"><div class="top"><span class="on-ring sm" style="--p:${list.length ? 30 : 100}"><span>${list.length ? list.length : '✓'}</span></span><div><b>${T}</b><small>${Sub}</small></div></div>
+      ${list.length ? `<ul class="on-pl">${rows}${list.length > 5 ? `<li class="more">+${list.length - 5} değişiklik daha</li>` : ''}</ul>` : ''}
+      ${cloud ? '' : (list.length ? `<button type="button" class="on-bulk nav" data-pers="send">${oic('send')}Yöneticiye gönder</button>` : `<button type="button" class="on-bulk ghost" data-pers="take">${oic('file')}Yöneticiden güncelle</button><details class="on-help"><summary>${oic('info')}WhatsApp'tan gelen dosya nasıl açılır?</summary><ol><li><b>Android:</b> WhatsApp'ta dosyaya dokunun → sağ üst <b>⋮</b> → <b>Paylaş</b> → <b>TİDEM GIDA</b>. Dosya doğrudan buraya düşer.</li><li><b>iPhone:</b> Dosyaya dokunun → <b>Paylaş</b> → <b>Dosyalar'a Kaydet</b>. Sonra burada <b>Yöneticiden güncelle</b> → kaydettiğiniz dosyayı seçin.</li><li>Telefonda indirilen dosyalar <b>İndirilenler</b> (Download) klasöründe, adı <b>tidem-guncel-…</b> ile başlar.</li></ol></details>`)}</div>
       ${reds.map(id => { const r = onay[id]; return `<div class="on-redc"><div class="r1"><b>${escHtml(r.cust || (r.k === 'siparis_orders' ? 'Sipariş' : 'Kayıt'))}</b><span class="on-pill r">REDDEDİLDİ</span></div><div class="r2">${escHtml([r.k === 'siparis_orders' ? 'Sipariş' : (PARA_K[r.k] || 'Kayıt'), r.date ? dateDisplay(r.date) : ''].filter(Boolean).join(' · '))}<strong>${fmt(r.amt)} ₺</strong></div>
         <div class="on-note"><div class="h">${oic('info')}YÖNETİCİ NOTU${r.sebep ? ' · ' + escHtml(r.sebep.toLocaleUpperCase('tr-TR')) : ''}</div>${r.note ? `<p>${escHtml(r.note)}</p>` : ''}
         <div class="on-nb">${r.k === 'siparis_orders' && r.op !== 'del' ? `<button type="button" class="fx" data-red-fix="${escAttr(id)}">${oic('pen')}DÜZELT VE TEKRAR GÖNDER</button>` : ''}<button type="button" class="ok2" data-red-ok="${escAttr(id + '|' + r.at)}">ANLADIM</button></div></div></div>`; }).join('')}`;
@@ -7984,6 +8051,7 @@
       loadOrderToForm(id, true); renderHistory();
     }
   });
+  document.addEventListener('tidem:cloud', () => { try{ renderPersBar(); }catch(e){} });
   function loadOrderToForm(id, editing = true){
     const o = getOrders().find(x => x.id === id);
     if (!o) return;
@@ -10820,7 +10888,7 @@ async function start(){
     user = auth.currentUser || await waitUser();
     if (!user){ setCfg({ on:false }); return set('off', 'Oturum kapanmış; yeniden bağlanın.'); }
     listenRows(); listenInbox();
-    if (isPers()) kick(); else flush();
+    if (isPers()) kick(); else { flush(); setTimeout(dailyBackup, 4000); }
   }catch(e){ set('error', errTx(e)); }
 }
 window.addEventListener('online', () => { if (cfg().on){ if (state.phase !== 'live') start(); else if (isPers()) kick(); else flush(); } });
@@ -10914,6 +10982,45 @@ async function syncMembers(){
   }catch(e){}
 }
 
+// ---------- yönetici: günlük internet yedeği (son 7 gün saklanır) ----------
+const dayStr = d => { d = d || new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+const CH = 700000;
+let bkBusy = false;
+async function dailyBackup(force){
+  if (bkBusy || !user || isPers() || !cfg().on) return;
+  const day = dayStr(); if (!force && cfg().bkDay === day) return;
+  const A2 = window.__tidemAuto, text = A2 && A2.text ? A2.text() : null; if (!text) return;
+  bkBusy = true;
+  try{
+    const parts = Math.max(1, Math.ceil(text.length / CH)), b = F.writeBatch(db), ref = F.doc(db, 'backups', day);
+    let n = 0; try{ n = (JSON.parse(text).data.siparis_orders || []).length; }catch(e){}
+    b.set(ref, { at:F.serverTimestamp(), ms:Date.now(), size:text.length, parts, orders:n, by:user.uid });
+    for (let i = 0; i < parts; i++) b.set(F.doc(db, 'backups', day, 'p', String(i)), { d:text.slice(i * CH, (i + 1) * CH) });
+    await b.commit();
+    setCfg({ bkDay:day, bkAt:Date.now() }); emit();
+    const all = await F.getDocs(F.collection(db, 'backups'));
+    const old = all.docs.map(d => ({ id:d.id, parts:(d.data() || {}).parts || 1 })).sort((x, y) => y.id.localeCompare(x.id)).slice(7);
+    for (const o of old){ for (let i = 0; i < o.parts; i++) await F.deleteDoc(F.doc(db, 'backups', o.id, 'p', String(i))); await F.deleteDoc(F.doc(db, 'backups', o.id)); }
+  }catch(e){}
+  finally{ bkBusy = false; }
+}
+async function listBackups(){
+  const all = await F.getDocs(F.collection(db, 'backups'));
+  return all.docs.map(d => Object.assign({ id:d.id }, d.data())).sort((x, y) => y.id.localeCompare(x.id));
+}
+// İnternet yedeğini geri yükle: bu telefona yazılır, değişiklikler internete (tüm telefonlara) gider
+async function restoreBackup(day){
+  const meta = await F.getDoc(F.doc(db, 'backups', day)); if (!meta.exists()) throw { message:'Yedek bulunamadı.' };
+  let text = '';
+  for (let i = 0; i < (meta.data().parts || 1); i++){ const p = await F.getDoc(F.doc(db, 'backups', day, 'p', String(i))); text += (p.data() || {}).d || ''; }
+  const pl = JSON.parse(text); if (!pl || pl.app !== 'teklif-fisi' || !pl.data) throw { message:'Yedek okunamadı.' };
+  try{ localStorage.setItem('tidem_bulut_onceki', JSON.stringify({ at:Date.now(), data:S().snapshotLocal() })); }catch(e){}
+  const keep = { siparis_theme:1, siparis_fisi_form_taslagi:1 };
+  Object.keys(localStorage).forEach(k => { if (k.indexOf('siparis_') === 0 && !keep[k] && !(k in pl.data)) localStorage.removeItem(k); });
+  Object.keys(pl.data).forEach(k => { if (k.indexOf('siparis_') === 0 && !keep[k]) localStorage.setItem(k, JSON.stringify(pl.data[k])); });
+  clearTimeout(flushT); await flush();
+  return (pl.data.siparis_orders || []).length;
+}
 async function disconnect(){
   try{ if (unsubRows) unsubRows(); if (unsubInbox) unsubInbox(); }catch(e){}
   unsubRows = unsubInbox = null;
@@ -10955,6 +11062,7 @@ function render(){
   let h = '<div class="cl-stats"><div><small>SON EŞİTLEME</small><b>' + (state.last ? hhmm(state.last) : '—') + '</b></div><div><small>' + (me === 'personel' ? 'ONAY BEKLEYEN' : 'GÖNDERİLECEK') + '</small><b>' + (me === 'personel' ? pend : out) + '</b></div><div><small>HESAP</small><b>' + (c.role === 'personel' ? esc(c.name || 'Personel') : 'Yönetici') + '</b></div></div>';
   if (state.phase === 'error' || state.phase === 'offline') h += '<div class="cl-warn">' + esc(state.msg || 'Bağlantı kurulamadı.') + ' <button type="button" data-cl="retry">Tekrar dene</button></div>';
   if (c.role === 'admin' && me !== 'personel'){
+    h += '<button type="button" class="cl-bk" data-cl="bk"><span><b>İnternet yedekleri</b><small>' + (c.bkAt ? 'Son yedek ' + (dayStr(new Date(c.bkAt)) === dayStr() ? 'bugün ' : new Date(c.bkAt).toLocaleDateString('tr-TR') + ' ') + hhmm(c.bkAt) : 'Bugünkü yedek hazırlanıyor') + ' · son 7 gün</small></span><em>Gör ›</em></button>';
     const st = (S() ? S().users() : []).filter(u => u && u.role !== 'merkez');
     h += '<div class="cl-hh">PERSONEL DAVETİ</div>' + (st.length ? st.map(u => '<div class="cl-u' + (u.active === false ? ' off' : '') + '"><b>' + esc(u.name) + '</b><small>' + (u.active === false ? 'Girişi kapalı' : 'Yeni telefonu bu kodla bağlanır') + '</small>' + (u.active === false ? '' : '<button type="button" class="cl-inv" data-cl="inv" data-id="' + esc(u.id) + '">' + waIco() + 'Davet gönder</button>') + '</div>').join('')
       : '<p class="cl-p">Aşağıdaki Gün sonu bölümünden personel ekleyin; sonra buradan davet gönderin.</p>');
@@ -10991,6 +11099,7 @@ document.addEventListener('click', async e => {
       render();
     } else if (a === 'paste'){ await inviteFlow(say); }
     else if (a === 'retry'){ say(''); start(); }
+    else if (a === 'bk') await backupSheet();
     else if (a === 'off'){
       if (!t.dataset.arm){ t.dataset.arm = '1'; t.textContent = 'Emin misiniz? Bağlantıyı kes'; t.classList.add('arm'); setTimeout(() => { if (t.isConnected){ delete t.dataset.arm; t.textContent = 'Bu telefonun bağlantısını kes'; t.classList.remove('arm'); } }, 4000); return; }
       await disconnect(); say('Bağlantı kesildi. Kayıtlar bu telefonda duruyor.'); render();
@@ -11006,6 +11115,29 @@ document.addEventListener('click', async e => {
     }
   }catch(err){ t.disabled = false; say(errTx(err), true); if (!cfg().on) set('off'); }
 });
+async function backupSheet(){
+  const o = document.createElement('div'); o.className = 'tf-dlg';
+  o.innerHTML = '<div class="tf-box cl-sheet"><h3>İnternet yedekleri</h3><p class="cl-p">Her gün bir kez kendiliğinden alınır, son 7 gün saklanır.</p><div class="cl-bl">Yükleniyor…</div><div class="cl-sst gs-status"></div><div class="tf-act"><button type="button" class="tf-no">Kapat</button><button type="button" class="tf-ok" data-b="now">Şimdi yedek al</button></div></div>';
+  document.body.appendChild(o);
+  const box = o.querySelector('.cl-bl'), st = o.querySelector('.cl-sst');
+  const fill = async () => {
+    try{
+      const l = await listBackups();
+      box.innerHTML = l.length ? l.map(b => '<div class="cl-br"><span><b>' + new Date(b.id + 'T12:00').toLocaleDateString('tr-TR', { day:'numeric', month:'long', weekday:'long' }) + '</b><small>' + (b.ms ? hhmm(b.ms) + ' · ' : '') + (b.orders || 0) + ' sipariş · ' + Math.round((b.size || 0) / 1024) + ' KB</small></span><button type="button" data-r="' + esc(b.id) + '">Geri yükle</button></div>').join('') : '<p class="cl-p">Henüz yedek yok.</p>';
+    }catch(e){ box.textContent = errTx(e); }
+  };
+  fill();
+  o.addEventListener('click', async e => {
+    if (e.target === o || e.target.closest('.tf-no')) return o.remove();
+    const nb = e.target.closest('[data-b=now]');
+    if (nb){ nb.disabled = true; st.textContent = 'Yedek alınıyor…'; await dailyBackup(true); st.textContent = '✓ Yedek alındı.'; nb.disabled = false; render(); return fill(); }
+    const r = e.target.closest('[data-r]'); if (!r) return;
+    if (!r.dataset.arm){ r.dataset.arm = '1'; r.textContent = 'Emin misiniz?'; r.classList.add('arm'); st.textContent = 'Şu anki kayıtların yerine bu günün kayıtları gelir; tüm telefonlara geçer.'; st.className = 'cl-sst gs-status bad'; return; }
+    r.disabled = true; st.className = 'cl-sst gs-status'; st.textContent = 'Geri yükleniyor…';
+    try{ const n = await restoreBackup(r.dataset.r); st.textContent = '✓ ' + n + ' sipariş geri yüklendi. Uygulama yenileniyor…'; setTimeout(() => location.reload(), 1300); }
+    catch(err){ r.disabled = false; st.className = 'cl-sst gs-status bad'; st.textContent = errTx(err); }
+  });
+}
 window.__tidemCloudUI = { inviteFlow };
 render();
 start();
