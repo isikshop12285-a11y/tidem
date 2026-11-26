@@ -91,10 +91,22 @@
   .on-sec.sm{margin:16px 2px 8px}.on-sec.sm b{font-size:.9rem}
   .on-batch{background:var(--oc);border:1px solid var(--line);border-radius:22px;box-shadow:0 8px 22px rgba(20,33,63,.08);overflow:hidden;margin-bottom:12px}
   .on-bh{display:flex;align-items:center;gap:12px;width:100%;padding:14px !important;border:0 !important;background:none !important;text-align:left;font:inherit;cursor:pointer;min-height:0 !important}
+  .on-sec-h{justify-content:space-between}
+  .on-clr{border:1.5px solid rgba(200,32,47,.45);background:transparent;color:var(--red);border-radius:999px;padding:6px 12px;font:inherit;font-size:.68rem;font-weight:900;cursor:pointer}
+  .on-ok{flex:none;border:0;border-radius:999px;padding:8px 13px;background:#1FA855;color:#fff;font:inherit;font-size:.66rem;font-weight:900;letter-spacing:.06em;cursor:pointer;box-shadow:0 4px 10px rgba(31,168,85,.3)}
+  .on-hconf{display:flex;align-items:center;gap:8px;margin:0 12px 12px;padding:10px 12px;border-radius:14px;background:#FEF2F2;border:1px solid #FECACA;font-size:.74rem;font-weight:800;color:#991B1B}
+  .on-hconf[hidden]{display:none}
+  .on-sec-h+.on-hconf{margin:0 0 10px}
+  .on-hrow>summary{flex-wrap:wrap}.on-hrow>summary .on-hconf{flex-basis:100%;margin:10px 0 0}
+  .on-hconf span{flex:1;min-width:0}
+  .on-hconf button{flex:none;border:0;border-radius:10px;padding:8px 12px;font:inherit;font-size:.72rem;font-weight:900;cursor:pointer}
+  .on-hconf .nb{background:rgba(15,23,42,.08);color:var(--ink)}.on-hconf .yb{background:#C8202F;color:#fff}
+  .on-hrow .on-bt small u{text-decoration:none;color:#16A34A;font-weight:900}
+  html[data-theme="dark"] .on-hconf{background:rgba(200,32,47,.16);border-color:rgba(248,113,113,.4);color:#FECACA}
+  html[data-theme="dark"] .on-hconf .nb{background:rgba(255,255,255,.12);color:#fff}
+  html[data-theme="dark"] .on-clr{color:#FCA5A5;border-color:rgba(252,165,165,.5)}
+  html[data-theme="dark"] .on-hrow .on-bt small u{color:#6EE7A0}
   .on-hrow>summary{list-style:none}.on-hrow>summary::-webkit-details-marker{display:none}
-  .on-hx{flex:none;display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:999px;background:#DCF5E5;color:#137A3B;font-size:.6rem;font-weight:900;letter-spacing:.06em}
-  .on-hx svg{width:14px;height:14px;transition:transform .2s}
-  .on-hrow[open] .on-hx svg{transform:rotate(180deg)}
   .on-hd{border-top:1px solid var(--line);padding:4px 14px 10px}
   .on-hi{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
   .on-hi:last-child{border-bottom:0}
@@ -103,7 +115,6 @@
   .on-hi .on-tx small{display:block;font-size:.68rem;font-weight:700;color:var(--ink-soft)}
   .on-hi .on-am{font-size:.82rem;font-weight:900;color:var(--ink);white-space:nowrap}
   .on-hp{margin:10px 0 4px;font-size:.76rem;font-weight:700;color:var(--ink-soft)}
-  html[data-theme="dark"] .on-hx{background:rgba(31,168,85,.2);color:#6EE7A0}
   .on-av{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:#fff;background:linear-gradient(145deg,#9B1C28,#C8202F 55%,#E04A57);box-shadow:0 6px 14px rgba(200,32,47,.3)}
   .on-av.g{background:linear-gradient(145deg,#0F6B33,#1FA855);box-shadow:0 6px 14px rgba(31,168,85,.3)}
   .on-bt{flex:1;min-width:0}.on-bt b{display:block;font-family:var(--font-display);font-size:1rem;font-weight:900;color:var(--ink)}.on-bt small{font-size:.7rem;font-weight:700;color:var(--ink-soft)}
@@ -632,6 +643,29 @@
   .archive-order-receipt:hover{border-color:var(--red);box-shadow:0 5px 14px rgba(200,32,47,.11)}
   .archive-receipt-hint{align-self:flex-start;min-height:34px;margin:1px 0 -3px;padding:5px 0;border:0;background:none;color:var(--red);font:inherit;font-size:.75rem;font-weight:800;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .archive-receipt-hint:hover,.archive-receipt-hint:focus-visible{text-decoration:underline;outline:none}
+  #panel-rapor .rp-pay{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .15s,box-shadow .15s}
+  .rp-more{display:block;margin-top:3px;font-size:.58rem;font-weight:900;letter-spacing:.06em;color:#16A34A}
+  #panel-rapor .rp-pay.card .rp-more{color:#2563EB}#panel-rapor .rp-pay.eft .rp-more{color:#7C3AED}
+  #panel-rapor .rp-pay.on{border:2px solid #16A34A !important;box-shadow:0 0 0 3px rgba(22,163,74,.16) !important}
+  #panel-rapor .rp-pay.card.on{border-color:#2563EB !important;box-shadow:0 0 0 3px rgba(37,99,235,.16) !important}
+  #panel-rapor .rp-pay.eft.on{border-color:#7C3AED !important;box-shadow:0 0 0 3px rgba(124,58,237,.16) !important}
+  .rp-list{margin:4px 0 14px;padding:6px 14px 14px;border-radius:18px;background:var(--oc);border:2px solid #16A34A;animation:rpIn .18s ease-out}
+  .rp-list.card{border-color:#2563EB}.rp-list.eft{border-color:#7C3AED}
+  @keyframes rpIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .rp-it{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .rp-it span{flex:1;min-width:0}.rp-it b{display:block;font-size:.88rem;font-weight:900;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rp-it small{display:block;font-size:.7rem;font-weight:700;color:var(--ink-soft)}
+  .rp-it strong{font-size:.92rem;font-weight:900;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .rp-none{margin:12px 0 4px;font-size:.78rem;font-weight:700;color:var(--ink-soft)}
+  .rp-tot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:12px 14px;border-radius:14px;background:#16A34A;color:#fff}
+  .rp-list.card .rp-tot{background:#2563EB}.rp-list.eft .rp-tot{background:#7C3AED}
+  .rp-tot span{font-size:.64rem;font-weight:900;letter-spacing:.08em}.rp-tot b{font-size:1.15rem;font-weight:900;white-space:nowrap}
+  html[data-theme="dark"] .rp-more{color:#6EE7A0}html[data-theme="dark"] #panel-rapor .rp-pay.card .rp-more{color:#93C5FD}html[data-theme="dark"] #panel-rapor .rp-pay.eft .rp-more{color:#C4B5FD}
+  .rp-acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .rp-wa{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 14px;border:0;border-radius:12px;background:#1FA855;color:#fff;font:inherit;font-size:.82rem;font-weight:900;cursor:pointer;box-shadow:0 6px 14px rgba(31,168,85,.3)}
+  .rp-wa:disabled{opacity:.6}.rp-wa .wa-ico{width:19px;height:19px}
+  .rp-msg{margin:-12px 2px 18px;font-size:.76rem;font-weight:800;color:#16A34A;text-align:right}.rp-msg:empty{display:none}.rp-msg.bad{color:var(--red)}
+  @media(max-width:520px){.report-print-action{flex-direction:column;align-items:stretch}.rp-acts{justify-content:stretch}.rp-acts>*{flex:1;justify-content:center}}
   /* Gün sonu raporu: ayrı bir görsel dil, hızlı okunur finans özeti */
   #panel-rapor .report-hero{position:relative;overflow:hidden;margin:3px 0 24px;padding:22px;border-radius:20px;color:#fff}
   #panel-rapor .report-hero:after{content:"";position:absolute;width:240px;height:240px;right:-90px;top:-126px;border:1px solid rgba(255,255,255,.13);border-radius:50%;box-shadow:0 0 0 25px rgba(255,255,255,.035),0 0 0 55px rgba(255,255,255,.025);pointer-events:none}
@@ -2829,7 +2863,7 @@
     </div>
     <button type="button" class="lock-setup" id="lockSetup" hidden>Yeni telefon: yedekten / merkezden kur ›</button>
     <div class="lock-sec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Şifreniz hiçbir yerde açık yazılmaz</div>
-    <div class="app-ver" id="appVer">Sürüm 134 · 26.11.2026</div>
+    <div class="app-ver" id="appVer">Sürüm 135 · 26.11.2026</div>
   </div>
   <div class="lock-sheet" id="lockSheet" hidden>
     <div class="ls-panel" role="dialog" aria-label="Kullanıcı seçin">
@@ -3526,20 +3560,22 @@
 
     <div class="report-section-heading"><div><span>01 · FİNANS</span><h2>Günün özeti</h2></div><p>Ödeme türüne göre toplamlar</p></div>
     <div class="summary-strip grid3 report-kpis">
-      <div class="report-kpi cash"><span class="report-kpi-icon">₺</span><div><div class="s-label">Nakit</div><div class="s-value" id="raporCashTotal">0</div></div></div>
-      <div class="report-kpi card"><span class="report-kpi-icon">▤</span><div><div class="s-label">Kredi kartı</div><div class="s-value" id="raporCardTotal">0</div></div></div>
-      <div class="report-kpi eft"><span class="report-kpi-icon">↗</span><div><div class="s-label">IBAN / EFT</div><div class="s-value" id="raporEftTotal">0</div></div></div>
+      <button type="button" class="report-kpi cash rp-pay" data-pay="cash" aria-expanded="false"><span class="report-kpi-icon">₺</span><div><div class="s-label">Nakit</div><div class="s-value" id="raporCashTotal">0</div><span class="rp-more">LİSTE ›</span></div></button>
+      <button type="button" class="report-kpi card rp-pay" data-pay="card" aria-expanded="false"><span class="report-kpi-icon">▤</span><div><div class="s-label">Kredi kartı</div><div class="s-value" id="raporCardTotal">0</div><span class="rp-more">LİSTE ›</span></div></button>
+      <button type="button" class="report-kpi eft rp-pay" data-pay="eft" aria-expanded="false"><span class="report-kpi-icon">↗</span><div><div class="s-label">IBAN / EFT</div><div class="s-value" id="raporEftTotal">0</div><span class="rp-more">LİSTE ›</span></div></button>
       <div class="report-kpi collected"><span class="report-kpi-icon">✓</span><div><div class="s-label">Toplam tahsilat</div><div class="s-value" id="raporTahsilatTotal">0</div></div></div>
       <div class="report-kpi returned"><span class="report-kpi-icon">↩</span><div><div class="s-label">İade</div><div class="s-value" id="raporIadeTotal">0</div></div></div>
       <div class="report-kpi expense"><span class="report-kpi-icon">−</span><div><div class="s-label">Gider</div><div class="s-value" id="raporGiderTotal">0</div></div></div>
     </div>
+    <div class="rp-list" id="raporPayList" hidden></div>
 
     <div class="report-section-heading"><div><span>02 · KIRILIM</span><h2>Günlük döküm</h2></div><p>Kasa hareketlerinin kaynağı</p></div>
     <div class="breakdown" id="raporBreakdown"></div>
     <div class="report-section-heading"><div><span>03 · ÜRÜN PERFORMANSI</span><h2>Satılan ürünler</h2></div><p>Gruba dokunup koli belgesini açın</p></div>
     <div class="breakdown" id="raporProductSummary"><p class="hist-empty">Bu tarihte teslim edilmiş ürün yok.</p></div>
 
-    <div class="report-print-action"><span>Günün özetini belge olarak kaydet veya yazdır</span><button class="btn btn-primary" id="reportPrintBtn">Raporu aç&nbsp; ↗</button></div>
+    <div class="report-print-action"><span>Günün özeti · aç, yazdır veya WhatsApp'tan gönder</span><div class="rp-acts"><button class="btn btn-primary" id="reportPrintBtn">Raporu aç&nbsp; ↗</button><button type="button" class="rp-wa" id="reportWaBtn"></button></div></div>
+    <div class="rp-msg" id="reportWaMsg" aria-live="polite"></div>
 
     <div class="report-section-heading"><div><span>04 · HAREKETLER</span><h2>Tahsilatlar</h2></div></div>
     <div id="raporTahsilatList" class="history report-history"></div>
@@ -3833,7 +3869,7 @@
 })();
 </script>
 
-    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 134 · 26.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
+    <section class="definition-card ver-card"><h3>Uygulama sürümü</h3><p><b class="ver-badge">Sürüm 135 · 26.11.2026</b> Güncelleme yükledikten sonra bu numara değişmezse eski dosya yüklenmiştir.</p></section>
   </div>
 
 
@@ -4610,7 +4646,7 @@
       saveQueue:function(q){ ls(Q_KEY, q); },
       apply:applyEntry, current:currentJson, describe:describe, finish:finishBatch, setMeta:setMeta,
       openFile:function(){ chooseFile(enqueue); }, sendState:sendState, sendDay:sendDay,
-      pending:function(){ return journalList(); }, hist:function(){ return lg(HIST_KEY, []); },
+      pending:function(){ return journalList(); }, hist:function(){ return lg(HIST_KEY, []); }, histDrop:function(at){ ls(HIST_KEY, at == null ? [] : lg(HIST_KEY, []).filter(function(h){ return h.at !== at; })); },
       statusOf:statusOf, me:function(){ var d = dev(); return recOf(d.uid) || { id:d.uid, name:d.name }; },
       lastState:function(){ return lg(DIST_KEY, null); }, waiting:function(){ return lg(SENT_KEY, []).length; }
     };
@@ -7673,7 +7709,7 @@
   var RED_SEBEP = ['Fiyat yanlış', 'Adet yanlış', 'Yanlış müşteri', 'Mükerrer sipariş', 'Ürün yanlış', 'Cari borcu yüksek'];
   var PARA_K = { siparis_tahsilat:'Tahsilat', siparis_returns:'İade', siparis_giderler:'Gider', siparis_debts:'Eski borç', siparis_promises:'Ödeme sözü', siparis_cabinets:'Dolap' };
   var PAY_TX = { cash:'Nakit', card:'Kredi kartı', eft:'IBAN / EFT', account:'Cari hesap' };
-  var OI = {chev:'<path d="M6 9l6 6 6-6"/>', 
+  var OI = {
     ord:'<path d="M6 2h12v20l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 22Z"/><path d="M9 7h6M9 11h6M9 15h4"/>',
     para:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/>',
     cust:'<path d="M3 21v-1a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v1"/><circle cx="9" cy="8" r="4"/><path d="M19 8v6M16 11h6"/>',
@@ -7850,8 +7886,17 @@
           <div class="on-items">${prev.map(it => itemRow(it, b)).join('')}${open.length > prev.length ? `<button type="button" class="on-more" data-on-open="${escAttr(b.id)}">+${open.length - prev.length} kayıt daha · tümünü gör ›</button>` : ''}
           ${easy.length ? `<button type="button" class="on-bulk" data-on-bulk="${escAttr(b.id)}">${oic('check')}Sorunsuzları toplu onayla · ${easy.length}</button>` : ''}</div></div>`;
       }).join('') : `<div class="on-empty">${oic('inbox')}<b>Bekleyen kayıt yok</b><small>${document.documentElement.classList.contains('cloud-on') ? 'Personelin kayıtları internetten kendiliğinden buraya gelir.' : 'Personelin gün sonu dosyasını "Gün sonu dosyası aç" ile ekleyin.'}</small></div>`}
-      ${hist.length ? `<div class="on-sec"><b>Son onaylananlar</b></div>${hist.map(h => `<details class="on-batch on-hrow"><summary class="on-bh"><span class="on-av g">${escHtml(ini2(h.from))}</span><span class="on-bt"><b>${escHtml(h.from || 'Personel')}</b><small>${hmTx(h.at)} · ${h.applied} onay${h.rejected ? ' · ' + h.rejected + ' red' : ''}</small></span><span class="on-hx">DETAY${oic('chev')}</span></summary>${histDetail(h)}</details>`).join('')}` : ''}`;
+      ${hist.length ? `<div class="on-sec on-sec-h"><b>Son onaylananlar</b><button type="button" class="on-clr" data-hclr="all">Hepsini temizle</button></div><div class="on-hconf" data-hconf="all" hidden><span>Tüm liste silinsin mi?</span><button type="button" class="nb" data-hno="1">Vazgeç</button><button type="button" class="yb" data-hyes="all">Sil</button></div>${hist.map(h => `<details class="on-batch on-hrow"><summary class="on-bh"><span class="on-av g">${escHtml(ini2(h.from))}</span><span class="on-bt"><b>${escHtml(h.from || 'Personel')}</b><small>${hmTx(h.at)} · ${h.applied} onay${h.rejected ? ' · ' + h.rejected + ' red' : ''}${(h.items && h.items.length) ? ' · <u>detay</u>' : ''}</small></span><button type="button" class="on-ok" data-hclr="${h.at}">TAMAM</button><div class="on-hconf" data-hconf="${h.at}" hidden><span>Bu kayıt listeden silinsin mi?</span><button type="button" class="nb" data-hno="1">Vazgeç</button><button type="button" class="yb" data-hyes="${h.at}">Sil</button></div></summary>${histDetail(h)}</details>`).join('')}` : ''}`;
   }
+  // Son onaylananlar: TAMAM → bir kez sorar → listeden silinir (onaylanan kayıtlar yerinde kalır)
+  document.addEventListener('click', e => {
+    const c = e.target.closest('[data-hclr],[data-hno],[data-hyes]'); if (!c || !c.closest('#panel-onay')) return;
+    e.preventDefault(); e.stopPropagation();
+    const root = document.getElementById('panel-onay');
+    root.querySelectorAll('.on-hconf').forEach(x => { x.hidden = true; });
+    if (c.dataset.hclr){ const box = root.querySelector(`[data-hconf="${c.dataset.hclr}"]`); if (box) box.hidden = false; return; }
+    if (c.dataset.hyes){ SY().histDrop(c.dataset.hyes === 'all' ? null : Number(c.dataset.hyes)); renderOnay(); }
+  }, true);
   // Son onaylananlar: dokununca o gün sonunda ne onaylandı / reddedildi
   function histDetail(h){
     const P = { ok:['ONAYLANDI', 'g'], merge:['BİRLEŞTİRİLDİ', 'n'], red:['REDDEDİLDİ', 'r'] };
@@ -9593,6 +9638,30 @@
     f.cashInHand = f.cash - f.retCash - f.giderCash;   // kasada kalan nakit
     return f;
   }
+  // Rapor: Nakit / Kredi kartı / EFT ile ödeyenler tek tek (dayFigures ile aynı hesap)
+  const PAY_NM = { cash:'Nakit', card:'Kredi kartı', eft:'IBAN / EFT' };
+  function payersFor(d, m){
+    const rows = [];
+    liveOrders().filter(o => o.delivered && (o.deliveryDate || o.date) === d && (m === 'cash' ? (o.paymentType === 'cash' || o.paymentType === 'paid') : o.paymentType === m))
+      .forEach(o => rows.push({ n:o.customer || 'Müşteri', src:'Sipariş · teslimatta', a:num(o.total) }));
+    getTahsilat().filter(t => t.date === d && !t.orderId && (tMethod(t) === 'liste_' + m || tMethod(t) === 'cari_' + m))
+      .forEach(t => rows.push({ n:t.customer || 'Liste tahsilatı', src:tMethod(t).indexOf('liste') === 0 ? 'Liste tahsilatı' : 'Cari hesaptan', a:num(t.amount), note:t.note || '' }));
+    return rows.sort((x, y) => y.a - x.a);
+  }
+  let raporPayOpen = '';
+  function renderPayList(){
+    const box = document.getElementById('raporPayList'), d = raporDate.value || todayStr();
+    document.querySelectorAll('#panel-rapor .rp-pay').forEach(b => { const on = b.dataset.pay === raporPayOpen; b.classList.toggle('on', on); b.setAttribute('aria-expanded', on); b.querySelector('.rp-more').textContent = on ? 'KAPAT ˄' : 'LİSTE ›'; });
+    if (!raporPayOpen){ box.hidden = true; box.innerHTML = ''; return; }
+    const m = raporPayOpen, rows = payersFor(d, m), tot = rows.reduce((t, r) => t + r.a, 0);
+    box.hidden = false; box.className = 'rp-list ' + m;
+    box.innerHTML = (rows.length ? rows.map(r => `<div class="rp-it"><span><b>${escHtml(r.n)}</b><small>${escHtml(r.src)}${r.note ? ' · ' + escHtml(r.note) : ''}</small></span><strong>${fmt(r.a)} ₺</strong></div>`).join('') : `<p class="rp-none">Bu tarihte ${PAY_NM[m].toLocaleLowerCase('tr-TR')} ödeme yok.</p>`) +
+      `<div class="rp-tot"><span>${rows.length ? rows.length + ' ÖDEME · ' : ''}${PAY_NM[m].toLocaleUpperCase('tr-TR')} TOPLAM</span><b>${fmt(tot)} ₺</b></div>`;
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('#panel-rapor .rp-pay'); if (!b) return;
+    raporPayOpen = raporPayOpen === b.dataset.pay ? '' : b.dataset.pay; renderPayList();
+  });
   // [etiket, tutar, eksi mi?]
   function breakdownRows(f){
     return [
@@ -9658,6 +9727,7 @@
     document.getElementById('raporTahsilatTotal').textContent = fmt(f.collected);
     document.getElementById('raporIadeTotal').textContent = fmt(f.refunds);
     document.getElementById('raporGiderTotal').textContent = fmt(f.gider);
+    renderPayList();
     document.getElementById('raporCashInHand').textContent = fmt(f.cashInHand);
     document.getElementById('raporCashInHand').closest('.report-cash-card').classList.toggle('negative', f.cashInHand < 0);
     const netEl = document.getElementById('raporNetTotal');
@@ -9780,6 +9850,66 @@ ${dokum ? `<section class="section"><h2>Günlük döküm</h2><table class="detai
     openReportDocument(buildReportDoc(raporDate.value || todayStr()));
   });
   document.getElementById('reportCloseBtn').addEventListener('click', closeReport);
+
+  // ===== Gün sonu raporunu WhatsApp'tan PDF olarak gönder =====
+  // Rapor belgesi görünmez bir çerçevede çizilir → resme → A4 sayfalara bölünüp PDF yapılır
+  function reportCanvases(html){
+    return new Promise((resolve, reject) => {
+      const W = 800, fr = document.createElement('iframe');
+      fr.style.cssText = `position:fixed;left:-9999px;top:0;width:${W}px;height:1200px;border:0;visibility:hidden`;
+      fr.onload = () => {
+        try{
+          const doc = fr.contentDocument, m = doc.querySelector('main'), H = Math.ceil((m ? m.getBoundingClientRect().bottom : doc.body.scrollHeight) + 18);
+          const xml = new XMLSerializer().serializeToString(doc.documentElement);
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><foreignObject width="100%" height="100%">${xml}</foreignObject></svg>`;
+          const img = new Image();
+          img.onload = () => {
+            fr.remove();
+            const S = 2, PW = W * S, PH = Math.round(PW * 1.41421), full = H * S, out = [];
+            for (let y = 0; y < full && (y === 0 || full - y > 40); y += PH){
+              const cv = document.createElement('canvas'); cv.width = PW; cv.height = PH;
+              const c = cv.getContext('2d'); c.fillStyle = '#f4f6f2'; c.fillRect(0, 0, PW, PH);
+              c.drawImage(img, 0, y / S, W, PH / S, 0, 0, PW, PH);
+              out.push(cv);
+            }
+            resolve(out);
+          };
+          img.onerror = () => { fr.remove(); reject(new Error('img')); };
+          img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+        }catch(e){ fr.remove(); reject(e); }
+      };
+      fr.srcdoc = html.replace('<body>', '<body style="background:#f4f6f2">');
+      document.body.appendChild(fr);
+    });
+  }
+  const reportPdf = { key:'', file:null };
+  async function sendReportWhatsApp(){
+    const btn = document.getElementById('reportWaBtn'), msg = document.getElementById('reportWaMsg');
+    const say = (m, bad) => { msg.textContent = m || ''; msg.classList.toggle('bad', !!bad); };
+    const d = raporDate.value || todayStr(), html = buildReportDoc(d);
+    let file = reportPdf.key === html ? reportPdf.file : null, waited = false;
+    if (!file){
+      say('Rapor hazırlanıyor…'); waited = true; btn.disabled = true;
+      try{ file = new File([buildPdfFromCanvases(await reportCanvases(html))], `gun-sonu-raporu-${d}.pdf`, { type:'application/pdf' }); reportPdf.key = html; reportPdf.file = file; }
+      catch(e){ btn.disabled = false; return say('Rapor PDF\'i oluşturulamadı.', true); }
+      btn.disabled = false;
+    }
+    if (canWebShare([file])){
+      const r = await shareFilesNow([file], 'Gün sonu raporu · ' + dateDisplay(d));
+      if (r === 'ok') return say('✓ Gönderildi.');
+      if (r === 'cancel') return say('');
+      return say(waited ? 'Rapor hazır. Göndermek için düğmeye bir kez daha basın.' : 'Paylaşım açılamadı, bir kez daha basın.', true);
+    }
+    const url = URL.createObjectURL(file), a = document.createElement('a'); a.href = url; a.download = file.name;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 4000);
+    window.open('https://wa.me/?text=' + encodeURIComponent('Gün sonu raporu · ' + dateDisplay(d)), '_blank');
+    say('PDF indirildi. WhatsApp\'ta ataç → Belge ile ekleyin.');
+  }
+  (function(){
+    const b = document.getElementById('reportWaBtn');
+    b.innerHTML = (document.getElementById('bkWaIco') || {}).innerHTML + 'WhatsApp\'tan gönder';
+    b.addEventListener('click', sendReportWhatsApp);
+  })();
   document.getElementById('reportOverlayPrint').addEventListener('click', () => {
     try{ reportFrame.contentWindow.focus(); reportFrame.contentWindow.print(); }
     catch(e){ flashError('Yazdırma başlatılamadı.'); }
